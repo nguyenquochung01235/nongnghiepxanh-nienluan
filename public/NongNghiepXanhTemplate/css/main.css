@@ -5,7 +5,7 @@
 /*========================Shadow========================*/
 /*========================Radius========================*/
 /*========================Blur========================*/
-.detail-content__blockquote, .authen-content, .header {
+.detail-content__blockquote, .authen-content, .header, blockquote {
   background-color: #40aa41;
   color: white;
 }
@@ -26,7 +26,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-.detail-content__intro, .detail-content__title, .detail-content__blockquote, .editor__wrapper, .editor__btn, .author, .figure, .paragraph {
+.detail-content__intro, .detail-content__title, .detail-content__blockquote , blockquote , .editor__wrapper, .editor__btn, .author, .figure, .paragraph {
   margin-bottom: 24px;
 }
 
@@ -1056,14 +1056,14 @@ h4 {
 .detail-content__title {
   font-weight: 700;
 }
-.detail-content__blockquote {
+.detail-content__blockquote,blockquote  {
   padding: 15px;
 }
-.detail-content__blockquote > q {
+.detail-content__blockquote, blockquote > q {
   font-weight: 500;
   font-style: italic;
 }
-.detail-content__blockquote > p {
+.detail-content__blockquote, blockquote > p {
   margin-top: 15px;
 }
 

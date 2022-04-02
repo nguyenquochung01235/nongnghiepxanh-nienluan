@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\SelfInforController;
 use App\Http\Controllers\Admin\UploadImgController;
 use App\Http\Controllers\NongNghiep\MainController as NongNghiepMainController;
+use App\Http\Controllers\NongNghiep\NewsController as NongNghiepNewsController;
 use App\Http\Controllers\NongNghiep\SignInController;
 use App\Http\Controllers\NongNghiep\SignUpController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,8 @@ Route::post('/sign-up/create', [SignUpController::class, 'create']);
 
 Route::get('/sign-in', [SignInController::class, 'index']);
 Route::post('/sign-in/store', [SignInController::class, 'store']);
+
+Route::get('/news/detail/{news}', [NongNghiepNewsController::class, 'newsDetailByID']);
 
 
 

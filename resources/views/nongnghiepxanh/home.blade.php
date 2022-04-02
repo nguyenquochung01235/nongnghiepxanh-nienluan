@@ -6,13 +6,13 @@
         <section class="featured news-section">
             <div class="featured__top grid">
                 <article class="article article--big grid--span-3">
-                    <a href="#123" class="article__link"><img src="{{ $hostNews[0]->news_img }}" alt="img" class="" /></a>
+                    <a href="/news/detail/{{$hostNews[0]->news_id}}" class="article__link"><img src="{{ $hostNews[0]->news_img }}" alt="img" class="" /></a>
                     <div class="article__info">
                         <h2 class="article__heading">
-                            <a href="#" class="article__link">{{ $hostNews[0]->news_title }}</a>
+                            <a href="/news/detail/{{$hostNews[0]->news_id}}" class="article__link">{{ $hostNews[0]->news_title }}</a>
                         </h2>
                         <div class="article__category">
-                            <a href="#" class="article__link link">{{ $hostNews[0]->categorynews->news_category }}</a>
+                            <a href="" class="article__link link">{{ $hostNews[0]->categorynews->news_category }}</a>
                         </div>
                         <div class="article__intro mota">
                         {!!  $hostNews[0]->news_content  !!}
