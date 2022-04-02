@@ -37,7 +37,7 @@
                     <p class="authen-content__slogan">Nền tảng thương mại điện tử dành cho thị trường nông nghiệp Việt Nam</p>
                 </div>
                 <div class="authen-content__form">
-                    <form class="form">
+                    <form class="form" method="post" action="/sign-in/store">
                         <h4 class="form__heading">Đăng Nhập</h4>
                        
                             @include('administrator.alert')
@@ -49,7 +49,7 @@
                             <label class="form__label" for="email">Email</label>
                         </div>
                         <div class="form__field">
-                            <input id="password" class="form__input" type="password" name="email" placeholder=" " />
+                            <input id="password" class="form__input" type="password" name="password" placeholder=" " />
                             <label class="form__label" for="password">Mật khẩu</label>
                         </div>
                         <div class="form__field--remember">
@@ -75,7 +75,9 @@
                             <span>Bạn mới biết đến Nông Nghiệp Xanh?</span>
                             <a href="/sign-up" class="link link--primary">Đăng ký</a>
                         </p>
+                        @csrf
                     </form>
+
                 </div>
             </div>
         </section>

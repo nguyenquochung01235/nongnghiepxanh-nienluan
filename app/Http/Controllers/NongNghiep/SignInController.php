@@ -5,6 +5,7 @@ namespace App\Http\Controllers\NongNghiep;
 use App\Http\Controllers\Controller;
 use App\Http\Services\NongNghiepService\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SignInController extends Controller
 {
@@ -21,7 +22,19 @@ class SignInController extends Controller
         ]);
     }
 
-    public function create(Request $request){
-        return dd($request->all());
+    public function store(Request $request){
+   
+        if (Auth::guard('user')->attempt([
+            'user_email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ], $request->input('remember'))) {
+
+            dd('đăng nhập thành công');
+           
+        } else {
+
+            dd('tài khoản và mật khẩu chưa chính xác');
+            
+        }
     }
 }

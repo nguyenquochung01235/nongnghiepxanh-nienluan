@@ -32,6 +32,7 @@ Route::get('/sign-up', [SignUpController::class, 'index']);
 Route::post('/sign-up/create', [SignUpController::class, 'create']);
 
 Route::get('/sign-in', [SignInController::class, 'index']);
+Route::post('/sign-in/store', [SignInController::class, 'store']);
 
 
 

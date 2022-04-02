@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'administrator',
         ],
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'user',
+        ],
+        'user-api' => [
+            'driver' => 'token',
+            'provider' => 'user',
+        ],
     ],
 
     /*
@@ -60,13 +68,17 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
         'administrator' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'user' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [
@@ -91,18 +103,24 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
+        // 'users' => [
+        //     'provider' => 'users',
+        //     'table' => 'password_resets',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
         
         'administrator' => [
             'provider' => 'administrator',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+
+        'user' => [
+            'provider' => 'user',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
 
     ],
