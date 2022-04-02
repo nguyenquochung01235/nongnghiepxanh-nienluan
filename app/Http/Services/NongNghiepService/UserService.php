@@ -33,7 +33,8 @@ class UserService{
                 'user_email' => $request->input('email'),
                 'password' => bcrypt($request->input('password')),
                 'user_phone' => $request->input('phone'),
-                'user_active' => 1
+                'user_active' => 1,
+                'user_avatar' => '/storage/uploads/user/avatar-new-user.jpg'
             ]);
 
            

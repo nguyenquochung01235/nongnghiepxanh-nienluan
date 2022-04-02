@@ -34,6 +34,7 @@ Route::post('/sign-up/create', [SignUpController::class, 'create']);
 
 Route::get('/sign-in', [SignInController::class, 'index']);
 Route::post('/sign-in/store', [SignInController::class, 'store']);
+Route::get('/log-out', [SignInController::class, 'logout']);
 
 Route::get('/news/detail/{news}', [NongNghiepNewsController::class, 'newsDetailByID']);
 

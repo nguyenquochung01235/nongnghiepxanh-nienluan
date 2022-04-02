@@ -799,9 +799,9 @@ h4 {
 .header__control.logged-in .header__auth {
   display: none;
 }
-.header__profile {
+/* .header__profile {
   display: none;
-}
+} */
 .header__list {
   position: absolute;
   min-width: 280px;
@@ -1047,7 +1047,7 @@ h4 {
 .detail-content__heading {
   margin-bottom: 30px;
   font-size: 3.2rem;
-  font-weight: 500;
+  font-weight: 700;
   text-transform: unset;
 }
 .detail-content__intro {

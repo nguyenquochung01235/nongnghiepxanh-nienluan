@@ -29,12 +29,17 @@ class SignInController extends Controller
             'password' => $request->input('password'),
         ], $request->input('remember'))) {
 
-            dd('đăng nhập thành công');
+           return redirect('/');
            
         } else {
 
-            dd('tài khoản và mật khẩu chưa chính xác');
+            return redirect()->back();
             
         }
+    }
+
+    public function logout(){
+        Auth::guard('user')->logout();
+        return redirect('/');
     }
 }
