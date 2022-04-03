@@ -122,6 +122,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [ProvinceController::class, 'index']);
             Route::get('/add', [ProvinceController::class, 'add']);
             Route::post('/add/create', [ProvinceController::class, 'create']);
+            Route::get('edit/{province}', [ProvinceController::class, 'show']);
+            Route::post('update/{province}', [ProvinceController::class, 'update']);
+            Route::delete('/delete', [ProvinceController::class, 'delete']);
         });
 
 

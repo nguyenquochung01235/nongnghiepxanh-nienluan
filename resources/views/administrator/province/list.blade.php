@@ -37,9 +37,9 @@
                 <td>{{$data->updated_at}}</td>
                 <td>
                 <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href=""><i class="fas fa-eye"></i></a></button>
-                <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href=""><i class="fas fa-edit"></i></a></button>
+                <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/province/edit/{{$data->province_id}}"><i class="fas fa-edit"></i></a></button>
                 <button type="button" class="btn btn-sm btn-danger" ><a style="color: #fff;" href="#" 
-                onclick="removeRow( <?php  echo $data->news_id ?> ,'/administrator/news/delete')"
+                onclick="removeRow( <?php  echo $data->province_id ?> ,'/administrator/province/delete')"
                 ><i class="fas fa-trash"></i></a></button>
                 
                    

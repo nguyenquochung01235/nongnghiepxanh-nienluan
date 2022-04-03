@@ -36,4 +36,39 @@ class ProvinceService{
             return  false;
         }
     }
+
+
+    public function update($province, $request){
+
+        try {
+            
+            $request->except('_token');
+
+            $updateProvince = Province::find($province->province_id);
+
+            $updateProvince->province_id = $request->input('province_id');
+            $updateProvince->province_name= $request->input('province_name');
+            $updateProvince->updated_at =  date('Y-m-d H:i:s');
+            $updateProvince->save();
+
+            Session::flash('success', 'Cập Nhật Tên Tỉnh - Thành Thành Công !!! ' );
+        } catch (\Exception $err) {
+            Session::flash('error', 'Cập Nhật Tên Tỉnh - Thành Không Thành Công !!! <hr>' . $err->getMessage());
+
+            return  false;
+        }
+        return true;
+    }
+
+
+
+    
+    public function delete($request){
+        $province = Province::where('province_id', $request->input('id'))->first();
+        if($province){
+            $province->delete();
+            return true;
+        }
+        return false;
+    }
 }
