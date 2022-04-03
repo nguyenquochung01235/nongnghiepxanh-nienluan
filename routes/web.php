@@ -37,6 +37,8 @@ Route::post('/sign-in/store', [SignInController::class, 'store']);
 Route::get('/log-out', [SignInController::class, 'logout']);
 
 Route::get('/news/detail/{news}', [NongNghiepNewsController::class, 'newsDetailByID']);
+Route::post('/news/detail/{news}/{users}', [NongNghiepNewsController::class, 'commentNewsDetail']);
+Route::post('/news/detail/{news}/{users}/{comments}', [NongNghiepNewsController::class, 'replyCommentNewsDetail']);
 
 
 

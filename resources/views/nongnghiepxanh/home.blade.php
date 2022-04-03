@@ -6,7 +6,7 @@
         <section class="featured news-section">
             <div class="featured__top grid">
                 <article class="article article--big grid--span-3">
-                    <a href="/news/detail/{{$hostNews[0]->news_id}}" class="article__link"><img src="{{ $hostNews[0]->news_img }}" alt="img" class="" /></a>
+                    <a href="/news/detail/{{$hostNews[0]->news_id}}" class="article__link"><img  src="{{ $hostNews[0]->news_img }}" alt="img" class="article__img_hot" /></a>
                     <div class="article__info">
                         <h2 class="article__heading">
                             <a href="/news/detail/{{$hostNews[0]->news_id}}" class="article__link">{{ $hostNews[0]->news_title }}</a>
@@ -20,10 +20,10 @@
                     </div>
                 </article>
                 <article class="article">
-                    <a href="#123" class="article__link"><img src="{{ $hostNews[1]->news_img }}" alt="img" class="article__img" /></a>
+                    <a href="/news/detail/{{$hostNews[1]->news_id}}" class="article__link"><img src="{{ $hostNews[1]->news_img }}" alt="img" class="article__img" /></a>
                     <div class="article__info">
                         <h2 class="article__heading">
-                            <a href="#" class="article__link">{{$hostNews[1]->news_title}}</a>
+                            <a href="/news/detail/{{$hostNews[1]->news_id}}" class="article__link">{{$hostNews[1]->news_title}}</a>
                         </h2>
                         <div class="article__category">
                             <a href="#" class="article__link link">{{ $hostNews[1]->categorynews->news_category }}</a>
@@ -37,10 +37,10 @@
             <div class="featured__bottom grid">
                 @foreach($hostNews2 as $key => $data)
                 <article class="article">
-                    <a href="" class="article__link"><img src="{{ $data->news_img}}" alt="img" class="article__img" /></a>
+                    <a href="/news/detail/{{$data->news_id}}" class="article__link"><img src="{{ $data->news_img}}" alt="img" class="article__img" /></a>
                     <div class="article__info">
                         <h2 class="article__heading">
-                            <a href="#" class="article__link title-cut">{{$data->news_title}}</a>
+                            <a href="/news/detail/{{$data->news_id}}" class="article__link title-cut">{{$data->news_title}}</a>
                         </h2>
                         <div class="article__category">
                             <a href="#" class="article__link link">{{ $data->categorynews->news_category }}</a>
@@ -53,10 +53,10 @@
         <section class="latest news-section grid grid--12 grid--no-gap">
         @foreach($hostNews3 as $key => $data)
             <article class="article article--medium grid--span-7">
-                <a href="#123" class="article__link"><img src="{{ $data->news_img}}" alt="img" class="article__img" /></a>
+                <a href="/news/detail/{{$data->news_id}}" class="article__link"><img src="{{ $data->news_img}}" alt="img" class="article__img" /></a>
                 <div class="article__info">
                     <h2 class="article__heading">
-                        <a href="#" class="article__link title-cut">{{$data->news_title }}</a>
+                        <a href="/news/detail/{{$data->news_id}}" class="article__link title-cut">{{$data->news_title }}</a>
                     </h2>
                     <div class="article__category">
                         <a href="#" class="article__link link">{{ $data->categorynews->news_category }}</a>
@@ -79,10 +79,10 @@
             </h4>
             <div class="grid grid--12">
                 <article class="article grid--span-5">
-                    <a href="#123" class="article__link"><img src="{{$marketHot1[0]->news_img}}" alt="img"  /></a>
+                    <a href="/news/detail/{{$marketHot1[0]->news_id}}" class="article__link"><img src="{{$marketHot1[0]->news_img}}" alt="img"  /></a>
                     <div class="article__info">
                         <h2 class="article__heading">
-                            <a href="#" class="article__link title-cut-2">{{$marketHot1[0]->news_title}}</a>
+                            <a href="/news/detail/{{$marketHot1[0]->news_id}}" class="article__link title-cut-2">{{$marketHot1[0]->news_title}}</a>
                         </h2>
                         <div class="article__category">
                             <a href="#" class="article__link link">{{$marketHot1[0]->categorynews->news_category}}</a>
@@ -90,10 +90,10 @@
                     </div>
                 </article>
                 <article class="article grid--span-3">
-                    <a href="#123" class="article__link"><img src="{{$marketHot1[1]->news_img}}" alt="img" class="article__img" /></a>
+                    <a href="/news/detail/{{$marketHot1[1]->news_id}}" class="article__link"><img src="{{$marketHot1[1]->news_img}}" alt="img" class="article__img" /></a>
                     <div class="article__info">
                         <h2 class="article__heading article__heading--small">
-                            <a href="#" class="article__link title-cut-2">{{$marketHot1[1]->news_title}}</a>
+                            <a href="/news/detail/{{$marketHot1[1]->news_id}}" class="article__link title-cut-2">{{$marketHot1[1]->news_title}}</a>
                         </h2>
                         <div class="article__category">
                             <a href="#" class="article__link link">{{$marketHot1[1]->categorynews->news_category}}</a>
@@ -106,10 +106,10 @@
                 <div class="market__list grid--span-4">
                     @foreach($marketHot2 as $key => $data)
                     <article class="article article--small">
-                        <a href="#123" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
+                        <a href="/news/detail/{{$data->news_id}}" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
                         <div class="article__info">
                             <h2 class="article__heading article__heading--small">
-                                <a href="#" class="article__link title-cut-2">{{$data->news_title}}</a>
+                                <a href="/news/detail/{{$data->news_id}}" class="article__link title-cut-2">{{$data->news_title}}</a>
                             </h2>
                             <div class="article__category">
                                 <a href="#" class="article__link link">{{$data->categorynews->news_category}}</a>
@@ -130,10 +130,10 @@
             <div class="grid">
                 @foreach($agriculturue as $key => $data)
                 <article class="article">
-                    <a href="#123" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
+                    <a href="/news/detail/{{$data->news_id}}" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
                     <div class="article__info">
                         <h2 class="article__heading article__heading--small">
-                            <a href="#" class="article__link">{{$data->news_title}}</a>
+                            <a href="/news/detail/{{$data->news_id}}" class="article__link">{{$data->news_title}}</a>
                         </h2>
                         <div class="article__category">
                             <a href="#" class="article__link link">{{$data->categorynews->news_category}}</a>
@@ -154,10 +154,10 @@
             </h4>
             <div class="grid grid--12">
                 <article class="article grid--span-3">
-                    <a href="#123" class="article__link"><img src="{{$localProduct1[1]->news_img}}" alt="img" class="article__img" /></a>
+                    <a href="/news/detail/{{$localProduct1[1]->news_id}}" class="article__link"><img src="{{$localProduct1[1]->news_img}}" alt="img" class="article__img" /></a>
                     <div class="article__info">
                         <h2 class="article__heading article__heading--small">
-                            <a href="#" class="article__link title-cut">{{$localProduct1[1]->news_title}}</a>
+                            <a href="/news/detail/{{$localProduct1[1]->news_id}}" class="article__link title-cut">{{$localProduct1[1]->news_title}}</a>
                         </h2>
                         <div class="article__category">
                             <a href="#" class="article__link link">{{$localProduct1[1]->categorynews->news_category}}</a>
@@ -168,10 +168,10 @@
                     </div>
                 </article>
                 <article class="article grid--span-5">
-                    <a href="#123" class="article__link"><img src="{{$localProduct1[0]->news_img}}" alt="img" /></a>
+                    <a href="/news/detail/{{$localProduct1[0]->news_id}}" class="article__link"><img src="{{$localProduct1[0]->news_img}}" alt="img" /></a>
                     <div class="article__info">
                         <h2 class="article__heading">
-                            <a href="#" class="article__link title-cut-2">{{$localProduct1[0]->news_title}}</a>
+                            <a href="/news/detail/{{$localProduct1[0]->news_id}}" class="article__link title-cut-2">{{$localProduct1[0]->news_title}}</a>
                         </h2>
                         <div class="article__category">
                             <a href="#" class="article__link link">{{$localProduct1[0]->categorynews->news_category}}</a>
@@ -181,10 +181,10 @@
                 <div class="market__list grid--span-4">
                     @foreach($localProduct2 as $key => $data)
                     <article class="article article--small">
-                        <a href="#123" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
+                        <a href="/news/detail/{{$data->news_id}}" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
                         <div class="article__info">
                             <h2 class="article__heading article__heading--small">
-                                <a href="#" class="article__link title-cut-2">{{$data->news_title}}</a>
+                                <a href="/news/detail/{{$data->news_id}}" class="article__link title-cut-2">{{$data->news_title}}</a>
                             </h2>
                             <div class="article__category">
                                 <a href="#" class="article__link link">{{ $data->categorynews->news_category }}</a>
@@ -205,12 +205,12 @@
                 </h4>
                 <div class="news__container grid">
                     <article class="article grid--span-4">
-                        <a href="#123" class="article__link"><img src="{{$enterprise1[0]->news_img}}" alt="img"
+                        <a href="/news/detail/{{$enterprise1[0]->news_id}}" class="article__link"><img src="{{$enterprise1[0]->news_img}}" alt="img"
                             style="max-height: 360px;"
                         /></a>
                         <div class="article__info">
                             <h2 class="article__heading">
-                                <a href="#" class="article__link title-cut">{{$enterprise1[0]->news_title}}</a>
+                                <a href="/news/detail/{{$enterprise1[0]->news_id}}" class="article__link title-cut">{{$enterprise1[0]->news_title}}</a>
                             </h2>
                             <div class="article__category">
                                 <a href="#" class="article__link link">{{$enterprise1[0]->categorynews->news_category}}</a>
@@ -222,10 +222,10 @@
                     </article>
                     @foreach($enterprise2 as $key =>$data)
                     <article class="article grid--span-2">
-                        <a href="#123" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
+                        <a href="/news/detail/{{$data->news_id}}" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
                            <div class="article__info">
                             <h2 class="article__heading article__heading--small">
-                                <a href="#" class="article__link title-cut">{{$data->news_title}}</a>
+                                <a href="/news/detail/{{$data->news_id}}" class="article__link title-cut">{{$data->news_title}}</a>
                             </h2>
                             <div class="article__category">
                                 <a href="#" class="article__link link">{{$data->categorynews->news_category}}</a>
@@ -244,12 +244,12 @@
                 </h4>
                 <div class="news__container grid">
                     <article class="article grid--span-4">
-                        <a href="#123" class="article__link"><img src="{{$financy1[0]->news_img}}" alt="img"
+                        <a href="/news/detail/{{$financy1[0]->news_id}}" class="article__link"><img src="{{$financy1[0]->news_img}}" alt="img"
                         style="max-height: 360px;"
                         /></a>
                         <div class="article__info">
                             <h2 class="article__heading">
-                                <a href="#" class="article__link title-cut">{{$financy1[0]->news_title}}</a>
+                                <a href="/news/detail/{{$financy1[0]->news_id}}" class="article__link title-cut">{{$financy1[0]->news_title}}</a>
                             </h2>
                             <div class="article__category">
                                 <a href="#" class="article__link link">{{$financy1[0]->categorynews->news_category}}</a>
@@ -261,10 +261,10 @@
                     </article>
                     @foreach($financy2 as $key =>$data)
                     <article class="article grid--span-2">
-                        <a href="#123" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
+                        <a href="/news/detail/{{$data->news_id}}" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
                         <div class="article__info">
                             <h2 class="article__heading article__heading--small">
-                                <a href="#" class="article__link title-cut">{{$data->news_title}}</a>
+                                <a href="/news/detail/{{$data->news_id}}" class="article__link title-cut">{{$data->news_title}}</a>
                             </h2>
                             <div class="article__category">
                                 <a href="#" class="article__link link">{{$data->categorynews->news_category}}</a>
@@ -285,10 +285,10 @@
                 </h4>
                 <div class="news__container grid">
                     <article class="article grid--span-4">
-                        <a href="#123" class="article__link"><img src="{{$organic1[0]->news_img}}" alt="img" style="max-height: 360px;"/></a>
+                        <a href="/news/detail/{{$organic1[0]->news_id}}" class="article__link"><img src="{{$organic1[0]->news_img}}" alt="img" style="max-height: 360px;"/></a>
                         <div class="article__info">
                             <h2 class="article__heading">
-                                <a href="#" class="article__link title-cut-2">{{$organic1[0]->news_title}}</a>
+                                <a href="/news/detail/{{$organic1[0]->news_id}}" class="article__link title-cut-2">{{$organic1[0]->news_title}}</a>
                             </h2>
                             <div class="article__category">
                                 <a href="#" class="article__link link">{{$organic1[0]->categorynews->news_category}}</a>
@@ -300,10 +300,10 @@
                     </article>
                     @foreach($organic2 as $key =>$data)
                     <article class="article grid--span-2">
-                        <a href="#123" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
+                        <a href="/news/detail/{{$data->news_id}}" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
                         <div class="article__info">
                             <h2 class="article__heading article__heading--small">
-                                <a href="#" class="article__link title-cut">{{$data->news_title}}</a>
+                                <a href="/news/detail/{{$data->news_id}}" class="article__link title-cut">{{$data->news_title}}</a>
                             </h2>
                             <div class="article__category">
                                 <a href="#" class="article__link link">{{$data->categorynews->news_category}}</a>
@@ -322,10 +322,10 @@
                 </h4>
                 <div class="news__container grid">
                     <article class="article grid--span-4">
-                        <a href="#123" class="article__link"><img src="{{$cuisine1[0]->news_img}}" alt="img" style="max-height: 360px;" /></a>
+                        <a href="/news/detail/{{$cuisine1[0]->news_id}}" class="article__link"><img src="{{$cuisine1[0]->news_img}}" alt="img" style="max-height: 360px;" /></a>
                         <div class="article__info">
                             <h2 class="article__heading">
-                                <a href="#" class="article__link title-cut-2">{{$cuisine1[0]->news_title}}</a>
+                                <a href="/news/detail/{{$cuisine1[0]->news_id}}" class="article__link title-cut-2">{{$cuisine1[0]->news_title}}</a>
                             </h2>
                             <div class="article__category">
                                 <a href="#" class="article__link link">{{$cuisine1[0]->categorynews->news_category}}</a>
@@ -337,10 +337,10 @@
                     </article>
                     @foreach($cuisine2 as $key => $data)
                     <article class="article grid--span-2">
-                        <a href="#123" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
+                        <a href="/news/detail/{{$data->news_id}}" class="article__link"><img src="{{$data->news_img}}" alt="img" class="article__img" /></a>
                         <div class="article__info">
                             <h2 class="article__heading article__heading--small">
-                                <a href="#" class="article__link title-cut">{{$data->news_title}}</a>
+                                <a href="/news/detail/{{$data->news_id}}" class="article__link title-cut">{{$data->news_title}}</a>
                             </h2>
                             <div class="article__category">
                                 <a href="#" class="article__link link">{{$data->categorynews->news_category}}</a>

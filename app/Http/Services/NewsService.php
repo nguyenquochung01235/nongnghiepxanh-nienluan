@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Models\NewComment;
 use App\Models\News;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -14,7 +15,65 @@ class NewsService{
 
     public function getNew($id){
         return News::with('admin')->with('categorynews')->where('news_id', $id)->first();
+    
     }
+    public function getListNewsByCategory($id){
+        return News::with('admin')->with('categorynews')->where('id_news_category', $id)->offset(0)->limit(5)->get();
+    }
+
+
+    public function getAllComment($news_id){
+        Return NewComment::with('user')->with('news')
+        ->where('news_id', $news_id)
+        ->where('parent_comment',null)
+        ->get();
+    }
+
+    public function getAllCommentByParentComment($news_id){
+        Return NewComment::with('user')->with('news')
+        ->where('news_id', $news_id)
+        ->where('parent_comment','!=',null)
+        ->get();
+    }
+
+    public function commentNewsDetail($news_id, $user_id, $request){
+        try {
+            $request->except('_token');
+            NewComment::create([
+                'comment' => $request->input('comment'),
+                'user_id' => $user_id,
+                'news_id' => $news_id
+            ]);
+            Session::flash('success', 'Bình Luận Thành Công !!! ');
+        } catch (\Exception $err) {
+            Session::flash('error', 'Bình Luận Không Thành Công !!! <hr>' . $err->getMessage());
+
+            return  false;
+        }
+        return true;
+    }
+
+    public function replyCommentNewsDetail($news_id, $user_id, $id_news_comment, $request){
+        try {
+            $request->except('_token');
+            NewComment::create([
+                'comment' => $request->input('comment'),
+                'user_id' => $user_id,
+                'news_id' => $news_id,
+                'parent_comment' => $id_news_comment
+            ]);
+            Session::flash('success', 'Bình Luận Thành Công !!! ');
+        } catch (\Exception $err) {
+            Session::flash('error', 'Bình Luận Không Thành Công !!! <hr>' . $err->getMessage());
+
+            return  false;
+        }
+        return true;
+    }
+
+    
+    
+
 
     public function upload($request){
         if ($request->hasFile('file')) {

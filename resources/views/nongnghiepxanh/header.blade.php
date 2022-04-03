@@ -56,14 +56,14 @@
 
         </div>
         <nav class="header__nav nav">
-            <a href="#" class="nav__link link link--regular link--bold active"><i class="link__icon fas fa-home"></i></a>
-            <a href="./category.html" class="nav__link link link--regular link--bold">Nông nghiệp 4.0</a>
+            <a href="/" class="nav__link link link--regular link--bold active"><i class="link__icon fas fa-home"></i></a>
+            <a href="" class="nav__link link link--regular link--bold">Nông nghiệp 4.0</a>
             <a href="#" class="nav__link link link--regular link--bold">Thời tiết & đất</a>
             <a href="#" class="nav__link link link--regular link--bold">Cây giống & bệnh hại</a>
             <a href="#" class="nav__link link link--regular link--bold">Vật nuôi & bệnh hại</a>
             <a href="#" class="nav__link link link--regular link--bold">Thuốc & vật tư nông nghiệp</a>
 
-            <a href="../Forums/" class="nav__link link link--regular link--bold">Diễn đàn</a>
+            <a href="/forum" class="nav__link link link--regular link--bold">Diễn đàn</a>
         </nav>
     </div>
 </header>
