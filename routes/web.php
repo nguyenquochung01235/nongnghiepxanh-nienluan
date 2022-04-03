@@ -13,6 +13,7 @@ use App\Http\Controllers\NongNghiep\MainController as NongNghiepMainController;
 use App\Http\Controllers\NongNghiep\NewsController as NongNghiepNewsController;
 use App\Http\Controllers\NongNghiep\SignInController;
 use App\Http\Controllers\NongNghiep\SignUpController;
+use App\Http\Controllers\NongNghiep\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,6 +36,7 @@ Route::post('/sign-up/create', [SignUpController::class, 'create']);
 Route::get('/sign-in', [SignInController::class, 'index']);
 Route::post('/sign-in/store', [SignInController::class, 'store']);
 Route::get('/log-out', [SignInController::class, 'logout']);
+Route::get('/account/{user}',[UserController::class, 'account']);
 
 Route::get('/news/detail/{news}', [NongNghiepNewsController::class, 'newsDetailByID']);
 Route::post('/news/detail/{news}/{users}', [NongNghiepNewsController::class, 'commentNewsDetail']);

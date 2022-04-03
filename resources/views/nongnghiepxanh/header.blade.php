@@ -27,7 +27,7 @@
                             <a href="./profile.html" class="header__link"><i class="fas fa-user-circle"></i>Trang cá nhân</a>
                         </li>
                         <li class="header__item">
-                            <a href="./info.html" class="header__link"><i class="fas fa-user"></i>Tài khoản của tôi</a>
+                            <a href="/account/{{Auth::guard('user')->user()->user_id}}" class="header__link"><i class="fas fa-user"></i>Tài khoản của tôi</a>
                         </li>
                         <li class="header__item">
                             <a href="./post.html" class="header__link"><i class="fas fa-edit"></i>Viết bài</a>
