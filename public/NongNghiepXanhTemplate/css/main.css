@@ -549,6 +549,7 @@
 .sidebar__link {
   font-size: 1.6rem;
   color: rgba(33, 37, 41, 0.8);
+  cursor: pointer;
 }
 .sidebar__link.active, .sidebar__link:hover, .sidebar__link:hover > i {
   color: #40aa41;

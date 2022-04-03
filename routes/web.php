@@ -14,6 +14,7 @@ use App\Http\Controllers\NongNghiep\NewsController as NongNghiepNewsController;
 use App\Http\Controllers\NongNghiep\SignInController;
 use App\Http\Controllers\NongNghiep\SignUpController;
 use App\Http\Controllers\NongNghiep\UserController;
+use App\Http\Controllers\ProvinceController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -113,9 +114,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{news}', [NewsController::class, 'show']);
             Route::post('update/{news}', [NewsController::class, 'update']);
             Route::delete('delete', [NewsController::class, 'delete']);
-
-
             Route::get('view/{news}', [NewsController::class, 'view']);
+        });
+
+        //Province
+        Route::prefix('province')->group(function () {
+            Route::get('/', [ProvinceController::class, 'index']);
+            Route::get('/add', [ProvinceController::class, 'add']);
+            Route::post('/add/create', [ProvinceController::class, 'create']);
         });
 
 

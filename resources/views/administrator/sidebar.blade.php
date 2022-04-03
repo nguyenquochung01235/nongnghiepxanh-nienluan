@@ -121,6 +121,46 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
+                <i class="fas fa-globe-africa nav-icon"></i>
+              <p>
+                Quản Lý Địa Chất
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="/administrator/province/" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách tỉnh - thành</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="pages/charts/uplot.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách quận - huyện</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="pages/charts/uplot.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách xã - phường</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="pages/charts/uplot.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thông tin địa chất</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cart-arrow-down"></i>
               <p>
                 Thương Mại Điện Tử
