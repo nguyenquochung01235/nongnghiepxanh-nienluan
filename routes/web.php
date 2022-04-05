@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\SelfInforController;
 use App\Http\Controllers\Admin\UploadImgController;
+use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\NongNghiep\MainController as NongNghiepMainController;
 use App\Http\Controllers\NongNghiep\NewsController as NongNghiepNewsController;
 use App\Http\Controllers\NongNghiep\SignInController;
@@ -125,6 +126,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{province}', [ProvinceController::class, 'show']);
             Route::post('update/{province}', [ProvinceController::class, 'update']);
             Route::delete('/delete', [ProvinceController::class, 'delete']);
+        });
+        // District
+        Route::prefix('district')->group(function () {
+            Route::get('/', [DistrictController::class, 'index']);
+            Route::get('/add', [DistrictController::class, 'add']);
+            Route::post('/add/create', [DistrictController::class, 'create']);
         });
 
 

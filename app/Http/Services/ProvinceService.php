@@ -35,6 +35,7 @@ class ProvinceService{
 
             return  false;
         }
+        return true;
     }
 
 
@@ -50,7 +51,6 @@ class ProvinceService{
             $updateProvince->province_name= $request->input('province_name');
             $updateProvince->updated_at =  date('Y-m-d H:i:s');
             $updateProvince->save();
-
             Session::flash('success', 'Cập Nhật Tên Tỉnh - Thành Thành Công !!! ' );
         } catch (\Exception $err) {
             Session::flash('error', 'Cập Nhật Tên Tỉnh - Thành Không Thành Công !!! <hr>' . $err->getMessage());

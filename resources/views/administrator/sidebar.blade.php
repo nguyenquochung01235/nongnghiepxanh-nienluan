@@ -137,7 +137,7 @@
               </li>
               
               <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
+                <a href="/administrator/district/" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách quận - huyện</p>
                 </a>
