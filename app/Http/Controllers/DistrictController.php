@@ -36,7 +36,45 @@ class DistrictController extends Controller
         ]);
     }
 
-    public function create(Request $request){
-        return dd($request->all());
+    public function create(Request $request){  
+        $result = $this->districtService->create($request);
+
+        if($result){
+            return redirect('/administrator/district');
+        }
+        return redirect()->back()->withInput();
     }
+
+    public function show(District $district){
+        $province = $this->provinceService->getAllProvince();
+        return view('administrator.district.update',[
+            'title' => 'Cập Nhật Quận Huyện',
+            'province' => $province,
+            'district' => $district
+        ]);
+    }
+
+    public function update(District $district, Request $request){
+        $result = $this->districtService->update($district, $request);
+        if($result){
+            return redirect('/administrator/district');
+        }
+        return redirect()->back();
+    }
+
+    public function delete(Request $request){
+        $result = $this->districtService->delete($request);
+        if($result){
+            return response()->json([
+                'error' => false,
+                'message' => "Đã xóa thành công !!!"
+            ]);
+        }else{
+            return response()->json([
+                'error' => true,
+                'message' => "Không thể xóa vì đã liên kết dữ liệu !!!"
+            ]);
+        }
+    }
+
 }

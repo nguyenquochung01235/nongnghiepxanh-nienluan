@@ -127,12 +127,18 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update/{province}', [ProvinceController::class, 'update']);
             Route::delete('/delete', [ProvinceController::class, 'delete']);
         });
+
         // District
         Route::prefix('district')->group(function () {
             Route::get('/', [DistrictController::class, 'index']);
             Route::get('/add', [DistrictController::class, 'add']);
             Route::post('/add/create', [DistrictController::class, 'create']);
+            Route::get('edit/{district}', [DistrictController::class, 'show']);
+            Route::post('update/{district}', [DistrictController::class, 'update']);
+            Route::delete('/delete', [DistrictController::class, 'delete']);
         });
+
+        
 
 
         Route::get('/{id}', [SelfInforController::class, 'index']);

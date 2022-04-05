@@ -16,14 +16,14 @@ class DistrictService{
         try {
             $checkName = District::where("district_name",$request->input("district_name"))->count();
             if($checkName){
-                return Session::flash('error', 'Đã Tồn Tại Tên Quận - Huyện Này !!! ');
+                Session::flash('error', 'Đã Tồn Tại Tên Quận - Huyện Này !!! ');
+                return false;
             }
            
             $request->except('_token');
-            // return dd($request->input('province_id'), $request->input('province_name'));
             District::create([
-                'province_id' => $request->input('province_id'),
-                'district_name' => $request->input('province_name')
+                'province_id' => $request->input('province'),
+                'district_name' => $request->input('district_name')
             ]);
             Session::flash('success', 'Thêm Quận - Huyện Thành Công !!! ');
         } catch (\Exception $err) {
@@ -35,36 +35,36 @@ class DistrictService{
     }
 
 
-    // public function update($province, $request){
+    public function update($district, $request){
 
-    //     try {
+        try {
             
-    //         $request->except('_token');
+            $request->except('_token');
 
-    //         $updateProvince = Province::find($province->province_id);
+            $updateDistrict = District::find($district->district_id);
 
-    //         $updateProvince->province_id = $request->input('province_id');
-    //         $updateProvince->province_name= $request->input('province_name');
-    //         $updateProvince->updated_at =  date('Y-m-d H:i:s');
-    //         $updateProvince->save();
-    //         Session::flash('success', 'Cập Nhật Tên Tỉnh - Thành Thành Công !!! ' );
-    //     } catch (\Exception $err) {
-    //         Session::flash('error', 'Cập Nhật Tên Tỉnh - Thành Không Thành Công !!! <hr>' . $err->getMessage());
+            $updateDistrict->province_id = $request->input('province');
+            $updateDistrict->district_name= $request->input('district_name');
+            $updateDistrict->updated_at =  date('Y-m-d H:i:s');
+            $updateDistrict->save();
+            Session::flash('success', 'Cập Nhật Tên Quận - Huyện Thành Công !!! ' );
+        } catch (\Exception $err) {
+            Session::flash('error', 'Cập Nhật Tên Quận - Huyện Không Thành Công !!! <hr>' . $err->getMessage());
 
-    //         return  false;
-    //     }
-    //     return true;
-    // }
+            return  false;
+        }
+        return true;
+    }
 
 
 
     
-    // public function delete($request){
-    //     $province = Province::where('province_id', $request->input('id'))->first();
-    //     if($province){
-    //         $province->delete();
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    public function delete($request){
+        $district = District::where('district_id', $request->input('id'))->first();
+        if($district){
+            $district->delete();
+            return true;
+        }
+        return false;
+    }
 }
