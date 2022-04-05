@@ -77,4 +77,12 @@ class DistrictController extends Controller
         }
     }
 
+
+
+
+    public function getDistrictOfProvince(Request $request){
+        $result = $this->districtService->getDistrictOfProvince($request);
+        return $result;  
+    }
+
 }

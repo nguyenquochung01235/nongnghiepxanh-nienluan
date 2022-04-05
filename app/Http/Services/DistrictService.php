@@ -14,7 +14,9 @@ class DistrictService{
 
     public function create($request){
         try {
-            $checkName = District::where("district_name",$request->input("district_name"))->count();
+            $checkName = District::where("district_name",$request->input("district_name"))
+            ->where("province_id", $request->input('province'))
+            ->count();
             if($checkName){
                 Session::flash('error', 'Đã Tồn Tại Tên Quận - Huyện Này !!! ');
                 return false;
@@ -67,4 +69,10 @@ class DistrictService{
         }
         return false;
     }
+
+
+    public function getDistrictOfProvince($request){
+        return District::where('province_id',$request->input('province_id'))->get();
+    }
+
 }

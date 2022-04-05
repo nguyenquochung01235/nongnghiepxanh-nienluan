@@ -129,22 +129,26 @@ $('#upload_new_img').change(function () {
 
 
 
+$('#provinceSelectBox').change(function () {
+    let province_id =  $('#provinceSelectBox').val()
+    $.ajax({
+        type: 'post',
+        datatype: 'JSON',
+        data: {province_id},
+        url: '/administrator/district/getDistrictOfProvince',
+        success: function (result){
+            let districtSelectBox =  $('#districtSelectBox').find('option').remove().end();
+                if (result) {
+                    for(i = 0; i< result.length; i++){
+                        districtSelectBox.append('<option value="'+ result[i].district_id +'">'+ result[i].district_name+'</option>');
+                    }
+                } else {
+                    alert('Xin vui lòng thử lại');
+                }
+        }
+    })
+});
 
 
 
 
-
-// function getSalaryByJob(){
-//     var selectBox = document.getElementById("job");
-//     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-//     console.log(selectedValue);
-// }
-
-// $("#name").keypress(function() {
-//     console.log('Hello');
-//   });
-
-
-// $("#name").keypress(function() {
-//     console.log('Hello');
-//   });

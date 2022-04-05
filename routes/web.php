@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\SelfInforController;
 use App\Http\Controllers\Admin\UploadImgController;
+use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\NongNghiep\MainController as NongNghiepMainController;
 use App\Http\Controllers\NongNghiep\NewsController as NongNghiepNewsController;
@@ -136,9 +137,23 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{district}', [DistrictController::class, 'show']);
             Route::post('update/{district}', [DistrictController::class, 'update']);
             Route::delete('/delete', [DistrictController::class, 'delete']);
+
+
+            Route::post('/getDistrictOfProvince', [DistrictController::class, 'getDistrictOfProvince']);
+        });
+        
+        // Commune
+        Route::prefix('commune')->group(function () {
+            Route::get('/', [CommuneController::class, 'index']);
+            Route::get('/add', [CommuneController::class, 'add']);
+            Route::post('/add/create', [CommuneController::class, 'create']);
+            Route::get('edit/{commune}', [CommuneController::class, 'show']);
+            Route::post('update/{commune}', [CommuneController::class, 'update']);
+            Route::delete('/delete', [CommuneController::class, 'delete']);
         });
 
-        
+
+
 
 
         Route::get('/{id}', [SelfInforController::class, 'index']);

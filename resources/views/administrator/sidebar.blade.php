@@ -144,7 +144,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
+                <a href="/administrator/commune/" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách xã - phường</p>
                 </a>
