@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SelfInforController;
 use App\Http\Controllers\Admin\UploadImgController;
 use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\NongNghiep\ForumController;
 use App\Http\Controllers\NongNghiep\MainController as NongNghiepMainController;
 use App\Http\Controllers\NongNghiep\NewsController as NongNghiepNewsController;
 use App\Http\Controllers\NongNghiep\SignInController;
@@ -44,6 +45,12 @@ Route::get('/account/{user}',[UserController::class, 'account']);
 Route::get('/news/detail/{news}', [NongNghiepNewsController::class, 'newsDetailByID']);
 Route::post('/news/detail/{news}/{users}', [NongNghiepNewsController::class, 'commentNewsDetail']);
 Route::post('/news/detail/{news}/{users}/{comments}', [NongNghiepNewsController::class, 'replyCommentNewsDetail']);
+
+Route::get('/forum',[ForumController::class, 'index']);
+Route::get('/forum/detail/{forum}',[ForumController::class, 'detail']);
+
+Route::post('/forum/detail/{forum}/{user}/comment',[ForumController::class, 'commentForumDetail']);
+Route::post('/forum/detail/{forum}/{user}/comment/{comment}',[ForumController::class, 'replyCommentForumDetail']);
 
 
 

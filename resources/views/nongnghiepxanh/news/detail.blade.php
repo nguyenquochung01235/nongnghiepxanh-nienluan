@@ -11,6 +11,7 @@
         </a>
       </h4>
     </div>
+    
     <section class="detail-content">
       <div class="detail-content__top">
         <h1 class="detail-content__heading">{{$news->news_title}}</h1>
@@ -45,6 +46,7 @@
 
       </div>
     </section>
+
     <section class="detail-comment">
       <ul class="detail-comment__list">
         @if(Auth::guard('user')->check())
@@ -171,6 +173,8 @@
 
       </ul>
     </section>
+
+
     <section class="detail-other">
       <div>
         <h4 class="heading">

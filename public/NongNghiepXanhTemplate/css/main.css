@@ -742,6 +742,13 @@ h4 {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
 }
+
+.grid_detail {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
 .grid--no-gap {
   grid-gap: 0;
 }
@@ -765,6 +772,9 @@ h4 {
 }
 .grid--span-7 {
   grid-column: span 7;
+}
+.grid--span-9 {
+  grid-column: span 9;
 }
 
 
@@ -1157,3 +1167,8 @@ h4 {
   border-radius: 5px;
 }
 
+
+.img_detail{
+  width: 100%; 
+  height: 100%;
+}

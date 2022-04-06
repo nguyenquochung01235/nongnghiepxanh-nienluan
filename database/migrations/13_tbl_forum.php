@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_news_comment', function (Blueprint $table) {
-            $table->id('id_news_comment');
-            $table->bigInteger('news_id')->unsigned()->index();
+        Schema::create('tbl_forum', function (Blueprint $table) {
+            $table->id('forum_id');
+            $table->string('forum_title');
+            $table->string('forum_img_1');
+            $table->string('forum_img_2');
+            $table->string('forum_img_3');
+            $table->longText('forum_content');
             $table->bigInteger('user_id')->unsigned()->index();
-            $table->text('comment');
-            $table->bigInteger('parent_comment');
             $table->foreign('user_id')->references('user_id')->on('tbl_user')->onDelete('cascade');
-            $table->foreign('news_id')->references('news_id')->on('tbl_news')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_news_comment');
+        Schema::dropIfExists('tbl_forum');
     }
 };

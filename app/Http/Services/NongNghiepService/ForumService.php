@@ -1,0 +1,71 @@
+<?php
+
+namespace App\Http\Services\NongNghiepService;
+
+use App\Models\Forum;
+use App\Models\ForumComment;
+use Illuminate\Support\Facades\Session;
+
+class ForumService{
+
+    public function getAllContent(){
+        return Forum::with('user')->orderBy('created_at', 'desc')->paginate();
+    }
+      
+
+    public function getForumDetail($forum_id){
+        return Forum::with('user')->where('forum_id', $forum_id)->orderBy('created_at', 'desc')->first();
+    }
+
+    
+    public function getAllComment($forum_id){
+        Return ForumComment::with('user')->with('forum')
+        ->where('forum_id', $forum_id)
+        ->where('parent_comment',null)
+        ->get();
+    }
+
+    public function getAllCommentByParentComment($forum_id){
+        Return ForumComment::with('user')->with('forum')
+        ->where('forum_id', $forum_id)
+        ->where('parent_comment','!=',null)
+        ->get();
+    }
+
+    public function commentForumDetail($forum_id, $user_id, $request){
+        try {
+            $request->except('_token');
+            ForumComment::create([
+                'comment' => $request->input('comment'),
+                'user_id' => $user_id,
+                'forum_id' => $forum_id
+            ]);
+            Session::flash('success', 'Bình Luận Thành Công !!! ');
+        } catch (\Exception $err) {
+            Session::flash('error', 'Bình Luận Không Thành Công !!! <hr>' . $err->getMessage());
+
+            return  false;
+        }
+        return true;
+    }
+
+    public function replyCommentForumDetail($forum_id, $user_id, $forum_comment_id, $request){
+
+        // return dd($forum_id, $user_id, $forum_comment_id, $request->input('comment'));
+        try {
+            $request->except('_token');
+            ForumComment::create([
+                'comment' => $request->input('comment'),
+                'user_id' => $user_id,
+                'forum_id' => $forum_id,
+                'parent_comment' => $forum_comment_id
+            ]);
+            Session::flash('success', 'Bình Luận Thành Công !!! ');
+        } catch (\Exception $err) {
+            Session::flash('error', 'Bình Luận Không Thành Công !!! <hr>' . $err->getMessage());
+
+            return  false;
+        }
+        return true;
+    }
+}   
