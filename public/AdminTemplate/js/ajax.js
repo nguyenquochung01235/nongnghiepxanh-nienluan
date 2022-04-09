@@ -89,6 +89,7 @@ $('#upload').change(function () {
     });
 });
 
+
 $("#admin_avatar").hover(
     function() {
         $('#admin_avatar').attr("src","https://banner2.cleanpng.com/20180601/tzk/kisspng-photographic-film-computer-icons-single-lens-refle-infograph-5b110294a41fe8.0090855615278414286723.jpg");   

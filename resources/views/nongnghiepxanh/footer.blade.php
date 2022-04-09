@@ -22,6 +22,7 @@
 </footer>
 
 <script src="/NongNghiepXanhTemplate/js/main.js"></script>
+<script src="/NongNghiepXanhTemplate/js/upload_img.js"></script>
 <script src="/NongNghiepXanhTemplate/js/toggleList.js"></script>
 <script
   src="https://code.jquery.com/jquery-3.6.0.js"

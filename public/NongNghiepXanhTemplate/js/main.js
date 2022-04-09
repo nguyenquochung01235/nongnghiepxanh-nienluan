@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 $(".title-cut").text(function(index, currentText) {
     return currentText.substr(0, 50) + "...";
 });
@@ -44,3 +50,6 @@ $("#btnShowPassword").click(function() {
     $( "#btnShowPassword" ).addClass( "link active" );
     $( "#btnShowInfo" ).removeClass( "link active" );
   });
+
+
+

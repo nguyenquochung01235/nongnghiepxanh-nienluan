@@ -12,7 +12,7 @@
     </div>
     <div>
 
-        <button class=" detail-comment__btn form__submit btn btn--primary">Tạo Bài Viết - Câu Hỏi</button>
+        <a href="/forum/add" class=" detail-comment__btn form__submit btn btn--primary">Tạo Bài Viết - Câu Hỏi</a>
 
     </div>
     <!-- <section class="article-list grid grid--12 grid--no-gap"> -->

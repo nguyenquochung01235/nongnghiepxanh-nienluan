@@ -47,10 +47,15 @@ Route::post('/news/detail/{news}/{users}', [NongNghiepNewsController::class, 'co
 Route::post('/news/detail/{news}/{users}/{comments}', [NongNghiepNewsController::class, 'replyCommentNewsDetail']);
 
 Route::get('/forum',[ForumController::class, 'index']);
+Route::get('/forum/add',[ForumController::class, 'add']);
+Route::post('/forum/add/create',[ForumController::class, 'create']);
+
 Route::get('/forum/detail/{forum}',[ForumController::class, 'detail']);
+Route::post('/forum/upload/img', [ForumController::class, 'uploadImg']);
 
 Route::post('/forum/detail/{forum}/{user}/comment',[ForumController::class, 'commentForumDetail']);
 Route::post('/forum/detail/{forum}/{user}/comment/{comment}',[ForumController::class, 'replyCommentForumDetail']);
+
 
 
 

@@ -68,4 +68,26 @@ class ForumService{
         }
         return true;
     }
+
+
+
+    public function uploadImg($request)
+    {
+        if ($request->hasFile('file')) {
+            try {
+                // $type = pathinfo($request->file('file')->getClientOriginalName(), PATHINFO_EXTENSION);
+                // $pathFull = 'uploads/' . date("Y/m/d");
+                $name = date("Y-m-d-H-m-s").$request->file('file')->getClientOriginalName();
+                $pathFull = 'uploads/forum';
+
+                $request->file('file')->storeAs(
+                    'public/' . $pathFull, $name
+                );
+
+                return '/storage/' . $pathFull . '/' . $name;
+            } catch (\Exception $error) {
+                return false;
+            }
+        }
+    }
 }   

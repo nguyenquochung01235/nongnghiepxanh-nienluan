@@ -39,6 +39,16 @@ class ForumController extends Controller
         ]);
     }
 
+    public function add(){
+        return view('nongnghiepxanh.forum.add',[
+            'title' => 'Thêm Bài Viết - Câu Hỏi'
+        ]);
+    }
+
+
+    public function create(Request $request){
+        return dd($request->all());
+    }
 
 
     public function commentForumDetail(Forum $forum, User $user, Request $request){
@@ -57,5 +67,19 @@ class ForumController extends Controller
             return redirect()->back();
         }
         return redirect()->back()->withInput();
+    }
+
+
+
+    public function uploadImg(Request $request){
+        $url = $this->forumService->uploadImg($request);
+        if ($url !== false) {
+            return response()->json([
+                'error' => false,
+                'url'   => $url
+            ]);
+        }
+
+        return response()->json(['error' => true]);
     }
 }
