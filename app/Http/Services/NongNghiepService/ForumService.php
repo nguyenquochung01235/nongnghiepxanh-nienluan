@@ -4,6 +4,7 @@ namespace App\Http\Services\NongNghiepService;
 
 use App\Models\Forum;
 use App\Models\ForumComment;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class ForumService{
@@ -85,9 +86,34 @@ class ForumService{
                 );
 
                 return '/storage/' . $pathFull . '/' . $name;
+
             } catch (\Exception $error) {
                 return false;
             }
         }
     }
+
+
+
+    public function create($request){
+        try {
+            
+            $request->except('_token');
+            Forum::create([
+                'forum_title' => $request->input('forum_title'),
+                'forum_content' => $request->input('content'),
+                'forum_img_1' => $request->input('img_1_link'),
+                'forum_img_2' => $request->input('img_2_link'),
+                'forum_img_3' => $request->input('img_3_link'),
+                'user_id' => Auth::guard('user')->user()->user_id
+            ]);
+            Session::flash('success', 'Thêm Bài Viết Thành Công !!! ');
+        } catch (\Exception $err) {
+            Session::flash('error', 'Thêm Bài Viết Không Thành Công !!! <hr>' . $err->getMessage());
+
+            return  false;
+        }
+        return true;
+    }
+
 }   

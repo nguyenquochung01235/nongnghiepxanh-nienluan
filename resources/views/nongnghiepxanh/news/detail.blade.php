@@ -12,6 +12,8 @@
       </h4>
     </div>
     
+    @include('administrator.alert')
+
     <section class="detail-content">
       <div class="detail-content__top">
         <h1 class="detail-content__heading">{{$news->news_title}}</h1>

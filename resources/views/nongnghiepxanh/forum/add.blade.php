@@ -46,6 +46,7 @@
                         ><img src="" alt="Avatar" class="btn_img_1 img_forum_detail" />
                         </label>
                         <input class="info__input" type="file" name="img_1" id="img_1"/>
+                        <input class="info__input" hidden type="text" name="img_1_link" id="img_1_link"/>
                         <button class="btn btn--medium btn--primary info__btn btn_img_1" type="button">Chọn ảnh</button>
                     </div>
                     <div class="info__avt">
@@ -53,6 +54,7 @@
                             <img src="" alt="Avatar" class="btn_img_2 img_forum_detail" />
                         </label>
                         <input class="info__input" type="file" name="img_2" id="img_2"/>
+                        <input class="info__input" hidden type="text" name="img_2_link" id="img_2_link"/>
                         <button class="btn btn--medium btn--primary info__btn btn_img_2" type="button">Chọn ảnh</button>
                     </div>
                     <div class="info__avt">
@@ -60,6 +62,7 @@
                         ><img src="" alt="Avatar" class="btn_img_3 img_forum_detail" />
                         </label>
                         <input class="info__input" type="file" name="img_3" id="img_3"/>
+                        <input class="info__input" hidden type="text" name="img_3_link" id="img_3_link"/>
                         <button class="btn btn--medium btn--primary info__btn btn_img_3" type="button">Chọn ảnh</button>
                     </div>
                 </div>

@@ -50,4 +50,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    public function commune(){
+        return $this->belongsTo('App\Models\Commune', 'user_address', 'commune_id');   
+    }
+
 }

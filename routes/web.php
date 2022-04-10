@@ -37,17 +37,22 @@ Route::get('/', [NongNghiepMainController::class, 'index']);
 Route::get('/sign-up', [SignUpController::class, 'index']);
 Route::post('/sign-up/create', [SignUpController::class, 'create']);
 
-Route::get('/sign-in', [SignInController::class, 'index']);
+Route::get('/sign-in', [SignInController::class, 'index'])->name('signin');
 Route::post('/sign-in/store', [SignInController::class, 'store']);
 Route::get('/log-out', [SignInController::class, 'logout']);
+
 Route::get('/account/{user}',[UserController::class, 'account']);
+Route::post('/account/{user_id}/update',[UserController::class, 'update']);
+Route::post('/account/upload/img', [UserController::class, 'uploadImg']);
+Route::post('/account/{user_id}/changepassword', [UserController::class, 'changePassword']);
+
 
 Route::get('/news/detail/{news}', [NongNghiepNewsController::class, 'newsDetailByID']);
 Route::post('/news/detail/{news}/{users}', [NongNghiepNewsController::class, 'commentNewsDetail']);
 Route::post('/news/detail/{news}/{users}/{comments}', [NongNghiepNewsController::class, 'replyCommentNewsDetail']);
 
 Route::get('/forum',[ForumController::class, 'index']);
-Route::get('/forum/add',[ForumController::class, 'add']);
+Route::get('/forum/add',[ForumController::class, 'add'])->middleware(['user']);
 Route::post('/forum/add/create',[ForumController::class, 'create']);
 
 Route::get('/forum/detail/{forum}',[ForumController::class, 'detail']);
@@ -65,6 +70,9 @@ Route::post('/forum/detail/{forum}/{user}/comment/{comment}',[ForumController::c
 Route::get('/administrator/login', [LoginController::class, 'index'])->name('login');
 Route::get('/administrator/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/administrator/login/store', [LoginController::class, 'store']);
+Route::post('administrator/district/getDistrictOfProvince', [DistrictController::class, 'getDistrictOfProvince']);
+Route::post('administrator/commune/getCommuneOfDistrict', [CommuneController::class, 'getCommuneOfDistrict']);
+
 
 Route::middleware(['auth'])->group(function () {
     Route::prefix('administrator')->group(function () {
@@ -151,7 +159,7 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', [DistrictController::class, 'delete']);
 
 
-            Route::post('/getDistrictOfProvince', [DistrictController::class, 'getDistrictOfProvince']);
+            
         });
         
         // Commune
@@ -162,6 +170,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{commune}', [CommuneController::class, 'show']);
             Route::post('update/{commune}', [CommuneController::class, 'update']);
             Route::delete('/delete', [CommuneController::class, 'delete']);
+            
         });
 
 

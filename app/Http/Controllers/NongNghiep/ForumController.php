@@ -8,6 +8,8 @@ use App\Models\Forum;
 use App\Models\ForumComment;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ForumController extends Controller
 {
@@ -47,7 +49,12 @@ class ForumController extends Controller
 
 
     public function create(Request $request){
-        return dd($request->all());
+        $result = $this->forumService->create($request);
+        if($result){
+            return redirect('/forum');
+        }
+        return redirect()->back()->withInput();
+       
     }
 
 

@@ -69,5 +69,10 @@ class CommuneService{
         }
         return false;
     }
+
+    public function getCommuneOfDistrict($request){
+        return Commune::where('district_id',$request->input('district_id'))->get();
+    }
+
  
 }

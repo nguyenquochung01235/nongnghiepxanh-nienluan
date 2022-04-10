@@ -82,4 +82,10 @@ class CommuneController extends Controller
             ]);
         }
     }
+
+
+    public function getCommuneOfDistrict(Request $request){
+        $result = $this->communeService->getCommuneOfDistrict($request);
+        return $result;  
+    }
 }

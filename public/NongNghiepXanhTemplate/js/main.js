@@ -53,3 +53,46 @@ $("#btnShowPassword").click(function() {
 
 
 
+  $('#provinceSelectBox').click(function () {
+    let province_id =  $('#provinceSelectBox').val()
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        type: 'post',
+        datatype: 'JSON',
+        data: {province_id},
+        url: '/administrator/district/getDistrictOfProvince',
+        success: function (result){
+            let districtSelectBox =  $('#districtSelectBox').find('option').remove().end();
+            let communeSelectBox =  $('#communeSelectBox').find('option').remove().end();
+                if (result) {
+                    for(i = 0; i< result.length; i++){
+                        districtSelectBox.append('<option value="'+ result[i].district_id +'">'+ result[i].district_name+'</option>');
+                    }
+                } else {
+                    alert('Xin vui lòng thử lại');
+                }
+        }
+    })
+});
+
+$('#districtSelectBox').click(function () {
+    let district_id =  $('#districtSelectBox').val()
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        type: 'post',
+        datatype: 'JSON',
+        data: {district_id},
+        url: '/administrator/commune/getCommuneOfDistrict',
+        success: function (result){
+            let communeSelectBox =  $('#communeSelectBox').find('option').remove().end();
+                if (result) {
+                    for(i = 0; i< result.length; i++){
+                        communeSelectBox.append('<option value="'+ result[i].commune_id +'">'+ result[i].commune_name+'</option>');
+                    }
+                } else {
+                    alert('Xin vui lòng thử lại');
+                }
+        }
+    })
+});
+

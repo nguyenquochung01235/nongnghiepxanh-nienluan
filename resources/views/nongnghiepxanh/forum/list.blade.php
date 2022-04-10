@@ -10,11 +10,16 @@
             </a>
         </h4>
     </div>
+    
     <div>
-
+    @if(Auth::guard('user')->check())
         <a href="/forum/add" class=" detail-comment__btn form__submit btn btn--primary">Tạo Bài Viết - Câu Hỏi</a>
-
+    @else
+        <a href="/sign-in" class=" detail-comment__btn form__submit btn btn--primary">Đăng Nhập Tạo Bài Viết - Câu Hỏi</a>
+    @endif
     </div>
+</br>
+    @include('administrator.alert')
     <!-- <section class="article-list grid grid--12 grid--no-gap"> -->
     <section class="article-list grid  grid--no-gap">
         @foreach($forum as $key => $data)
@@ -27,7 +32,7 @@
                     </div>
                 </a>
                 <div class="author__info">
-                    <a href="#" class="author__name link" style="min-width: 7em;">{{$data->user->user_name}}</a>
+                    <a href="#" class="author__name link" style="min-width: 9em;">{{$data->user->user_name}}</a>
                     <div class="author__time-comment">
                         <span class="author__time">{{$data->created_at}}</span>
 
