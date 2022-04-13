@@ -41,11 +41,11 @@ Route::get('/sign-in', [SignInController::class, 'index'])->name('signin');
 Route::post('/sign-in/store', [SignInController::class, 'store']);
 Route::get('/log-out', [SignInController::class, 'logout']);
 
-Route::get('/account/{user}',[UserController::class, 'account']);
-Route::get('/profile/{user}',[UserController::class, 'profile']);
-Route::post('/account/{user_id}/update',[UserController::class, 'update']);
-Route::post('/account/upload/img', [UserController::class, 'uploadImg']);
-Route::post('/account/{user_id}/changepassword', [UserController::class, 'changePassword']);
+Route::get('/account/{user}',[UserController::class, 'account'])->middleware(['user']);
+Route::get('/profile/{user}',[UserController::class, 'profile'])->middleware(['user']);
+Route::post('/account/{user_id}/update',[UserController::class, 'update'])->middleware(['user']);
+Route::post('/account/upload/img', [UserController::class, 'uploadImg'])->middleware(['user']);
+Route::post('/account/{user_id}/changepassword', [UserController::class, 'changePassword'])->middleware(['user']);
 
 Route::get('/news/category/{news}', [NongNghiepNewsController::class, 'newsByCategory']);
 Route::get('/news/detail/{news}', [NongNghiepNewsController::class, 'newsDetailByID']);
@@ -54,13 +54,13 @@ Route::post('/news/detail/{news}/{users}/{comments}', [NongNghiepNewsController:
 
 Route::get('/forum',[ForumController::class, 'index']);
 Route::get('/forum/add',[ForumController::class, 'add'])->middleware(['user']);
-Route::post('/forum/add/create',[ForumController::class, 'create']);
+Route::post('/forum/add/create',[ForumController::class, 'create'])->middleware(['user']);
 
 Route::get('/forum/detail/{forum}',[ForumController::class, 'detail']);
 Route::post('/forum/upload/img', [ForumController::class, 'uploadImg']);
 
-Route::post('/forum/detail/{forum}/{user}/comment',[ForumController::class, 'commentForumDetail']);
-Route::post('/forum/detail/{forum}/{user}/comment/{comment}',[ForumController::class, 'replyCommentForumDetail']);
+Route::post('/forum/detail/{forum}/{user}/comment',[ForumController::class, 'commentForumDetail'])->middleware(['user']);
+Route::post('/forum/detail/{forum}/{user}/comment/{comment}',[ForumController::class, 'replyCommentForumDetail'])->middleware(['user']);
 
 
 
