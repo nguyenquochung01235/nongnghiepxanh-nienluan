@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\NongNghiep;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\CategoryNewsService;
 use App\Http\Services\NewsService;
+use App\Models\CategoryNews;
 use App\Models\NewComment;
 use App\Models\News;
 use App\Models\User;
@@ -12,11 +14,22 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
     protected $newsService;
+    protected $newsCategoryService;
 
-    public function __construct(NewsService $newsService)
+    public function __construct(NewsService $newsService, CategoryNewsService $newsCategoryService)
     {
         $this->newsService = $newsService;   
+        $this->newsCategoryService = $newsCategoryService;   
     }
+
+    public function newsByCategory(CategoryNews $news){
+        $listNews = $this->newsService->newsByCategory($news->id_news_category);
+        return view('nongnghiepxanh.news.listnews',[
+            'title' => $news->news_category,
+            'listNews' => $listNews
+        ]);
+    }
+
 
     public function newsDetailByID(News $news){
         $news = $this->newsService->getNew($news->news_id);

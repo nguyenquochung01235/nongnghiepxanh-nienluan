@@ -13,9 +13,13 @@
     
     <div>
     @if(Auth::guard('user')->check())
-        <a href="/forum/add" class=" detail-comment__btn form__submit btn btn--primary">Tạo Bài Viết - Câu Hỏi</a>
+        <a href="/forum/add" class=" detail-comment__btn form__submit btn btn--primary"
+            style="padding: 12px 12px;"
+        >Tạo Bài Viết - Câu Hỏi</a>
     @else
-        <a href="/sign-in" class=" detail-comment__btn form__submit btn btn--primary">Đăng Nhập Tạo Bài Viết - Câu Hỏi</a>
+        <a href="/sign-in" class=" detail-comment__btn form__submit btn btn--primary"
+            style="padding: 12px 12px;"
+        >Đăng Nhập Tạo Bài Viết - Câu Hỏi</a>
     @endif
     </div>
 </br>

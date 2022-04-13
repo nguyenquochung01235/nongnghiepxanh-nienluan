@@ -19,6 +19,11 @@ class NewsService{
         return News::with('admin')->with('categorynews')->where('news_id', $id)->first();
     
     }
+
+    public function newsByCategory($id){
+        return News::with('categorynews')->where('id_news_category', $id)->orderBy('created_at', 'desc')->get();
+    }
+
     public function getListNewsByCategory($id){
         return News::with('admin')->with('categorynews')->where('id_news_category', $id)->offset(0)->limit(5)->get();
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\NongNghiep;
 use App\Http\Controllers\Controller;
 use App\Http\Services\CommuneService;
 use App\Http\Services\DistrictService;
+use App\Http\Services\NongNghiepService\ForumService;
 use App\Http\Services\NongNghiepService\UserService;
 use App\Http\Services\ProvinceService;
 use App\Models\User;
@@ -17,22 +18,33 @@ class UserController extends Controller
     protected $communeService;
     protected $districtService;
     protected $provinceService;
+    protected $forumService;
 
 
-    public function __construct(UserService $userService,CommuneService $communeService, DistrictService $districtService, ProvinceService $provinceService)
+    public function __construct(UserService $userService,CommuneService $communeService, DistrictService $districtService, ProvinceService $provinceService, ForumService $forumService)
     {
         $this->userService = $userService;
         $this->communeService = $communeService;
         $this->districtService = $districtService;
         $this->provinceService = $provinceService;
+        $this->forumService = $forumService;
     }
+
+    public function profile(User $user){
+        $listForum = $this->forumService->getAllForumByUser($user->user_id);
+       
+        return view('nongnghiepxanh.user.profile',[
+            'title' => 'Trang Cá Nhân',
+            'listForum' =>$listForum
+        ]);
+    }
+
 
     public function account(User $user){
         $commune = $this->communeService->getAllCommune();
         $district = $this->districtService->getAllDistrict();
         $province  = $this->provinceService->getAllProvince();
         $info = $this->userService->infor($user->user_id);
-        // return dd($info[0]->commune->district->district_name);
         return view('nongnghiepxanh.user.account',[
             'title' => 'Thông tin tài khoản',
             'user'=> $info,

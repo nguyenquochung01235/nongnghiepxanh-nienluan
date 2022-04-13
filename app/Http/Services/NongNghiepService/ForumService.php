@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Session;
 
 class ForumService{
 
+    public function getAllForumByUser($user_id){
+        return Forum::with('user')->where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
+    }
+
+
     public function getAllContent(){
         return Forum::with('user')->orderBy('created_at', 'desc')->paginate();
     }

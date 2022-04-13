@@ -44,6 +44,9 @@ class SignInController extends Controller
 
     public function logout(){
         Auth::guard('user')->logout();
+        if(session('link_user')){
+            return redirect(session('link_user'));
+        }
         return redirect('/');
     }
 }

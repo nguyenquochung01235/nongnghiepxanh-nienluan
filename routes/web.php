@@ -42,11 +42,12 @@ Route::post('/sign-in/store', [SignInController::class, 'store']);
 Route::get('/log-out', [SignInController::class, 'logout']);
 
 Route::get('/account/{user}',[UserController::class, 'account']);
+Route::get('/profile/{user}',[UserController::class, 'profile']);
 Route::post('/account/{user_id}/update',[UserController::class, 'update']);
 Route::post('/account/upload/img', [UserController::class, 'uploadImg']);
 Route::post('/account/{user_id}/changepassword', [UserController::class, 'changePassword']);
 
-
+Route::get('/news/category/{news}', [NongNghiepNewsController::class, 'newsByCategory']);
 Route::get('/news/detail/{news}', [NongNghiepNewsController::class, 'newsDetailByID']);
 Route::post('/news/detail/{news}/{users}', [NongNghiepNewsController::class, 'commentNewsDetail']);
 Route::post('/news/detail/{news}/{users}/{comments}', [NongNghiepNewsController::class, 'replyCommentNewsDetail']);
