@@ -13,6 +13,9 @@ class CategoryNewsService{
     public function getAllCategoryNews(){
         return CategoryNews::paginate(10);
     }
+    public function getAllNewsCategory(){
+        return CategoryNews::where('active', 1)->get();
+    }
 
 
     public function create($request){

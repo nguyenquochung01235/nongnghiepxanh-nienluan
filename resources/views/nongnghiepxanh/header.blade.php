@@ -56,18 +56,32 @@
 
         </div>
         <nav class="header__nav nav">
-            <a href="/" class="nav__link link link--regular link--bold active"><i class="link__icon fas fa-home"></i></a>
+            <a href="/" class="nav__link link link--regular link--bold active" style="margin-right: 15px;"><i class="link__icon fas fa-home"></i></a>
             <!-- <a href="" class="nav__link link link--regular link--bold">Nông nghiệp 4.0</a> -->
-            <a href="" class="nav__link link link--regular link--bold">Nông nghiệp 4.0</a>
-                
-            
-            
+            <div class="nav__dropdown">
+                <a href="#" class="nav__link nav__link--dropdown link link--regular link--bold">Tin Tức <i class="fas fa-caret-down"></i></a>
+                <ul class="nav__list">
+
+
+                    <?php $list = \App\Helpers\Helper::getAllNewsCategory(); ?>
+
+
+                    @foreach( $list as $key => $data)
+
+                    <li class="nav__item"><a href="/news/category/{{$data->id_news_category}}" class="nav__link link link--regular link--bold">{{$data->news_category}}</a></li>
+                    @endforeach
+
+
+
+                </ul>
+            </div>
+
             <a href="#" class="nav__link link link--regular link--bold">Thời tiết & đất</a>
             <a href="#" class="nav__link link link--regular link--bold">Cây trồng & bệnh hại</a>
             <a href="#" class="nav__link link link--regular link--bold">Vật nuôi & bệnh hại</a>
             <a href="#" class="nav__link link link--regular link--bold">Thuốc & vật tư nông nghiệp</a>
-
             <a href="/forum" class="nav__link link link--regular link--bold">Diễn đàn</a>
+            <a href="#" class="nav__link link link--regular link--bold">Chợ Nông Nghiệp</a>
         </nav>
     </div>
 </header>

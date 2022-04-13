@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Session;
 
 class NewsService{
 
+
+    
     public function getAllNews(){
         return News::with('admin')->orderBy('created_at', 'desc')->with('categorynews')->paginate(10);
     }
