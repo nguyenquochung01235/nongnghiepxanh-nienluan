@@ -76,7 +76,7 @@
                         <option 
                         {{ $user[0]->commune->district->district_id == $data->district_id ? 'selected' : ''}}
                         value="{{$data->district_id}}">{{$data->district_name}}</option>
-                        @endif()
+                        @endif
                         @endforeach
                     </select>
                     <label for="date" class="form__label">Chọn quận / huyện</label>

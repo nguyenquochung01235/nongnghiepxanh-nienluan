@@ -30,7 +30,8 @@ class SignInController extends Controller
             'user_email' => $request->input('email'),
             'password' => $request->input('password'),
         ], $request->input('remember'))) {
-            if(session('link_user')){
+            if(session('link_user') && (session('link_user') != "http://127.0.0.1:8000/sign-up")){
+                // return dd(session('link_user'));
                 return redirect(session('link_user'));
             }
             return redirect('/');

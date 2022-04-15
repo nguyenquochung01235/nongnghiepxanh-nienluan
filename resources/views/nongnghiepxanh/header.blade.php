@@ -8,8 +8,8 @@
                 </a>
             </div>
             <div class="header__search">
-                <form class="header__form">
-                    <input class="header__input" type="text" placeholder="Tìm kiếm tin tức" />
+                <form class="header__form" action="/searchnews" method="get">
+                    <input class="header__input" type="text" name="searchnews" placeholder="Tìm kiếm tin tức" />
                     <button class="header__btn btn btn--small btn--primary"><i class="fas fa-search"></i></button>
                 </form>
             </div>
@@ -30,7 +30,7 @@
                             <a href="/account/{{Auth::guard('user')->user()->user_id}}" class="header__link"><i class="fas fa-user"></i>Tài khoản của tôi</a>
                         </li>
                         <li class="header__item">
-                            <a href="./post.html" class="header__link"><i class="fas fa-edit"></i>Viết bài</a>
+                            <a href="/forum/add" class="header__link"><i class="fas fa-edit"></i>Viết bài</a>
                         </li>
                         <li class="header__item">
                             <a href="/log-out" class="header__link"><i class="fas fa-power-off"></i>Đăng xuất</a>

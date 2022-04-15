@@ -57,7 +57,9 @@
                             <label class="form__label" for="remember">Ghi nhớ đăng nhập</label>
                         </div>
                         <div class="form__field">
-                            <button class="form__submit btn btn--primary">Đăng Nhập</button>
+                            <button class="form__submit btn btn--primary"
+                            style="padding: 12px 12px;"
+                            >Đăng Nhập</button>
                         </div>
                         <a href="./forgetPassword.html" class="link link--second">Quên mật khẩu?</a>
                         <p class="form__split"><span>Hoặc</span></p>

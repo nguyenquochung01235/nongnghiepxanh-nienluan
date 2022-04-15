@@ -12,7 +12,7 @@
                 <span class="author__name">{{$listForum[0]->user->user_name}}</span>
             </div>
         </div>
-        <div class="cover__quantity-post">Số bài đăng: <span>40</span></div>
+        <div class="cover__quantity-post">Số bài đăng: <span>{{count($listForum)}}</span></div>
     </section>
     <section class="article-list container container--small">
         @foreach($listForum as $key => $data)

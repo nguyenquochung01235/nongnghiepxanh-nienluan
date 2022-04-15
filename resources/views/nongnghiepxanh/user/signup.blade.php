@@ -64,7 +64,7 @@
                             <label class="form__label" for="confirmPassword">Nhập lại mật khẩu</label>
                         </div>
                         <div class="form__field">
-                            <button class="form__submit btn btn--primary">Đăng Ký</button>
+                            <button class="form__submit btn btn--primary" style="padding: 12px 12px;">Đăng Ký</button>
                         </div>
                         <p class="form__split"><span>Hoặc</span></p>
                         <div class="form__socials">

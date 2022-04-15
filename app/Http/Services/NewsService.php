@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Session;
 
 class NewsService{
 
-
+    public function searchNews($request){
+        return News::where('news_title', 'like', "%". $request->input('searchnews') ."%")->get();
+    }
     
     public function getAllNews(){
         return News::with('admin')->orderBy('created_at', 'desc')->with('categorynews')->paginate(10);

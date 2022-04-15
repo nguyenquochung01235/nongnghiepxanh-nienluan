@@ -18,6 +18,7 @@ use App\Http\Controllers\NongNghiep\SignInController;
 use App\Http\Controllers\NongNghiep\SignUpController;
 use App\Http\Controllers\NongNghiep\UserController;
 use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -57,11 +58,13 @@ Route::get('/forum/add',[ForumController::class, 'add'])->middleware(['user']);
 Route::post('/forum/add/create',[ForumController::class, 'create'])->middleware(['user']);
 
 Route::get('/forum/detail/{forum}',[ForumController::class, 'detail']);
-Route::post('/forum/upload/img', [ForumController::class, 'uploadImg']);
+Route::post('/forum/upload/img', [ForumController::class, 'uploadImg'])->middleware(['user']);;
 
 Route::post('/forum/detail/{forum}/{user}/comment',[ForumController::class, 'commentForumDetail'])->middleware(['user']);
 Route::post('/forum/detail/{forum}/{user}/comment/{comment}',[ForumController::class, 'replyCommentForumDetail'])->middleware(['user']);
 
+
+Route::get('/searchnews',[SearchController::class, 'searchNews']);
 
 
 
