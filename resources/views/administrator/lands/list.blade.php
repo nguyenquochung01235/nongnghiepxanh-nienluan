@@ -37,7 +37,7 @@
                 <td style="max-width: 280px;">{{$data->land_title}}</td>
                 <td>{{$data->district->district_name}}</td>
                 <td><img style="max-width: 250px" src="{{$data->land_img_1}}" alt=""></td>
-                <td class="mota1">{{$data->land_content}}</td>
+                <td class="mota1">{!! $data->land_content !!}</td>
                 <td>{{$data->updated_at}}</td>
                 <td>
                 <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href="/administrator/land/view/{{$data->land_id}}"><i class="fas fa-eye"></i></a></button>

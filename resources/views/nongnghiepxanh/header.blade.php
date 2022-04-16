@@ -76,7 +76,7 @@
                 </ul>
             </div>
 
-            <a href="#" class="nav__link link link--regular link--bold">Thời tiết & đất</a>
+            <a href="/land" class="nav__link link link--regular link--bold">Thời tiết & đất</a>
             <a href="#" class="nav__link link link--regular link--bold">Cây trồng & bệnh hại</a>
             <a href="#" class="nav__link link link--regular link--bold">Vật nuôi & bệnh hại</a>
             <a href="#" class="nav__link link link--regular link--bold">Thuốc & vật tư nông nghiệp</a>

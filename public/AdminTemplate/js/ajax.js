@@ -163,7 +163,7 @@ $("#land_img_1").change(function(){
         type: 'POST',
         dataType: 'JSON',
         data: form,
-        url: 'upload/img',
+        url: '/administrator/land/upload/img',
         success: function (results) {
             if (results.error === false) {
                 $('#img_land_1').attr("src",results.url);
@@ -186,7 +186,7 @@ $("#land_img_2").change(function(){
         type: 'POST',
         dataType: 'JSON',
         data: form,
-        url: 'upload/img',
+        url: '/administrator/land/upload/img',
         success: function (results) {
             if (results.error === false) {
                 $('#img_land_2').attr("src",results.url);
@@ -209,7 +209,7 @@ $("#land_img_3").change(function(){
         type: 'POST',
         dataType: 'JSON',
         data: form,
-        url: 'upload/img',
+        url: '/administrator/land/upload/img',
         success: function (results) {
             if (results.error === false) {
                 $('#img_land_3').attr("src",results.url);

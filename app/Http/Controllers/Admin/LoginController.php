@@ -19,7 +19,6 @@ class LoginController extends Controller
     }
 
     public function index(){
-        session(['link_admin' => url()->previous()]);
         return view('administrator.user.login',[
             'title'=>'Đăng Nhập Hệ Thống Quản Trị'
         ]);
@@ -33,9 +32,6 @@ class LoginController extends Controller
             
             if(Auth::user()->admin_active){
                 
-                if(session('link_admin')){
-                    return redirect(session('link_admin'));
-                }
                 return redirect()->route('dashboard');
                 // return dd($this->adminService->infor($request));
             }

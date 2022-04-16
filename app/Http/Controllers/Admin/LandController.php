@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\DistrictService;
 use App\Http\Services\LandService;
 use App\Http\Services\ProvinceService;
 use App\Models\Lands;
@@ -13,11 +14,14 @@ class LandController extends Controller
 
     protected $landService;
     protected $provinceService;
+    protected $districtService;
 
-    public function __construct(LandService $landService, ProvinceService $provinceService)
+    public function __construct(LandService $landService, ProvinceService $provinceService, DistrictService $districtService)
     {
         $this->landService = $landService;
         $this->provinceService = $provinceService;
+        $this->districtService = $districtService;
+        
     }
 
     public function index(){
@@ -60,9 +64,40 @@ class LandController extends Controller
 
 
     public function show(Lands $lands){
-        return dd($lands);
+        $land = $this->landService->getLandByID($lands->land_id);
+        $district = $this->districtService->getAllDistrict();
+        $province = $this->provinceService->getAllProvince();
+        return view('administrator.lands.update',[
+            'title'=> 'Cập Nhật Thông Tin Thổ Nhưỡng',
+            'land' =>  $land,
+            'district' => $district,
+            'province' => $province
+        ]);
     }
 
+    public function update(Request $request, Lands $lands){
+        // return dd($request->all());
+        $result = $this->landService->update($request, $lands->land_id);
+        if($result){
+           return redirect('/administrator/land');
+        }
+        return redirect()->back()->withInput();
+    }
+
+    public function delete(Request $request){
+        $result = $this->landService->delete($request);
+        if($result){
+            return response()->json([
+                'error' => false,
+                'message' => "Đã xóa thành công !!!"
+            ]);
+        }else{
+            return response()->json([
+                'error' => true,
+                'message' => "Không thể xóa vì đã liên kết dữ liệu !!!"
+            ]);
+        }
+    }
 
     public function uploadImg(Request $request){
         $url = $this->landService->uploadImg($request);

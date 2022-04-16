@@ -54,6 +54,12 @@ Route::get('/news/detail/{news}', [NongNghiepNewsController::class, 'newsDetailB
 Route::post('/news/detail/{news}/{users}', [NongNghiepNewsController::class, 'commentNewsDetail']);
 Route::post('/news/detail/{news}/{users}/{comments}', [NongNghiepNewsController::class, 'replyCommentNewsDetail']);
 
+
+
+Route::get('/land');
+
+
+
 Route::get('/forum',[ForumController::class, 'index']);
 Route::get('/forum/add',[ForumController::class, 'add'])->middleware(['user']);
 Route::post('/forum/add/create',[ForumController::class, 'create'])->middleware(['user']);
@@ -186,6 +192,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/add/create', [LandController::class, 'create']);
             Route::get('view/{lands}', [LandController::class, 'view']);
             Route::get('edit/{lands}', [LandController::class, 'show']);
+            Route::post('update/{lands}', [LandController::class, 'update']);
+            Route::delete('/delete', [LandController::class, 'delete']);
             Route::post('/upload/img', [LandController::class, 'uploadImg']);
         });
 
