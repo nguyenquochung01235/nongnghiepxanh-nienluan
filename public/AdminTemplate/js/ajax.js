@@ -153,3 +153,72 @@ $('#provinceSelectBox').change(function () {
 
 
 
+$("#land_img_1").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: 'upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_land_1').attr("src",results.url);
+                $('#land_img_1').attr("value",results.url);
+                $('#land_img_1_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#land_img_2").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: 'upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_land_2').attr("src",results.url);
+                $('#land_img_2').attr("value",results.url);
+                $('#land_img_2_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#land_img_3").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: 'upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_land_3').attr("src",results.url);
+                $('#land_img_3').attr("value",results.url);
+                $('#land_img_3_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})

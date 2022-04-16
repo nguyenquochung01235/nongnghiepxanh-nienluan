@@ -151,7 +151,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
+                <a href="/administrator/land/" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thông tin địa chất</p>
                 </a>

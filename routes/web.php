@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryNewsController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\LandController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\NewsController;
@@ -175,6 +176,17 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update/{commune}', [CommuneController::class, 'update']);
             Route::delete('/delete', [CommuneController::class, 'delete']);
             
+        });
+
+
+        //Lands
+        Route::prefix('land')->group(function () {
+            Route::get('/', [LandController::class, 'index']);
+            Route::get('/add', [LandController::class, 'add']);
+            Route::post('/add/create', [LandController::class, 'create']);
+            Route::get('view/{lands}', [LandController::class, 'view']);
+            Route::get('edit/{lands}', [LandController::class, 'show']);
+            Route::post('/upload/img', [LandController::class, 'uploadImg']);
         });
 
 
