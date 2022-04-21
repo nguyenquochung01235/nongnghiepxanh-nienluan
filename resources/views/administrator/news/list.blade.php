@@ -12,10 +12,12 @@
         @include('administrator.alert')
         <!-- /.card-header -->
         <div class="card-body">
+        @hasrole(['admin','content'])
           <button type="button" class="btn btn-sm btn-primary"> 
             <i class="fas fa-plus"></i>
             <a href="/administrator/news/add" style="color: #fff;">Thêm tin tức</a>
         </button>
+        @endhasrole
         <hr>
           <table class="table table-bordered table-hover">
             <thead>
