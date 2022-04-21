@@ -50,11 +50,12 @@
                 </td>
                 <td>
                 <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href="/administrator/news/view/{{$data->news_id}}"><i class="fas fa-eye"></i></a></button>
+                @hasrole(['admin','content'])
                 <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/news/edit/{{$data->news_id}}"><i class="fas fa-edit"></i></a></button>
                 <button type="button" class="btn btn-sm btn-danger" ><a style="color: #fff;" href="#" 
                 onclick="removeRow( <?php  echo $data->news_id ?> ,'/administrator/news/delete')"
                 ><i class="fas fa-trash"></i></a></button>
-                
+                @endhasrole
                    
                 </td>
     

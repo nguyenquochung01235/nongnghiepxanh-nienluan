@@ -12,10 +12,12 @@
         @include('administrator.alert')
         <!-- /.card-header -->
         <div class="card-body">
+        @hasrole(['admin','science'])
           <button type="button" class="btn btn-sm btn-primary"> 
             <i class="fas fa-plus"></i>
             <a href="/administrator/commune/add" style="color: #fff;">Thêm xã - phường</a>
         </button>
+        @endhasrole
         <hr>
           <table class="table table-bordered table-hover">
             <thead>
@@ -41,11 +43,12 @@
                 <td>{{$data->updated_at}}</td>
                 <td>
                 <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href=""><i class="fas fa-eye"></i></a></button>
+                @hasrole(['admin','science'])
                 <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/commune/edit/{{$data->commune_id}}"><i class="fas fa-edit"></i></a></button>
                 <button type="button" class="btn btn-sm btn-danger" ><a style="color: #fff;" href="#" 
                 onclick="removeRow( <?php  echo $data->commune_id ?> ,'/administrator/commune/delete')"
                 ><i class="fas fa-trash"></i></a></button>
-                
+                @endhasrole
                    
                 </td>
     

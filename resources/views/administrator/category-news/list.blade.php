@@ -12,10 +12,12 @@
         @include('administrator.alert')
         <!-- /.card-header -->
         <div class="card-body">
+        @hasrole(['admin','content'])
           <button type="button" class="btn btn-sm btn-primary"> 
             <i class="fas fa-plus"></i>
             <a href="/administrator/category-news/add" style="color: #fff;">Thêm danh mục tin tức</a>
         </button>
+        @endhasrole
         <hr>
           <table class="table table-bordered table-hover">
             <thead>
@@ -46,11 +48,12 @@
                 </td>
                 <td style="text-align: center;">
                 <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href=""><i class="fas fa-eye"></i></a></button>
+                @hasrole(['admin','content'])
                 <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/category-news/edit/{{$data->id_news_category}}"><i class="fas fa-edit"></i></a></button>
                 <button type="button" class="btn btn-sm btn-danger" ><a style="color: #fff;" href="#" 
                 onclick="removeRow( <?php  echo $data->id_news_category ?> ,'/administrator/category-news/delete')"
                 ><i class="fas fa-trash"></i></a></button>
-                
+                @endhasrole 
                    
                 </td>
     

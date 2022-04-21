@@ -12,10 +12,12 @@
         @include('administrator.alert')
         <!-- /.card-header -->
         <div class="card-body">
+        @hasrole(['admin','science'])
           <button type="button" class="btn btn-sm btn-primary"> 
             <i class="fas fa-plus"></i>
             <a href="/administrator/land/add" style="color: #fff;">Thêm Thông Tin Thổ Nhưỡng</a>
         </button>
+        @endhasrole
         <hr>
           <table class="table table-bordered table-hover">
             <thead>
@@ -37,15 +39,16 @@
                 <td style="max-width: 280px;">{{$data->land_title}}</td>
                 <td>{{$data->district->district_name}}</td>
                 <td><img style="max-width: 250px" src="{{$data->land_img_1}}" alt=""></td>
-                <td class="mota1">{!! $data->land_content !!}</td>
+                <td class="mota1" style="max-width: 320px"> {!! $data->land_content !!}</td>
                 <td>{{$data->updated_at}}</td>
                 <td>
                 <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href="/administrator/land/view/{{$data->land_id}}"><i class="fas fa-eye"></i></a></button>
+                @hasrole(['admin','science'])
                 <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/land/edit/{{$data->land_id}}"><i class="fas fa-edit"></i></a></button>
                 <button type="button" class="btn btn-sm btn-danger" ><a style="color: #fff;" href="#" 
                 onclick="removeRow( <?php  echo $data->land_id ?> ,'/administrator/land/delete')"
                 ><i class="fas fa-trash"></i></a></button>
-                
+                @endhasrole
                    
                 </td>
     
