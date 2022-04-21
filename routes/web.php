@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\UploadImgController;
 use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\NongNghiep\ForumController;
+use App\Http\Controllers\NongNghiep\LandsController as NongNghiepLandsController;
 use App\Http\Controllers\NongNghiep\MainController as NongNghiepMainController;
 use App\Http\Controllers\NongNghiep\NewsController as NongNghiepNewsController;
 use App\Http\Controllers\NongNghiep\SignInController;
@@ -56,7 +57,7 @@ Route::post('/news/detail/{news}/{users}/{comments}', [NongNghiepNewsController:
 
 
 
-Route::get('/land');
+Route::get('/land', [NongNghiepLandsController::class, 'index']);
 
 
 

@@ -1,0 +1,96 @@
+.weather_body {
+    padding: 20px 130px;
+    /* background-image: url('https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng_11/Ng%C3%A0y_16/NGOC/%E1%BA%A2nh%20NN3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+    border-radius: 1%;
+    background-color: rgb(10, 107, 10, 0.3);
+    margin-bottom: 500px;
+}
+
+.weather {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    width: fit-content;
+    
+}
+.weather__data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 16px;
+}
+.weather__img {
+    width: 60px;
+    height: 60px;
+}
+.weather__img--small {
+    width: 48px;
+    height: 48px;
+}
+.weather__temperature {
+    display: flex;
+}
+.weather__temperature-number {
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: 500;
+}
+.weather__temperature-unit {
+    margin-left: 4px;
+    width: fit-content;
+    font-size: 1.5rem;
+}
+.weather__statistical {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ffffff;
+}
+.weather__info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.weather__place {
+    margin-block: 0 4px;
+    font-size: 22px;
+    font-weight: 500;
+}
+.weather__subhead {
+    color: #70757a;
+}
+.weather__subhead > p {
+    margin: 0;
+    line-height: 1.6;
+}
+.weather__list {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    list-style-type: none;
+}
+.weather__item {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px;
+    margin-left: 15px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.weather__item.active {
+    background-color: #ffffff7c;
+}
+.weather__item > p {
+    margin: 0;
+}
+.weather__item > p > span:last-child {
+    margin-left: 8px;
+    color: #70757a;
+}
+
+/*# sourceMappingURL=main.css.map */
