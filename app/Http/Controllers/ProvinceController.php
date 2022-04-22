@@ -25,6 +25,11 @@ class ProvinceController extends Controller
         ]);
     }
 
+    public function view(Province $province){
+        return dd($province);
+    }
+
+
     public function add(){
         return view('administrator.province.add',[
             'title' => 'Thêm Tỉnh - Thành Phố'

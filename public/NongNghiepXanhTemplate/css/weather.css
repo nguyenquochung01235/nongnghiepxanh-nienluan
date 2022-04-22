@@ -1,11 +1,11 @@
 .weather_body {
     padding: 20px 130px;
-    /* background-image: url('https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng_11/Ng%C3%A0y_16/NGOC/%E1%BA%A2nh%20NN3.jpg');
+    background-image: url('https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng_11/Ng%C3%A0y_16/NGOC/%E1%BA%A2nh%20NN3.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
     border-radius: 1%;
-    background-color: rgb(10, 107, 10, 0.3);
+    /* background-color: rgba(12, 119, 12, 0.4); */
     margin-bottom: 500px;
 }
 
@@ -14,7 +14,7 @@
     flex-direction: column;
     row-gap: 30px;
     width: fit-content;
-    
+        /* background-color: rgba(12, 119, 12, 0.4); */
 }
 .weather__data {
     display: flex;

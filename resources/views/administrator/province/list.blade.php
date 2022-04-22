@@ -38,7 +38,7 @@
                 <td>{{$data->created_at}}</td>
                 <td>{{$data->updated_at}}</td>
                 <td>
-                <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href=""><i class="fas fa-eye"></i></a></button>
+                <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href="/administrator/province/view/{{$data->province_id}}"><i class="fas fa-eye"></i></a></button>
                 @hasrole(['admin','science'])
                 <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/province/edit/{{$data->province_id}}"><i class="fas fa-edit"></i></a></button>
                 <button type="button" class="btn btn-sm btn-danger" ><a style="color: #fff;" href="#" 

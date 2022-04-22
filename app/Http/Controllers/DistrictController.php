@@ -28,6 +28,7 @@ class DistrictController extends Controller
         ]);
     }
 
+
     public function add(){
         $province = $this->provinceService->getAllProvince();
         return view('administrator.district.add',[

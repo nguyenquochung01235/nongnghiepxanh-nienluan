@@ -77,7 +77,6 @@ Route::get('/searchnews',[SearchController::class, 'searchNews']);
 
 
 
-
 //Administrator
 Route::get('/administrator/login', [LoginController::class, 'index'])->name('login');
 Route::get('/administrator/logout', [LoginController::class, 'logout'])->name('logout');
@@ -156,7 +155,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [ProvinceController::class, 'index']);
             Route::get('/add', [ProvinceController::class, 'add']);
             Route::post('/add/create', [ProvinceController::class, 'create']);
-            Route::get('edit/{province}', [ProvinceController::class, 'show']);
+            Route::get('view/{province}', [ProvinceController::class, 'view']);
+            Route::get('edit/{province}', [ProvinceController::class, 'show']);        
             Route::post('update/{province}', [ProvinceController::class, 'update']);
             Route::delete('/delete', [ProvinceController::class, 'delete']);
         });
@@ -169,9 +169,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{district}', [DistrictController::class, 'show']);
             Route::post('update/{district}', [DistrictController::class, 'update']);
             Route::delete('/delete', [DistrictController::class, 'delete']);
-
-
-            
         });
         
         // Commune
