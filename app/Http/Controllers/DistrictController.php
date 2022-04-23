@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\CommuneService;
 use App\Http\Services\DistrictService;
 use App\Http\Services\ProvinceService;
 use App\Models\District;
@@ -10,27 +11,51 @@ use Illuminate\Http\Request;
 
 class DistrictController extends Controller
 {
-    protected $provinceService;
+    protected $communeService;
     protected $districtService;
-
-    public function __construct(ProvinceService $provinceService, DistrictService $districtService)
+    protected $provinceService;
+    
+    public function __construct(CommuneService $communeService, DistrictService $districtService, ProvinceService $provinceService)
     {
-        $this->provinceService = $provinceService;
+        $this->communeService = $communeService;
         $this->districtService = $districtService;
+        $this->provinceService = $provinceService;
     }
 
 
     public function index(){
         $district = $this->districtService->getAllDistrict();
+        $province = $this->provinceService->getAllProvinceNongNghiepXanh();
         return view('administrator.district.list',[
             'title' => 'Danh Sách Quận - Huyện',
-            'district' => $district
+            'district' => $district,
+            'province' => $province
         ]);
     }
 
 
+    public function filter(Request $request){
+        $district = $this->districtService->filterDistrict($request);
+        $province = $this->provinceService->getAllProvinceNongNghiepXanh();
+        return view('administrator.district.list',[
+            'title' => 'Danh Sách Quận - Huyện',
+            'district' =>$district,
+            'province' => $province
+        ]);
+    }
+
+
+
+    public function view(District $district){
+        $district = $this->communeService->getAllCommuneByDistrict($district->district_id);
+        return view('administrator.commune.list',[
+            'title' => 'Danh Sách Xã - Phường',
+            'commune' => $district
+        ]);
+    }
+
     public function add(){
-        $province = $this->provinceService->getAllProvince();
+        $province = $this->provinceService->getAllProvinceNongNghiepXanh();
         return view('administrator.district.add',[
             'title' => 'Thêm Quận - Huyện',
             'province' => $province
@@ -47,7 +72,7 @@ class DistrictController extends Controller
     }
 
     public function show(District $district){
-        $province = $this->provinceService->getAllProvince();
+        $province = $this->provinceService->getAllProvinceNongNghiepXanh();
         return view('administrator.district.update',[
             'title' => 'Cập Nhật Quận Huyện',
             'province' => $province,

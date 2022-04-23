@@ -29,8 +29,13 @@ class ProvinceController extends Controller
     }
 
     public function view(Province $province){
-        $result = $this->districtService->getAllDistrictByProvince($province->province_id);
-        // return view('administrator');
+        $district = $this->districtService->getAllDistrictByProvince($province->province_id);
+        $listProvince = $this->provinceService->getAllProvinceNongNghiepXanh();
+        return view('administrator.district.list',[
+            'title' => 'Danh Sách Quận - Huyện Thuộc ' . $province->province_name,
+            'district' => $district,
+            'province' =>   $listProvince
+        ]);
     }
 
 

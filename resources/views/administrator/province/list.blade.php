@@ -27,7 +27,6 @@
                 <th style=>Created At</th>
                 <th style=>Updated At</th>
                 <th style="width: 130px; text-align: center;">Edit</th>
-          
               </tr>
             </thead>
             <tbody>

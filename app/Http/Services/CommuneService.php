@@ -13,6 +13,12 @@ class CommuneService{
         return Commune::with('district.province')->orderBy('district_id', 'desc')->paginate(20);
     }
     
+    public function getAllCommuneByDistrict($district_id){
+        return Commune::with('district.province')
+        ->where('district_id', $district_id)
+        ->orderBy('district_id', 'desc')->paginate(20);
+    }
+    
     public function getAllCommuneNongNghiepXanh(){
         return Commune::with('district.province')->orderBy('district_id', 'desc')->get();
     }

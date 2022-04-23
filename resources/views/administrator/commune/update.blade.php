@@ -29,7 +29,7 @@
                             <label for="exampleInputEmail1">Tên Quận - Huyện</label>
                             <select required id="districtSelectBox"  class="form-control" name="district">
                             @foreach($district as $key => $data)
-                                @if($data->province->province_id == $commune->district->province->province_id)
+                             @if($data->province->province_id == $commune->district->province->province_id) 
                                 <option 
                                 {{ $commune->district->district_id == $data->district_id ? 'selected' : ''}}
                                 required value="{{$data->district_id}}">{{$data->district_name}}

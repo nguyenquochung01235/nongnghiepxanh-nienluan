@@ -18,6 +18,20 @@ class DistrictService{
     public function getAllDistrictByProvince($province_id){
         return District::with('province')->where('province_id', $province_id)->orderBy('province_id', 'desc')->paginate(15);
     }
+    
+    public function filterDistrict($request){
+            $filter = explode("-", filter_var(trim($request->input('filterBy'), "-")));
+            if($request->input('province') == null ){
+                return District:: orderBy($filter[0], $filter[1])
+                        ->where('district_name', 'like', "%". $request->input('seachTitle') ."%")
+                        ->paginate(15);
+            }
+            return District:: orderBy($filter[0], $filter[1])
+                        ->where('district_name', 'like', "%". $request->input('seachTitle') ."%")
+                        ->where('province_id',$request->input('province'))
+                        ->paginate(15);
+    }
+    
 
     public function create($request){
         try {

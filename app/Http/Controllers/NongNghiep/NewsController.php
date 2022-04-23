@@ -22,9 +22,6 @@ class NewsController extends Controller
         $this->newsCategoryService = $newsCategoryService;   
     }
 
-    // public function searchNews(){
-    //     return dd($this->newsService->searchNews());
-    // }
 
     public function newsByCategory(CategoryNews $news){
         $listNews = $this->newsService->newsByCategory($news->id_news_category);

@@ -33,7 +33,7 @@ class LandController extends Controller
     }
 
     public function add(){
-        $province  = $this->provinceService->getAllProvince();
+        $province  = $this->provinceService->getAllProvinceNongNghiepXanh();
         
         return view('administrator.lands.add',[
             'title'=> 'Thêm Thông Tin Thổ Nhưỡng',
@@ -65,8 +65,8 @@ class LandController extends Controller
 
     public function show(Lands $lands){
         $land = $this->landService->getLandByID($lands->land_id);
-        $district = $this->districtService->getAllDistrict();
-        $province = $this->provinceService->getAllProvince();
+        $district = $this->districtService->getAllDistrictNongNghiepXanh();
+        $province = $this->provinceService->getAllProvinceNongNghiepXanh();
         return view('administrator.lands.update',[
             'title'=> 'Cập Nhật Thông Tin Thổ Nhưỡng',
             'land' =>  $land,

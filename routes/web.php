@@ -167,9 +167,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [DistrictController::class, 'index']);
             Route::get('/add', [DistrictController::class, 'add']);
             Route::post('/add/create', [DistrictController::class, 'create']);
+            Route::get('view/{district}', [DistrictController::class, 'view']);
             Route::get('edit/{district}', [DistrictController::class, 'show']);
             Route::post('update/{district}', [DistrictController::class, 'update']);
             Route::delete('/delete', [DistrictController::class, 'delete']);
+            Route::get('filter', [DistrictController::class, 'filter']);
         });
         
         // Commune

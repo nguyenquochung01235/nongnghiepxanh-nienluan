@@ -50,8 +50,8 @@ class CommuneController extends Controller
 
 
     public function show(Commune $commune){
-        $province = $this->provinceService->getAllProvince();
-        $district = $this->districtService->getAllDistrict();
+        $province = $this->provinceService->getAllProvinceNongNghiepXanh();
+        $district = $this->districtService->getAllDistrictNongNghiepXanh();
         return view('administrator.commune.update',[
             'title' => 'Danh Sách Xã - Phường',
             'province' =>$province,
