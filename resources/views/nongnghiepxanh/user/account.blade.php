@@ -61,35 +61,52 @@
                 <div class="info__field form__field">
                     <select name="province" id="provinceSelectBox" class="form__input">
                         @foreach($province as $key => $data  )
-                        <option 
-                        {{ $user[0]->commune->district->province->province_id== $data->province_id ? 'selected' : ''}}
-                        value="{{$data->province_id}}">{{$data->province_name}}</option>
-
+                            @if($user[0]->user_address != null)
+                            <option 
+                                {{ $user[0]->commune->district->province->province_id== $data->province_id ? 'selected' : ''}}
+                                value="{{$data->province_id}}">{{$data->province_name}}
+                            </option>
+                            @else
+                            <option  value="{{$data->province_id}}">{{$data->province_name}} </option>
+                            @endif
                         @endforeach
                     </select>
                     <label for="date" class="form__label">Chọn tỉnh / thành phố</label>
                 </div>
                 <div class="info__field form__field">
                     <select name="district" id="districtSelectBox" class="form__input">
-                        @foreach($district as $key => $data  )
-                        @if($data->province_id == $user[0]->commune->district->province->province_id)
-                        <option 
-                        {{ $user[0]->commune->district->district_id == $data->district_id ? 'selected' : ''}}
-                        value="{{$data->district_id}}">{{$data->district_name}}</option>
+                        
+                        @if($user[0]->user_address != null)
+                            @foreach($district as $key => $data  )
+                                @if($data->province_id == $user[0]->commune->district->province->province_id)
+                                <option 
+                                {{ $user[0]->commune->district->district_id == $data->district_id ? 'selected' : ''}}
+                                value="{{$data->district_id}}">{{$data->district_name}}</option>
+                                @endif
+                            @endforeach
+                        @else
+            
                         @endif
-                        @endforeach
+                       
                     </select>
                     <label for="date" class="form__label">Chọn quận / huyện</label>
                 </div>
                 <div class="info__field form__field">
                     <select name="commune" id="communeSelectBox" class="form__input">
-                        @foreach($commune as $key => $data)
-                        @if($data->district_id == $user[0]->commune->district->district_id)
-                        <option 
-                        {{ $user[0]->commune_id == $data->commune_id ? 'selected' : ''}}
-                        value="{{$data->commune_id}}">{{$data->commune_name}}</option>
-                        @endif
-                        @endforeach
+                        
+                            @if($user[0]->user_address != null)
+                                @foreach($commune as $key => $data)
+                                    @if($data->district_id == $user[0]->commune->district->district_id)
+                                    <option 
+                                    {{ $user[0]->user_address == $data->commune_id ? 'selected' : ''}}
+                                    value="{{$data->commune_id}}">{{$data->commune_name}}
+                                    </option>
+                                    @endif
+                                @endforeach
+                            @else
+                                <!-- <option  value="{{$data->commune_id}}">{{$data->commune_name}}</option> -->
+                            @endif 
+                        
                     </select>
                     <label for="date" class="form__label">Chọn phường / xã</label>
                 </div>

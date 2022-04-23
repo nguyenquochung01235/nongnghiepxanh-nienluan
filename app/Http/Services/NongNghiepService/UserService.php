@@ -49,7 +49,7 @@ class UserService{
     }
 
     public function infor($user_id){
-       return  $user = User::with('commune.district.province')->where('user_id', $user_id)->get();
+       return User::with('commune.district.province')->where('user_id', $user_id)->get();
 
     }
 

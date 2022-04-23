@@ -56,7 +56,7 @@
 
           </table>
           <div class="card-footer clearfix">
-          
+            {!! $province->links() !!}
           </div>
         </div>
         <!-- /.card-body -->

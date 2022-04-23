@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Session;
 class ProvinceService{
 
     public function getAllProvince(){
+        return Province::paginate(10);
+    }
+    
+    public function getAllProvinceNongNghiepXanh(){
         return Province::get();
     }
     

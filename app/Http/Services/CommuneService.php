@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Session;
 class CommuneService{
 
     public function getAllCommune(){
+        return Commune::with('district.province')->orderBy('district_id', 'desc')->paginate(20);
+    }
+    
+    public function getAllCommuneNongNghiepXanh(){
         return Commune::with('district.province')->orderBy('district_id', 'desc')->get();
     }
     

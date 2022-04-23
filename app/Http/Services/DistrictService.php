@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Session;
 class DistrictService{
 
     public function getAllDistrict(){
+        return District::with('province')->orderBy('province_id', 'desc')->paginate(15);
+    }
+    public function getAllDistrictNongNghiepXanh(){
         return District::with('province')->orderBy('province_id', 'desc')->get();
     }
 

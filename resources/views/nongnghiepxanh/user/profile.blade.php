@@ -6,10 +6,10 @@
     <section class="cover s-mainnew">
         <div class="author author--vertical">
             <div class="avatar avatar--large">
-                <img src="{{$listForum[0]->user->user_avatar}}" alt="avt" />
+                <img src="{{$user->user_avatar}}" alt="avt" />
             </div>
             <div class="author__info">
-                <span class="author__name">{{$listForum[0]->user->user_name}}</span>
+                <span class="author__name">{{$user->user_name}}</span>
             </div>
         </div>
         <div class="cover__quantity-post">Số bài đăng: <span>{{count($listForum)}}</span></div>

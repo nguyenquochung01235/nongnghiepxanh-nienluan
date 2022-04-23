@@ -32,18 +32,18 @@ class UserController extends Controller
 
     public function profile(User $user){
         $listForum = $this->forumService->getAllForumByUser($user->user_id);
-       
         return view('nongnghiepxanh.user.profile',[
             'title' => 'Trang Cá Nhân',
+            'user' => $user,
             'listForum' =>$listForum
         ]);
     }
 
 
     public function account(User $user){
-        $commune = $this->communeService->getAllCommune();
-        $district = $this->districtService->getAllDistrict();
-        $province  = $this->provinceService->getAllProvince();
+        $commune = $this->communeService->getAllCommuneNongNghiepXanh();
+        $district = $this->districtService->getAllDistrictNongNghiepXanh();
+        $province  = $this->provinceService->getAllProvinceNongNghiepXanh();
         $info = $this->userService->infor($user->user_id);
         return view('nongnghiepxanh.user.account',[
             'title' => 'Thông tin tài khoản',
