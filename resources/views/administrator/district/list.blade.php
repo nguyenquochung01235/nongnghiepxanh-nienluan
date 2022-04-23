@@ -7,19 +7,19 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">{{$title}}</h3>
-          
+
         </div>
         @include('administrator.alert')
         <!-- /.card-header -->
         <div class="card-body">
-        @hasrole(['admin','science'])
-          <button type="button" class="btn btn-sm btn-primary"> 
+          @hasrole(['admin','science'])
+          <button type="button" class="btn btn-sm btn-primary">
             <i class="fas fa-plus"></i>
             <a href="/administrator/district/add" style="color: #fff;">Thêm quận - huyện</a>
-        </button>
-        @endhasrole
-        <hr>
-        <div class="card collapsed-card ">
+          </button>
+          @endhasrole
+          <hr>
+          <div class="card collapsed-card ">
             <div class="card-header border-0 ui-sortable-handle" style="cursor: move;">
               <h3 class="card-title">
                 <i class="fas fa-filter"></i>
@@ -43,38 +43,38 @@
               </div>
               <div>
 
-                <form class="row" method="get" action="/administrator/district/filter">      
-                    <div class="form-group col-5">
-                      <label>Tìm theo tên quận huyện</label>
-                      <input class="form-control" name="seachTitle" placeholder="Gõ từ khóa">
-                    </div>            
-                    <div class="form-group col-3">
-                      <label>Tỉnh Thành Phố</label>
-                      <select class="form-control" name="province">
+                <form class="row" method="get" action="/administrator/district/filter">
+                  <div class="form-group col-5">
+                    <label>Tìm theo tên quận huyện</label>
+                    <input class="form-control" name="seachTitle" placeholder="Gõ từ khóa">
+                  </div>
+                  <div class="form-group col-3">
+                    <label>Tỉnh Thành Phố</label>
+                    <select class="form-control" name="province">
                       <option value="">Tất cả các tỉnh thành</option>
-                        @foreach($province as $key => $data)
-                        <option value="{{$data->province_id}}">{{$data->province_name}}</option>
-                        @endforeach
-                      </select>
-                    </div>            
-                    <div class="form-group col-2">
-                      <label>Sắp xếp theo</label>
-                      <select class="form-control" name="filterBy">
-                        <option value="district_id-DESC">ID giảm dần</option>
-                        <option value="district_id-ASC">ID tăng dần</option>
-                        <option value="updated_at-DESC">Mới nhất</option>
-                        <option value="updated_at-ASC">Cũ nhất</option>
-                        <option value="province_id-DESC">Theo Tỉnh Thành</option>
-                      </select>
-                    </div>            
-                    <div class="form-group col-2">
-                      <label style="opacity: 0;">Tìm kiếm</label>
-                      <button class="form-control btn btn-primary" type="submit">
+                      @foreach($province as $key => $data)
+                      <option value="{{$data->province_id}}">{{$data->province_name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group col-2">
+                    <label>Sắp xếp theo</label>
+                    <select class="form-control" name="filterBy">
+                      <option value="district_id-DESC">ID giảm dần</option>
+                      <option value="district_id-ASC">ID tăng dần</option>
+                      <option value="updated_at-DESC">Mới nhất</option>
+                      <option value="updated_at-ASC">Cũ nhất</option>
+                      <option value="province_id-DESC">Theo Tỉnh Thành</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-2">
+                    <label style="opacity: 0;">Tìm kiếm</label>
+                    <button class="form-control btn btn-primary" type="submit">
                       <i class="fas fa-search"></i>
-                        Tìm kiếm
-                      </button>
-                    </div>     
-                    @csrf       
+                      Tìm kiếm
+                    </button>
+                  </div>
+                  @csrf
                 </form>
 
               </div>
@@ -85,11 +85,11 @@
               <tr>
                 <th style="width: 10px;">ID</th>
                 <th>Quận - Huyện</th>
-                <th >Tỉnh / Thành Phố</th>
-                <th >Created At</th>
+                <th>Tỉnh / Thành Phố</th>
+                <th>Created At</th>
                 <th>Updated At</th>
                 <th style="width: 130px; text-align: center;">Edit</th>
-          
+
               </tr>
             </thead>
             <tbody>
@@ -101,20 +101,18 @@
                 <td>{{$data->created_at}}</td>
                 <td>{{$data->updated_at}}</td>
                 <td>
-                <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href="/administrator/district/view/{{$data->district_id}}"><i class="fas fa-eye"></i></a></button>
-                @hasrole(['admin','science'])
-                <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/district/edit/{{$data->district_id}}"><i class="fas fa-edit"></i></a></button>
-                <button type="button" class="btn btn-sm btn-danger" ><a style="color: #fff;" href="#" 
-                onclick="removeRow( <?php  echo $data->district_id ?> ,'/administrator/district/delete')"
-                ><i class="fas fa-trash"></i></a></button>
-                @endhasrole
-                   
-                </td>
-    
-              </tr>
-            @endforeach
+                  <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href="/administrator/district/view/{{$data->district_id}}"><i class="fas fa-eye"></i></a></button>
+                  @hasrole(['admin','science'])
+                  <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/district/edit/{{$data->district_id}}"><i class="fas fa-edit"></i></a></button>
+                  <button type="button" class="btn btn-sm btn-danger"><a style="color: #fff;" href="#" onclick="removeRow( <?php echo $data->district_id ?> ,'/administrator/district/delete')"><i class="fas fa-trash"></i></a></button>
+                  @endhasrole
 
-              
+                </td>
+
+              </tr>
+              @endforeach
+
+
             </tbody>
 
           </table>

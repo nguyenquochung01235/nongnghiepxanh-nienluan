@@ -99,7 +99,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update/{department}', [DepartmentController::class, 'update']);
             Route::delete('delete', [DepartmentController::class, 'delete']);
         });
-
+ 
         // Job
         Route::prefix('job')->group(function () {
             Route::get('/', [JobController::class, 'index']);

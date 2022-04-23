@@ -47,10 +47,14 @@ class DistrictController extends Controller
 
 
     public function view(District $district){
-        $district = $this->communeService->getAllCommuneByDistrict($district->district_id);
+        $commune = $this->communeService->getAllCommuneByDistrict($district->district_id);
+        $district = $this->districtService->getAllDistrictNongNghiepXanh();
+        $province = $this->provinceService->getAllProvinceNongNghiepXanh();
         return view('administrator.commune.list',[
             'title' => 'Danh Sách Xã - Phường',
-            'commune' => $district
+            'commune' => $commune,
+            'district' =>  $district,
+            'province' =>  $province
         ]);
     }
 
