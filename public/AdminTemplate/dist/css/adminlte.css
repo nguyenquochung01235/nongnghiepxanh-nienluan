@@ -53018,3 +53018,12 @@ a.text-muted:hover {
 #admin_avatar:hover{
   border: 5px solid green;
 }
+
+.filter{
+  padding: 0 1.25rem !important;
+}
+
+
+.hidden{
+  display: none;
+}

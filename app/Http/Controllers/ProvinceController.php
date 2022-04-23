@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\DistrictService;
 use App\Http\Services\ProvinceService;
 use App\Models\Province;
 use Illuminate\Http\Request;
@@ -9,10 +10,12 @@ use Illuminate\Http\Request;
 class ProvinceController extends Controller
 {
     protected $provinceService;
+    protected $districtService;
 
-    public function __construct(ProvinceService $provinceService)
+    public function __construct(ProvinceService $provinceService, DistrictService $districtService)
     {
-        $this->provinceService= $provinceService;
+        $this->provinceService = $provinceService;
+        $this->districtService = $districtService;
     }
 
 
@@ -26,7 +29,8 @@ class ProvinceController extends Controller
     }
 
     public function view(Province $province){
-        return dd($province);
+        $result = $this->districtService->getAllDistrictByProvince($province->province_id);
+        // return view('administrator');
     }
 
 

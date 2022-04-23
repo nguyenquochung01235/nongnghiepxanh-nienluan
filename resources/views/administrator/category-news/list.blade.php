@@ -47,7 +47,7 @@
                   @endif
                 </td>
                 <td style="text-align: center;">
-                <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href=""><i class="fas fa-eye"></i></a></button>
+                <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href="/administrator/category-news/view/{{$data->id_news_category}}"><i class="fas fa-eye"></i></a></button>
                 @hasrole(['admin','content'])
                 <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/category-news/edit/{{$data->id_news_category}}"><i class="fas fa-edit"></i></a></button>
                 <button type="button" class="btn btn-sm btn-danger" ><a style="color: #fff;" href="#" 

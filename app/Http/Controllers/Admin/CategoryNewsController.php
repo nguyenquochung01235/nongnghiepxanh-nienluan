@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\CategoryNewsService;
+use App\Http\Services\NewsService;
 use App\Models\CategoryNews;
 use Illuminate\Http\Request;
 
 class CategoryNewsController extends Controller
 {
     protected $categoryNewsService;
+    protected $newsService;
 
-    public function __construct(CategoryNewsService $categoryNewsService)
+    public function __construct(NewsService  $newsService, CategoryNewsService $categoryNewsService)
     {
+        $this->newsService = $newsService;
         $this->categoryNewsService = $categoryNewsService;
     }
 
@@ -26,6 +29,16 @@ class CategoryNewsController extends Controller
         ]);
     }
 
+    public function view(CategoryNews $categoryNews){
+
+        $news = $this->newsService->newsByCategory($categoryNews->id_news_category);
+        $category_news =  $this->categoryNewsService->getAllNewsCategory();
+        return view('administrator.news.list',[
+            'title' => 'Danh Sách Tin Tức - ' . $categoryNews->news_category,
+            'news' =>$news,
+            'category_news'=> $category_news
+        ]);
+    }
 
     public function add(){
         return view('administrator.category-news.add',[

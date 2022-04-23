@@ -133,7 +133,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [CategoryNewsController::class, 'index']);
             Route::get('/add', [CategoryNewsController::class, 'add']);
             Route::post('/add/create', [CategoryNewsController::class, 'create']);
-            // Route::get('/view/{id}', [CategoryNewsController::class, 'view']);
+            Route::get('/view/{categoryNews}', [CategoryNewsController::class, 'view']);
             Route::get('edit/{categorynews}', [CategoryNewsController::class, 'show']);
             Route::post('update/{categorynews}', [CategoryNewsController::class, 'update']);
             Route::delete('delete', [CategoryNewsController::class, 'delete']);
@@ -148,6 +148,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update/{news}', [NewsController::class, 'update']);
             Route::delete('delete', [NewsController::class, 'delete']);
             Route::get('view/{news}', [NewsController::class, 'view']);
+            Route::get('filter', [NewsController::class, 'filter']);
         });
 
         //Province

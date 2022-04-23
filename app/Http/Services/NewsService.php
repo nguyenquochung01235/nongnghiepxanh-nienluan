@@ -13,6 +13,20 @@ class NewsService{
         return News::where('news_title', 'like', "%". $request->input('searchnews') ."%")->get();
     }
     
+    public function filterNews($request){
+        $filter = explode("-", filter_var(trim($request->input('filterBy'), "-")));
+        if($request->input('category_news') == null ){
+            return News:: orderBy($filter[0], $filter[1])
+                    ->where('news_title', 'like', "%". $request->input('seachTitle') ."%")
+                    ->paginate(10);
+        }
+        return News:: orderBy($filter[0], $filter[1])
+                    ->where('news_title', 'like', "%". $request->input('seachTitle') ."%")
+                    ->where('id_news_category',$request->input('category_news'))
+                    ->paginate(10);
+    }
+
+
     public function getAllNews(){
         return News::with('admin')->orderBy('created_at', 'desc')->with('categorynews')->paginate(10);
     }
@@ -23,7 +37,7 @@ class NewsService{
     }
 
     public function newsByCategory($id){
-        return News::with('categorynews')->where('id_news_category', $id)->orderBy('created_at', 'desc')->get();
+        return News::with('categorynews')->where('id_news_category', $id)->orderBy('created_at', 'desc')->paginate(15);
     }
 
     public function getListNewsByCategory($id){

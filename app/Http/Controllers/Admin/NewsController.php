@@ -23,10 +23,21 @@ class NewsController extends Controller
 
     public function index(){
         $news = $this->newsService->getAllNews();
-
+        $category_news =  $this->categoryNewsService->getAllNewsCategory();
         return view('administrator.news.list',[
             'title' => 'Danh Sách Tin Tức',
-            'news' =>$news
+            'news' =>$news,
+            'category_news'=> $category_news
+        ]);
+    }
+
+    public function filter(Request $request){
+        $news = $this->newsService->filterNews($request);
+        $category_news =  $this->categoryNewsService->getAllNewsCategory();
+        return view('administrator.news.list',[
+            'title' => 'Danh Sách Tin Tức',
+            'news' =>$news,
+            'category_news'=> $category_news
         ]);
     }
 

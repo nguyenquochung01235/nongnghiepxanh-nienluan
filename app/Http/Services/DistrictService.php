@@ -12,6 +12,10 @@ class DistrictService{
         return District::with('province')->orderBy('province_id', 'desc')->get();
     }
 
+    public function getAllDistrictByProvince($province_id){
+        return District::with('province')->where('province_id', $province_id)->orderBy('province_id', 'desc')->paginate(15);
+    }
+
     public function create($request){
         try {
             $checkName = District::where("district_name",$request->input("district_name"))

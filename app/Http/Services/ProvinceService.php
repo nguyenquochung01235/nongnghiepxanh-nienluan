@@ -10,6 +10,7 @@ class ProvinceService{
     public function getAllProvince(){
         return Province::get();
     }
+    
 
     public function create($request){
         try {
