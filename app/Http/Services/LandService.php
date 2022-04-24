@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Models\Commune;
 use App\Models\Lands;
 use Illuminate\Support\Facades\Session;
 
@@ -14,6 +15,22 @@ class LandService{
     public function getLandByID($land_id){
         return Lands::with('district.province')->where('land_id', $land_id)->get();
     }
+
+      
+    public function filterLand($request){
+        $filter = explode("-", filter_var(trim($request->input('filterBy'), "-")));
+        if($request->input('province') == null ){
+            return Lands::with('district.province')->orderBy('tbl_lands.'.$filter[0], $filter[1])
+                    ->where('land_title', 'like', "%". $request->input('seachTitle') ."%")
+                    ->paginate(15)->withQueryString();
+        }
+        return Lands::with('district.province')->orderBy('tbl_lands.'.$filter[0], $filter[1])
+                    ->join('tbl_district', 'tbl_lands.district_id', '=', 'tbl_district.district_id')
+                    ->where('land_title', 'like', "%". $request->input('seachTitle') ."%")
+                    ->where('province_id',$request->input('province'))
+                    ->paginate(15)->withQueryString();
+}
+
 
     public function create($request){
         try {

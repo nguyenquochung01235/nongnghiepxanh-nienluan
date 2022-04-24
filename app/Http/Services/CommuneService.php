@@ -29,7 +29,7 @@ class CommuneService{
         }
 
         if($request->input('district') == null){
-            return Commune::with('district.province')->orderBy($filter[0], $filter[1])
+            return Commune::with('district.province')->orderBy('tbl_commune.'.$filter[0], $filter[1])
             ->join('tbl_district', 'tbl_commune.district_id', '=', 'tbl_district.district_id')
             ->where('commune_name', 'like', "%". $request->input('seachTitle') ."%")
             ->where('province_id', $request->input('province'))

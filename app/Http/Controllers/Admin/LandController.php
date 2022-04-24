@@ -26,10 +26,22 @@ class LandController extends Controller
 
     public function index(){
        $lands = $this->landService->getAllLand();
+       $province = $this->provinceService->getAllProvinceNongNghiepXanh();
        return view('administrator.lands.list',[
            'title' => 'Thông Tin Thổ Nhưỡng',
-           'lands' => $lands
+           'lands' => $lands,
+           'province' => $province
        ]);
+    }
+
+    public function filter(Request $request){
+        $lands = $this->landService->filterLand($request);
+        $province = $this->provinceService->getAllProvinceNongNghiepXanh();
+        return view('administrator.lands.list',[
+            'title' => 'Thông Tin Thổ Nhưỡng',
+            'lands' => $lands,
+            'province' => $province
+        ]);
     }
 
     public function add(){
@@ -55,10 +67,12 @@ class LandController extends Controller
 
     public function view(Lands $lands){
         $land = $this->landService->getLandByID($lands->land_id);
+  
         // return dd($land);
         return view('administrator.lands.land',[
             'title'=> 'Thông Tin Thổ Nhưỡng',
-            'land' =>  $land
+            'land' =>  $land,
+            
         ]);
     }
 

@@ -197,6 +197,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update/{lands}', [LandController::class, 'update']);
             Route::delete('/delete', [LandController::class, 'delete']);
             Route::post('/upload/img', [LandController::class, 'uploadImg']);
+            Route::get('filter', [LandController::class, 'filter']);
         });
 
 
