@@ -38,6 +38,13 @@ class ProvinceController extends Controller
         ]);
     }
 
+    public function filter(Request $request){
+        $province = $this->provinceService->filterProvince($request);
+        return view('administrator.province.list',[
+            'title' => 'Danh Sách Tỉnh - Thành Phố',
+            'province' => $province
+        ]);
+    }
 
     public function add(){
         return view('administrator.province.add',[

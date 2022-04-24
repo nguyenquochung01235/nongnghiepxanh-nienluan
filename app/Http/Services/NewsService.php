@@ -18,12 +18,12 @@ class NewsService{
         if($request->input('category_news') == null ){
             return News:: orderBy($filter[0], $filter[1])
                     ->where('news_title', 'like', "%". $request->input('seachTitle') ."%")
-                    ->paginate(10);
+                    ->paginate(10)->withQueryString();;
         }
         return News:: orderBy($filter[0], $filter[1])
                     ->where('news_title', 'like', "%". $request->input('seachTitle') ."%")
                     ->where('id_news_category',$request->input('category_news'))
-                    ->paginate(10);
+                    ->paginate(10)->withQueryString();;
     }
 
 

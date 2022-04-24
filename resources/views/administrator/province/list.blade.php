@@ -19,6 +19,58 @@
         </button>
         @endhasrole
         <hr>
+        <div class="card collapsed-card ">
+            <div class="card-header border-0 ui-sortable-handle" style="cursor: move;">
+              <h3 class="card-title">
+                <i class="fas fa-filter"></i>
+                Bộ lọc
+              </h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body filter" style="display: none;">
+              <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                  <div class=""></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink">
+                  <div class=""></div>
+                </div>
+              </div>
+              <div>
+
+                <form class="row" method="get" action="/administrator/province/filter">
+                  <div class="form-group col-7">
+                    <label>Tìm theo tên</label>
+                    <input class="form-control" name="seachTitle" placeholder="Gõ từ khóa">
+                  </div>
+                 
+                  <div class="form-group col-3">
+                    <label>Sắp xếp theo</label>
+                    <select class="form-control" name="filterBy">
+                      <option value="province_id-DESC">ID giảm dần</option>
+                      <option value="province_id-ASC">ID tăng dần</option>
+                      <option value="updated_at-DESC">Mới nhất</option>
+                      <option value="updated_at-ASC">Cũ nhất</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-2">
+                    <label style="opacity: 0;">Tìm kiếm</label>
+                    <button class="form-control btn btn-primary" type="submit">
+                      <i class="fas fa-search"></i>
+                      Tìm kiếm
+                    </button>
+                  </div>
+                  @csrf
+                </form>
+
+              </div>
+            </div>
+          </div>
           <table class="table table-bordered table-hover">
             <thead>
               <tr>

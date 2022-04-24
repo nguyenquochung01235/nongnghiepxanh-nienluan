@@ -14,6 +14,12 @@ class ProvinceService{
     public function getAllProvinceNongNghiepXanh(){
         return Province::get();
     }
+    public function filterProvince($request){
+        $filter = explode("-", filter_var(trim($request->input('filterBy'), "-")));
+        return Province:: orderBy($filter[0], $filter[1])
+                    ->where('province_name', 'like', "%". $request->input('seachTitle') ."%")
+                    ->paginate(15)->withQueryString();
+    }
     
 
     public function create($request){

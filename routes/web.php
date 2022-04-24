@@ -160,6 +160,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{province}', [ProvinceController::class, 'show']);        
             Route::post('update/{province}', [ProvinceController::class, 'update']);
             Route::delete('/delete', [ProvinceController::class, 'delete']);
+            Route::get('filter', [ProvinceController::class, 'filter']);
         });
 
         // District
@@ -182,7 +183,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{commune}', [CommuneController::class, 'show']);
             Route::post('update/{commune}', [CommuneController::class, 'update']);
             Route::delete('/delete', [CommuneController::class, 'delete']);
-            
+            Route::get('filter', [CommuneController::class, 'filter']);
         });
 
 

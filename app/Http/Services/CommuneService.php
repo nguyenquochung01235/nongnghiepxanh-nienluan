@@ -13,6 +13,34 @@ class CommuneService{
         return Commune::with('district.province')->orderBy('district_id', 'desc')->paginate(20);
     }
     
+    public function filterCommune($request){
+        $filter = explode("-", filter_var(trim($request->input('filterBy'), "-")));
+        if($request->input('province') == null ){
+            if($request->input('district') == null){
+                return Commune:: with('district.province')->orderBy($filter[0], $filter[1])
+                ->where('commune_name', 'like', "%". $request->input('seachTitle') ."%")
+                ->paginate(15)->withQueryString();
+            }
+            return Commune:: with('district.province')->orderBy($filter[0], $filter[1])
+                    ->where('commune_name', 'like', "%". $request->input('seachTitle') ."%")
+                    ->where('district_id',$request->input('district'))
+                    ->paginate(15)->withQueryString();
+            
+        }
+
+        if($request->input('district') == null){
+            return Commune::with('district.province')->orderBy($filter[0], $filter[1])
+            ->join('tbl_district', 'tbl_commune.district_id', '=', 'tbl_district.district_id')
+            ->where('commune_name', 'like', "%". $request->input('seachTitle') ."%")
+            ->where('province_id', $request->input('province'))
+            ->paginate(15)->withQueryString();
+        }
+        return Commune:: with('district.province')->orderBy($filter[0], $filter[1])
+                    ->where('commune_name', 'like', "%". $request->input('seachTitle') ."%")
+                    ->where('district_id',$request->input('district'))
+                    ->paginate(15)->withQueryString();
+}
+
     public function getAllCommuneByDistrict($district_id){
         return Commune::with('district.province')
         ->where('district_id', $district_id)

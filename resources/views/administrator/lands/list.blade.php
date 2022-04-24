@@ -37,7 +37,7 @@
               <tr>
                 <td>{{$data->land_id}}</td>
                 <td style="max-width: 280px;">{{$data->land_title}}</td>
-                <td>{{$data->district->district_name}}</td>
+                <td>{{$data->district->province->province_name}}</td>
                 <td><img style="max-width: 250px" src="{{$data->land_img_1}}" alt=""></td>
                 <td class="mota1" style="max-width: 320px"> {!! $data->land_content !!}</td>
                 <td>{{$data->updated_at}}</td>
@@ -60,6 +60,7 @@
 
           </table>
           <div class="card-footer clearfix">
+            {!! $lands->links()!!}
           </div>
         </div>
         <!-- /.card-body -->

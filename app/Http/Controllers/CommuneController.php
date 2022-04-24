@@ -24,15 +24,34 @@ class CommuneController extends Controller
 
     public function index(){
         $commune = $this->communeService->getAllCommune();
+        $province  = $this->provinceService->getAllProvinceNongNghiepXanh();
+        $district = $this->districtService->getAllDistrictNongNghiepXanh();
         // return dd($commune);
         return view('administrator.commune.list',[
             'title' => 'Danh Sách Xã - Phường',
-            'commune' => $commune
+            'commune' => $commune,
+            'province' => $province,
+            'district' =>$district
         ]);
     }
 
+    public function filter(Request $request){
+        // return dd($request->all());
+        $commune = $this->communeService->filterCommune($request);
+        $province  = $this->provinceService->getAllProvinceNongNghiepXanh();
+        $district = $this->districtService->getAllDistrictNongNghiepXanh();
+        // return dd($commune);
+        return view('administrator.commune.list',[
+            'title' => 'Danh Sách Xã - Phường',
+            'commune' => $commune,
+            'province' => $province,
+            'district' =>$district
+        ]);
+    }
+
+
     public function add(){
-        $province  = $this->provinceService->getAllProvince();
+        $province  = $this->provinceService->getAllProvinceNongNghiepXanh();
         return view('administrator.commune.add',[
             'title' => 'Thêm Xã - Phường Mới',
             'province' => $province

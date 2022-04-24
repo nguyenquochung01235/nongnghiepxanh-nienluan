@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 class LandService{
 
     public function getAllLand(){
-        return Lands::with('district')->orderBy('updated_at', 'desc')->get();
+        return Lands::with('district.province')->orderBy('updated_at', 'desc')->paginate(15)->withQueryString();
     }
 
     public function getLandByID($land_id){

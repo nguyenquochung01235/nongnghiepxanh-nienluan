@@ -24,12 +24,12 @@ class DistrictService{
             if($request->input('province') == null ){
                 return District:: orderBy($filter[0], $filter[1])
                         ->where('district_name', 'like', "%". $request->input('seachTitle') ."%")
-                        ->paginate(15);
+                        ->paginate(15)->withQueryString();
             }
             return District:: orderBy($filter[0], $filter[1])
                         ->where('district_name', 'like', "%". $request->input('seachTitle') ."%")
                         ->where('province_id',$request->input('province'))
-                        ->paginate(15);
+                        ->paginate(15)->withQueryString();
     }
     
 

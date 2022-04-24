@@ -50,7 +50,8 @@
                   </div>
                   <div class="form-group col-2">
                     <label>Tỉnh Thành Phố</label>
-                    <select class="form-control" name="province">
+                   
+                    <select class="form-control" id="provinceSelectBox" name="province"  style="position: absolute; z-index: 0;">
                       <option value="">Tất cả các tỉnh thành</option>
                       @foreach($province as $key => $data)
                       <option value="{{$data->province_id}}">{{$data->province_name}}</option>
@@ -59,7 +60,8 @@
                   </div>
                   <div class="form-group col-2">
                     <label>Tỉnh Quận Huyện</label>
-                    <select class="form-control" name="district">
+  
+                    <select  id="districtSelectBox" class="form-control" name="district">
                       <option value="">Tất cả các quận huyện</option>
                       @foreach($district as $key => $data)
                       <option value="{{$data->district_id}}">{{$data->district_name}}</option>
