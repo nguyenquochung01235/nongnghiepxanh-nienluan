@@ -28,6 +28,13 @@ class Helper
     }
 
 
+    public static function checkUrlContain(){
+        $currentURL = url()->current();
+        if (strpos($currentURL, "/land") !== false) {
+            return "land";
+        } 
+    }
+
     public static function getAllNewsCategory(){
         $categoryNewsService = new CategoryNewsService();
         $list = $categoryNewsService->getAllNewsCategory();

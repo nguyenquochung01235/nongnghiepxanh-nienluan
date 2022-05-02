@@ -82,6 +82,31 @@
 
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fab fa-forumbee"></i>
+              <p>
+                Diễn Đàn Nông Nghiệp
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/administrator/forum" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách bài viết</p>
+                </a>
+              </li>
+              
+              <!-- <li class="nav-item">
+                <a href="/administrator/news" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Phê duyệt</p>
+                </a>
+              </li> -->
+
+            </ul>
+          </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">

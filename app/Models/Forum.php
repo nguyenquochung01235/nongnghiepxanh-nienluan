@@ -17,12 +17,17 @@ class Forum extends Model
         'forum_img_2',
         'forum_img_3',
         'forum_content',
-        'user_id'
+        'user_id',
+        'admin_id',
+        'active'
     ];
 
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
+    }
+    public function admin(){
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
 
 }

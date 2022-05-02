@@ -8,7 +8,10 @@
                 </a>
             </div>
             <div class="header__search">
-                <form class="header__form" action="/searchnews" method="get">
+             <?php 
+                $link = \App\Helpers\Helper::checkUrlContain(); 
+             ?>
+                <form class="header__form" action="/searchnews/{!!$link!!}" method="get">
                     <input class="header__input" type="text" name="searchnews" placeholder="Tìm kiếm tin tức" />
                     <button class="header__btn btn btn--small btn--primary"><i class="fas fa-search"></i></button>
                 </form>

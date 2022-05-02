@@ -10,17 +10,17 @@ use Illuminate\Support\Facades\Session;
 class ForumService{
 
     public function getAllForumByUser($user_id){
-        return Forum::with('user')->where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
+        return Forum::with('user')->where('user_id', $user_id)->where('active', 1)->orderBy('created_at', 'desc')->get();
     }
 
 
     public function getAllContent(){
-        return Forum::with('user')->orderBy('created_at', 'desc')->paginate();
+        return Forum::with('user')->orderBy('created_at', 'desc')->where('active', 1)->paginate();
     }
       
 
     public function getForumDetail($forum_id){
-        return Forum::with('user')->where('forum_id', $forum_id)->orderBy('created_at', 'desc')->first();
+        return Forum::with('user')->where('forum_id', $forum_id)->where('active', 1)->orderBy('created_at', 'desc')->first();
     }
 
     
@@ -110,9 +110,10 @@ class ForumService{
                 'forum_img_1' => $request->input('img_1_link'),
                 'forum_img_2' => $request->input('img_2_link'),
                 'forum_img_3' => $request->input('img_3_link'),
+                'active' => 0,
                 'user_id' => Auth::guard('user')->user()->user_id
             ]);
-            Session::flash('success', 'Thêm Bài Viết Thành Công !!! ');
+            Session::flash('success', 'Thêm thành công bài viết - VUI LÒNG CHỜ DUYỆT !!! ');
         } catch (\Exception $err) {
             Session::flash('error', 'Thêm Bài Viết Không Thành Công !!! <hr>' . $err->getMessage());
 

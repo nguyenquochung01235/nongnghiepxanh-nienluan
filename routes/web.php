@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryNewsController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\ForumController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\LandController;
 use App\Http\Controllers\Admin\LoginController;
@@ -12,7 +13,7 @@ use App\Http\Controllers\Admin\SelfInforController;
 use App\Http\Controllers\Admin\UploadImgController;
 use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\DistrictController;
-use App\Http\Controllers\NongNghiep\ForumController;
+use App\Http\Controllers\NongNghiep\ForumController as NongNghiepForumController;
 use App\Http\Controllers\NongNghiep\LandsController as NongNghiepLandsController;
 use App\Http\Controllers\NongNghiep\MainController as NongNghiepMainController;
 use App\Http\Controllers\NongNghiep\NewsController as NongNghiepNewsController;
@@ -61,15 +62,15 @@ Route::get('/land', [NongNghiepLandsController::class, 'index']);
 
 
 
-Route::get('/forum',[ForumController::class, 'index']);
-Route::get('/forum/add',[ForumController::class, 'add'])->middleware(['user']);
-Route::post('/forum/add/create',[ForumController::class, 'create'])->middleware(['user']);
+Route::get('/forum',[NongNghiepForumController::class, 'index']);
+Route::get('/forum/add',[NongNghiepForumController::class, 'add'])->middleware(['user']);
+Route::post('/forum/add/create',[NongNghiepForumController::class, 'create'])->middleware(['user']);
 
-Route::get('/forum/detail/{forum}',[ForumController::class, 'detail']);
-Route::post('/forum/upload/img', [ForumController::class, 'uploadImg'])->middleware(['user']);;
+Route::get('/forum/detail/{forum}',[NongNghiepForumController::class, 'detail']);
+Route::post('/forum/upload/img', [NongNghiepForumController::class, 'uploadImg'])->middleware(['user']);;
 
-Route::post('/forum/detail/{forum}/{user}/comment',[ForumController::class, 'commentForumDetail'])->middleware(['user']);
-Route::post('/forum/detail/{forum}/{user}/comment/{comment}',[ForumController::class, 'replyCommentForumDetail'])->middleware(['user']);
+Route::post('/forum/detail/{forum}/{user}/comment',[NongNghiepForumController::class, 'commentForumDetail'])->middleware(['user']);
+Route::post('/forum/detail/{forum}/{user}/comment/{comment}',[NongNghiepForumController::class, 'replyCommentForumDetail'])->middleware(['user']);
 
 
 Route::get('/searchnews',[SearchController::class, 'searchNews']);
@@ -109,7 +110,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{job}', [JobController::class, 'show']);
             Route::post('update/{job}', [JobController::class, 'update']);
             Route::delete('delete', [JobController::class, 'delete']);
-
             Route::post('getjobbydepartment', [JobController::class, 'getJobByDepartmentAjax']);
             Route::post('getsalaryofjob', [JobController::class, 'getSalaryOfJobAjax']);
 
@@ -198,6 +198,15 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', [LandController::class, 'delete']);
             Route::post('/upload/img', [LandController::class, 'uploadImg']);
             Route::get('filter', [LandController::class, 'filter']);
+        });
+
+        //Forum
+        Route::prefix('forum')->group(function () {
+            Route::get('/', [ForumController::class, 'index']);
+            Route::get('view/{forum}', [ForumController::class, 'view']);
+            Route::post('approve/{forum}', [ForumController::class, 'approve']);
+            Route::get('filter', [ForumController::class, 'filter']);
+            Route::delete('/delete', [ForumController::class, 'delete']);         
         });
 
 

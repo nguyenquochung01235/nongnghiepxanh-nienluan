@@ -72,6 +72,7 @@ class EmployeeController extends Controller
     }
 
     public function update($id, Request $request){
+        // return dd($request->all());
         $result = $this->employeeService->update($id, $request);
         if($result){
             return redirect('/administrator/employee/edit/'.$id);
