@@ -2,7 +2,9 @@
 
 @section('nongnghiep')
 <main class="container s-mainnew grid grid--12">
+    
     <div class="grid--span-7">
+        <p>*<i style="text-decoration: underline;"> Nhập huyện mà bạn muốn xem ở thanh tìm kiếm</i></p>
         <div>
             <h4 class="heading">
                 <a href="#" class="heading__link link link--bold">
@@ -13,6 +15,7 @@
         </div>
 
         <section class="weather">
+           
             <div class="weather_body">
                 <div class="weather__top">
                     <div class="weather__data">
@@ -112,6 +115,33 @@
             </div>
 
         </section>
+        <section class="detail-content">
+            <div class="detail-content__top">
+                <h1 class="detail-content__heading">{{$land->land_title}}</h1>
+               
+                <p class="detail-content__intro">
+                    {{$land->forum_title}}
+                </p>
+            </div>
+            <div class="detail-content__main">
+
+                <div class="grid_detail">
+                    <figure class="figure">
+                        <img src="{{$land->land_img_1}}" alt="img" class="figure__img img_detail" />
+                    </figure>
+                    <figure class="figure">
+                        <img src="{{$land->land_img_2}}" alt="img" class="figure__img img_detail" />
+                    </figure>
+                    <figure class="figure">
+                        <img src="{{$land->land_img_3}}" alt="img" class="figure__img img_detail" />
+                    </figure>
+                </div>
+
+                {!! $land->land_content !!}
+            </div>
+        </section>
+        
+
 
 
     </div>
