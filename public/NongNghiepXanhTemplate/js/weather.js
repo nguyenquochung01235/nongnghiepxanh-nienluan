@@ -14,20 +14,56 @@ async function getWeather(locator) {
       
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, "0");
+      var current_time = today.getHours();
       var time = date.slice(11, 16);
       var nextDay = date.slice(0, 10);    
   
       if (date.slice(8, 10) == dd) {
-  
+        if (parseInt(time.slice(0, 2)) == current_time) {
           $(".weather__temperature-number").text(temp);
-          $(".weather__place").text("Thời tiết được xem tại thành phố " + city_name);
+          $(".weather__place").text(
+            "Thời tiết được xem tại thành phố " + city_name
+          );
           $(".weather__date").text(today);
-          $(".weather__status").text("Trời có thể có "+weather_description);
-          $(".weather__wind").text("Gió: "+wind_speed+" km/h");
+          $(".weather__status").text("Trời có thể có " + weather_description);
+          $(".weather__wind").text("Gió: " + wind_speed + " km/h");
+        } else {
+          if (parseInt(time.slice(0, 2)) == current_time + 1) {
+            $(".weather__temperature-number").text(temp);
+            $(".weather__place").text(
+              "Thời tiết được xem tại thành phố " + city_name
+            );
+            $(".weather__date").text(today);
+            $(".weather__status").text("Trời có thể có " + weather_description);
+            $(".weather__wind").text("Gió: " + wind_speed + " km/h");
+          } else {
+            if (parseInt(time.slice(0, 2)) == current_time + 2) {
+              $(".weather__temperature-number").text(temp);
+              $(".weather__place").text(
+                "Thời tiết được xem tại thành phố " + city_name
+              );
+              $(".weather__date").text(today);
+              $(".weather__status").text("Trời có thể có " + weather_description);
+              $(".weather__wind").text("Gió: " + wind_speed + " km/h");
+            } else {
+              if (parseInt(time.slice(0, 2)) == current_time + 3) {
+                $(".weather__temperature-number").text(temp);
+                $(".weather__place").text(
+                  "Thời tiết được xem tại thành phố " + city_name
+                );
+                $(".weather__date").text(today);
+                $(".weather__status").text(
+                  "Trời có thể có " + weather_description
+                );
+                $(".weather__wind").text("Gió: " + wind_speed + " km/h");
+              }
+            }
+          }
+        }
   
         $("#time").append(`
                             
-                    <li class="weather__item "
+                    <li class="weather__item"
                         <span id="tuesday" class="weather__day">${time}</span>
                         <img class="weather__img weather__img--small" src="${src_thumb}" alt="img" />
                         <p><span>${temp} Độ C</span></p>
