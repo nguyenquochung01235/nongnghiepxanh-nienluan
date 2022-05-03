@@ -74,6 +74,7 @@ Route::post('/forum/detail/{forum}/{user}/comment/{comment}',[NongNghiepForumCon
 
 
 Route::get('/searchnews',[SearchController::class, 'searchNews']);
+Route::get('/searchnews/land',[NongNghiepLandsController::class, 'searchLands']);
 
 
 

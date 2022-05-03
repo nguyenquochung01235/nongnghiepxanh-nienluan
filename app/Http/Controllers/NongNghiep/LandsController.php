@@ -24,4 +24,12 @@ class LandsController extends Controller
             'land' => $land
         ]);
     }
+
+    public function searchLands(Request $request){
+        $land = $this->landService->searchLands($request);
+        return view ('nongnghiepxanh.land.land', [
+            'title' => 'Đất Và Thời Tiết',
+            'land' => $land
+        ]);
+    }
 }
