@@ -81,6 +81,6 @@ async function getWeather(locator) {
       }
     }
   }
-  
-  getWeather("cao lanh");
+var locator = $("#locator").val();
+  getWeather(locator);
   

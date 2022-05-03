@@ -17,7 +17,8 @@ class Lands extends Model
         'land_img_1',
         'land_img_2',
         'land_img_3',
-        'district_id'
+        'district_id',
+        'weather'
     ];
 
     public function district(){

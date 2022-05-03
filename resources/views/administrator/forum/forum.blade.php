@@ -46,7 +46,15 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <p>Bài viết được tạo ngày {{$forum->created_at}}, được cập nhật bởi nhân viên: <strong> {{$forum->admin->admin_name}} </strong>, vào ngày {{$forum->updated_at}}</p>
+                    <p>Bài viết được tạo ngày {{$forum->created_at}} 
+                        <strong> 
+                            @if($forum->admin_name != null)
+                            , được cập nhật bởi nhân viên:
+                            {{$forum->admin->admin_name}} 
+                            , vào ngày {{$forum->updated_at}}</p>
+                            @endif
+                        </strong>
+                       
                 </div>
                 <!-- /.card-body -->
             </div>

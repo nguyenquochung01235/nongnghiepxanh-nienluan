@@ -33,7 +33,12 @@ class LandService{
     public function searchLands($request){
         $district =  District::where('district_name','like','%'.$request->searchnews.'%')
         ->get(['district_id'])->first();
-        return  Lands::where('district_id', $district->district_id)->first();
+        if($district == null){
+            $district_id = 34;
+        }else{
+            $district_id = $district->district_id;
+        }
+        return  Lands::where('district_id', $district_id)->first();
     }
 
 }   
