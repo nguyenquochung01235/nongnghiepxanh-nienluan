@@ -45,19 +45,7 @@ async function getWeather(locator) {
               $(".weather__date").text(today);
               $(".weather__status").text("Trời có thể có " + weather_description);
               $(".weather__wind").text("Gió: " + wind_speed + " km/h");
-            } else {
-              if (parseInt(time.slice(0, 2)) == current_time + 3) {
-                $(".weather__temperature-number").text(temp);
-                $(".weather__place").text(
-                  "Thời tiết được xem tại thành phố " + city_name
-                );
-                $(".weather__date").text(today);
-                $(".weather__status").text(
-                  "Trời có thể có " + weather_description
-                );
-                $(".weather__wind").text("Gió: " + wind_speed + " km/h");
-              }
-            }
+            } 
           }
         }
   
