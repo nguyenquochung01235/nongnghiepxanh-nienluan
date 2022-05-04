@@ -15,7 +15,7 @@
           @hasrole(['admin','content'])
           <button type="button" class="btn btn-sm btn-primary">
             <i class="fas fa-plus"></i>
-            <a href="/administrator/news/add" style="color: #fff;">Thêm loại tin tức</a>
+            <a href="/administrator/plant/add" style="color: #fff;">Thêm loại cây trồng</a>
           </button>
           @endhasrole
           <hr>
@@ -44,28 +44,28 @@
               </div>
               <div>
 
-                <form class="row" method="get" action="/administrator/news/filter">      
+                <form class="row" method="get" action="/administrator/plant/filter">      
                     <div class="form-group col-5">
                       <label>Tìm theo tên</label>
                       <input class="form-control" name="seachTitle" placeholder="Gõ từ khóa">
                     </div>            
                     <div class="form-group col-3">
                       <label>Danh mục</label>
-                      <select class="form-control" name="category_news">
+                      <select class="form-control" name="categoryplant">
                       <option value="">Tất cả các danh mục</option>
-                        @foreach($category_news as $key => $data)
-                        <option value="{{$data->id_news_category}}">{{$data->news_category}}</option>
+                        @foreach($categoryplant as $key => $data)
+                        <option value="{{$data->top_id}}">{{$data->top_name}}</option>
                         @endforeach
                       </select>
                     </div>            
                     <div class="form-group col-2">
                       <label>Sắp xếp theo</label>
                       <select class="form-control" name="filterBy">
-                        <option value="news_id-DESC">ID giảm dần</option>
-                        <option value="news_id-ASC">ID tăng dần</option>
+                        <option value="top_id-DESC">ID giảm dần</option>
+                        <option value="top_id-ASC">ID tăng dần</option>
                         <option value="updated_at-DESC">Tin mới nhất</option>
                         <option value="updated_at-ASC">Tin cũ nhất</option>
-                        <option value="id_news_category-DESC">Theo danh mục</option>
+            
                       </select>
                     </div>            
                     <div class="form-group col-2">
@@ -87,36 +87,29 @@
             <thead>
               <tr>
                 <th style="width: 10px;">ID</th>
-                <th style="max-width: 200px;">Tựa đề</th>
+                <th style="max-width: 200px;">Giống cây</th>
                 <th>Danh mục</th>
                 <th>Hình ảnh</th>
                 <th>Update at</th>
-                <th style="width: 60px;">Status</th>
                 <th style="width: 130px; text-align: center;">Edit</th>
 
               </tr>
             </thead>
             <tbody>
-              @foreach($news as $key => $data)
+              @foreach($plant as $key => $data)
               <tr>
-                <td>{{$data->news_id}}</td>
-                <td style="max-width: 280px;">{{$data->news_title}}</td>
-                <td>{{$data->categorynews->news_category}}</td>
-                <td><img style="max-width: 250px" src="{{$data->news_img}}" alt=""></td>
+                <td>{{$data->top_id}}</td>
+                <td style="max-width: 280px;">{{$data->plant_name}}</td>
+                <td>{{$data->top->top_name}}</td>
+                <td><img style="max-width: 250px" src="{{$data->plant_img_1}}" alt=""></td>
                 <td>{{$data->updated_at}}</td>
 
-                <td style="width: 60px;">
-                  @if($data->active)
-                  <button type="button" class="btn btn-sm btn-success" disabled>Active</button>
-                  @else
-                  <button type="button" class="btn btn-sm btn-danger" disabled>Block</button>
-                  @endif
-                </td>
+            
                 <td>
-                  <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href="/administrator/news/view/{{$data->news_id}}"><i class="fas fa-eye"></i></a></button>
+                  <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href="/administrator/plant/view/{{$data->plant_id}}"><i class="fas fa-eye"></i></a></button>
                   @hasrole(['admin','content'])
-                  <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/news/edit/{{$data->news_id}}"><i class="fas fa-edit"></i></a></button>
-                  <button type="button" class="btn btn-sm btn-danger"><a style="color: #fff;" href="#" onclick="removeRow( <?php echo $data->news_id ?> ,'/administrator/news/delete')"><i class="fas fa-trash"></i></a></button>
+                  <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/plant/edit/{{$data->plant_id}}"><i class="fas fa-edit"></i></a></button>
+                  <button type="button" class="btn btn-sm btn-danger"><a style="color: #fff;" href="#" onclick="removeRow( <?php echo $data->plant_id ?> ,'/administrator/plant/delete')"><i class="fas fa-trash"></i></a></button>
                   @endhasrole
 
                 </td>
@@ -130,7 +123,7 @@
           </table>
           <div class="card-footer clearfix">
 
-            {!! $news->links() !!}</div>
+            {!! $plant->links() !!}</div>
 
         </div>
         <!-- /.card-body -->

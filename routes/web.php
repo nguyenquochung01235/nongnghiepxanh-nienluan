@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryNewsController;
+use App\Http\Controllers\Admin\CategoryPlantController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\ForumController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Admin\LandController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\PlantController;
 use App\Http\Controllers\Admin\SelfInforController;
 use App\Http\Controllers\Admin\UploadImgController;
 use App\Http\Controllers\CommuneController;
@@ -210,6 +212,29 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', [ForumController::class, 'delete']);         
         });
 
+         //Category - Plant
+         Route::prefix('category-plant')->group(function () {
+            Route::get('/', [CategoryPlantController::class, 'index']);
+            Route::get('/add', [CategoryPlantController::class, 'add']);
+            Route::post('/add/create', [CategoryPlantController::class, 'create']);
+            // Route::get('/view/{categoryplant}', [CategoryPlantController::class, 'view']);
+            Route::get('edit/{categoryplant}', [CategoryPlantController::class, 'show']);
+            Route::post('update/{categoryplant}', [CategoryPlantController::class, 'update']);
+            Route::delete('delete', [CategoryPlantController::class, 'delete']);
+        });
+
+        //Lands
+        Route::prefix('plant')->group(function () {
+            Route::get('/', [PlantController::class, 'index']);
+            Route::get('/add', [PlantController::class, 'add']);
+            // Route::post('/add/create', [LandController::class, 'create']);
+            Route::get('view/{plant}', [PlantController::class, 'view']);
+            // Route::get('edit/{lands}', [LandController::class, 'show']);
+            // Route::post('update/{lands}', [LandController::class, 'update']);
+            // Route::delete('/delete', [LandController::class, 'delete']);
+            Route::post('/upload/img', [PlantController::class, 'uploadImg']);
+            Route::get('filter', [PlantController::class, 'filter']);
+        });
 
 
 

@@ -222,3 +222,77 @@ $("#land_img_3").change(function(){
         }
     });
 })
+
+
+// Plant Upload IMG
+
+$("#plant_img_1").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/plant/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_plant_1').attr("src",results.url);
+                $('#plant_img_1').attr("value",results.url);
+                $('#plant_img_1_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#plant_img_2").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/plant/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_plant_2').attr("src",results.url);
+                $('#plant_img_2').attr("value",results.url);
+                $('#plant_img_2_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#plant_img_3").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/plant/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_plant_3').attr("src",results.url);
+                $('#plant_img_3').attr("value",results.url);
+                $('#plant_img_3_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+

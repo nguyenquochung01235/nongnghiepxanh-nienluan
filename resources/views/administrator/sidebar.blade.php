@@ -111,7 +111,13 @@
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
+                <a href="/administrator/category-plant" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh mục cây trồng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/administrator/plant" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách cây trồng</p>
                 </a>

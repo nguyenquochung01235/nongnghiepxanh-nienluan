@@ -16,6 +16,7 @@ class Plant extends Model
         'plant_img_1',
         'plant_img_2',
         'plant_img_3',
+        'top_id'
     ];
     
     protected $casts = [
@@ -24,6 +25,10 @@ class Plant extends Model
 
     public function sop(){
         return $this->belongsToMany('App\Models\Sop');
+    }
+
+    public function top(){
+        return $this->belongsTo('App\Models\Top' , 'top_id');
     }
 
 }
