@@ -37,19 +37,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a href="/administrator/dashboard" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v1</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v2</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v3</p>
                 </a>
@@ -97,22 +97,14 @@
                   <p>Danh sách bài viết</p>
                 </a>
               </li>
-              
-              <!-- <li class="nav-item">
-                <a href="/administrator/news" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Phê duyệt</p>
-                </a>
-              </li> -->
-
             </ul>
           </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-file-signature"></i>
+            <i class="nav-icon fas fa-tree"></i>
               <p>
-                Tra Cứu Nông Nghiệp
+                Cây Trồng & Bệnh Hại
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -121,24 +113,83 @@
               <li class="nav-item">
                 <a href="pages/charts/uplot.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Danh mục tra cứu</p>
+                  <p>Danh sách cây trồng</p>
                 </a>
               </li>
               
               <li class="nav-item">
                 <a href="pages/charts/uplot.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Cập nhật danh mục</p>
+                  <p>Danh sách bệnh hại</p>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a href="pages/charts/uplot.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tin tức</p>
+                  <p>Danh sách thuốc BVTV</p>
                 </a>
               </li>
 
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-fish"></i>
+            
+              <p>
+                Vật Nuôi & Bệnh Hại
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="pages/charts/uplot.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách vật nuôi</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="pages/charts/uplot.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách bệnh hại</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="pages/charts/uplot.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách thuốc thú y</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-biohazard"></i>
+              <p>
+                Thuốc & Vật Tư Nông Nghiệp
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="pages/charts/uplot.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh mục thuốc</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="pages/charts/uplot.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh mục phân bón</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -249,7 +300,7 @@
               <li class="nav-item">
                 <a href="pages/charts/uplot.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Quỷ lương & Tài chính</p>
+                  <p>Quỹ lương & Tài chính</p>
                 </a>
               </li>
 
