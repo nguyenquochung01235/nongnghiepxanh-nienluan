@@ -35,3 +35,4 @@ AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/AdminTemplate/js/ajax.js"></script>
 <script src="/AdminTemplate/js/text.js"></script>
 <script src="/AdminTemplate/js/filteraddress.js"></script>
+<script src="/AdminTemplate/js/sop.js"></script>

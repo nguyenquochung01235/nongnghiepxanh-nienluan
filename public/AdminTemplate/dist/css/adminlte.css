@@ -53037,3 +53037,8 @@ a.text-muted:hover {
   position: absolute;
   z-index: 999;
 }
+
+#list-sop {
+  list-style: none;
+}
+

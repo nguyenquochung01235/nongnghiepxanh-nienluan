@@ -177,7 +177,7 @@
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-biohazard"></i>
               <p>
-                Thuốc & Vật Tư Nông Nghiệp
+                Thuốc & Vật Tư
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

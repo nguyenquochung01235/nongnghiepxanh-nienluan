@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PlantController;
 use App\Http\Controllers\Admin\SelfInforController;
+use App\Http\Controllers\Admin\SopController;
 use App\Http\Controllers\Admin\UploadImgController;
 use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\DistrictController;
@@ -223,17 +224,22 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('delete', [CategoryPlantController::class, 'delete']);
         });
 
-        //Lands
+        //Plant
         Route::prefix('plant')->group(function () {
             Route::get('/', [PlantController::class, 'index']);
             Route::get('/add', [PlantController::class, 'add']);
-            // Route::post('/add/create', [LandController::class, 'create']);
+            Route::post('/add/create', [PlantController::class, 'create']);
             Route::get('view/{plant}', [PlantController::class, 'view']);
-            // Route::get('edit/{lands}', [LandController::class, 'show']);
-            // Route::post('update/{lands}', [LandController::class, 'update']);
-            // Route::delete('/delete', [LandController::class, 'delete']);
+            Route::get('edit/{plant}', [PlantController::class, 'show']);
+            Route::post('update/{plant}', [PlantController::class, 'update']);
+            Route::delete('/delete', [PlantController::class, 'delete']);
             Route::post('/upload/img', [PlantController::class, 'uploadImg']);
             Route::get('filter', [PlantController::class, 'filter']);
+        });
+
+        // Sick of Plant
+        Route::prefix('sop')->group(function () {
+           Route::post('/search', [SopController::class, 'search']);
         });
 
 

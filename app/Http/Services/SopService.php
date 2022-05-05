@@ -11,4 +11,8 @@ class SopService{
         Sop::get();
     }
 
+    public function search($request){
+        return Sop::where('sop_name','like','%'.$request->search_value.'%')->get();
+    }
+
 }

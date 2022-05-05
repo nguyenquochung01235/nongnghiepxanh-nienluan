@@ -61,8 +61,8 @@
                     <div class="form-group col-2">
                       <label>Sắp xếp theo</label>
                       <select class="form-control" name="filterBy">
-                        <option value="top_id-DESC">ID giảm dần</option>
-                        <option value="top_id-ASC">ID tăng dần</option>
+                        <option value="plant_id-DESC">ID giảm dần</option>
+                        <option value="plant_id-ASC">ID tăng dần</option>
                         <option value="updated_at-DESC">Tin mới nhất</option>
                         <option value="updated_at-ASC">Tin cũ nhất</option>
             
@@ -98,7 +98,7 @@
             <tbody>
               @foreach($plant as $key => $data)
               <tr>
-                <td>{{$data->top_id}}</td>
+                <td>{{$data->plant_id}}</td>
                 <td style="max-width: 280px;">{{$data->plant_name}}</td>
                 <td>{{$data->top->top_name}}</td>
                 <td><img style="max-width: 250px" src="{{$data->plant_img_1}}" alt=""></td>
