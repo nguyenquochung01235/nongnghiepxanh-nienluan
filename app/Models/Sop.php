@@ -20,6 +20,5 @@ class Sop extends Model
     ];
     public function plant(){
         return $this->belongsToMany('App\Models\Plant');
-        
     }
 }

@@ -18,14 +18,14 @@ class PlantService {
 
     public function filter($request){
         $filter = explode("-", filter_var(trim($request->input('filterBy'), "-")));
-        if($request->input('top_id') == null ){
+        if($request->input('categoryplant') == null ){
             return Plant:: orderBy($filter[0], $filter[1])
                     ->where('plant_name', 'like', "%". $request->input('seachTitle') ."%")
                     ->paginate(10)->withQueryString();;
         }
         return Plant:: orderBy($filter[0], $filter[1])
                     ->where('plant_name', 'like', "%". $request->input('seachTitle') ."%")
-                    ->where('top_id',$request->input('top_id'))
+                    ->where('top_id',$request->input('categoryplant'))
                     ->paginate(10)->withQueryString();;
     }
 
@@ -44,10 +44,12 @@ class PlantService {
             ]);
             $data_sop = $request->input('data_sop');
             $plant = Plant::where('plant_name', $request->input('plant_name'))->first();
-            foreach ($data_sop as $key => $data) {
-                $sop = Sop::where('sop_id', $data)->first();
-                $plant->sop()->attach($sop);
-            }         
+            if($data_sop != null){
+                foreach ($data_sop as $key => $data) {
+                    $sop = Sop::where('sop_id', $data)->first();
+                    $plant->sop()->attach($sop);
+                }    
+            }     
 
             Session::flash('success', 'Thêm Giống Cây Mới Thành Công !!! ');
         } catch (\Exception $err) {
@@ -75,11 +77,12 @@ class PlantService {
             $updatePlant->sop()->detach();
             $data_sop = $request->input('data_sop');
             $plant = Plant::where('plant_id', $plant_id)->first();
-            foreach ($data_sop as $key => $data) {
-                $sop = Sop::where('sop_id', $data)->first();
-                $plant->sop()->attach($sop);
-            }         
-            
+            if($data_sop != null) {
+                foreach ($data_sop as $key => $data) {
+                    $sop = Sop::where('sop_id', $data)->first();
+                    $plant->sop()->attach($sop);
+                }         
+            };
             Session::flash('success', 'Cập Nhật Thông Tin Giống Cây Thành Công !!! ');
         } catch (\Exception $err) {
             Session::flash('error', 'Cập Nhật Thông Tin Giống Cây Không Thành Công !!! <hr>' . $err->getMessage());

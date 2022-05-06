@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryAnimalController;
 use App\Http\Controllers\Admin\CategoryNewsController;
+use App\Http\Controllers\Admin\CategoryPetController;
 use App\Http\Controllers\Admin\CategoryPlantController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
@@ -239,10 +241,29 @@ Route::middleware(['auth'])->group(function () {
 
         // Sick of Plant
         Route::prefix('sop')->group(function () {
-           Route::post('/search', [SopController::class, 'search']);
+            Route::get('/', [SopController::class, 'index']);
+            Route::get('/add', [SopController::class, 'add']);
+            Route::post('/add/create', [SopController::class, 'create']);
+            Route::get('view/{sop}', [SopController::class, 'view']);
+            Route::get('edit/{sop}', [SopController::class, 'show']);
+            Route::post('update/{sop}', [SopController::class, 'update']);
+            Route::delete('/delete', [SopController::class, 'delete']);
+            Route::post('/search', [SopController::class, 'search']);
+            Route::post('/upload/img', [SopController::class, 'uploadImg']);
+            Route::get('filter', [SopController::class, 'filter']);
         });
 
 
+        //Category - Plant
+        Route::prefix('category-animal')->group(function () {
+            Route::get('/', [CategoryAnimalController::class, 'index']);
+            Route::get('/add', [CategoryAnimalController::class, 'add']);
+            Route::post('/add/create', [CategoryAnimalController::class, 'create']);
+            // Route::get('/view/{categoryplant}', [CategoryPlantController::class, 'view']);
+            // Route::get('edit/{categoryplant}', [CategoryPlantController::class, 'show']);
+            // Route::post('update/{categoryplant}', [CategoryPlantController::class, 'update']);
+            // Route::delete('delete', [CategoryPlantController::class, 'delete']);
+        });
 
 
         Route::get('/{id}', [SelfInforController::class, 'index']);

@@ -124,18 +124,13 @@
               </li>
               
               <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
+                <a href="/administrator/sop" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách bệnh hại</p>
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách thuốc BVTV</p>
-                </a>
-              </li>
+             
 
             </ul>
           </li>
@@ -149,25 +144,23 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-
+            <li class="nav-item">
+                <a href="/administrator/category-animal" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh mục vật nuôi</p>
+                </a>
+              </li>
               <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
+                <a href="/administrator/animal" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách vật nuôi</p>
                 </a>
               </li>
               
               <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
+                <a href="/administrator/animal" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách bệnh hại</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách thuốc thú y</p>
                 </a>
               </li>
 

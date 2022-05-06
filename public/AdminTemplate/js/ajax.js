@@ -296,3 +296,76 @@ $("#plant_img_3").change(function(){
     });
 })
 
+
+// Sop Upload IMG
+
+$("#sop_img_1").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/sop/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_sop_1').attr("src",results.url);
+                $('#sop_img_1').attr("value",results.url);
+                $('#sop_img_1_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#sop_img_2").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/sop/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_sop_2').attr("src",results.url);
+                $('#sop_img_2').attr("value",results.url);
+                $('#sop_img_2_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#sop_img_3").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/sop/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_sop_3').attr("src",results.url);
+                $('#sop_img_3').attr("value",results.url);
+                $('#sop_img_3_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+
