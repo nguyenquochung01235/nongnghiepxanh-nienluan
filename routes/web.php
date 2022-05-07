@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AnimalController;
 use App\Http\Controllers\Admin\CategoryAnimalController;
 use App\Http\Controllers\Admin\CategoryNewsController;
 use App\Http\Controllers\Admin\CategoryPetController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PlantController;
 use App\Http\Controllers\Admin\SelfInforController;
+use App\Http\Controllers\Admin\SoaController;
 use App\Http\Controllers\Admin\SopController;
 use App\Http\Controllers\Admin\UploadImgController;
 use App\Http\Controllers\CommuneController;
@@ -254,15 +256,37 @@ Route::middleware(['auth'])->group(function () {
         });
 
 
-        //Category - Plant
+        //Category - Animal
         Route::prefix('category-animal')->group(function () {
             Route::get('/', [CategoryAnimalController::class, 'index']);
             Route::get('/add', [CategoryAnimalController::class, 'add']);
             Route::post('/add/create', [CategoryAnimalController::class, 'create']);
             // Route::get('/view/{categoryplant}', [CategoryPlantController::class, 'view']);
-            // Route::get('edit/{categoryplant}', [CategoryPlantController::class, 'show']);
-            // Route::post('update/{categoryplant}', [CategoryPlantController::class, 'update']);
-            // Route::delete('delete', [CategoryPlantController::class, 'delete']);
+            Route::get('edit/{categoryanimal}', [CategoryAnimalController::class, 'show']);
+            Route::post('update/{categoryanimal}', [CategoryAnimalController::class, 'update']);
+            Route::delete('delete', [CategoryAnimalController::class, 'delete']);
+        });
+
+
+          //Animal
+          Route::prefix('animal')->group(function () {
+            Route::get('/', [AnimalController::class, 'index']);
+            Route::get('/add', [AnimalController::class, 'add']);
+            Route::post('/add/create', [AnimalController::class, 'create']);
+            Route::get('view/{animal}', [AnimalController::class, 'view']);
+            Route::get('edit/{animal}', [AnimalController::class, 'show']);
+            Route::post('update/{animal}', [AnimalController::class, 'update']);
+            Route::delete('/delete', [AnimalController::class, 'delete']);
+            Route::post('/upload/img', [AnimalController::class, 'uploadImg']);
+            Route::get('filter', [AnimalController::class, 'filter']);
+        });
+
+
+          // Sick of Amnimal
+          Route::prefix('soa')->group(function () {
+          
+            Route::post('/search', [SoaController::class, 'search']);
+           
         });
 
 

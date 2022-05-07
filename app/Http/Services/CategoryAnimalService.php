@@ -36,4 +36,31 @@ class CategoryAnimalService{
         }
     }
 
+      
+    public function update($request, $categoryanimal){
+        try {
+           
+            $request->except('_token');
+
+            $categoryanimal->toa_name = $request->input('toa_name');
+            $categoryanimal->updated_at =  date('Y-m-d H:i:s');
+            $categoryanimal->save();
+
+            Session::flash('success', 'Cập Nhật Danh Mục Thành Công !!! ' );
+        } catch (\Exception $err) {
+            Session::flash('error', 'Cập Nhật Danh Mục Không Thành Công !!! <hr>' . $err->getMessage());
+            return  false;
+        }
+        return true;
+    }
+
+    public function delete($request){
+        $categoryanimal = Toa::where('toa_id', $request->input('id'))->first();
+        if($categoryanimal){
+            $categoryanimal->delete();
+            return true;
+        }
+        return false;
+    }
+
 }

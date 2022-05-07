@@ -13,49 +13,47 @@
                 @include('administrator.alert')
                 <!-- /.card-header -->
                 <!-- Form Add Department -->
-                <form method="post" action="/administrator/plant/update/{{$plant[0]->plant_id}}">
+                <form method="post" action="/administrator/animal/add/create">
                     <div class="card-body">
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Danh Mục Cây Trồng</label>
-                            <select class="form-control" name="top_id">
-                                @foreach($categoryplant as $key => $data)
-
-                                <option value="{{$data->top_id}}" {{ $data->top_id == $plant[0]->top_id ? 'selected' : ''}}>{{$data->top_name}}</option>
-
+                            <label for="exampleInputEmail1">Danh Mục Vật Nuôi</label>
+                            <select class="form-control" name="toa_id">
+                                @foreach($categoryanimal as $key => $data)
+                                <option value="{{$data->toa_id}}">{{$data->toa_name}}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Tên giống cây</label>
-                            <input required value="{{$plant[0]->plant_name}}" type="text" class="form-control" id="plant_name" name="plant_name" placeholder="Nhập Tên Giống Cây Trồng">
+                            <label for="exampleInputEmail1">Tên giống vật nuôi</label>
+                            <input required value="{{old('animal_name')}}" type="text" class="form-control" id="animal_name" name="animal_name" placeholder="Nhập Tên Giống Vật Nuôi">
                         </div>
 
                         <div class="form-group">
 
-                            <img id="img_plant_1" style="width: 300px;" src="{{$plant[0]->plant_img_1}}" alt="">
-                            <img id="img_plant_2" style="width: 300px;" src="{{$plant[0]->plant_img_2}}" alt="">
-                            <img id="img_plant_3" style="width: 300px;" src="{{$plant[0]->plant_img_3}}" alt="">
+                            <img id="img_animal_1" style="width: 300px;" src="" alt="">
+                            <img id="img_animal_2" style="width: 300px;" src="" alt="">
+                            <img id="img_animal_3" style="width: 300px;" src="" alt="">
 
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình Ảnh</label>
 
-                            <input type="file" name="plant_img_1" id="plant_img_1">
-                            <input type="text" hidden id="plant_img_1_link" name="plant_img_1_link" value="{{$plant[0]->plant_img_1}}">
+                            <input type="file" name="animal_img_1" id="animal_img_1">
+                            <input type="text" hidden id="animal_img_1_link" name="animal_img_1_link" value="">
 
-                            <input type="file" name="plant_img_2" id="plant_img_2">
-                            <input type="text" hidden id="plant_img_2_link" name="plant_img_2_link" value="{{$plant[0]->plant_img_2}}">
+                            <input type="file" name="animal_img_2" id="animal_img_2">
+                            <input type="text" hidden id="animal_img_2_link" name="animal_img_2_link" value="">
 
-                            <input type="file" name="plant_img_3" id="plant_img_3">
-                            <input type="text" hidden id="plant_img_3_link" name="plant_img_3_link" value="{{$plant[0]->plant_img_3}}">
+                            <input type="file" name="animal_img_3" id="animal_img_3">
+                            <input type="text" hidden id="animal_img_3_link" name="animal_img_3_link" value="">
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Mô tả giống cây</label>
-                            <textarea name="content" id="content" class="form-control">{{$plant[0]->plant_description}}</textarea>
+                            <label for="exampleInputEmail1">Mô tả giống vật nuôi</label>
+                            <textarea name="content" id="content" class="form-control">{{old('content')}}</textarea>
                         </div>
 
                         <div class="row">
@@ -63,12 +61,13 @@
                                 <label for="exampleInputEmail1">Các loại bệnh thường gặp</label>
                                 <div class="row">
                                     <div class="col-sm-5">
-                                        <input type="text" id="search-sop" placeholder="Nhập tên loại bệnh">
+                                        <input type="text" id="search-soa" placeholder="Nhập tên loại bệnh">
                                     </div>
-
+                                    
                                     <div class="col-sm-5">
-
-                                        <ul id="list-sop">
+                                        
+                                        <ul id="list-soa">
+                                        
 
                                         </ul>
 
@@ -78,10 +77,8 @@
                             </div>
                             <div class="form-group col-sm-7">
                                 <label for="exampleInputEmail1">Danh sách chọn</label>
-                                <ul id="data-sop" style="list-style: none;">
-                                    @foreach($plant[0]->sop as $key => $data)
-                                    <li><input type="checkbox" checked name="data_sop[]" id="selector" value="{{$data->sop_id}}">{{$data->sop_name}}</li>
-                                    @endforeach
+                                <ul id="data-soa">
+                                        
 
                                 </ul>
                             </div>
