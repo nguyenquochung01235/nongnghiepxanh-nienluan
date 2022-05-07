@@ -284,8 +284,17 @@ Route::middleware(['auth'])->group(function () {
 
           // Sick of Amnimal
           Route::prefix('soa')->group(function () {
-          
+            Route::get('/', [SoaController::class, 'index']);
+            Route::get('/add', [SoaController::class, 'add']);
+            Route::post('/add/create', [SoaController::class, 'create']);
+            Route::get('view/{soa}', [SoaController::class, 'view']);
+            Route::get('edit/{soa}', [SoaController::class, 'show']);
+            Route::post('update/{soa}', [SoaController::class, 'update']);
+            Route::delete('/delete', [SoaController::class, 'delete']);
             Route::post('/search', [SoaController::class, 'search']);
+            Route::post('/upload/img', [SoaController::class, 'uploadImg']);
+            Route::get('filter', [SoaController::class, 'filter']);
+            
            
         });
 

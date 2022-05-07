@@ -158,7 +158,7 @@
               </li>
               
               <li class="nav-item">
-                <a href="/administrator/animal" class="nav-link">
+                <a href="/administrator/soa" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách bệnh hại</p>
                 </a>

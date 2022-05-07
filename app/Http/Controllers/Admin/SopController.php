@@ -37,7 +37,6 @@ class SopController extends Controller
     public function add(){
         return view('administrator.sop.add',[
             'title' => 'Thêm Loại Bệnh Hại Mới',
-
         ]);
     }
 
