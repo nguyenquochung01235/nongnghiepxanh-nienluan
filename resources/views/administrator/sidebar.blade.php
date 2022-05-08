@@ -189,6 +189,12 @@
                   <p>Danh mục phân bón</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="/administrator/fertilizer" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách phân bón</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">

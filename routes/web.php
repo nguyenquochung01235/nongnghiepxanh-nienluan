@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CategoryPetController;
 use App\Http\Controllers\Admin\CategoryPlantController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\FertilizerController;
 use App\Http\Controllers\Admin\ForumController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\LandController;
@@ -313,6 +314,21 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('delete', [CategoryFertilizerController::class, 'delete']);
         });
 
+         //Fertilizer
+         Route::prefix('fertilizer')->group(function () {
+            Route::get('/', [FertilizerController::class, 'index']);
+            // Route::get('/add', [AnimalController::class, 'add']);
+            // Route::post('/add/create', [AnimalController::class, 'create']);
+            // Route::get('view/{animal}', [AnimalController::class, 'view']);
+            // Route::get('edit/{animal}', [AnimalController::class, 'show']);
+            // Route::post('update/{animal}', [AnimalController::class, 'update']);
+            // Route::delete('/delete', [AnimalController::class, 'delete']);
+            // Route::post('/upload/img', [AnimalController::class, 'uploadImg']);
+            // Route::get('filter', [AnimalController::class, 'filter']);
+        });
+
+
+        // User Management
         Route::prefix('user')->group(function () {
             Route::get('/', [AdminUserController::class, 'index']); 
             Route::get('/add', [AdminUserController::class, 'add']);

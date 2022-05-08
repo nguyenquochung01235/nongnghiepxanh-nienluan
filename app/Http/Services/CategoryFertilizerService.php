@@ -12,6 +12,9 @@ class CategoryFertilizerService{
     public function getAllCategoryFertilizer(){
         return CategoryFertilizer::paginate(15);
     }
+    public function getCategoryFertilizer(){
+        return CategoryFertilizer::get();
+    }
 
     public function create($request){
         try {

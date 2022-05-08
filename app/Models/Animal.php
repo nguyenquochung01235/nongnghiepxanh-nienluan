@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Animal extends Model
 {
     use HasFactory;
-    use HasFactory;
     protected $table = 'tbl_animal';
     protected $primaryKey = 'animal_id';
     protected $fillable = [
