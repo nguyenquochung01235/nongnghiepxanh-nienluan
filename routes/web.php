@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AnimalController;
 use App\Http\Controllers\Admin\CategoryAnimalController;
+use App\Http\Controllers\Admin\CategoryFertilizerController;
 use App\Http\Controllers\Admin\CategoryNewsController;
 use App\Http\Controllers\Admin\CategoryPetController;
 use App\Http\Controllers\Admin\CategoryPlantController;
@@ -299,6 +300,17 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/search', [SoaController::class, 'search']);
             Route::post('/upload/img', [SoaController::class, 'uploadImg']);
             Route::get('filter', [SoaController::class, 'filter']);        
+        });
+
+        // /Category Fertilizer
+        Route::prefix('category-fertilizer')->group(function () {
+            Route::get('/', [CategoryFertilizerController::class, 'index']);
+            Route::get('/add', [CategoryFertilizerController::class, 'add']);
+            Route::post('/add/create', [CategoryFertilizerController::class, 'create']);
+            // Route::get('/view/{categoryNews}', [CategoryFertilizerController::class, 'view']);
+            Route::get('edit/{categoryfertilizer}', [CategoryFertilizerController::class, 'show']);
+            Route::post('update/{categoryfertilizer}', [CategoryFertilizerController::class, 'update']);
+            Route::delete('delete', [CategoryFertilizerController::class, 'delete']);
         });
 
         Route::prefix('user')->group(function () {

@@ -71,7 +71,7 @@ class CategoryNewsController extends Controller
 
     public function delete(Request $request){
         $result = $this->categoryNewsService->delete($request);
-        if($request){
+        if($result){
             return response()->json([
                 'error' => false,
                 'message' => "Đã xóa thành công !!!"
