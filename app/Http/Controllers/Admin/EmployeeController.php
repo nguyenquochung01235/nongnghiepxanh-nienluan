@@ -34,6 +34,15 @@ class EmployeeController extends Controller
         ]);
     }
 
+    public function filter(Request $request){
+        $employee = $this->employeeService->filter($request);
+        return view('administrator.employee.list',[
+            'title' => 'Danh Sách Nhân Viên',
+            'employee' => $employee
+        ]);
+    }
+
+
     public function add(){
         $jobList = $this->jobService->getAllJob();
         return view('administrator.employee.add',[

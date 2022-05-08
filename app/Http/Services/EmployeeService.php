@@ -9,8 +9,22 @@ use Illuminate\Support\Facades\Session;
 class EmployeeService{
 
     public function getAllEmployee(){
-        return Admin::join('tbl_job', 'tbl_job.job_id', 'tbl_admin.job_id')
-        ->get(['tbl_admin.*','tbl_job.job_name', 'tbl_job.job_salary']);
+        return Admin::with('jobs')->paginate(15);
+    }
+
+
+    
+    public function filter($request){
+        $filter  = $request->input('filterBy');
+        return Admin::where($filter, 'like','%'.$request->input('seachTitle').'%')
+                    ->with('jobs')
+                    ->paginate(10)->withQueryString();
+        // return Admin::where( $filter, 'like', "%". $request->input('secahTitle') ."%")
+        //             ->with('jobs')
+        //             ->paginate(10)->withQueryString();
+                    
+        // return Admin::join('tbl_job', 'tbl_job.job_id', 'tbl_admin.job_id')
+        // ->get(['tbl_admin.*','tbl_job.job_name', 'tbl_job.job_salary']);
     }
 
     public function getEmployee($id){

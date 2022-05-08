@@ -18,12 +18,14 @@ use App\Http\Controllers\Admin\SelfInforController;
 use App\Http\Controllers\Admin\SoaController;
 use App\Http\Controllers\Admin\SopController;
 use App\Http\Controllers\Admin\UploadImgController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\NongNghiep\ForumController as NongNghiepForumController;
 use App\Http\Controllers\NongNghiep\LandsController as NongNghiepLandsController;
 use App\Http\Controllers\NongNghiep\MainController as NongNghiepMainController;
 use App\Http\Controllers\NongNghiep\NewsController as NongNghiepNewsController;
+use App\Http\Controllers\NongNghiep\PlantController as NongNghiepPlantController;
 use App\Http\Controllers\NongNghiep\SignInController;
 use App\Http\Controllers\NongNghiep\SignUpController;
 use App\Http\Controllers\NongNghiep\UserController;
@@ -66,6 +68,8 @@ Route::post('/news/detail/{news}/{users}/{comments}', [NongNghiepNewsController:
 
 
 Route::get('/land', [NongNghiepLandsController::class, 'index']);
+
+Route::get('/plant', [NongNghiepPlantController::class, 'index']);
 
 
 
@@ -132,6 +136,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{id}', [EmployeeController::class, 'show']);
             Route::post('update/{id}', [EmployeeController::class, 'update']);
             Route::delete('delete', [EmployeeController::class, 'delete']);
+            Route::get('filter', [EmployeeController::class, 'filter']); 
         });
 
 
@@ -293,9 +298,18 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', [SoaController::class, 'delete']);
             Route::post('/search', [SoaController::class, 'search']);
             Route::post('/upload/img', [SoaController::class, 'uploadImg']);
-            Route::get('filter', [SoaController::class, 'filter']);
-            
-           
+            Route::get('filter', [SoaController::class, 'filter']);        
+        });
+
+        Route::prefix('user')->group(function () {
+            Route::get('/', [AdminUserController::class, 'index']); 
+            Route::get('/add', [AdminUserController::class, 'add']);
+            Route::post('/add/create', [AdminUserController::class, 'create']);
+            // Route::get('view/{soa}', [AdminUserController::class, 'view']);
+            Route::get('edit/{user}', [AdminUserController::class, 'show']);
+            Route::post('update/{user}', [AdminUserController::class, 'update']);
+            Route::delete('/delete', [AdminUserController::class, 'delete']);
+            Route::get('filter', [AdminUserController::class, 'filter']);  
         });
 
 

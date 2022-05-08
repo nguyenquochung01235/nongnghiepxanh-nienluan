@@ -231,6 +231,7 @@
 
             </ul>
           </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cart-arrow-down"></i>
@@ -266,6 +267,28 @@
           </li>
           @hasrole(['admin','hrm'])
           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Quản Lý Người Dùng
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="/administrator/user" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách người dùng</p>
+                </a>
+              </li>             
+
+            </ul>
+          </li>
+          @endhasrole
+
+          @hasrole(['admin','hrm'])
+          <li class="nav-item">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
@@ -293,13 +316,6 @@
                 <a href="/administrator/employee" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý nhân sự</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Quỹ lương & Tài chính</p>
                 </a>
               </li>
 
