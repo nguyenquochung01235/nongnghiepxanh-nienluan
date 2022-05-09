@@ -4,8 +4,10 @@ use App\Http\Controllers\Admin\AnimalController;
 use App\Http\Controllers\Admin\CategoryAnimalController;
 use App\Http\Controllers\Admin\CategoryFertilizerController;
 use App\Http\Controllers\Admin\CategoryNewsController;
+use App\Http\Controllers\Admin\CategoryPesticidesController;
 use App\Http\Controllers\Admin\CategoryPetController;
 use App\Http\Controllers\Admin\CategoryPlantController;
+use App\Http\Controllers\Admin\CategoryVeterinaryMedicineController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\FertilizerController;
@@ -15,12 +17,14 @@ use App\Http\Controllers\Admin\LandController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\PesticidesController;
 use App\Http\Controllers\Admin\PlantController;
 use App\Http\Controllers\Admin\SelfInforController;
 use App\Http\Controllers\Admin\SoaController;
 use App\Http\Controllers\Admin\SopController;
 use App\Http\Controllers\Admin\UploadImgController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\VeterinaryMedicineController;
 use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\NongNghiep\ForumController as NongNghiepForumController;
@@ -246,6 +250,7 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', [PlantController::class, 'delete']);
             Route::post('/upload/img', [PlantController::class, 'uploadImg']);
             Route::get('filter', [PlantController::class, 'filter']);
+            Route::post('/search', [PlantController::class, 'search']);
         });
 
         // Sick of Plant
@@ -303,7 +308,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('filter', [SoaController::class, 'filter']);        
         });
 
-        // /Category Fertilizer
+        // Category Fertilizer
         Route::prefix('category-fertilizer')->group(function () {
             Route::get('/', [CategoryFertilizerController::class, 'index']);
             Route::get('/add', [CategoryFertilizerController::class, 'add']);
@@ -317,16 +322,64 @@ Route::middleware(['auth'])->group(function () {
          //Fertilizer
          Route::prefix('fertilizer')->group(function () {
             Route::get('/', [FertilizerController::class, 'index']);
-            // Route::get('/add', [AnimalController::class, 'add']);
-            // Route::post('/add/create', [AnimalController::class, 'create']);
-            // Route::get('view/{animal}', [AnimalController::class, 'view']);
-            // Route::get('edit/{animal}', [AnimalController::class, 'show']);
-            // Route::post('update/{animal}', [AnimalController::class, 'update']);
-            // Route::delete('/delete', [AnimalController::class, 'delete']);
-            // Route::post('/upload/img', [AnimalController::class, 'uploadImg']);
-            // Route::get('filter', [AnimalController::class, 'filter']);
+            Route::get('/add', [FertilizerController::class, 'add']);
+            Route::post('/add/create', [FertilizerController::class, 'create']);
+            Route::get('view/{fertilizer}', [FertilizerController::class, 'view']);
+            Route::get('edit/{fertilizer}', [FertilizerController::class, 'show']);
+            Route::post('update/{fertilizer}', [FertilizerController::class, 'update']);
+            Route::delete('/delete', [FertilizerController::class, 'delete']);
+            Route::post('/upload/img', [FertilizerController::class, 'uploadImg']);
+            Route::get('filter', [FertilizerController::class, 'filter']);
         });
 
+        // Category Pesticides
+        Route::prefix('category-pesticides')->group(function () {
+            Route::get('/', [CategoryPesticidesController::class, 'index']);
+            Route::get('/add', [CategoryPesticidesController::class, 'add']);
+            Route::post('/add/create', [CategoryPesticidesController::class, 'create']);
+            Route::get('edit/{categorypesticides}', [CategoryPesticidesController::class, 'show']);
+            Route::post('update/{categorypesticides}', [CategoryPesticidesController::class, 'update']);
+            Route::delete('/delete', [CategoryPesticidesController::class, 'delete']);
+        }); 
+
+        
+
+        //Pesticides
+        Route::prefix('pesticides')->group(function () {
+            Route::get('/', [PesticidesController::class, 'index']);
+            Route::get('/add', [PesticidesController::class, 'add']);
+            Route::post('/add/create', [PesticidesController::class, 'create']);
+            Route::get('view/{pesticides}', [PesticidesController::class, 'view']);
+            Route::get('edit/{pesticides}', [PesticidesController::class, 'show']);
+            Route::post('update/{pesticides}', [PesticidesController::class, 'update']);
+            Route::delete('/delete', [PesticidesController::class, 'delete']);
+            Route::post('/upload/img', [PesticidesController::class, 'uploadImg']);
+            Route::get('filter', [PesticidesController::class, 'filter']);
+        });
+
+
+        // Category Veterinary Medicine
+        Route::prefix('category-veterinary-medicine')->group(function () {
+            Route::get('/', [CategoryVeterinaryMedicineController::class, 'index']);
+            Route::get('/add', [CategoryVeterinaryMedicineController::class, 'add']);
+            Route::post('/add/create', [CategoryVeterinaryMedicineController::class, 'create']);
+            Route::get('edit/{categoryveterinarymedicine}', [CategoryVeterinaryMedicineController::class, 'show']);
+            Route::post('update/{categoryveterinarymedicine}', [CategoryVeterinaryMedicineController::class, 'update']);
+            Route::delete('/delete', [CategoryVeterinaryMedicineController::class, 'delete']);
+        }); 
+
+        //Veterinary Medicine
+        Route::prefix('veterinary-medicine')->group(function () {
+            Route::get('/', [VeterinaryMedicineController::class, 'index']);
+            Route::get('/add', [VeterinaryMedicineController::class, 'add']);
+            Route::post('/add/create', [VeterinaryMedicineController::class, 'create']);
+            Route::get('view/{veterinarymedicine}', [VeterinaryMedicineController::class, 'view']);
+            Route::get('edit/{veterinarymedicine}', [VeterinaryMedicineController::class, 'show']);
+            Route::post('update/{veterinarymedicine}', [VeterinaryMedicineController::class, 'update']);
+            Route::delete('/delete', [VeterinaryMedicineController::class, 'delete']);
+            Route::post('/upload/img', [VeterinaryMedicineController::class, 'uploadImg']);
+            Route::get('filter', [VeterinaryMedicineController::class, 'filter']);
+        });
 
         // User Management
         Route::prefix('user')->group(function () {
@@ -339,7 +392,6 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', [AdminUserController::class, 'delete']);
             Route::get('filter', [AdminUserController::class, 'filter']);  
         });
-
 
         Route::get('/{id}', [SelfInforController::class, 'index']);
         Route::post('/{id}/admin/update', [SelfInforController::class, 'update']);

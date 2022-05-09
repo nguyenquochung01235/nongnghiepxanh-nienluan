@@ -15,7 +15,7 @@
           @hasrole(['admin','content'])
           <button type="button" class="btn btn-sm btn-primary">
             <i class="fas fa-plus"></i>
-            <a href="/administrator/fertilizer/add" style="color: #fff;">Thêm phân bón</a>
+            <a href="/administrator/veterinary-medicine/add" style="color: #fff;">Thêm loại thuốc</a>
           </button>
           @endhasrole
           <hr>
@@ -44,25 +44,25 @@
               </div>
               <div>
 
-                <form class="row" method="get" action="/administrator/fertilizer/filter">      
+                <form class="row" method="get" action="/administrator/veterinary-medicine/filter">      
                     <div class="form-group col-5">
                       <label>Tìm theo tên</label>
                       <input class="form-control" name="seachTitle" placeholder="Gõ từ khóa">
                     </div>            
                     <div class="form-group col-3">
                       <label>Danh mục</label>
-                      <select class="form-control" name="category_fertilizer">
+                      <select class="form-control" name="category_vm">
                       <option value="">Tất cả các danh mục</option>
-                        @foreach($categoryfertilizer as $key => $data)
-                        <option value="{{$data->category_fertilizer_id}}">{{$data->category_fertilizer}}</option>
+                        @foreach($categoryveterinarymedicine as $key => $data)
+                        <option value="{{$data->category_vm_id}}">{{$data->category_vm}}</option>
                         @endforeach
                       </select>
                     </div>            
                     <div class="form-group col-2">
                       <label>Sắp xếp theo</label>
                       <select class="form-control" name="filterBy">
-                        <option value="fertilizer_id-DESC">ID giảm dần</option>
-                        <option value="fertilizer_id-ASC">ID tăng dần</option>
+                        <option value="vm_id-DESC">ID giảm dần</option>
+                        <option value="vm_id-ASC">ID tăng dần</option>
                         <option value="updated_at-DESC">Tin mới nhất</option>
                         <option value="updated_at-ASC">Tin cũ nhất</option>
             
@@ -87,7 +87,7 @@
             <thead>
               <tr>
                 <th style="width: 10px;">ID</th>
-                <th style="max-width: 200px;">Phân bón</th>
+                <th style="max-width: 200px;">Tên thuốc</th>
                 <th>Danh mục</th>
                 <th>Hình ảnh</th>
                 <th>Update at</th>
@@ -96,20 +96,20 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($fertilizer as $key => $data)
+              @foreach($veterinarymedicine as $key => $data)
               <tr>
-                <td>{{$data->fertilizer_id}}</td>
-                <td style="max-width: 280px;">{{$data->fertilizer_name}}</td>
-                <td>{{$data->category_fertilizer->category_fertilizer}}</td>
-                <td><img style="max-width: 250px" src="{{$data->fertilizer_img_1}}" alt=""></td>
+                <td>{{$data->vm_id}}</td>
+                <td style="max-width: 280px;">{{$data->vm_name}}</td>
+                <td>{{$data->category_vm->category_vm}}</td>
+                <td><img style="max-width: 250px" src="{{$data->vm_img_1}}" alt=""></td>
                 <td>{{$data->updated_at}}</td>
 
             
                 <td>
-                  <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href="/administrator/fertilizer/view/{{$data->fertilizer_id}}"><i class="fas fa-eye"></i></a></button>
+                  <button type="button" class="btn btn-sm btn-primary"><a style="color: #fff;" href="/administrator/veterinary-medicine/view/{{$data->vm_id}}"><i class="fas fa-eye"></i></a></button>
                   @hasrole(['admin','content'])
-                  <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/fertilizer/edit/{{$data->fertilizer_id}}"><i class="fas fa-edit"></i></a></button>
-                  <button type="button" class="btn btn-sm btn-danger"><a style="color: #fff;" href="#" onclick="removeRow( <?php echo $data->fertilizer_id ?> ,'/administrator/fertilizer/delete')"><i class="fas fa-trash"></i></a></button>
+                  <button type="button" class="btn btn-sm btn-warning"><a style="color: #fff;" href="/administrator/veterinary-medicine/edit/{{$data->vm_id}}"><i class="fas fa-edit"></i></a></button>
+                  <button type="button" class="btn btn-sm btn-danger"><a style="color: #fff;" href="#" onclick="removeRow( <?php echo $data->vm_id ?> ,'/administrator/veterinary-medicine/delete')"><i class="fas fa-trash"></i></a></button>
                   @endhasrole
 
                 </td>
@@ -123,7 +123,7 @@
           </table>
           <div class="card-footer clearfix">
 
-            {!! $fertilizer->links() !!}</div>
+            {!! $veterinarymedicine->links() !!}</div>
 
         </div>
         <!-- /.card-body -->

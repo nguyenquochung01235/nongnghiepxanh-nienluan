@@ -37,3 +37,4 @@ AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/AdminTemplate/js/filteraddress.js"></script>
 <script src="/AdminTemplate/js/sop.js"></script>
 <script src="/AdminTemplate/js/soa.js"></script>
+<script src="/AdminTemplate/js/plant.js"></script>

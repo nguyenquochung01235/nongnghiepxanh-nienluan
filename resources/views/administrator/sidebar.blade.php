@@ -177,9 +177,30 @@
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
+                <a href="/administrator/category-pesticides" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Danh mục thuốc</p>
+                  <p>Danh mục thuốc trừ sâu</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/administrator/pesticides" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách thuốc trừ sâu</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="/administrator/category-veterinary-medicine" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh mục thuốc thú y</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="/administrator/veterinary-medicine" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách thuốc thú y</p>
                 </a>
               </li>
               

@@ -26,6 +26,9 @@ class Plant extends Model
     public function sop(){
         return $this->belongsToMany('App\Models\Sop');
     }
+    public function fertilizer(){
+        return $this->belongsToMany('App\Models\Fertilizer');
+    }
 
     public function top(){
         return $this->belongsTo('App\Models\Top' , 'top_id');

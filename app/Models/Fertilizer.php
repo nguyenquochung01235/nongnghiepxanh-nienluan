@@ -26,5 +26,10 @@ class Fertilizer extends Model
     public function category_fertilizer(){
         return $this->belongsTo('App\Models\CategoryFertilizer', 'category_fertilizer_id');
     }
+    public function plant(){
+        return $this->belongsToMany('App\Models\Plant');
+    }
+
+
 
 }

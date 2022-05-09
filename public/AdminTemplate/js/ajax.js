@@ -518,3 +518,227 @@ $("#soa_img_3").change(function(){
         }
     });
 })
+
+
+
+
+// Fertilizer Upload IMG
+
+$("#fertilizer_img_1").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/fertilizer/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_fertilizer_1').attr("src",results.url);
+                $('#fertilizer_img_1').attr("value",results.url);
+                $('#fertilizer_img_1_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#fertilizer_img_2").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/fertilizer/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_fertilizer_2').attr("src",results.url);
+                $('#fertilizer_img_2').attr("value",results.url);
+                $('#fertilizer_img_2_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#fertilizer_img_3").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/fertilizer/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_fertilizer_3').attr("src",results.url);
+                $('#fertilizer_img_3').attr("value",results.url);
+                $('#fertilizer_img_3_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+
+
+
+// Pesticides Upload IMG
+
+$("#pesticides_img_1").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/pesticides/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_pesticides_1').attr("src",results.url);
+                $('#pesticides_img_1').attr("value",results.url);
+                $('#pesticides_img_1_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#pesticides_img_2").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/pesticides/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_pesticides_2').attr("src",results.url);
+                $('#pesticides_img_2').attr("value",results.url);
+                $('#pesticides_img_2_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#pesticides_img_3").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/pesticides/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_pesticides_3').attr("src",results.url);
+                $('#pesticides_img_3').attr("value",results.url);
+                $('#pesticides_img_3_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+
+
+
+
+// vm Upload IMG
+
+$("#vm_img_1").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/veterinary-medicine/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_vm_1').attr("src",results.url);
+                $('#vm_img_1').attr("value",results.url);
+                $('#vm_img_1_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#vm_img_2").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/veterinary-medicine/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_vm_2').attr("src",results.url);
+                $('#vm_img_2').attr("value",results.url);
+                $('#vm_img_2_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})
+$("#vm_img_3").change(function(){
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/administrator/veterinary-medicine/upload/img',
+        success: function (results) {
+            if (results.error === false) {
+                $('#img_vm_3').attr("src",results.url);
+                $('#vm_img_3').attr("value",results.url);
+                $('#vm_img_3_link').attr("value",results.url);
+
+            } else {
+                alert('Upload File Lỗi');
+            }
+        }
+    });
+})

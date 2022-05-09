@@ -16,6 +16,10 @@ class PlantService {
         return Plant::with('top','sop')->where('plant_id', $id)->get();
     }
 
+    public function search($request){
+        return Plant::where('plant_name','like','%'.$request->search_value.'%')->get();
+    }
+
     public function filter($request){
         $filter = explode("-", filter_var(trim($request->input('filterBy'), "-")));
         if($request->input('categoryplant') == null ){

@@ -20,4 +20,8 @@ class Soa extends Model
     public function animal(){
         return $this->belongsToMany('App\Models\Animal');
     }
+
+    public function veterinary_medicine(){
+        return $this->belongsToMany('App\Models\VeterinaryMedicine');
+    }
 }

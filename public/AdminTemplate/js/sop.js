@@ -22,8 +22,8 @@ $("#search-sop").keyup(function () {
                     for(i = 0; i< result.length; i++){
                         var nameSop = result[i].sop_name;
                         var idSop = result[i].sop_id;
-                        // list.append('<li><input onclick = "getValue("sop_'+ result[i].sop_id +'",)" id="sop_'+ result[i].sop_id +'" type="checkbox" value="'+ result[i].sop_id +'">'+ result[i].sop_name+'</li>');
-                        list.append(`<li><input onclick = "getValue('sop_`+idSop+`','`+nameSop+`')" id="sop_`+idSop+`" type="checkbox" value="`+idSop+`">`+nameSop+`</li>`);
+
+                        list.append(`<li><input onclick = "getValueSop('sop_`+idSop+`','`+nameSop+`')" id="sop_`+idSop+`" type="checkbox" value="`+idSop+`">`+nameSop+`</li>`);
                     }
                 }     
             } else {
@@ -33,10 +33,9 @@ $("#search-sop").keyup(function () {
     })
 });
 
-function getValue(selector, text) { 
+function getValueSop(selector, text) { 
     if($("#"+selector).is(":checked")){
        var val =  $("#"+selector).val()
         $("#data-sop").append(`<li><input type="checkbox" checked name="data_sop[]" id="selector" value="`+val+`">`+text+`</li>`);
     }
-    
  }

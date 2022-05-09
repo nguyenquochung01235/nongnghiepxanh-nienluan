@@ -40,6 +40,12 @@ class PlantController extends Controller
         ]); 
     }
 
+    public function search(Request $request){
+        $result = $this->plantService->search($request);
+        return $result;
+     }
+
+
     public function add(){
         $categoryplant =  $this->categoryPlantService->getCategoryPlant();
         return view("administrator.plant.add",[
