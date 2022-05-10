@@ -79,9 +79,23 @@
                 </ul>
             </div>
 
-            <a href="/land" class="nav__link link link--regular link--bold">Thời tiết & đất</a>
-            <a href="/plant" class="nav__link link link--regular link--bold">Cây trồng & bệnh hại</a>
-            <a href="#" class="nav__link link link--regular link--bold">Vật nuôi & bệnh hại</a>
+            <a href="/land" class="nav__link link link--regular link--bold" style="margin-right: 12px;">Thời tiết & đất</a>
+           
+            <div class="nav__dropdown">
+                <a href="#" class="nav__link nav__link--dropdown link link--regular link--bold" style="margin-right: 12px;">Cây trồng & bệnh hại <i class="fas fa-caret-down"></i></a>
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="/plant" class="nav__link link link--regular link--bold">Tra cứu cây trồng</a></li>
+                    <li class="nav__item"><a href="/sop" class="nav__link link link--regular link--bold">Tra cứu bệnh hại</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__dropdown">
+                <a href="#" class="nav__link nav__link--dropdown link link--regular link--bold" >Vật nuôi & bệnh hại <i class="fas fa-caret-down"></i></a>
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="/animal" class="nav__link link link--regular link--bold">Tra cứu vật nuôi</a></li>
+                    <li class="nav__item"><a href="/soa" class="nav__link link link--regular link--bold">Tra cứu bệnh hại</a></li>
+                </ul>
+            </div>
             <a href="#" class="nav__link link link--regular link--bold">Thuốc & vật tư nông nghiệp</a>
             <a href="/forum" class="nav__link link link--regular link--bold">Diễn đàn</a>
             <a href="#" class="nav__link link link--regular link--bold">Chợ Nông Nghiệp</a>

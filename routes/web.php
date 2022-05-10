@@ -27,13 +27,17 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\VeterinaryMedicineController;
 use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\NongNghiep\AnimalController as NongNghiepAnimalController;
 use App\Http\Controllers\NongNghiep\ForumController as NongNghiepForumController;
 use App\Http\Controllers\NongNghiep\LandsController as NongNghiepLandsController;
 use App\Http\Controllers\NongNghiep\MainController as NongNghiepMainController;
 use App\Http\Controllers\NongNghiep\NewsController as NongNghiepNewsController;
+use App\Http\Controllers\NongNghiep\PesticidesController as NongNghiepPesticidesController;
 use App\Http\Controllers\NongNghiep\PlantController as NongNghiepPlantController;
 use App\Http\Controllers\NongNghiep\SignInController;
 use App\Http\Controllers\NongNghiep\SignUpController;
+use App\Http\Controllers\NongNghiep\SoaController as NongNghiepSoaController;
+use App\Http\Controllers\NongNghiep\SopController as NongNghiepSopController;
 use App\Http\Controllers\NongNghiep\UserController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\SearchController;
@@ -51,7 +55,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //Nong Nghiệp Xanh
-
+// User Controller
 Route::get('/', [NongNghiepMainController::class, 'index']);
 Route::get('/sign-up', [SignUpController::class, 'index']);
 Route::post('/sign-up/create', [SignUpController::class, 'create']);
@@ -65,20 +69,48 @@ Route::get('/profile/{user}',[UserController::class, 'profile'])->middleware(['u
 Route::post('/account/{user_id}/update',[UserController::class, 'update'])->middleware(['user']);
 Route::post('/account/upload/img', [UserController::class, 'uploadImg'])->middleware(['user']);
 Route::post('/account/{user_id}/changepassword', [UserController::class, 'changePassword'])->middleware(['user']);
+// --------------------------------------------------------------------
 
+// News Controller
 Route::get('/news/category/{news}', [NongNghiepNewsController::class, 'newsByCategory']);
 Route::get('/news/detail/{news}', [NongNghiepNewsController::class, 'newsDetailByID']);
 Route::post('/news/detail/{news}/{users}', [NongNghiepNewsController::class, 'commentNewsDetail']);
 Route::post('/news/detail/{news}/{users}/{comments}', [NongNghiepNewsController::class, 'replyCommentNewsDetail']);
+// --------------------------------------------------------------------
 
 
-
+// Land Controller
 Route::get('/land', [NongNghiepLandsController::class, 'index']);
+// --------------------------------------------------------------------
 
+// Plant Controller
 Route::get('/plant', [NongNghiepPlantController::class, 'index']);
+Route::get('/plant/detail/{plant}', [NongNghiepPlantController::class, 'view']);
+
+// --------------------------------------------------------------------
+
+// Sop (Sick of plant) Controller
+Route::get('/sop', [NongNghiepSopController::class, 'index']);
+Route::get('/sop/detail/{sop}', [NongNghiepSopController::class, 'view']);
+
+// --------------------------------------------------------------------
 
 
 
+// Animal Controller
+Route::get('/animal', [NongNghiepAnimalController::class, 'index']);
+Route::get('/animal/detail/{animal}', [NongNghiepAnimalController::class, 'view']);
+
+// --------------------------------------------------------------------
+
+// Soa (Sick of animal) Controller
+Route::get('/soa', [NongNghiepSoaController::class, 'index']);
+Route::get('/soa/detail/{soa}', [NongNghiepSoaController::class, 'view']);
+
+// --------------------------------------------------------------------
+
+
+// Forum Controller
 Route::get('/forum',[NongNghiepForumController::class, 'index']);
 Route::get('/forum/add',[NongNghiepForumController::class, 'add'])->middleware(['user']);
 Route::post('/forum/add/create',[NongNghiepForumController::class, 'create'])->middleware(['user']);
@@ -88,10 +120,16 @@ Route::post('/forum/upload/img', [NongNghiepForumController::class, 'uploadImg']
 
 Route::post('/forum/detail/{forum}/{user}/comment',[NongNghiepForumController::class, 'commentForumDetail'])->middleware(['user']);
 Route::post('/forum/detail/{forum}/{user}/comment/{comment}',[NongNghiepForumController::class, 'replyCommentForumDetail'])->middleware(['user']);
+// --------------------------------------------------------------------
 
 
+// Search Controller
 Route::get('/searchnews',[SearchController::class, 'searchNews']);
 Route::get('/searchnews/land',[NongNghiepLandsController::class, 'searchLands']);
+Route::get('/searchnews/plant',[NongNghiepPlantController::class, 'searchPlant']);
+Route::get('/searchnews/sop',[NongNghiepSopController::class, 'searchSop']);
+Route::get('/searchnews/animal',[NongNghiepAnimalController::class, 'searchAnimal']);
+// --------------------------------------------------------------------
 
 
 

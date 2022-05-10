@@ -33,6 +33,15 @@ class Helper
         if (strpos($currentURL, "/land") !== false) {
             return "land";
         } 
+        if (strpos($currentURL, "/plant") !== false) {
+            return "plant";
+        } 
+        if (strpos($currentURL, "/sop") !== false) {
+            return "sop";
+        } 
+        if (strpos($currentURL, "/animal") !== false) {
+            return "animal";
+        } 
     }
 
     public static function getAllNewsCategory(){
