@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 05, 2022 lúc 09:20 AM
+-- Thời gian đã tạo: Th5 10, 2022 lúc 07:24 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.0.15
 
@@ -41,12 +41,35 @@ CREATE TABLE `admin_roles` (
 
 INSERT INTO `admin_roles` (`id`, `admin_admin_id`, `roles_id_roles`, `created_at`, `updated_at`) VALUES
 (1, 7, 2, '2022-04-29 07:55:11', '2022-04-29 07:55:11'),
-(89, 2, 2, NULL, NULL),
-(90, 2, 3, NULL, NULL),
-(91, 2, 8, NULL, NULL),
 (92, 3, 2, NULL, NULL),
 (93, 3, 3, NULL, NULL),
-(94, 3, 6, NULL, NULL);
+(94, 3, 6, NULL, NULL),
+(95, 2, 2, NULL, NULL),
+(96, 2, 3, NULL, NULL),
+(97, 2, 8, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `animal_soa`
+--
+
+CREATE TABLE `animal_soa` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `animal_animal_id` bigint(20) UNSIGNED NOT NULL,
+  `soa_soa_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `animal_soa`
+--
+
+INSERT INTO `animal_soa` (`id`, `animal_animal_id`, `soa_soa_id`, `created_at`, `updated_at`) VALUES
+(5, 1, 1, NULL, NULL),
+(6, 6, 5, NULL, NULL),
+(7, 5, 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -63,6 +86,40 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `fertilizer_plant`
+--
+
+CREATE TABLE `fertilizer_plant` (
+  `id_fertilizer_plant` bigint(20) UNSIGNED NOT NULL,
+  `plant_plant_id` bigint(20) UNSIGNED NOT NULL,
+  `fertilizer_fertilizer_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `fertilizer_plant`
+--
+
+INSERT INTO `fertilizer_plant` (`id_fertilizer_plant`, `plant_plant_id`, `fertilizer_fertilizer_id`) VALUES
+(23, 2, 4),
+(24, 3, 4),
+(25, 5, 4),
+(26, 7, 4),
+(27, 8, 4),
+(28, 6, 4),
+(29, 2, 3),
+(30, 3, 3),
+(31, 5, 3),
+(32, 6, 3),
+(33, 7, 3),
+(34, 8, 3),
+(35, 2, 1),
+(36, 3, 1),
+(37, 5, 1),
+(38, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -104,7 +161,21 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (21, '16_tbl_plant', 11),
 (22, '17_tbl_sop', 12),
 (23, '18_plant_sop', 13),
-(24, '2022_05_04_040612_tbl_type_of_plant', 14);
+(24, '19_tbl_type_of_plant', 14),
+(25, '20_tbl_type_of_animal', 15),
+(26, '21_tbl_animal', 16),
+(27, '21_tbl_animal.php', 16),
+(28, '22_tbl_soa', 17),
+(30, '23_tbl_animal_soa', 18),
+(31, '24_tbl_category_fertilizer', 19),
+(32, '25_tbl_fertilizer', 20),
+(34, '26_plant_fertilizer', 21),
+(36, '27_tbl_category_pesticides', 22),
+(37, '28_tbl_pesticides', 23),
+(38, '29_pesticides_sop', 24),
+(41, '30_tbl_category_vm', 25),
+(42, '31_tbl_veterinary_medicine', 25),
+(45, '32_soa_veterinary_medicine', 26);
 
 -- --------------------------------------------------------
 
@@ -139,6 +210,29 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `pesticides_sop`
+--
+
+CREATE TABLE `pesticides_sop` (
+  `id_pesticides_sop` bigint(20) UNSIGNED NOT NULL,
+  `sop_sop_id` bigint(20) UNSIGNED NOT NULL,
+  `pesticides_pesticides_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `pesticides_sop`
+--
+
+INSERT INTO `pesticides_sop` (`id_pesticides_sop`, `sop_sop_id`, `pesticides_pesticides_id`, `created_at`, `updated_at`) VALUES
+(4, 5, 4, NULL, NULL),
+(5, 7, 5, NULL, NULL),
+(8, 6, 6, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `plant_sop`
 --
 
@@ -155,8 +249,47 @@ CREATE TABLE `plant_sop` (
 --
 
 INSERT INTO `plant_sop` (`id`, `plant_plant_id`, `sop_sop_id`, `created_at`, `updated_at`) VALUES
-(5, 2, 1, NULL, NULL),
-(6, 2, 2, NULL, NULL);
+(9, 3, 5, NULL, NULL),
+(10, 6, 6, NULL, NULL),
+(11, 6, 7, NULL, NULL),
+(13, 2, 6, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `soa_veterinarymedicine`
+--
+
+CREATE TABLE `soa_veterinarymedicine` (
+  `id_soa_veterinarymedicine` bigint(20) UNSIGNED NOT NULL,
+  `soa_soa_id` bigint(20) UNSIGNED NOT NULL,
+  `veterinarymedicine_vm_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `soa_veterinary_medicine`
+--
+
+CREATE TABLE `soa_veterinary_medicine` (
+  `id_soa_veterinarymedicine` bigint(20) UNSIGNED NOT NULL,
+  `soa_soa_id` bigint(20) UNSIGNED NOT NULL,
+  `veterinary_medicine_vm_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `soa_veterinary_medicine`
+--
+
+INSERT INTO `soa_veterinary_medicine` (`id_soa_veterinarymedicine`, `soa_soa_id`, `veterinary_medicine_vm_id`, `created_at`, `updated_at`) VALUES
+(5, 5, 9, NULL, NULL),
+(8, 1, 11, NULL, NULL),
+(9, 4, 10, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -184,11 +317,108 @@ CREATE TABLE `tbl_admin` (
 --
 
 INSERT INTO `tbl_admin` (`admin_id`, `admin_name`, `admin_email`, `password`, `admin_phone`, `admin_birthday`, `admin_address`, `admin_avatar`, `admin_active`, `job_id`, `created_at`, `updated_at`) VALUES
-(2, 'Nguyễn Văn Vinh', 'vinhnv14@nongnghiepxanh.com.vn', '$2y$10$AGjiCes4v4quzRl2qhOWU.5342okWYZB1/3BYfbCGxfJDsLmjmwgG', '0841238439', '2000-01-01', 'Thuận Hưng, Thốt Nốt, Cần Thơ', '/storage/uploads/admin/avatar-2.jpg', 1, 3, '2022-03-23 14:05:43', '2022-04-29 00:56:46'),
+(2, 'Nguyễn Văn Vinh', 'vinhnv14@nongnghiepxanh.com.vn', '$2y$10$AGjiCes4v4quzRl2qhOWU.5342okWYZB1/3BYfbCGxfJDsLmjmwgG', '0841238439', '2000-01-01', 'Thuận Hưng, Thốt Nốt, Cần Thơ', '/storage/uploads/admin/avatar-2.jpg', 1, 3, '2022-03-23 14:05:43', '2022-05-05 08:16:59'),
 (3, 'Nguyễn Quốc Hưng', 'hungnq28@nongnghiepxanh.com.vn', '$2y$10$BMUxEtKZqthp06joiFlzZuQxYBRPNXy0vGA1X2KFpWJCBlzF5pLly', '0967105247', '2000-10-28', '211/8D Hẻm 4 Nguyễn Văn Linh, Hưng Lợi, Ninh Kiều, Cần Thơ', '/storage/uploads/admin/avatar-3.png', 1, 14, '2022-03-24 01:02:48', '2022-04-29 01:04:25'),
 (5, 'Nguyễn Thế Vinh', 'vinhnt14@nongnghiepxanh.com', '$2y$10$lqd30gVsjO.uu2GATqzS2euqZDsRAVdSQim818RsubQP4Mh/WixAi', '0939267641', '2000-01-14', 'Thốt Thốt, Cần Thơ', '/storage/uploads/admin/avatar-5.png', 1, 11, '2022-03-25 19:47:07', '2022-03-27 01:37:45'),
-(7, 'Administrator', 'administrator@nongnghiepxanh.com.vn', '$2y$10$AGJmm9VcYMWPzdZkCRdvAeCWHPZUXYc1xMM7BCjDku7qY4/G7Dr6G', '0967105247', '2022-01-01', 'Local Host Nông Nghiệp Xanh', '/storage/uploads/admin/avatar-7.png', 1, 1, '2022-03-27 20:26:09', '2022-04-21 07:09:51'),
+(7, 'Administrator', 'administrator@nongnghiepxanh.com.vn', '$2y$10$AGJmm9VcYMWPzdZkCRdvAeCWHPZUXYc1xMM7BCjDku7qY4/G7Dr6G', '0967105247', '2022-01-01', 'Local Host Nông Nghiệp Xanh', '/storage/uploads/admin/avatar-7.png', 1, 1, '2022-03-27 20:26:09', '2022-05-05 08:16:17'),
 (8, 'Nguyễn Hoàng Thái Học', 'hocnht@nongnghiepxanh.com.vn', '$2y$10$32Qqg87j./jx3.KxHAmO6OWaYgYbeybEIO0SMZmFa9BZEvpmrH75.', '0363935029', '2000-09-11', 'KTX A, Đại Học Cần Thơ, Việt Nam', '/storage/uploads/admin/avatar-8.jpg', 1, 3, '2022-04-01 22:44:16', '2022-04-01 22:45:22');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_animal`
+--
+
+CREATE TABLE `tbl_animal` (
+  `animal_id` bigint(20) UNSIGNED NOT NULL,
+  `animal_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `animal_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `animal_img_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `animal_img_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `animal_img_3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `toa_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_animal`
+--
+
+INSERT INTO `tbl_animal` (`animal_id`, `animal_name`, `animal_description`, `animal_img_1`, `animal_img_2`, `animal_img_3`, `toa_id`, `created_at`, `updated_at`) VALUES
+(1, 'Tôm càng xanh', '<h3>1Tôm càng xanh là tôm gì?</h3><p>Tôm càng xanh có tên khoa học là Macrobrachium rosenbergii, còn được gọi là tôm sông khổng lồ hay tôm nước ngọt khổng lồ, một loài tôm thuộc <a href=\"https://vi.wikipedia.org/wiki/H%E1%BB%8D_T%C3%B4m_gai\">họ Tôm gai</a>.</p><p>Tôm xàng xanh là một trong những loài tôm nước ngọt lớn nhất trên thế giới và được nuôi trồng thủy sản rộng rãi ở một số quốc gia, được tìm thấy ở khắp các khu vực nhiệt đới và cận nhiệt đới của khu vực <a href=\"https://vi.wikipedia.org/wiki/%E1%BA%A4n_%C4%90%E1%BB%99_D%C6%B0%C6%A1ng-Th%C3%A1i_B%C3%ACnh_D%C6%B0%C6%A1ng\">Ấn Độ Dương - Thái Bình Dương</a>, từ <a href=\"https://vi.wikipedia.org/wiki/%E1%BA%A4n_%C4%90%E1%BB%99\">Ấn Độ</a> đến <a href=\"https://vi.wikipedia.org/wiki/%C4%90%C3%B4ng_Nam_%C3%81\">Đông Nam Á</a> và <a href=\"https://vi.wikipedia.org/wiki/L%C3%A3nh_th%E1%BB%95_B%E1%BA%AFc_%C3%9Ac\">Bắc Úc</a>.</p><p>Tôm có thể phát triển đến chiều dài hơn 30cm, chủ yếu có màu nâu. Tuy nhiên, ở một số con kích thước nhỏ hơn, chúng có thể có màu xanh lục và hiển thị các sọc dọc mờ nhạt.</p><p><img src=\"https://cdn.tgdd.vn/2021/12/CookRecipe/CookTipsNote/tom-cang-xanh-la-tom-gi-tom-cang-xanh-gia-bao-nhieu-cach-so-tipsnote-800x450.jpg\" alt=\"Tôm càng xanh là tôm gì?\"></p><h3>2Tôm càng xanh giá bao nhiêu?</h3><p>Tùy vào kích cỡ từng con, mà tôm càng xanh sẽ được bán với các giá dao động khác nhau. Tôm càng xanh cỡ 15 - 20 con/kg giá khoảng 130.000 đồng, 10 - 12 con/kg giá 160.000 đồng, 7 - 8 con/kg giá 190.000 đồng (giá cập nhật vào tháng 12/2021).</p><p><img src=\"https://cdn.tgdd.vn/2021/12/CookRecipe/CookTipsNote/tom-cang-xanh-la-tom-gi-tom-cang-xanh-gia-bao-nhieu-cach-so-tipsnote-800x450-1.jpg\" alt=\"Tôm càng xanh giá bao nhiêu?\"></p><h3>3Mua tôm càng xanh ở đâu?</h3><p>Khi mua tôm càng xanh, bạn lưu ý phải tìm mua tại các siêu thị, cửa hàng hải sản tươi sống hay trên các trang thương mại điện tử uy tín, có nguồn gốc xuất xứ rõ ràng để tôm mua về đảm bảo được chất lượng cao và an toàn khi sử dụng.</p><p><img src=\"https://cdn.tgdd.vn/2021/12/CookRecipe/CookTipsNote/tom-cang-xanh-la-tom-gi-tom-cang-xanh-gia-bao-nhieu-cach-so-tipsnote-800x450-2.jpg\" alt=\"Mua tôm càng xanh ở đâu?\"></p><h3>4Chế biến tôm càng xanh</h3><p>Ngoài cách luộc như truyền thống mà nhiều người vẫn hay thực hiện, thì tùy vào sở thích của gia đình, mà bạn có thể nướng, chiên, nấu lẩu,... tôm càng xanh đều rất hấp dẫn. Hay kết hợp tôm với sốt me, rang muối hay nướng <a href=\"https://www.dienmayxanh.com/vao-bep/phan-biet-9-loai-pho-mai-pho-bien-cach-su-dung-va-bao-quan-02379\">phô mai</a>,... thì vị ngon đều khiến cả nhà say mê thôi đấy!</p>', '/storage/uploads/animal/2022-05-10-09-05-17tom-cang-xanh-14.jpg', '/storage/uploads/animal/2022-05-10-09-05-19tom-cang-xanh-la-tom-gi-tom-cang-xanh-gia-bao-nhieu-cach-so-tipsnote-800x450.jpg', '/storage/uploads/animal/2022-05-10-09-05-21tom-cang-xanh-size-lon.jpg', 3, '2022-05-06 08:24:15', '2022-05-10 02:22:27'),
+(5, 'Heo, Lợn', '<p>Việt Nam vẫn thường được xem là quốc gia có sự đa dạng sinh học hàng đầu. Trong đó có đến hàng chục giống lợn quý phân bổ ở mọi miền đất nước. Dưới đây Bách hóa XANH sẽ điểm qua thông tin của 12 giống heo (lợn) đặc trưng nhất.</p><h3>1Lợn Móng Cái</h3><p>Lợn Móng Cái có nguồn gốc ở Thành phố Móng Cái, tỉnh Quảng Ninh. Loài lợn này phân bố <strong>ở nhiều tỉnh phía Bắc và miền Trung, Tây Nguyên</strong> và chiếm số lượng lớn nhất trong các giống lợn bản địa.</p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032242494678.jpg\" alt=\"Lợn Móng Cái\"><i>Lợn Móng Cái</i></p><p>Lợn Móng Cái được <strong>chia làm 2 dòng</strong>: Xương to và xương nhỏ. Lợn Móng Cái có đầu đen, giữa trán có đốm trắng hình tam giác hoặc hình thoi, mõm trắng. Lưng, mông, cổ đều có màu đen và có hình dáng giống với hình yên ngựa, các phần còn lại trắng.</p><p>Khả năng sinh sản của lợn Móng Cái <strong>được đánh giá là khá cao, từ 10 -16 con/lứa.</strong></p><h3>2Lợn Ỉ</h3><p>Lợn ỉ là một giống lợn địa phương có nguồn gốc ở tỉnh Nam Định và<strong> được nuôi chủ yếu ở miền Bắc Việt Nam</strong>. Tuy nhiên, vì mang đến hiệu quả kinh tế không cao, lợn ỉ đang có nguy cơ tuyệt chủng nên đang được tiến hành nuôi để lưu giữ giống thuần chủng.</p><p>Lợn ỉ có đầu hơi to, khi béo trán dô ra, mặt có nhiều nếp nhăn, nọng cổ và má xệ xuống khi đạt <strong>khoảng 5 - 6 tháng tuổi.</strong> Mắt híp, mõm to bè và ngắn, môi dưới thường dài hơn môi trên.</p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032243192668.jpg\" alt=\"Lợn ỉ mỡ\"><i>Lợn ỉ mỡ</i></p><p>Chúng có vai nở, ngực sâu, thân mình ngắn, lưng võng, khi béo thì trông ít võng hơn, bụng to và xệ xuống khá sâu, mông nở<strong> từ lúc 2-3 tháng</strong>, phía sau mông hơi cúp, chân thấp và khá yếu.</p><p>Giống lợn này có khả năng phối giống khi được <strong>4 -5 tháng tuổi.</strong> Mỗi năm đẻ 2 lứa, 8 – 11 con/lứa, đôi khi <strong>có thể đạt đến 16 con/lứa.</strong></p><h3>3Lợn Mán</h3><p>Lợn mán hay còn có những tên gọi khác như lợn mọi, heo mọi, heo đen có nguồn gốc ở tỉnh Hoà Bình. Chúng thường được nuôi <strong>tập trung ở một số huyện như: Kim Bôi, Đà Bắc, Kỳ Sơn, Tân Lạc, Cao Phong, tỉnh Hòa Bình.</strong></p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032244037798.jpg\" alt=\"Lợn Mán\"><i>Lợn Mán</i></p><p>Lợn Mán<strong> có tầm vóc khá nhỏ, mặt nhỏ, mõm dài, thân hình nhỏ</strong> nhưng chắc, tai nhỏ, dựng đứng hoặc hơi cụp, lưng thẳng hoặc hơi võng.</p><p>Chúng có bộ lông dài và cứng. Về màu sắc của lông: 64% lông da đen tuyền và 36% lông da đen nhưng có đốm trắng ở các vùng như: trán, chóp đuôi, bàn chân.</p><p>Lợn mán có thể đẻ 1.3 lứa/năm, số con sơ sinh sống <strong>khoảng 5 - 6 con/lứa.</strong></p><h3>4Lợn Sóc</h3><p>Lợn sóc hay còn được gọi là lợn sóc Tây Nguyên, heo Êđê là giống lợn của đồng bào các dân tộc sống ở vùng Tây Nguyên như: Êđê, Gia Rai, Bana. <strong>Được nuôi chủ yếu ở các tỉnh Lâm Đồng, Đắk Lắk, Gia Lai, Kon Tum.</strong></p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032244405518.jpg\" alt=\"Lợn Sóc\"><i>Lợn Sóc</i></p><p>Lợn sóc có vóc dáng nhỏ con, mõm dài, nhọn. Da dày, mốc, có bộ lông đen, dài, có bờm dài và dựng đứng. Chân của lợn sóc nhỏ, đi bằng móng nhưng lại rất nhanh nhẹn.</p><p>Lợn sóc có thể bắt đầu phối giống lúc được 9–12 tháng tuổi. Một năm đẻ 1-2 lứa, và mỗi lứa có <strong>khoảng 6-10 con.</strong></p><h3>5Lợn Cỏ</h3><p>Lợn cỏ <strong>có nguồn gốc ở miền Trung Việt Nam</strong>, được phân bổ ở các vùng chạy dọc theo dãy Trường Sơn của các tỉnh Thừa Thiên Huế, Quảng Bình, Quảng Trị, Quảng Nam.</p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032245004938.jpg\" alt=\"Lợn Cỏ\"><i>Lợn Cỏ</i></p><p>Chúng có màu lông đen hoặc xen lẫn đồng thời hai màu trắng đen, dài và dày. Hình dáng mõm dài, xương nhỏ, chân yếu và đi bằng bàn chân, bụng xệ, da khá mỏng.</p><p>Mỗi năm lợn cỏ có thể đẻ<strong> 1,2 - 1,5 lứa, mỗi lứa có khoảng 5 - 6 con.</strong></p><h3>6Lợn Đen Lũng Pù</h3><p>Lợn đen Lũng Pù là một giống lợn đặc trưng<strong> có nguồn gốc và được nuôi ở huyện Mèo Vạc, tỉnh Hà Giang.</strong></p><p>​​Chúng có màu lông và da đen, có điểm đốm trắng ở vùng trán, 4 chân và chóp đuôi. Lông dày và ngắn, da thô, tai nhỏ hơi cụp xuống, mõm dài trung bình. <strong>Lưng không bị võng và bụng không xệ như giống lợn Móng Cái.</strong></p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032245266767.jpg\" alt=\"Lợn Đen Lũng Pù\"><i>Lợn Đen Lũng Pù</i></p><p>Điểm đặc biệt nhất về ngoại hình của lợn đen Lũng Pù đó là chòm lông trắng ở trán dài tạo thành một xoáy ngược lên đỉnh đầu.</p><p>Lợn Đen Lũng Pù có khả năng đẻ <strong>1.5 - 1.6 lứa đẻ/năm; số lợn con là khoảng 8 - 10 con/lứa.</strong></p><h3>7Lợn Vân Pa</h3><p>Lợn Vân Pa là giống lợn địa phương lâu đời của dân tộc Vân Kiều Pa Cô, được nuôi <strong>chủ yếu ở 2 huyện miền núi là Hướng Hóa và Đakrông thuộc tỉnh Quảng Trị.</strong></p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032245590038.jpg\" alt=\"Lợn Vân Pa\"><i>Lợn Vân Pa</i></p><p>Hình dáng chúng giống như con chuột. Màu lông da đen bạc, thỉnh thoảng có phớt một ít màu vàng hung. Lưng thẳng, thân hình gọn, đầu và cổ to, mõm nhọn, tai nhỏ. Khối lượng khi trưởng thành rơi vào khoảng 35-40kg.</p><p>Lợn Vân Pa có khả năng sinh sản khá kém. Chúng có thể phối giống lần đầu khi được <strong>7-8 tháng tuổi và chỉ đẻ 1,5 lứa/năm.</strong></p><h3>8Lợn Khùa</h3><p>Lợn Khùa là giống lợn có nguồn gốc ở tỉnh Quảng Bình và được phân bổ chủ yếu <strong>dọc theo dãy Trường Sơn, trên địa bàn tỉnh Quảng Bình.</strong></p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032246174548.jpg\" alt=\"Lợn Khùa\"><i>Lợn Khùa</i></p><p>Lợn Khùa <strong>có thể có màu lông đen tuyền toàn thân,</strong> có màu da đen với các điểm trắng ở 4 chân hoặc có lông da đen và loang trắng trên thân. Mõm lợn khùa được đánh giá là khá dài và khỏe, tai dựng, lưng khá thẳng và bụng không bị chảy xệ.</p><p>Lợn khùa có khả năng sinh sản khá thấp. Với mỗi lần sinh, số con chỉ đạt <strong>khoảng 5 - 7 con/lứa.</strong></p><h3>9Lợn Mường Khương</h3><p>Lợn Mường Khương là giống lợn địa phương có nguồn gốc tại huyện Mường Khương, tỉnh Lào Cai. Ngoài ra, chúng còn được nuôi chủ yếu ở vùng trung du Bắc Bộ.</p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032246486588.jpg\" alt=\"Lợn Mường Khương\"><i>Lợn Mường Khương</i></p><p>Lợn Mường Khương<strong> có màu lông da đen tuyền hoặc đen nhưng có đốm trắng ở đầu đuôi và ở chân</strong>, lông khá thưa và mềm. Đa số lợn đều có dáng mõm dài thẳng hoặc hơi cong, trán có nếp nhăn, tai to và hơi cúp rũ về phía trước.</p><p>Lợn Mường Khương khả năng sinh sản khi được 5 - 7 tháng tuổi,<strong> lợn đẻ 1,2 - 1,3 lứa/năm. Số lợn con khoảng 5 - 6 con/lứa.</strong></p><h3>10Lợn Mẹo</h3><p>Lợn mẹo hay lợn mèo là giống lợn địa phương đặc trưng của dân tộc H\'Mông sống tại các vùng núi cao của dãy Trường Sơn. Chúng được nuôi<strong> chủ yếu bởi người H\'Mông ở Kỳ Sơn và Quỳ Châu thuộc tỉnh Nghệ An.</strong></p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032247206338.jpg\" alt=\"Lợn Mẹo\"><i>Lợn Mẹo</i></p><p>Lợn mẹo<strong> có thân mình khá lớn, phát triển cân đối.</strong> Lông lợn mẹo thường có màu đen hoặc xám, da dày, lông dài và cứng. Đầu to, mặt hơi gãy, trán dô và thường có khoáy ở giữa trán, mõm hơi dài, tai lớn vừa phải và hơi hướng về phía trước.</p><p>Vai rộng, lưng dài rộng, thẳng hoặc hơi cong vòng lên. Phần hông rộng và phẳng, mông rộng và độ cao của mông thường cao hơn phần vai. Bụng lợn to, dài nhưng không bị chảy xệ xuống. Chân lợn cao, thẳng, vòng ống thô, đi đứng thường dồn trọng lực trên hai ngón trước.</p><p>Chúng có khả năng sinh sản khi được 4 - 5 tháng. <strong>Số con đẻ ra chỉ khoảng 4 - 6 con/lứa.</strong></p><h3>11Lợn Táp Ná</h3><p>Có nguồn gốc ở huyện Thông Nôn, tỉnh Cao Bằng. Ngoài ra, giống lợn Táp Ná còn được nuôi tại<strong> một số huyện lân cận trong tỉnh như Bảo Lạc, Hoà An, Bảo Lâm và một số tỉnh tiếp giáp.</strong></p><p>Lợn Táp Ná có màu sắc rất đặc trưng: lông và da đều đen, ngoài ra còn có thêm 6 điểm trắng: một điểm nằm ở giữa trán, 4 điểm ở cẳng chân và 1 điểm chóp đuôi.</p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032247438328.jpg\" alt=\"Lợn Táp Ná\"><i>Lợn Táp Ná</i></p><p>Đặc biệt <strong>bụng của lợn Táp Ná có màu đen tuyền và không có dải yên ngựa màu trắng bắt qua vai như giống lợn Móng Cái.</strong> Mặt khá thẳng, đầu to vừa phải, tai hơi rủ xuống, bụng to nhưng không bị võng và chảy xệ, chân to, cao và rắn chắc.</p><p>Lợn Táp Ná có khả năng sinh sản khá thấp, nếu được nuôi ở môi trường tốt thì có thể đạt 2 lứa/năm.<strong> Số lợn con mỗi lứa đạt khoảng 7 - 8 con.</strong></p><h3>12Lợn rừng</h3><p>Lợn rừng hay heo rừng xuất hiện hầu hết ở khắp các tỉnh miền núi và trung du ở Việt Nam.</p><p>Lợn rừng thường có màu lông không đồng nhất trên cơ thể, nó được phân chia theo từng vùng khác nhau trên thân mình và thay đổi theo tháng tuổi, <strong>điểm đặc biệt là màu lông của lợn rừng ở giai đoạn nhỏ khác hoàn toàn với giai đoạn trưởng thành.</strong></p><p><img src=\"https://cdn.tgdd.vn/Files/2021/12/03/1402181/tong-hop-thong-tin-ve-cac-loai-lon-dac-trung-tai-viet-nam-202112032248165378.jpg\" alt=\"Lợn rừng\"><i>Lợn rừng</i></p><p><strong>Giai đoạn nhỏ:</strong> Toàn thân chúng có nhiều màu vàng thâm, đen, bạc, hung như màu lá rụng.</p><p><strong>Giai đoạn trưởng thành:</strong> Có lông hai bên má màu bạc, vùng bụng màu trắng đục, còn lại toàn thân màu nâu hung hoặc đen hung. Lông dựng đứng, chỉa ra và cứng.</p><p>Lợn rừng <strong>có thân mình săn chắc, thấp, 4 chân ngắn và tương đối mỏng, bụng gọn</strong>. Đầu của chúng dài, dáng mõm dài, thon, gọn. Có tai nhỏ, mỏng, dựng đứng và hướng về phía trước, có phần răng nanh phát triển.</p>', '/storage/uploads/animal/2022-05-10-09-05-16hag1.jpg', '/storage/uploads/animal/2022-05-10-09-05-16hag1.jpg', '/storage/uploads/animal/2022-05-10-09-05-16hag1.jpg', 1, '2022-05-10 02:12:26', '2022-05-10 08:43:19'),
+(6, 'Gà Công Nghiệp', '<h2><strong>1. Giới thiệu về gà công nghiệp</strong></h2><p><strong>Gà công nghiệ</strong>p được nuôi theo mô hình công nghiệp, chăn nuôi tập trung theo quy trình công nghiệp công khai. Bên cạnh đó, kỹ thuật nuôi gà cũng đòi hỏi những tiêu chuẩn nhất định. Loại gà này được nuôi chủ yếu để lấy thịt và trứng. Do nhu cầu sử dụng ngày một tăng lên nên ngành chăn nuôi công nghiệp cũng đang phát triển mạnh. Theo hướng công nghiệp hóa, hiện đại hóa quy trình nuôi. Chính vì vậy, mà việc nuôi gà theo hướng công nghiệp cũng là cách làm kinh tế được nhiều hộ gia đình áp dụng. Nó giúp họ có thể trang trải trong cuộc sống.&nbsp;</p><p><i><img src=\"https://bihaku.vn/wp-content/uploads/2020/11/9-4.jpg\" alt=\"\" srcset=\"https://bihaku.vn/wp-content/uploads/2020/11/9-4.jpg 1280w, https://bihaku.vn/wp-content/uploads/2020/11/9-4-768x461.jpg 768w, https://bihaku.vn/wp-content/uploads/2020/11/9-4-696x418.jpg 696w, https://bihaku.vn/wp-content/uploads/2020/11/9-4-1068x641.jpg 1068w, https://bihaku.vn/wp-content/uploads/2020/11/9-4-700x420.jpg 700w\" sizes=\"100vw\" width=\"1280\"></i></p><p>Bên cạnh đó, những lợi nhuận thu được từ từ việc chăn nuôi là nguồn thu đáng kể. Mở rộng quy mô chăn nuôi của các gia đình lên. Ngoài ra, muốn chăn nuôi hiệu quả và gà đạt chất lượng như mong muốn. Người chăn nuôi cần phải có những kiến thức và hiểu biết về kỹ thuật nuôi gà.</p><h2><strong>2. Kỹ thuật nuôi gà công nghiệp</strong></h2><p>Quy trình chăn nuôi<strong> gà công nghiệp</strong> để mang lại hiệu quả cao nhất không hề đơn giản chút nào. Nhất là với đặc điểm về điều kiện khí hậu nóng ẩm nhiệt đới của Việt Nam. Gà sẽ dễ bị mắc các bệnh dịch lây lan, gây ra thiệt hại kinh tế cho người chăn nuôi.&nbsp;</p><p>Vì vậy, người chăn nuôi phải hiểu rõ và nắm bắt được các quy trình, kỹ thuật nuôi gà để việc chăn nuôi đạt hiệu quả. Sau đây là một vài lưu ý về kỹ thuật chăn nuôi cho những người mới biết nuôi <strong>gà công nghiệp</strong>.</p><ul><li>Giống gà: hiện nay ở Việt Nam thường sử dụng 3 giống <strong>gà công nghiệp</strong> sau:&nbsp;</li><li>Gà ISA 30: giống gà này có xuất xứ từ Pháp, ở tuổi 1 tháng rưỡi có thể nặng khoảng 3kg. Lượng thức ăn tiêu thụ thấp: 1-2kg/ 1kg trọng lượng. Đây là giống gà công nghiệp có tốc độ phát triển nhanh, đẹp, ít mỡ, sức đề kháng tốt.</li><li>Giống gà AA và ISA VEDES:&nbsp;trung bình 1 tháng rưỡi tuổi đạt từ 2,5 đến 3kg. Chúng có thể thích nghi tốt với khí hậu nóng ẩm nhiệt đới của Việt Nam.</li><li>Giống gà siêu trứng HY_LINE và BABCOCK_B 380: có nguồn gốc từ Mỹ và Pháp, là giống gà có sản lượng trứng cao nhất trên thị trường hiện nay. Số lượng trứng trung bình đến 76 tuần đạt 300-350 quả.</li><li>Chuồng trại: Khi xây dựng chuồng trại, người nuôi cũng cần phải đảm bảo tối thiểu các yêu cầu về kỹ thuật phù hợp với mục đích chăn nuôi. Vị trí đặt chuồng gà phải là những nơi cao ráo, không dễ bị tù, đọng nước, tránh nơi ô nhiễm, có rác thải. Hướng chuồng nên quay về hướng Đông hoặc Đông Nam để nhận được nhiều ánh sáng. Giúp chuồng luôn khô ráo, gà đỡ bị dịch bệnh và phát triển tốt.</li><li>Vệ sinh chuồng trại: đây là một trong những yếu tố cực kỳ quan trọng, chuồng nên được dọn vệ sinh 1-2 ngày/ 1 lần. Thường xuyên sát trùng, vệ sinh toàn bộ chuồng, dụng cụ chăn nuôi như khay nước, máng ăn. Không để vi khuẩn có điều kiện, cơ hội phát sinh và xâm nhập gây bệnh cho gà.</li><li>Thức ăn: Đây cũng là yếu tố quan trọng mà người chăn nuôi <strong>gà công nghiệp</strong> nào cũng cần phải am hiểu và thành thạo. Gà công nghiệp cần có nguồn thức ăn được lựa chọn kỹ càng để thịt gà đạt chất lượng cao. Thức ăn cho gà công nghiệp sẽ thường được bổ sung theo tỷ lệ các chất dinh dưỡng như chất đường bột, chất đạm, chất béo, vitamin. Tùy thuộc vào mục đích chăn nuôi, tuổi của gà, mà người chăn nuôi sẽ lựa chọn, chia tỷ lệ các thành phần dinh dưỡng cho hợp lý. Làm như vậy sẽ giúp cho chất lượng gà đạt được hết những ưu điểm của giống.&nbsp;</li></ul><p><i><img src=\"https://bihaku.vn/wp-content/uploads/2020/11/10.jpeg\" alt=\"\" srcset=\"https://bihaku.vn/wp-content/uploads/2020/11/10.jpeg 1181w, https://bihaku.vn/wp-content/uploads/2020/11/10-768x538.jpeg 768w, https://bihaku.vn/wp-content/uploads/2020/11/10-100x70.jpeg 100w, https://bihaku.vn/wp-content/uploads/2020/11/10-696x487.jpeg 696w, https://bihaku.vn/wp-content/uploads/2020/11/10-1068x748.jpeg 1068w, https://bihaku.vn/wp-content/uploads/2020/11/10-600x420.jpeg 600w\" sizes=\"100vw\" width=\"1181\"></i></p><ul><li>Kỹ thuật cho <strong>gà công nghiệp</strong> ăn: Đối với nước uống, các bạn nên sử dụng các bình tròn treo vừa tầm, không nên để trệt xuống dưới đất. Thay nước sạch thường xuyên cho gà uống. Còn với thức ăn thì 4-6 lần/ 1 ngày. Chú ý nếu hết 1 ngày thì nên bỏ thức ăn cũ đi, tránh các trường hợp thức ăn bị hỏng sẽ gây bệnh cho gà.&nbsp;</li></ul><p>Trên đây là những thông tin về đặc điểm cũng như quy trình và kỹ thuật nuôi <strong>gà công nghiệp</strong>. Hy vọng nó sẽ giúp ích cho bạn trong việc chăn nuôi gà đạt hiệu quả cao nhất. Hãy thử áp dụng để tăng năng suất cũng như chất lượng gà công nghiệp nhé! Chúc bạn sẽ thành công với mô hình chăn nuôi này.</p>', '/storage/uploads/animal/2022-05-10-09-05-27cach-phan-biet-ga-ta-ga-cong-nghiep.jpg', '/storage/uploads/animal/2022-05-10-09-05-27cach-phan-biet-ga-ta-ga-cong-nghiep.jpg', '/storage/uploads/animal/2022-05-10-09-05-27cach-phan-biet-ga-ta-ga-cong-nghiep.jpg', 2, '2022-05-10 02:15:36', '2022-05-10 08:42:59');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_category_fertilizer`
+--
+
+CREATE TABLE `tbl_category_fertilizer` (
+  `category_fertilizer_id` bigint(20) UNSIGNED NOT NULL,
+  `category_fertilizer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_category_fertilizer`
+--
+
+INSERT INTO `tbl_category_fertilizer` (`category_fertilizer_id`, `category_fertilizer`, `created_at`, `updated_at`) VALUES
+(1, 'Phân bón lá', '2022-05-07 22:24:24', '2022-05-07 22:32:35'),
+(2, 'Phân bón lót', '2022-05-07 22:33:29', '2022-05-07 22:33:29'),
+(3, 'Phân sinh học', '2022-05-07 22:33:37', '2022-05-07 22:33:37'),
+(4, 'Phân Ure', '2022-05-07 22:33:54', '2022-05-07 22:33:54'),
+(6, 'Phân Đạm', '2022-05-07 22:36:24', '2022-05-07 22:36:24'),
+(7, 'Phân Lân', '2022-05-07 22:36:29', '2022-05-07 22:36:29');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_category_pesticides`
+--
+
+CREATE TABLE `tbl_category_pesticides` (
+  `category_pesticides_id` bigint(20) UNSIGNED NOT NULL,
+  `category_pesticides` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_category_pesticides`
+--
+
+INSERT INTO `tbl_category_pesticides` (`category_pesticides_id`, `category_pesticides`, `created_at`, `updated_at`) VALUES
+(1, 'Thuốc trừ sâu', '2022-05-08 20:18:26', '2022-05-08 20:20:12'),
+(2, 'Thuốc trừ bệnh', '2022-05-08 20:18:57', '2022-05-08 20:18:57'),
+(3, 'Thuốc diệt mầm', '2022-05-08 20:19:05', '2022-05-08 20:19:05'),
+(4, 'Thuốc diệt cỏ', '2022-05-08 20:19:15', '2022-05-08 20:19:15');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_category_vm`
+--
+
+CREATE TABLE `tbl_category_vm` (
+  `category_vm_id` bigint(20) UNSIGNED NOT NULL,
+  `category_vm` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_category_vm`
+--
+
+INSERT INTO `tbl_category_vm` (`category_vm_id`, `category_vm`, `created_at`, `updated_at`) VALUES
+(1, 'Vaxcin', '2022-05-09 00:50:19', '2022-05-09 00:50:19'),
+(4, 'Thuốc Điều Trị', '2022-05-09 00:51:22', '2022-05-09 00:51:22'),
+(5, 'Thuốc Tăng Sinh', '2022-05-09 00:51:28', '2022-05-09 00:51:28');
 
 -- --------------------------------------------------------
 
@@ -791,6 +1021,33 @@ INSERT INTO `tbl_district` (`district_id`, `district_name`, `province_id`, `crea
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tbl_fertilizer`
+--
+
+CREATE TABLE `tbl_fertilizer` (
+  `fertilizer_id` bigint(20) UNSIGNED NOT NULL,
+  `fertilizer_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fertilizer_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fertilizer_img_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fertilizer_img_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fertilizer_img_3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_fertilizer_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_fertilizer`
+--
+
+INSERT INTO `tbl_fertilizer` (`fertilizer_id`, `fertilizer_name`, `fertilizer_description`, `fertilizer_img_1`, `fertilizer_img_2`, `fertilizer_img_3`, `category_fertilizer_id`, `created_at`, `updated_at`) VALUES
+(1, 'Phân bón lá  ALASKA FISH EMULSION', '<p>(giá của sản phẩm chưa bao gồm phí ship COD toàn quốc) PHÂN BÓN LÁ ALASKA FISH EMULSION Cá hữu cơ &amp; tảo biển Thành phần: Nts 5%; P2O5hh 1%; K2Ohh 1%; Ca 0,01%; Mg 0,1%; S 0,5%; pH H2O: 3,7; tỉ trọng: 1,1. Thể tích thực: 500ml giá 102.000 đồng. 1 lít với giá 200.000 đồng. PREMIUM QUALITY ORGANIC SEAWEED &amp; FISH MEAL 100% NATURAL ORGANIC LABORATORY TESTED</p>', 'https://vuonsaigon.vn/wp-content/uploads/2019/03/2.png', 'https://vuonsaigon.vn/wp-content/uploads/2019/03/2.png', 'https://vuonsaigon.vn/wp-content/uploads/2019/03/2.png', 1, '2022-05-08 05:51:05', '2022-05-10 10:09:13'),
+(3, 'Phân Hữu Cơ Vi Sinh', '<ul><li>ĐẦU TRÂU HCMK 7HỮU CƠ TRICHODERMA + TE* Tính năng-Dạng phân: dạng bột và dạng viên.- Chủng loại phân: Phổ rộng, bổ sung dinh dưỡng cho đất trồng, giá thể thúc đẩy rễ cây phát triển mạnh, giúp hoa lâu tàn .- Thành phần: Hữu cơ 18%, Nts 2%, P2O5hh 2%, K2Ohh 1%, CaO 0,05%, MgO 0,15%, B 300ppm, Zn 500 ppm, Cu 300 ppm, độ ẩm 30%.- Nấm đối kháng Trichoderma sp 1 x 106 Cfu/ gam.-Khối lượng tịnh : đóng gói 1 kg .- Bảo quản nơi thoáng mát và tránh xa tầm tay trẻ em .</li></ul><p>&nbsp;</p><figure class=\"image\"><img src=\"https://lzd-img-global.slatic.net/g/p/28fc7e8378861d601db6101c39042825.jpg_2200x2200q80.jpg_.webp\"></figure><p>&nbsp;</p><p><strong>* Công dụng:</strong></p><p>- Giúp đất tơi xốp, tăng hiệu quả hấp thu phân vô cơ của cây trồng.</p><p>- Tăng sức chống chịu với thời tiết bất thuận.</p><p>- Phân giải nhanh chất hữu cơ thành thức ăn cho cây.</p><p>- Giúp cây phục hồi nhanh sau khi thu hoạch, cấy trồng.</p><p>- Tăng năng suất và chất lượng nông sản.</p><p>&nbsp;</p><p><img src=\"https://lzd-img-global.slatic.net/g/p/a0e27161548a3f032c122cbffa343215.jpg_2200x2200q80.jpg_.webp\"></p><p>&nbsp;</p><p><strong>* Hướng dẫn sử dụng</strong></p><p>Phân bón đầu trâu bạn đồng hành của nhà nông .</p>', '/storage/uploads/fertilizer/2022-05-10-16-05-468d0754f14e326352ffd447570c177542.jpg', '/storage/uploads/fertilizer/2022-05-10-16-05-48a8a8d3809f7275a3738e31805461a106.jpg', '/storage/uploads/fertilizer/2022-05-10-16-05-50đầu-trâu-hcmk7.png', 2, '2022-05-10 09:03:58', '2022-05-10 10:08:57'),
+(4, 'Đạm Phú Mỹ', '<h2>Phân Ure là gì?</h2><p><img src=\"http://ncppb.com/wp-content/uploads/2020/11/phan-ure-la-gi.jpg\" alt=\"Phân Ure là gì?\" srcset=\"http://ncppb.com/wp-content/uploads/2020/11/phan-ure-la-gi.jpg 1000w, http://ncppb.com/wp-content/uploads/2020/11/phan-ure-la-gi-300x158.jpg 300w, http://ncppb.com/wp-content/uploads/2020/11/phan-ure-la-gi-768x403.jpg 768w\" sizes=\"100vw\" width=\"1000\"></p><p>Phân Ure là gì?</p><p><strong>Phân Ure</strong> chính là loại phân đạm được bày bán trên thị trường, bạn có thể thấy ở bất cứ cửa hàng nào bên cạnh <a href=\"http://ncppb.com/top-10-loai-phan-bon-huu-co/\">các loại phân hữu bón hữu cơ</a>, phân bón vô cơ phổ biến khác. Loại phân bón này được sử dụng chủ yếu để cung cấp lượng đạm cần thiết cho sự sinh trưởng và phát triển của cây trồng.&nbsp;Hơn nữa phân bón Ure còn hỗ trợ và thúc đẩy cho quá trình phân cành, đẻ nhánh, đồng thời thúc đẩy trong quá trình quang hợp mạnh, kích thích lá to góp phần tăng năng suất cây trồng.</p><p>Không những vậy mà phân đạm Ure còn có khả năng thích nghi cực tốt nhất là ở những nơi trên đất rộng và trên các loại cây trồng khác nhau.&nbsp;Đối với khâu bảo quản của đạm&nbsp; Ure cũng cần phải hết sức chú ý, tránh ánh nắng trực tiếp và nơi ẩm ướt. Bạn có thể tham khảo giá phân bón&nbsp;tại&nbsp;Công ty Phân Bón Hà Lan.</p><h3>Thành phần có trong phân Ure</h3><p>Thành phần chủ yếu có trong phân bón Ure đó chính là nitơ và thành phần nitơ chiếm khoảng 50%.</p><p>Hơn nữa, trong đạm Ure có dạng tinh thể màu trắng cho nên dễ hòa tan trong nước, độ hút ẩm khá mạnh cho nên việc bảo quản phân bón cũng cần chú ý hơn. Trong quá trình sản xuất cũng vậy, có khả năng phân Ure sẽ tạo ra Biuret và gây ảnh hưởng đến nặng nề đến cây trồng.</p><h3>Công thức hóa học của phân bón Ure</h3><p>Công thức hóa học phân bón Ure: <strong>CO(NH2)2.</strong></p><h3>Phân loại phân ure</h3><p><img src=\"http://ncppb.com/wp-content/uploads/2020/11/cac-loai-phan-ure.jpg\" alt=\"Các loại phân Ure\" srcset=\"http://ncppb.com/wp-content/uploads/2020/11/cac-loai-phan-ure.jpg 1000w, http://ncppb.com/wp-content/uploads/2020/11/cac-loai-phan-ure-300x158.jpg 300w, http://ncppb.com/wp-content/uploads/2020/11/cac-loai-phan-ure-768x403.jpg 768w\" sizes=\"100vw\" width=\"1000\"></p><p>Các loại phân Ure</p><p><strong>Phân bón Ure được chia làm hai loại:</strong></p><ul><li>Phân bón Ure hạt tròn</li><li>Phân bón Ure dạng viên như trứng cá</li></ul><p>Tuy nhiên, hai loại phân bón này đều cung cấp chất đạm cho cây, nhưng phân bón dạng viên thường được ưa chuộng nhiều hơn và được sử dụng phổ biến hơn nhờ thành phần chống, hút ẩm và bảo quản được khá lâu.</p><h2>Hướng dẫn một số cách bón phân hiệu quả</h2><p><img src=\"http://ncppb.com/wp-content/uploads/2020/11/cach-bon-phan-urea-hieu-qua.jpg\" alt=\"Hướng dẫn một số cách bón phân hiệu quả\" srcset=\"http://ncppb.com/wp-content/uploads/2020/11/cach-bon-phan-urea-hieu-qua.jpg 1000w, http://ncppb.com/wp-content/uploads/2020/11/cach-bon-phan-urea-hieu-qua-300x158.jpg 300w, http://ncppb.com/wp-content/uploads/2020/11/cach-bon-phan-urea-hieu-qua-768x403.jpg 768w\" sizes=\"100vw\" width=\"1000\"></p><p>Hướng dẫn một số cách bón phân hiệu quả</p><p>Một phần là do tính chất của phân bón Ure vô cùng dễ tan và khả năng thích nghi cao cho nên phân bón Ure thường được sử dụng để bón thúc.</p><p>Tốt hơn hết là bạn nên vùi phân vào trong lòng đất để tránh tình trạng mất đạm cho quá trình <a href=\"https://vi.wikipedia.org/wiki/Chu_tr%C3%ACnh_nit%C6%A1#Amoni_h%C3%B3a\">amoni hóa</a> trên mặt đất tạo nên.&nbsp;Hơn nữa, bạn cũng có thể sử dụng phân bón Ure pha loãng tạo thành dung dịch để bón phân cho thấm lâu hơn, bạn nên bón vào lúc trời mát mẻ để phân bón phát huy được tác dụng cao nhất.</p><p>Ở giai đoạn đầu khi cây trồng đang phát triển mạnh và tới giai đoạn cây đang thụ quả. Cũng là do hàm lượng dinh dưỡng có trong đạm cao nên khi trộn với các loại phân khác thì sẽ nhằm mục đích cân bằng dinh dưỡng cho cây.&nbsp;Tình trạng này sẽ thừa hoặc thiếu đều sẽ ảnh hưởng đến năng suất của cây trồng.</p><p>Bạn cũng nên lưu ý là phân bón Ure hoàn toàn có thể bón cho đất chua. Tuy nhiên, loại phân bón này bạn tuyệt đối không nên bón chung với vôi, như vậy sẽ gây nên phản ứng hóa học là mất tác dụng của phân đồng thời làm đất rắn lại.&nbsp;Tốt hơn hết là bạn hãy bón vôi trước đó rồi sau một thời gian hãy sử dụng phân bón Ure để tránh lãng phí.</p><h2>Tác dụng của Phân Ure mang lại</h2><h3>Phân Ure trong trồng trọt</h3><p><img src=\"http://ncppb.com/wp-content/uploads/2020/11/phan-urea-trong-trong-trot.jpg\" alt=\"Phân Ure trong trồng trọt\" srcset=\"http://ncppb.com/wp-content/uploads/2020/11/phan-urea-trong-trong-trot.jpg 1000w, http://ncppb.com/wp-content/uploads/2020/11/phan-urea-trong-trong-trot-300x158.jpg 300w, http://ncppb.com/wp-content/uploads/2020/11/phan-urea-trong-trong-trot-768x403.jpg 768w\" sizes=\"100vw\" width=\"1000\"></p><p>Phân Ure trong trồng trọt</p><p>Đối với <strong>phân bón Ure</strong> thì sử dụng phổ biến cho cây trồng, đặc biệt là các loại rau màu nhằm giúp cho lá cây có kích thước lớn và màu của nó xanh hơn.</p><p>Tuy nhiên, đối với việc bón một lượng phù hợp tránh dư thừa một lượng Nitrat. Và đặc biệt nếu để chất này tích lũy trong nông sản hoàn toàn không tốt cho sức khỏe người tiêu dùng vì vậy hãy dùng các loại phân bón uy tín như phân đạm Hà Lan Urea 46TE.</p><h3>Phân Ure trong&nbsp;chăn nuôi</h3><p><img src=\"http://ncppb.com/wp-content/uploads/2020/11/phan-ure-trong-chan-nuoi.jpg\" alt=\"Phân Ure trong&nbsp;chăn nuôi\" srcset=\"http://ncppb.com/wp-content/uploads/2020/11/phan-ure-trong-chan-nuoi.jpg 1000w, http://ncppb.com/wp-content/uploads/2020/11/phan-ure-trong-chan-nuoi-300x158.jpg 300w, http://ncppb.com/wp-content/uploads/2020/11/phan-ure-trong-chan-nuoi-768x403.jpg 768w\" sizes=\"100vw\" width=\"1000\"></p><p>Phân Ure trong&nbsp;chăn nuôi</p><p>Trong chăn nuôi thì <strong>phân bón Ure</strong> còn được trộn vào thức ăn của bò, trâu. Bởi trong dạ cỏ của loài động vật nhai lại này có loài vi sinh vật cộng sinh giúp phân giải xenlulozo, đồng thời phân giải đạm Ure nữa.&nbsp;Nguồn dinh dưỡng này sẽ khiến cho các vi sinh vật phát triển mạnh mẽ hơn cho đến khi dạ múi khế bị tiêu hóa mới thôi.&nbsp;Khi đó, cơ thể động vật tất nhiên sẽ có thêm một nguồn chất đạm bổ dưỡng.</p><p>Bạn cũng nên lưu ý đối với động vật phát triển cơ quan tiêu hóa hoàn chỉnh thì khi sử dụng đạm Ure dễ dẫn đến tình trạng bị ngộ độc thực phẩm.&nbsp;Và bạn cũng đừng pha đạm Ure vào cho động vật uống đâu đấy nhé.</p><h2>Kết luận</h2><p>Qua bài viết này thì chúng tôi cũng đã mang đến cho bạn các thông tin về <strong>Phân Ure là gì? Công thức và tác dụng của Phân Ure</strong>, một trong những loại phân bón được ưa chuộng nhất hiện nay.&nbsp;Mong rằng với những gì mà chúng tôi chia sẻ sẽ giúp ích cho bạn trong trồng trọt, chăn nuôi và sản xuất.</p>', '/storage/uploads/fertilizer/2022-05-10-16-05-253d195287ee8447441d86cb6d9d12a60c.jpg', '/storage/uploads/fertilizer/2022-05-10-16-05-26phan-ure-ca-mau-tapdoanvinasa-02.jpg', '/storage/uploads/fertilizer/2022-05-10-16-05-28phan-ure-la-gi.jpg', 4, '2022-05-10 09:05:44', '2022-05-10 09:05:44');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tbl_forum`
 --
 
@@ -843,7 +1100,9 @@ INSERT INTO `tbl_forum_comment` (`forum_comment_id`, `comment`, `forum_id`, `use
 (3, 'Cảm ơn bà con đã giúp', 1, 2, NULL, '2022-04-06 01:36:37', '2022-04-06 01:36:37'),
 (5, 'Không có gì đâu bác', 1, 3, 1, '2022-04-06 01:56:57', '2022-04-06 01:56:57'),
 (6, 'Tui có thử nhiều cách nhưng vẫn không hiệu quả !', 4, 2, NULL, '2022-04-08 20:38:10', '2022-04-08 20:38:10'),
-(7, 'Test Comment !', 4, 2, NULL, '2022-04-08 22:05:37', '2022-04-08 22:05:37');
+(7, 'Test Comment !', 4, 2, NULL, '2022-04-08 22:05:37', '2022-04-08 22:05:37'),
+(8, 'Test comment !!!', 4, 2, 7, '2022-05-07 20:18:04', '2022-05-07 20:18:04'),
+(9, 'bác có thể tham khảo ở đây: http://127.0.0.1:8000/soa/detail/1', 2, 2, NULL, '2022-05-10 10:20:06', '2022-05-10 10:20:06');
 
 -- --------------------------------------------------------
 
@@ -1171,6 +1430,33 @@ INSERT INTO `tbl_news_comment` (`id_news_comment`, `news_id`, `user_id`, `commen
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tbl_pesticides`
+--
+
+CREATE TABLE `tbl_pesticides` (
+  `pesticides_id` bigint(20) UNSIGNED NOT NULL,
+  `pesticides_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pesticides_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pesticides_img_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pesticides_img_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pesticides_img_3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_pesticides_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_pesticides`
+--
+
+INSERT INTO `tbl_pesticides` (`pesticides_id`, `pesticides_name`, `pesticides_description`, `pesticides_img_1`, `pesticides_img_2`, `pesticides_img_3`, `category_pesticides_id`, `created_at`, `updated_at`) VALUES
+(4, 'ABENIX 10SC', '<p><strong>ABENIX 10SC</strong> có thành phần <strong>Albendazole 100 g/l.</strong></p><p><strong>ABENIX 10SC</strong> là thuốc trừ bệnh thế hệ mới, có tính nội hấp, thẩm thấu mạnh.</p><p><strong>ABENIX 10SC </strong>Là thuốc có tác dụng phòng trừ và dự phòng đối với các bệnh có tính chất nấm khuẩn đặc biệt là nấm bệnh tử nang.</p><p><strong>ABENIX 10SC </strong>đặc hiệu trừ bệnh lem lép hạt, vàng lá hại lúa, hiệu quả cao với bệnh đạo ôn (cháy lá) hại lúa; bệnh vàng lá, thán thư hại hồ tiêu.</p><p><strong>ABENIX 10SC </strong>ABENINường khả năng chống bệnh, kích thích chất diệp lục sinh trưởng và tăng cường quá trình quang hợp, giúp lá xanh hơn.</p><p><strong>ABENIX 10SC</strong> giúp cây khỏe, hạt lúa sáng chắc, làm cho cây trồng nâng cao sản lượng và chất lượng rõ rệt.</p><figure class=\"media\"><oembed url=\"https://www.youtube.com/watch?v=Zj67Pw1MZ9w\"></oembed></figure><figure class=\"table\"><table><tbody><tr><td>Cây trồng</td><td>Dịch hại</td><td>Liều lượng</td><td>Cách dùng</td></tr><tr><td rowspan=\"2\">Lúa</td><td><p>Lem lép hạt</p><p>&nbsp;</p><p>Vàng lá (vi khuẩn)</p></td><td>0,7 – 1,2 L/ha</td><td rowspan=\"2\"><p>Lượng nước phun</p><p>&nbsp;</p><p>500 – 600 L nước/ha.</p></td></tr><tr><td>Đạo ôn</td><td>0,9 – 1,2 L/ha</td></tr><tr><td>Hồ tiêu</td><td>Vàng lá, thán thư</td><td>0,3%</td><td>Lượng nước phun 600 – 800 L/ha khi tỉ lệ bệnh khoảng 5%</td></tr></tbody></table></figure><ul><li>Thuốc có thể có hại nếu uống phải, hít phải</li><li>Mang trang bị bảo hộ lao động phù hợp; không ăn uống, hút thuốc trong khi sử dụng thuốc</li><li>Rửa sạch trang bị bảo hộ lao động và tắm rửa sạch sẽ sau khi sử dụng thuốc</li><li>Không rửa dụng cụ pha và phun thuốc nơi ao hồ nuôi cá, nguồn nước sinh hoạt.</li><li>Tiêu hủy vỏ bao bì đúng nơi quy định</li></ul>', '/storage/uploads/pesticides/2022-05-10-15-05-57Chai-Abenix-1-lit-TG.png', '/storage/uploads/pesticides/2022-05-10-15-05-36Chai-Abenix-1-lit-CT-1.png', '/storage/uploads/pesticides/2022-05-10-15-05-37IMG_0511-Atatco-90ml-.png', 2, '2022-05-10 08:52:41', '2022-05-10 08:52:41'),
+(5, 'ALIETTE 800WG', '<p>- Sản phẩm của Bayer A.S.S Pháp.</p><p>- Đăng ký và phân phối bởi công ty TNHH Bayer Việt Nam.</p><p>- Thành phần: Fosetyl Aluminium 800g/kg, phụ gia 200g/kg.</p><p>- Qui cách: 100g/gói.<br>&nbsp;</p><p>- Công dụng&nbsp;Aliette:</p><p>Aliette đặc trị cháy lá vi khuẩn, chết nhanh (thối gốc), lở cổ rễ, thối rễ, sương mai, thối trái xì mủ.</p><p>Aliette 800WG không pha chung với thuốc gốc đồng, lưu huỳnh, phân bón có đạm.</p><p>Aliette là thuốc duy nhất lưu dẫn 2 chiều.</p><p>Aliette kích thích lúa tiết kháng thể tiêu diệt vi khuẩn.</p><p>Phun Aliette một lần bảo vệ lúa suốt cả vụ.</p><p>&nbsp;</p><p>- Hướng dẫn sử dụng&nbsp;Aliette:</p><figure class=\"table\"><table><tbody><tr><td><strong>Cây trồng – Bệnh hại</strong></td><td><strong>Cách phun</strong></td></tr><tr><td colspan=\"2\">* Pha 50g /bình 16 lít (1kg/ha)</td></tr><tr><td>Cây lúa – Cháy lá vi khuẩn</td><td>Phun sớm giai đoạn lúa làm đòng. Phun 320 lít nước /ha.</td></tr><tr><td colspan=\"2\">* Pha 40g /bình 16 lít</td></tr><tr><td>Cây tiêu – Chết nhanh (thối gốc)</td><td>Phun đều trên lá. Phun một lần /tháng trong mùa mưa.</td></tr><tr><td>Cây cam, quýt – Lở cổ rễ, thối rễ</td><td>Phun đều trên lá, có thể pha nước tưới quanh gốc theo tán cây.</td></tr><tr><td>Cây dưa leo – Phấn trắng</td><td>Phun khi thấy bệnh xuất hiện. Phun 500-600 lít nước/ ha.</td></tr><tr><td>Cây dưa hấu, khoai tây – Sương mai</td><td>Phun khi thấy bệnh xuất hiện. Phun 400-500 lít nước/ ha.</td></tr><tr><td colspan=\"2\">* Pha 30g /bình 16 lít</td></tr><tr><td>Cây sầu riêng, ca cao – Thối trái, xì mủ</td><td>Phun ướt đều cây khi thấy bệnh xuất hiện</td></tr><tr><td colspan=\"2\">* Pha 28g /bình 16 lít</td></tr><tr><td>Cây vải – Sương mai</td><td>Phun đều trên lá giai đoạn mới ra bông và tạo trái non.</td></tr></tbody></table></figure><p>Phun cách ly đối với sầu riêng 01 ngày, ca cao 07 ngày, cây trồng khác 14 ngày.</p><p><br>&nbsp;</p>', '/storage/uploads/pesticides/2022-05-10-15-05-29aliette_9d72d4bb577b40d29170392a36204e0b.jpg', '/storage/uploads/pesticides/2022-05-10-15-05-3161e30064dcd54fe093b666d049e9b976.jpg', '/storage/uploads/pesticides/2022-05-10-15-05-34b1.jpg', 2, '2022-05-10 08:57:04', '2022-05-10 08:57:04'),
+(6, 'Akulagold 260EW 240ml', '<h4><strong>Thuốc Trừ Ruồi Vàng Akulagold 260EW 240ml Hạ Gục Nhanh, Diệt Sạch Trứng</strong></h4><p>Thành phần: Profenophos: 200g/l Thiamethoxam: 50g/l Beta – Cypermethrin: 10g/l Phụ gia công nghệ mới: 740g/l Hỗn hợp 3 hoạt chất (Profenophos, Thiamethoxam và Beta – Cypermethrin) có tác động tiếp xúc, vị độc, thấm sâu, lưu dẫn mạnh. Diệt trừ hiệu quả các loại sâu hại như: Sâu đục thân, rầy nâu hại lúa, rệp sáp hại cà phê, ruồi vàng, sâu vẽ bùa. HƯỚNG DẪN SỬ DỤNG Pha 10 – 12,5ml/ bình 20 lít nước Pha 100 – 125ml cho 1 phuy 200 lít nước Liều lượng: 0,5 lít/ha. Lượng nước phun 400 lít/ha Thời gian cách ly 14 ngày Đối tượng đăng ký: Rầy nâu, sâu đục thân, rệp sáp</p><p><img src=\"https://lzd-img-global.slatic.net/g/shop/5d876c31c5036997716985ccca6ab624.jpeg_2200x2200q80.jpg_.webp\"><img src=\"https://lzd-img-global.slatic.net/g/shop/4835f65a25ea0a36c7185c0ede1b9a30.jpeg_2200x2200q80.jpg_.webp\"></p><p>Đặc tính sản phẩm Thuốc Trừ Ruồi Vàng Akulagold 260EW 240ml Hạ Gục Nhanh, Diệt Sạch Trứng</p>', '/storage/uploads/pesticides/2022-05-10-15-05-08fbb2e0eca806558bd663ed99a3217337.jpg', '/storage/uploads/pesticides/2022-05-10-15-05-05AKULAGOLD-260EW.jpg', '/storage/uploads/pesticides/2022-05-10-15-05-10AKULADOLD-260ew-rep-sap-tuyen-trung.jpg', 1, '2022-05-10 08:59:13', '2022-05-10 10:08:00');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tbl_plant`
 --
 
@@ -1191,7 +1477,12 @@ CREATE TABLE `tbl_plant` (
 --
 
 INSERT INTO `tbl_plant` (`plant_id`, `plant_name`, `plant_description`, `plant_img_1`, `plant_img_2`, `plant_img_3`, `top_id`, `created_at`, `updated_at`) VALUES
-(2, 'Cam soàn', '<p>Miền tây nổi tiếng là nơi trồng được nhiều loại trái cây ngon ngọt. Nhắc đến vùng đất chằng chịt những con sông, dòng kênh này, người ta sẽ nhớ ngay đến những quầy dừa nước, những vườn bưởi trĩu quả,… và cũng không quên nhắc đến những chùm cam mọng nước. Ở quê hương miền tây, giống cam nổi tiếng nhất là cam xoàn. Đây là một <strong>giống cam ngon, ngọt</strong> hơn nhiều giống cam khác. Tuy nhiên, không phải ai cũng có thể phân biệt được cam xoàn để có cơ hội thưởng thức đúng loại đặc sản miền tây này.</p><h3>1Cam xoàn</h3><p><strong>Cam xoàn thuộc họ thực vật Rutaceae, có tên khoa học là Citrus nobilis</strong>. Trong tiếng Anh được gọi là king mandarin.</p><p>Trên thực tế, <strong>cam xoàn là giống cam cùng họ với cam mật</strong>. Có lẽ vì vậy mà vẻ ngoài của nó khá giống với loại quả này. Có thể nhận biết dựa vào một số đặc điểm sau:</p><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251142010984.jpg\" alt=\"cam xoàn là giống cam cùng họ với cam mật\"></p><p>- <strong>Vỏ màu xanh, khi chín ngả sang vàng chanh đậm, bề ngoài trơn láng</strong> (so với quýt, chanh thì chỉ sần sùi hơn chút).</p><p>- Vỏ mỏng.</p><p>- Kích thước trung bình khoảng <strong>250 đến 300g</strong>.</p><p>- <strong>Thịt bên trong màu vàng, vị ngọt thanh, mùi hương nhẹ nhàng.</strong></p><p>- Múi cam chắc thịt.</p><h3>2Ăn cam xoàn có tác dụng gì?</h3><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251146516154.jpg\" alt=\"Ăn cam xoàn có tác dụng?\"></p><p><strong>Cam xoàn chứa nhiều chất dinh dưỡng</strong>, gồm: nước (87.5%), protid (0,9%), glucid (8,4%), acid hữu cơ (1,3%), cellulose (1,6%), calcium (34mg%), sắt (23mg%), caroten (0,4mg%), vitamin C (40mg%).... Trong đó, vitamin C có thể lên tới 150mg trong 100g dịch, hoặc 200-300 mg trong 100g vỏ khô.</p><p>Vậy nên <strong>không chỉ ăn phần thịt ngọt bên trong</strong>, người ta còn <strong>sử dụng vỏ cam để đặc chế tinh dầu hoặc phơi khô nấu nướng để tắm, dùng để chống nôn khi đi xe, xua đuổi ruồi muỗi</strong>,....</p><p>Không chỉ ngon, cam xoàn còn mang lại rất nhiều giá trị dinh dưỡng cho người dùng. Nếu bạn phân vân không biết “<strong>Ăn cam xoàn có tác dụng gì?</strong>”:</p><p>- <strong>Chống oxy hóa:</strong> Trong cam xoàn chứa hàm lượng oxy hóa cao, không chỉ giúp trẻ hóa làn da mà còn ngăn ngừa nếp nhăn, sẫm màu,... Cải thiện vẻ đẹp của làn da, nuôi dưỡng da từ sâu bên trong, giúp da căng mịn và sáng bóng hơn.</p><p>- <strong>Tăng sức đề kháng cho cơ thể:</strong> Nhờ lượng vitamin C dồi dào trong cam xoàn, nó giúp cơ thể tăng cường sự trao đổi chất, không những vậy còn tăng sức đề kháng hiệu quả.</p><p>- <strong>Giảm stress, mệt mỏi</strong>: Không phải tự nhiên mà người ta lại uống nước ép cam khi mệt mỏi. Nhờ giá trị dinh dưỡng dồi dào, nó giúp cơ thể tỉnh táo, khỏe khoắn, từ đó nâng cao chất lượng công việc.</p><p>- <strong>Hỗ trợ giảm cân</strong>: Trong cam xoàn còn chứa lượng chất xơ - hỗ trợ tuyệt vời cho quá trình giảm cân, thúc đẩy quá trình tiêu hóa, từ đó tránh tình trạng béo phì.</p><p>- <strong>Tốt cho phụ nữ mang thai và trẻ nhỏ</strong>: Hiếm có loại quả nào lại tốt cho cả phụ nữ mang thai và trẻ nhỏ như cam xoàn. Cam chứa nhiều axit folic - một hợp chất dinh dưỡng cực kỳ tốt cho bà bầu, giúp thai nhi phát triển tốt nhất, ngăn ngừa dị tật bẩm sinh ở trẻ. Bên cạnh đó còn tăng hệ miễn dịch cho mẹ, giảm thiểu bệnh tật trong quá trình mang thai.</p><p>- <strong>Giảm nguy cơ mắc bệnh tim, sỏi thận</strong>: Chất xơ và chất chống oxy hóa có trong cam làm giảm nguy cơ mắc bệnh tim. Hai hợp chất axit citric, citrate thì ngăn ngừa sỏi thận trong cơ thể.</p><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251147215241.jpg\" alt=\"Giảm nguy cơ mắc bệnh tim, sỏi thận\"></p><p>-&nbsp;<strong>Giải độc, lợi tiểu</strong>: Chất limonoid trong nước cam giúp ngăn ngừa bệnh ung thư và có tác dụng giải độc, lợi tiểu. Phụ nữ mang thai thường ăn cam có tỉ lệ nhiễm các bệnh ung thư (phổi và dạ dày) khá thấp. Chất xơ có trong cam cũng giúp mẹ bầu nhuận tràng tốt hơn. Tuy nhiên bà bầu nào bị rối loạn tiêu hóa không nên ăn nhiều cam và nếu uống nước cam thì nên pha loãng với nước.</p><p>-&nbsp;<strong>Lợi sữa sau sinh</strong>: Bà mẹ sau sinh cần cung cấp nhiều vitamin C hơn cả những phụ nữ mang thai, cam là thực phẩm cung cấp sữa mẹ tuyệt vời. Uống một ít nước cam, chắc chắn mẹ sẽ được cung cấp đầy đủ vitamin C cho một ngày và thậm chí còn được bổ sung một lượng can-xi từ loại thức uống này.</p><h3>3Phân biệt cam xoàn và cam mật</h3><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251148521645.jpg\" alt=\"Phân biệt cam xoàn và cam mật\"></p><p>Có khá nhiều bạn ở Sài Gòn chỉ mua cam ở siêu thị và ở chợ, chưa từng trực tiếp xem/hái/mua tại vườn nên hoàn toàn không biết được loại cam mình ăn là loại nào và chất lượng ra sao, nên cũng có khá nhiều thắc mắc (bao gồm cả người mua lẻ và khách sỉ) là tại sao cam nhà mình bán giá cao ngang ngửa với siêu thị.</p><p><strong>Cam xoàn là loại cam có nguồn gốc xuất xứ từ một số tỉnh miền Tây Nam Bộ như An Giang, Tiền Giang, Hậu Giang, Bến Tre, Vĩnh Long và Đồng Tháp</strong>. Trong đó, huyện Trà Ôn (tỉnh Vĩnh Long) và huyện Long Mỹ (tỉnh Hậu Giang) là hai trong những địa phương trồng nhiều giống cam này.</p><p><strong>Cam mật thực chất là cây cùng một họ với cam xoàn và cũng được trồng nhiều ở các tỉnh miền Tây Nam Bộ như ở huyện Phụng Hiệp (Hậu Giang), huyện Cai Lậy (Tiền Giang), Phong Điền (Cần Thơ)…</strong> Theo tài liệu Giáo trình nghề trồng cây có múi của Bộ NN&amp;PT Nông thôn, cam mật được trồng ở Việt Nam có rất nhiều loại: cam mật có hạt, cam mật không hạt và cam mật Ôn Châu (có nguốn gốc từ Nhật Bản hoặc Trung Quốc).</p><p>Hiện nay có rất nhiều chủ tiệm hoa quả bán cam mật với giá cam xoàn. Do vậy, để tránh việc phải trả tiền oan, các bà các mẹ cần nắm được một số đặc điểm sau của 2 loại cam này.</p><p><strong>Đặc điểm bên ngoài:</strong></p><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251151503667.jpg\" alt=\"Cam xoàn 2 đồng tiền\"></p><p>Cam xoàn là giống cam cùng họ với cam mật, do đó có bề ngoài khá giống với cam mật. Da cam xoàn màu xanh, khi chín ngả sang màu vàng chanh đậm. <strong>Da cam xoàn không sần sùi như cam sành mà có phần trơn láng hơn, chỉ sần sùi hơn quýt, chanh một chút</strong>. Điểm khác nhau để phân biệt <strong>cam xoàn với cam mật và các giống cam khác là xung quanh cuống cam xoàn có hai quầng tròn hơi nhô lên</strong>. Đây cũng là lí do cam xoàn còn được gọi với cái tên “<strong>cam xoàn hai đồng tiền</strong>”.</p><p><strong>Cam xoàn nhỏ hơn cam sành, vỏ mỏng, có kích thước tương đương cam mật, đạt trọng lượng trung bình khoảng 250 – 300g.</strong></p><p><strong>Hương vị</strong></p><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251152334247.jpg\" alt=\"thịt quả màu vàng, vị ngọt thanh, mùi thơm nhẹ\"></p><p>Cam xoàn <strong>cho thịt quả màu vàng, vị ngọt thanh, mùi thơm nhẹ, múi cam xoàn chắc thịt</strong> hơn <a href=\"https://www.bachhoaxanh.com/kinh-nghiem-hay/cac-loai-cam-ngon-nhuc-nhoi-da-nem-mot-lan-thi-kho-ma-quen-1154419\">các loại cam khác</a>. Điểm đặc biệt là <strong>trái càng nhỏ thì cho vị càng ngọt thanh hơn</strong>.</p><p>Cây cam xoàn từ 3 năm tuổi trở lên sẽ cho trái quanh năm. Cây cam xoàn phát triển mạnh, thích nghi với những vùng đất cao ráo, thoát nước tốt, ít nhiễm phèn, mặn. Cây cam xoàn có khả năng chống chọi bệnh tật tốt, do đó ít bị sâu bệnh phá hoại. Da cam xoàn <strong>không bị nám vào mùa nắng, mùa mưa không bị hư thối, do đó cho trái đẹp quanh năm</strong>.</p><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251153281365.jpg\" alt=\"\"></p><p>Giá cam xoàn khá ổn định, từ 35-50.000đ/kg cho nên nếu cam quá rẻ, thì có thể đấy là cam mật.</p><p>Cam xoàn chứa nhiều vitamin tốt cho sức khỏe, giúp tăng cường hệ miễn dịch và rất tốt trong chăm sóc sắc đẹp. Với hương vị ngon ngọt, cam xoàn là sự lựa chọn của nhiều người tiêu dùng.</p><p>Cam xoàn là loại trái cây rất tốt và bổ, có giá trị cao, nhưng cũng chính vì vậy mà những giống Cam đặc sản hay bị trà trộn. Chỉ với vài đặc điểm nhận biết như trên, khách hàng đã có thể tự mình phân biệt hàng chuẩn - hàng nhái rồi. Chúc mọi người chọn được cam tốt nhé!</p>', '/storage/uploads/plant/2022-05-05-07-05-21cam-xoan-1-800x800.jpg', '/storage/uploads/plant/2022-05-05-07-05-23cam-xoan-1-800x800.jpg', '/storage/uploads/plant/2022-05-05-07-05-25cam-xoan-1-800x800.jpg', 1, '2022-05-04 23:34:28', '2022-05-05 00:12:14');
+(2, 'Cam xoàn', '<p>Miền tây nổi tiếng là nơi trồng được nhiều loại trái cây ngon ngọt. Nhắc đến vùng đất chằng chịt những con sông, dòng kênh này, người ta sẽ nhớ ngay đến những quầy dừa nước, những vườn bưởi trĩu quả,… và cũng không quên nhắc đến những chùm cam mọng nước. Ở quê hương miền tây, giống cam nổi tiếng nhất là cam xoàn. Đây là một <strong>giống cam ngon, ngọt</strong> hơn nhiều giống cam khác. Tuy nhiên, không phải ai cũng có thể phân biệt được cam xoàn để có cơ hội thưởng thức đúng loại đặc sản miền tây này.</p><h3>1Cam xoàn</h3><p><strong>Cam xoàn thuộc họ thực vật Rutaceae, có tên khoa học là Citrus nobilis</strong>. Trong tiếng Anh được gọi là king mandarin.</p><p>Trên thực tế, <strong>cam xoàn là giống cam cùng họ với cam mật</strong>. Có lẽ vì vậy mà vẻ ngoài của nó khá giống với loại quả này. Có thể nhận biết dựa vào một số đặc điểm sau:</p><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251142010984.jpg\" alt=\"cam xoàn là giống cam cùng họ với cam mật\"></p><p>- <strong>Vỏ màu xanh, khi chín ngả sang vàng chanh đậm, bề ngoài trơn láng</strong> (so với quýt, chanh thì chỉ sần sùi hơn chút).</p><p>- Vỏ mỏng.</p><p>- Kích thước trung bình khoảng <strong>250 đến 300g</strong>.</p><p>- <strong>Thịt bên trong màu vàng, vị ngọt thanh, mùi hương nhẹ nhàng.</strong></p><p>- Múi cam chắc thịt.</p><h3>2Ăn cam xoàn có tác dụng gì?</h3><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251146516154.jpg\" alt=\"Ăn cam xoàn có tác dụng?\"></p><p><strong>Cam xoàn chứa nhiều chất dinh dưỡng</strong>, gồm: nước (87.5%), protid (0,9%), glucid (8,4%), acid hữu cơ (1,3%), cellulose (1,6%), calcium (34mg%), sắt (23mg%), caroten (0,4mg%), vitamin C (40mg%).... Trong đó, vitamin C có thể lên tới 150mg trong 100g dịch, hoặc 200-300 mg trong 100g vỏ khô.</p><p>Vậy nên <strong>không chỉ ăn phần thịt ngọt bên trong</strong>, người ta còn <strong>sử dụng vỏ cam để đặc chế tinh dầu hoặc phơi khô nấu nướng để tắm, dùng để chống nôn khi đi xe, xua đuổi ruồi muỗi</strong>,....</p><p>Không chỉ ngon, cam xoàn còn mang lại rất nhiều giá trị dinh dưỡng cho người dùng. Nếu bạn phân vân không biết “<strong>Ăn cam xoàn có tác dụng gì?</strong>”:</p><p>- <strong>Chống oxy hóa:</strong> Trong cam xoàn chứa hàm lượng oxy hóa cao, không chỉ giúp trẻ hóa làn da mà còn ngăn ngừa nếp nhăn, sẫm màu,... Cải thiện vẻ đẹp của làn da, nuôi dưỡng da từ sâu bên trong, giúp da căng mịn và sáng bóng hơn.</p><p>- <strong>Tăng sức đề kháng cho cơ thể:</strong> Nhờ lượng vitamin C dồi dào trong cam xoàn, nó giúp cơ thể tăng cường sự trao đổi chất, không những vậy còn tăng sức đề kháng hiệu quả.</p><p>- <strong>Giảm stress, mệt mỏi</strong>: Không phải tự nhiên mà người ta lại uống nước ép cam khi mệt mỏi. Nhờ giá trị dinh dưỡng dồi dào, nó giúp cơ thể tỉnh táo, khỏe khoắn, từ đó nâng cao chất lượng công việc.</p><p>- <strong>Hỗ trợ giảm cân</strong>: Trong cam xoàn còn chứa lượng chất xơ - hỗ trợ tuyệt vời cho quá trình giảm cân, thúc đẩy quá trình tiêu hóa, từ đó tránh tình trạng béo phì.</p><p>- <strong>Tốt cho phụ nữ mang thai và trẻ nhỏ</strong>: Hiếm có loại quả nào lại tốt cho cả phụ nữ mang thai và trẻ nhỏ như cam xoàn. Cam chứa nhiều axit folic - một hợp chất dinh dưỡng cực kỳ tốt cho bà bầu, giúp thai nhi phát triển tốt nhất, ngăn ngừa dị tật bẩm sinh ở trẻ. Bên cạnh đó còn tăng hệ miễn dịch cho mẹ, giảm thiểu bệnh tật trong quá trình mang thai.</p><p>- <strong>Giảm nguy cơ mắc bệnh tim, sỏi thận</strong>: Chất xơ và chất chống oxy hóa có trong cam làm giảm nguy cơ mắc bệnh tim. Hai hợp chất axit citric, citrate thì ngăn ngừa sỏi thận trong cơ thể.</p><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251147215241.jpg\" alt=\"Giảm nguy cơ mắc bệnh tim, sỏi thận\"></p><p>-&nbsp;<strong>Giải độc, lợi tiểu</strong>: Chất limonoid trong nước cam giúp ngăn ngừa bệnh ung thư và có tác dụng giải độc, lợi tiểu. Phụ nữ mang thai thường ăn cam có tỉ lệ nhiễm các bệnh ung thư (phổi và dạ dày) khá thấp. Chất xơ có trong cam cũng giúp mẹ bầu nhuận tràng tốt hơn. Tuy nhiên bà bầu nào bị rối loạn tiêu hóa không nên ăn nhiều cam và nếu uống nước cam thì nên pha loãng với nước.</p><p>-&nbsp;<strong>Lợi sữa sau sinh</strong>: Bà mẹ sau sinh cần cung cấp nhiều vitamin C hơn cả những phụ nữ mang thai, cam là thực phẩm cung cấp sữa mẹ tuyệt vời. Uống một ít nước cam, chắc chắn mẹ sẽ được cung cấp đầy đủ vitamin C cho một ngày và thậm chí còn được bổ sung một lượng can-xi từ loại thức uống này.</p><h3>3Phân biệt cam xoàn và cam mật</h3><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251148521645.jpg\" alt=\"Phân biệt cam xoàn và cam mật\"></p><p>Có khá nhiều bạn ở Sài Gòn chỉ mua cam ở siêu thị và ở chợ, chưa từng trực tiếp xem/hái/mua tại vườn nên hoàn toàn không biết được loại cam mình ăn là loại nào và chất lượng ra sao, nên cũng có khá nhiều thắc mắc (bao gồm cả người mua lẻ và khách sỉ) là tại sao cam nhà mình bán giá cao ngang ngửa với siêu thị.</p><p><strong>Cam xoàn là loại cam có nguồn gốc xuất xứ từ một số tỉnh miền Tây Nam Bộ như An Giang, Tiền Giang, Hậu Giang, Bến Tre, Vĩnh Long và Đồng Tháp</strong>. Trong đó, huyện Trà Ôn (tỉnh Vĩnh Long) và huyện Long Mỹ (tỉnh Hậu Giang) là hai trong những địa phương trồng nhiều giống cam này.</p><p><strong>Cam mật thực chất là cây cùng một họ với cam xoàn và cũng được trồng nhiều ở các tỉnh miền Tây Nam Bộ như ở huyện Phụng Hiệp (Hậu Giang), huyện Cai Lậy (Tiền Giang), Phong Điền (Cần Thơ)…</strong> Theo tài liệu Giáo trình nghề trồng cây có múi của Bộ NN&amp;PT Nông thôn, cam mật được trồng ở Việt Nam có rất nhiều loại: cam mật có hạt, cam mật không hạt và cam mật Ôn Châu (có nguốn gốc từ Nhật Bản hoặc Trung Quốc).</p><p>Hiện nay có rất nhiều chủ tiệm hoa quả bán cam mật với giá cam xoàn. Do vậy, để tránh việc phải trả tiền oan, các bà các mẹ cần nắm được một số đặc điểm sau của 2 loại cam này.</p><p><strong>Đặc điểm bên ngoài:</strong></p><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251151503667.jpg\" alt=\"Cam xoàn 2 đồng tiền\"></p><p>Cam xoàn là giống cam cùng họ với cam mật, do đó có bề ngoài khá giống với cam mật. Da cam xoàn màu xanh, khi chín ngả sang màu vàng chanh đậm. <strong>Da cam xoàn không sần sùi như cam sành mà có phần trơn láng hơn, chỉ sần sùi hơn quýt, chanh một chút</strong>. Điểm khác nhau để phân biệt <strong>cam xoàn với cam mật và các giống cam khác là xung quanh cuống cam xoàn có hai quầng tròn hơi nhô lên</strong>. Đây cũng là lí do cam xoàn còn được gọi với cái tên “<strong>cam xoàn hai đồng tiền</strong>”.</p><p><strong>Cam xoàn nhỏ hơn cam sành, vỏ mỏng, có kích thước tương đương cam mật, đạt trọng lượng trung bình khoảng 250 – 300g.</strong></p><p><strong>Hương vị</strong></p><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251152334247.jpg\" alt=\"thịt quả màu vàng, vị ngọt thanh, mùi thơm nhẹ\"></p><p>Cam xoàn <strong>cho thịt quả màu vàng, vị ngọt thanh, mùi thơm nhẹ, múi cam xoàn chắc thịt</strong> hơn <a href=\"https://www.bachhoaxanh.com/kinh-nghiem-hay/cac-loai-cam-ngon-nhuc-nhoi-da-nem-mot-lan-thi-kho-ma-quen-1154419\">các loại cam khác</a>. Điểm đặc biệt là <strong>trái càng nhỏ thì cho vị càng ngọt thanh hơn</strong>.</p><p>Cây cam xoàn từ 3 năm tuổi trở lên sẽ cho trái quanh năm. Cây cam xoàn phát triển mạnh, thích nghi với những vùng đất cao ráo, thoát nước tốt, ít nhiễm phèn, mặn. Cây cam xoàn có khả năng chống chọi bệnh tật tốt, do đó ít bị sâu bệnh phá hoại. Da cam xoàn <strong>không bị nám vào mùa nắng, mùa mưa không bị hư thối, do đó cho trái đẹp quanh năm</strong>.</p><p><img src=\"https://cdn.tgdd.vn/Files/2020/04/25/1251739/cam-xoan-la-cam-gi-ban-co-biet-cach-phan-biet-cam-xoan-va-cam-mat-202004251153281365.jpg\" alt=\"\"></p><p>Giá cam xoàn khá ổn định, từ 35-50.000đ/kg cho nên nếu cam quá rẻ, thì có thể đấy là cam mật.</p><p>Cam xoàn chứa nhiều vitamin tốt cho sức khỏe, giúp tăng cường hệ miễn dịch và rất tốt trong chăm sóc sắc đẹp. Với hương vị ngon ngọt, cam xoàn là sự lựa chọn của nhiều người tiêu dùng.</p><p>Cam xoàn là loại trái cây rất tốt và bổ, có giá trị cao, nhưng cũng chính vì vậy mà những giống Cam đặc sản hay bị trà trộn. Chỉ với vài đặc điểm nhận biết như trên, khách hàng đã có thể tự mình phân biệt hàng chuẩn - hàng nhái rồi. Chúc mọi người chọn được cam tốt nhé!</p>', '/storage/uploads/plant/2022-05-10-07-05-13cam-xoan-2-8331-1598496551_460x0.jpg', '/storage/uploads/plant/2022-05-10-07-05-15cam-xoan-vua-cua-cac-loai-cam-2509.jpg', '/storage/uploads/plant/2022-05-05-07-05-21cam-xoan-1-800x800.jpg', 1, '2022-05-04 23:34:28', '2022-05-10 00:28:24'),
+(3, 'Lúa ST25', '<h2><strong>Giống lúa ST25 là gì?</strong></h2><p>ST là tên viết tắt của chữ Sóc Trăng, trước khi giống lúa ST25 ra đời thì từ hàng chục năm trước nông dân cả nước đã biết đến những giống lúa tên gọi ST3, ST5, ST10, ST19, ST20…</p><p><img src=\"https://agridrone.vn/wp-content/uploads/2021/04/giong-lua-st25-03.jpg\" alt=\"\" srcset=\"https://agridrone.vn/wp-content/uploads/2021/04/giong-lua-st25-03.jpg 800w, https://agridrone.vn/wp-content/uploads/2021/04/giong-lua-st25-03-768x576.jpg 768w\" sizes=\"100vw\" width=\"800\"></p><p>Giống lúa ST25 (còn được gọi là gạo thơm Sóc Trăng) là kết quả của suốt 20 năm nghiên cứu của kỹ sư Hồ Quang Cua. Đây là thế hệ mới nhất của dòng lúa thơm nổi tiếng thế giới với nhiều phẩm chất được xếp vào hàng “thượng hạng”. Các công đoạn từ việc tuyển chọn hạt giống cho đến quy trình gieo trồng đều đảm bảo tuân thủ nguyên tắc nghiêm ngặt của quy trình sản xuất gạo để cho ra hạt gạo cao sản sạch và an toàn sức khỏe.</p><p>Chất lượng của gạo ST25 đã được khẳng định trên thị trường quốc tế, cụ thể loại gạo này đã được công nhận là “Gạo ngon nhất thế giới 2019” và giành giải nhì tại cuộc thi “Gạo ngon nhất thế giới 2020” được tổ chức tại Mỹ, điều này đã khẳng định phẩm cấp thượng hạng của hạt gạo Việt Nam.</p><h2><strong>Ưu điểm của giống lúa ST25</strong></h2><p>Theo TS Hồ Quang Cua cho biết, giống ST25 được nghiên cứu lai tạo từ dòng lúa thơm ST và liên tục được cải tiến, do vậy bên cạnh chất lượng gạo ngon và cho năng suất cao thì khả năng chống chịu với hạn mặn và sâu bệnh rất tốt. Chính vì ưu điểm này nên giống lúa này thích hợp trồng ở những nơi hay gặp hạn mặn như vùng ven biển Đồng bằng Sông Cửu Long.</p><p><img src=\"https://agridrone.vn/wp-content/uploads/2021/04/giong-lua-st25-02.jpg\" alt=\"\" srcset=\"https://agridrone.vn/wp-content/uploads/2021/04/giong-lua-st25-02.jpg 800w, https://agridrone.vn/wp-content/uploads/2021/04/giong-lua-st25-02-768x576.jpg 768w\" sizes=\"100vw\" width=\"800\"></p><p>Gạo ST25 có đặc điểm hạt gạo trắng, thon dài, thơm, mềm cơm. Thời gian sinh trưởng và phát triển từ 95 – 100 ngày.</p><p>Giống lúa ST25 có đặc tính chịu mặn, kháng đạo ôn cấp 2 và bệnh bạc lá, thân cứng chống đổ ngã, phổ thích nghi rộng, đặc biệt thích nghi với những địa phương canh tác luân canh lúa-tôm, đạt năng suất cao ở vùng ven biển Đồng bằng Sông Cửu Long. Chính vì vậy mà quy trình canh tác khá thuận lợi và dễ dàng.</p><p>Trong quá trình triển khai thực tế, theo đánh giá của những người trực tiếp tham gia sản xuất thì giống lúa ST25 có khả năng thích nghi tốt với điều kiện thổ nhưỡng tại địa phương, thích hợp sản xuất trên đất tôm, đặc biệt là khả năng chịu mặn, chịu phèn rất tốt, dễ canh tác. Bên cạnh đó, giống lúa ST25 còn ưu điểm vượt trội so với các giống như OM2517, OM5451, BTE1 (F lai) và một số giống địa phương khác, đó là hầu như không xuất hiện bệnh đạo ôn gây hại.</p><h2><strong>Lưu ý về kỹ thuật canh tác giống lúa ST25</strong></h2><p>Mặc dù có rất nhiều đặc tính tốt, tuy nhiên để canh tác giống lúa ST25 đạt hiệu quả tối đa thì các chuyên gia nông nghiệp khuyến cáo bà con nên áp dụng quy trình canh tác lúa thông minh.</p><p>Quy trình canh tác lúa thông minh vừa giúp giảm lượng giống gieo sạ, giảm lượng phân bón, giảm thuốc BVTV, giảm nước tưới, giúp bà con tiết kiệm được rất nhiều chi phí mà lại cho năng suất cao. Bên cạnh đó bà con cần áp dụng quy trình bón phân thông minh, bằng cách lựa chọn bón cân đối các nguyên tố đa, trung và vi lượng, đồng thời bón đúng thời điểm cho cây lúa.</p><p><img src=\"https://agridrone.vn/wp-content/uploads/2021/04/giong-lua-st25-01.jpg\" alt=\"\" srcset=\"https://agridrone.vn/wp-content/uploads/2021/04/giong-lua-st25-01.jpg 800w, https://agridrone.vn/wp-content/uploads/2021/04/giong-lua-st25-01-768x576.jpg 768w\" sizes=\"100vw\" width=\"800\"></p><p>Trên đây là một số thông tin về giống lúa ST25. Trước những biến đổi của khí hậu khiến việc canh tác nông nghiệp gặp phải nhiều thách thức như hạn mặn, sâu bệnh… Chính vì thế các chuyên gia đã không ngừng nghiên cứu và tìm kiếm những giải pháp khắc phục. Bên cạnh việc nghiên cứu những giống lúa cho năng suất cao, chống chịu sâu bệnh và hạn mặn tốt… thì các nhà khoa học còn nghiên cứu sản xuất ra những thiết bị có tác dụng hỗ trợ hiệu quả cho người nông dân trong quá trình canh tác.</p><p><img src=\"https://agridrone.vn/wp-content/uploads/2020/11/DJI-Agras-T10.gif\" alt=\"DJI-Agras-T10\"></p><p><i>DJI Agras T10</i></p><p>Một trong những ứng dụng thông minh và hiện đại nhất hiện nay phải kể đến là <a href=\"https://agridrone.vn/\"><strong>máy bay phun thuốc trừ sâu</strong></a>. Máy bay nông nghiệp giúp người nông dân thực hiện các công việc như gieo trồng, phun thuốc trừ sâu, khảo sát cây trồng… giúp tiết kiệm chi phí, tiết kiệm nhân công, giải phóng sức lao động, tăng năng suất cây trồng.</p><p>Những dòng máy bay nông nghiệp nổi tiếng hiện nay phải kể đến là: máy bay nông nghiệp T10, máy bay nông nghiệp T30 của hãng DJI…</p><p>Tại Việt Nam hiện nay Agridone là đơn vị phân phối chính hãng các sản phẩm máy bay không người lái của DJI – hãng sản xuất máy bay không người lái hàng đầu thế giới.</p>', '/storage/uploads/plant/2022-05-06-04-05-30giong-lua-moi-st25.jpg', '/storage/uploads/plant/2022-05-06-04-05-32download.jpg', '/storage/uploads/plant/2022-05-06-04-05-34lua-lai.jpg', 3, '2022-05-05 21:05:05', '2022-05-05 21:05:05'),
+(5, 'Vú Sữa Hoàng Kim', '<p><i><strong>Vú sữa hoàng kim</strong> là giống cây trồng mang lại giá trị kinh tế cao với đặc điểm nổi trội là chỉ có duy nhất một hạt trong một quả, vỏ mỏng và thịt quả rất ngon. Cây giống dễ trồng, dễ chăm sóc nên rất thích hợp với điều kiện khí hậu ở Việt Nam. Dưới đây là những thông tin chi tiết về cây <strong>giống vú sữa hoàng kim</strong> giống được chia sẻ bởi </i><a href=\"https://nhavuonngoclam.com/\"><i>Nhà Vườn Ngọc Lâm</i></a></p><h2><strong>Thông tin về cây vú sữa Hoàng Kim</strong></h2><p>&nbsp;</p><p><strong>Video cây vú sữa hoàng kim tại Nhà Vườn Ngọc Lâm</strong></p><p><strong>Cây giống vú sữa Hoàng Kim (vú sữa Abiu)</strong> là giống vú sữa vàng xuất phát từ <strong>Đài Loan</strong> quả có vỏ mỏng nhưng căng bóng, có mùi thơm ngon đặc trưng. Khác với các loại vú sữa thông thường có màu xanh sẫm hoặc xanh tím, thịt quả mỏng, quả vú sữa hoàng kim có vỏ vàng, thịt dày rất thơm.</p><p>Cây ra trái sau khi trồng <strong>3 năm</strong> nếu trồng bằng hạt và <strong>2 năm</strong> nếu trồng bằng phương pháp chiết cành. Đây là loại trái cây thượng hạng nên giá thành rất cao so với các loại trái cây khác. Đặc biệt, giống cây khá dễ trồng, ra quả quanh năm nên rất <strong>thích hợp với điều kiện khí hậu của nước ta</strong>.</p><h3><strong>Đặc điểm quả vú sữa Hoàng Kim</strong></h3><p><img src=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-vu-sua-hoang-kim.jpg\" alt=\"qua-vu-sua-hoang-kim\" srcset=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-vu-sua-hoang-kim.jpg 600w, https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-vu-sua-hoang-kim-100x100.jpg 100w\" sizes=\"100vw\" width=\"600\"></p><p><i>Quả vú sữa hoàng kim</i></p><p>Vú sữa Hoàng Kim là cây thân gỗ có chiều cao trung bình từ <strong>2 đến 4 mét</strong>, lá cây dài, quả nằm trên cành tách biệt hoàn toàn với lá. Quả hình tròn, vỏ có màu vàng căng bóng. Thịt quả dày có vị ngon đặc trưng, màu trắng hơi trong suốt ăn rất ngon, đặc biệt sẽ ngon hơn khi quả để trong tủ mát.</p><p>Quả có màu vàng óng, vỏ mỏng, thịt dày và có vị ngọt đặc trưng. Quả khá to, có trọng lượng khoảng <strong>3 quả/kg</strong>, giá thị trường hiện nay dao động từ <strong>80-100 nghìn/kg</strong>. Mắc hơn nhiều lần so với vú sữa thông thường.</p><p>Hơn thế, trong quả vú sữa có giá trị dinh dưỡng cao giúp cơ thể khỏe mạnh và tăng cường sức đề kháng. Trong 100g vú sữa có chứa tới 34,7mg – khoảng 57% lượng <a href=\"https://vi.wikipedia.org/wiki/Vitamin_C\">Vitamin C</a> cần thiết cho cơ thể.&nbsp;</p><p>Bên cạnh đó, quả vú sữa còn cung cấp nhiều <a href=\"https://vi.wikipedia.org/wiki/Canxi\">Canxi</a>, chất xơ giúp cho xương chắc khỏe và giảm nồng độ Glucose trong máu hiệu quả. Vú sữa Hoàng Kim là một lựa chọn tuyệt vời để giảm cân vì trong 100g thịt quả chỉ có 31 Calo ít hơn rất nhiều so với các loại trái cây khác.&nbsp;</p><h2><strong>Kỹ thuật trồng cây vú sữa hoàng kim</strong></h2><p><img src=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/vu-sua-hoang-kim-loai-1.jpg\" alt=\"vu-sua-hoang-kim-loai-1\" srcset=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/vu-sua-hoang-kim-loai-1.jpg 600w, https://nhavuonngoclam.com/wp-content/uploads/2021/01/vu-sua-hoang-kim-loai-1-100x100.jpg 100w\" sizes=\"100vw\" width=\"600\"></p><p><i>Cây vú sữa hoàng kim giống</i></p><h3><strong>Đất trồng</strong></h3><p>Vú sữa Hoàng Kim cây giống dễ trồng, dễ sống nên đất thích hợp trồng là đất vườn cũ, đất ruộng, đất bùn ao… Trước khi trồng nên làm tơi xốp đất bằng cách dùng <strong>1- 1,5 kg vôi/mô đất</strong> để khoảng 15-30 ngày.</p><p>Độ pH thích hợp nhất để trồng cây là từ 5,5 – 6,5, độ cao trung bình không vượt quá 400m so với mặt nước biển. Bón phân lót: sử dụng phân hữu cơ bón mỗi mô đất từ 10 đến 15kg kết hợp với 0,3kg Super lân, 0,1kg DAP.</p><h3><strong>Giống cây trồng</strong></h3><p>Chọn những giống cây to khỏe, xanh tốt, thân cây thẳng đứng, ưu tiên cây giống có 4 cành trở lên và rễ chắc khỏe bám chặt vào trong đất. Hiện nay có 2 phương pháp nhân giống cây vú sữa là ghép cành và chiết cành.</p><p>Chọn những cây giống khỏe mạnh không sâu bị bệnh, nên chọn tại những địa điểm uy tín để đảm bảo chất lượng cây tốt. Chọn cây có thời gian ghép ít nhất 3 tháng và chiều cao từ 50cm trở lên để đảm bảo cây sinh trưởng và phát triển tốt.</p><h3><strong>Thời vụ và mật độ trồng</strong></h3><p><strong>Giống vú sữa Hoàng Kim</strong> là loài cây dễ trồng, dễ sống, hơn nữa là ưa chuộng khí hậu ở nước ta vì vậy có thể ươm giống trồng cây vào bất kỳ thời điểm nào sau khi đã ủ đất trồng.</p><p>Khoảng cách trồng vú sữa hoàng kim phụ thuộc vào khoảng đất rộng, hẹp mà bố trí số hàng cây cho phù hợp:&nbsp;</p><ul><li>Với luống <strong>7-8m</strong> nên trồng một hàng, khoảng cách trồng vú sữa hoàng kim 8m/ cây, mật độ trồng từ 12- 13 cây/km2</li><li>Với luống đất có chiều rộng <strong>9-10m</strong> có thể trồng 2 hàng kiểu nanh sấu đảm bảo mật độ từ 7-8 cây/km2</li><li>Trồng thành vườn lớn khoảng từ 300 đến 400 cây/ ha</li></ul><p>Ngoài ra, trong quá trình trồng có thể trồng các loại rau củ ngắn ngày vừa để tận dụng đất vừa giảm cỏ mọc và tăng thu nhập kinh tế.</p><h2><strong>Cách chăm sóc cây vú sữa hoàng kim</strong></h2><p><img src=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-cay-vu-sua-hoang-kim.jpg\" alt=\"qua-cay-vu-sua-hoang-kim\" srcset=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-cay-vu-sua-hoang-kim.jpg 600w, https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-cay-vu-sua-hoang-kim-100x100.jpg 100w\" sizes=\"100vw\" width=\"600\"></p><p><i>Hình ảnh vú sữa hoàng kim cây giống tại Nhà Vườn</i></p><h3><strong>Tưới nước</strong></h3><p>Đối với vú sữa Hoàng Kim, cần được cung cấp đầy đủ nước giúp cây sinh trưởng và phát triển tốt. Mỗi tuần nên tưới từ <strong>3 đến 5 lần</strong>, mỗi lần tưới từ <strong>20 đến 30 lít nước/ cây.</strong>&nbsp;</p><p>Đặc biệt là trong 3 năm đầu, thời gian cây nuôi dưỡng chất để ra trái cần được chú ý tưới nước để giảm đáng kể cây chết.</p><h3><strong>Bón phân</strong></h3><p>Thời gian đầu, chú ý cung cấp đủ nước cho cây phát triển khỏe mạnh.</p><ul><li><strong>Sau một năm:</strong> sử dụng phân kết hợp NPK với phân Ure theo tỷ lệ 1:1, khoảng 40g/ cây. Sau đó hòa phân vào nước để tưới cho cây, nên bón phân đều đặn 1 tháng/ lần.</li><li><strong>Cây được 1- 4 tuổi:</strong> bòn 1- 3 kg DAP kết hợp NPK,urê theo tỷ lệ 1:1:1 bón cho cây. Chỉ cần chia thành 4 lần bón/ năm, lượng phân bón tăng dần theo sự phát triển của cây.</li></ul><p>Cây được 5 tuổi trở đi bắt đầu trái ổn định ta bón phân theo 4 giai đoạn:</p><ul><li><strong>Xử lý ra hoa:</strong> ngay khi thu hoạch vụ trái đầu tiên, bón 10kg vôi rồi 10-15 ngày sau bón thêm 20-40 kg phân hữu cơ hoai + 3-4 kg NPK loại 20-20-15.</li><li><strong>Xử lý đậu quả:</strong> sau khi trổ hoa trái bón 1-2kg Urê + 1-2kg DAP</li><li><strong>Nuôi quả non:</strong> quả non có đường kính 3cm dùng hỗn hợp 2 -3 kg phân NPK 20-20-15, + 1-2kg KCl&nbsp;</li><li><strong>Trước thu hoạch:</strong> trước thu hoạch 1-1,5 tháng nên bón thêm một lần nữa, lượng bón: 1-2kg phân NPK 20-20-15 + 1-2kg KCl.</li></ul><h3><strong>Cắt tỉa và tạo hình</strong></h3><p>Từ 1 – 3 năm đầu nên cắt tỉa cành để tạo tán cho cây, tạo hình cây có tán tròn đều. Đến các năm tiếp theo cành cây sẽ mọc theo như cắt tỉa ban đầu.&nbsp;</p><p><strong>Lưu ý:</strong> cắt tỉa hết các cành cây có dấu hiệu bị sâu bệnh để không bị lây lan sang cành khác.</p><p>Đối với những năm tiếp theo, sau khi thu hoạch quả cần cắt tỉa những cành mọc đứng trong tán, cành bị sâu, cành gãy và cành mọc gần mặt đất.</p><ul><li>Để khống chế chiều cao trong khoảng từ 2-4m bạn nên tỉa thấp lại các cành chính để để thuận tiện chăm sóc cũng như thu hoạch quả.&nbsp;</li><li>Đối với cây quá già cỗi vị thế bị chậm phát triển, năng suất thu hoạch kém, quả nhỏ, giảm sự thơm ngon thì nên cần cưa bớt 30- 60 % cành để cành mới phát triển, năng suất thu hoạch tốt hơn.</li></ul><h3><strong>Các bệnh của cây vú sữa Hoàng Kim</strong></h3><p>Cũng như các loại cây khác, trong thời gian trồng cây thường gặp phải một số loại sâu bệnh như sâu đục trái, sâu ăn hoa, sâu đục cành, thối trái. Cùng tìm hiểu về từng loại bệnh và cách phòng sâu bệnh hại ảnh hưởng tới sản lượng vú sữa.</p><p><strong>+ Sâu đục trái:</strong> loại sâu này chủ yếu đục trái vào thời điểm quả sắp được thu hoạch. Khi đó con sâu sẽ đục lỗ trên quả và đẻ trứng, thường hoạt động vào ban đêm làm cho quả bị thối hoặc rụng non. Để phòng trừ sâu đục trái, ngay sau khi thu hoạch bạn nên cắt tỉa các cành bị sâu hại. Trong trường hợp có nhiều cành bị hoặc lây lan nên sử dụng biện pháp hóa học như: Basudin 50ND, Sumi Alpha 5EC, Karate 2,5EC, Cypermap 10EC… theo liều lượng khuyến cáo trên bao bì.</p><p><strong>+ Sâu đục cành</strong>: sâu cái đẻ trứng ở những nơi đục khoét trên đọt và vỏ cây. Trứng nở thành những con sâu non đục làm chết dần các cành. Để phòng trừ sâu đục cành nên thường xuyên kiểm tra vườn để kịp thời phát hiện những cành bị đục diệt sâu. Trong trường hợp nặng cần phải loại bỏ những cành bị đục để tránh lây lan diện rộng.</p><p><strong>+ Sâu ăn hoa</strong>: loại sâu này cắn phá hoa làm khó đậu quả. Chúng thường nằm ở sâu bên trong hoa nên khó nhận biết. Vì vậy để phòng trị cần sử dụng thuốc hóa học mạnh Cyber Alpha 50ND với liều lượng được khuyến cáo trên bao bì để giảm thiểu gây ô nhiễm môi trường</p><p><strong>+ Bệnh thối trái: </strong>Bệnh này do nấm “nằm vùng” từ khi trái còn non đến lúc sắp được thu hoạch. Lúc đầu, trên trái chỉ có một vết nhỏ màu đen sau đó lan rộng nên bị hư trái.</p><p>Để phòng trị nấm này thì ngay sau khi thu hoạch cần gom tất cả các cành và trái bị thối tiêu hủy làm cho vườn trở nên thông thoáng sạch sẽ hơn. Nếu bệnh nặng có thể sử dụng thuốc như Antracol 70WP, Benlate 50WP, Manzate 80WP, Daconil 75WP, Carben 50SC, Thio – M 70WP phun theo liều lượng chỉ định.</p><h2><strong>Hình ảnh cây Vú Sữa Hoàng Kim trưởng thành</strong></h2><p><a href=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/giong-cay-vu-sua-hoang-kim.jpg\"><img src=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/giong-cay-vu-sua-hoang-kim.jpg\" alt=\"giong-cay-vu-sua-hoang-kim\" srcset=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/giong-cay-vu-sua-hoang-kim.jpg 600w, https://nhavuonngoclam.com/wp-content/uploads/2021/01/giong-cay-vu-sua-hoang-kim-100x100.jpg 100w\" sizes=\"100vw\" width=\"600\"></a></p><p><a href=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-cay-vu-sua-hoang-kim.jpg\"><img src=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-cay-vu-sua-hoang-kim.jpg\" alt=\"qua-cay-vu-sua-hoang-kim\" srcset=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-cay-vu-sua-hoang-kim.jpg 600w, https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-cay-vu-sua-hoang-kim-100x100.jpg 100w\" sizes=\"100vw\" width=\"600\"></a></p><p><a href=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-vu-sua-hoang-kim.jpg\"><img src=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-vu-sua-hoang-kim.jpg\" alt=\"qua-vu-sua-hoang-kim\" srcset=\"https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-vu-sua-hoang-kim.jpg 600w, https://nhavuonngoclam.com/wp-content/uploads/2021/01/qua-vu-sua-hoang-kim-100x100.jpg 100w\" sizes=\"100vw\" width=\"600\"></a></p><p>Cây khi trưởng thành là dạng cây thân gỗ nhỏ, có chiều cao trung bình từ <strong>2 – 4m</strong>. Loại cây này mang là giá trị dinh dưỡng cũng như mang lại nguồn thu nhập lớn cho người trồng.&nbsp;Vì vậy, trước khi cần cần tham khảo kỹ lưỡng cách chọn giống cây để có những trái Vú sữa ngon ngọt nhất nhé!</p>', '/storage/uploads/plant/2022-05-06-06-05-54download.jpg', '/storage/uploads/plant/2022-05-06-06-05-56vu-sua-hk-jpeg-3162-1638176472.jpg', '/storage/uploads/plant/2022-05-06-06-05-58vu-sua-hoang-kim-4-1024x578.jpg', 1, '2022-05-05 23:47:03', '2022-05-05 23:47:03'),
+(6, 'Sầu Riêng Ri6', '<h3>1. Sầu riêng ri6 là gì?</h3><h4>Đặc điểm sầu riêng ri6</h4><p>Sầu riêng ri6 thường được nhận dạng bởi dạng bầu dục, phần đáy hẹp, vỏ quả mỏng có màu vàng xanh, được trồng nhiều tại <a href=\"https://vi.wikipedia.org/wiki/%C4%90%E1%BB%93ng_b%E1%BA%B1ng_s%C3%B4ng_C%E1%BB%ADu_Long\">Đồng bằng sông Cửu Long</a>.</p><p>Cây sầu riêng ri6 trồng khoảng 3 năm thì có trái. Khi sầu riêng chín, các gai nở bung, vỏ nứt ra rất dễ trong việc tách múi. Thông thường, sầu riêng ri6 có trọng lượng dao động từ 3 - 6kg.</p><p>Bên trong sầu riêng ri6 là những múi sầu riêng cơm khô ráo, dày, vị ngọt, béo vừa phải, khi cầm không bị dính tay và tỷ lệ hạt lép lên tới 40%.</p><p><img src=\"https://cdn.tgdd.vn/2021/05/content/thumb2(2)-800x500-2.jpg\" alt=\"Đặc điểm sầu riêng ri6\"></p><h4>Nguồn gốc sầu riêng ri6</h4><p>Năm 1990, ông Sáu Ri đã sử dụng kỹ thuật cấy ghép tự nhiên và cho ta đời một giống sầu riêng mới lạ với các đặc điểm như: cơm vàng, hạt lép, ngọt thanh, béo nhẹ và khô ráo.</p><p>Cùng nhờ giống sầu riêng này, ông Sáu Ri đã mang về cho mình nhiều thành tích giải trái cây ngon của hội thi được tổ chức tại viện cây ăn trái Miền Nam của nước ta và hội chợ tại khu vực Đồng bằng Sông Cửu Long.</p><p><img src=\"https://cdn.tgdd.vn/2021/05/content/thumb2(1)-800x500-2.jpg\" alt=\"Nguồn gốc sầu riêng ri6 \"></p><h3>2. Cách chọn sầu riêng ri6 ngon</h3><ul><li><strong>Hương thơm:</strong> Sầu riêng ri6 có mùi thơm nồng nàn và lan toả khi chín già. Tuy nhiên, quả bị ngâm sẽ không có mùi thơm, hoặc mùi toả ra rất lạ và gây khó chịu.</li><li><strong>Âm thanh:</strong> Khi gõ vào sầu riêng, nếu vỏ phát ra tiếng \"bộp bộp\" thì đây đích thị là sầu riêng ngon. Còn nếu bạn nghe tiếng \"coong coong\" thì quả sầu riêng có thể rỗng, hạt to và không ngon.</li><li><strong>Độ tươi</strong>: Nếu sầu riêng ri6 tươi, bạn quan sát cuống sầu riêng sẽ thấy chúng có màu hơi xanh và cứng, dùng móng tay bấm vào thì thấy hơi ướt ướt nhựa. Cuống héo hoặc bị thối là sầu riêng để lâu, cuống không thấy nhựa là sầu riêng bị ngâm thuốc.</li><li><strong>Màu sắc</strong>: Sầu riêng ri6 chín cây sẽ có màu xanh rêu hay ửng một chút vàng nhạt. Sầu riêng nứt ra, để lộ bên trong là múi sầu riêng dày, khô ráo và cơm vàng rực.</li><li><strong>Vỏ ngoài:</strong> Sầu riêng ri6 ngon có gai đầu hơi tròn, gai xanh to đều. Hơn nữa, phần eo sầu riêng phải phình to, đều và không méo mó thì mới chứa nhiều múi sầu riêng ngon bên trong.</li></ul><p><strong>Xem chi tiết:</strong> <a href=\"https://www.dienmayxanh.com/vao-bep/6-bi-quyet-huong-dan-cach-chon-sau-rieng-chin-gia-thom-ngon-00955\">Cách chọn sầu riêng ngon không thuốc, nhiều múi, chín già đúng chuẩn</a></p><p><img src=\"https://cdn.tgdd.vn/2021/05/content/thumb2(3)-800x500-2.jpg\" alt=\"Cách chọn sầu riêng ri6 ngon \"></p><h3>3. So sánh sầu riêng ri6 và sầu riêng Thái</h3><figure class=\"table\"><table><tbody><tr><td>&nbsp;</td><td><strong>Sầu riêng Ri6</strong></td><td><strong>Sầu riêng Thái</strong></td></tr><tr><td><strong>Nguồn gốc, xuất xứ</strong></td><td>Được cấy ghép và trồng thành công đầu tiên bởi ông Sáu Ri tại Vĩnh Long vào năm 1990</td><td>Nguồn gốc từ Thái Lan được trồng chủ yếu ở Đồng bằng sông Cửu Long và Đông Nam Bộ</td></tr><tr><td><strong>Hình dáng</strong></td><td>Hình bầu dục hoặc tròn, gai dày, to và khá thưa</td><td>Giống quả trứng với đầu to đầu nhỏ, gai cũng thưa và lớn</td></tr><tr><td><strong>Trọng lượng</strong></td><td>3 - 6kg/ quả</td><td>1 - 2kg/ quả</td></tr><tr><td><strong>Hương vị</strong></td><td>Ri6 có mùi thơm rất nồng, đậm. Phần cơm khá dày, hạt lại lép, vị béo vừa phải</td><td>Cơm sầu riêng Thái rất dày, ngọt thanh, béo vừa đủ, không quá ngấy</td></tr><tr><td><strong>Màu sắc</strong></td><td>Cơm sầu riêng ri6 có màu vàng tươi đặc trưng</td><td>Cơm sầu riêng Thái có màu vàng nhạt hơn</td></tr></tbody></table></figure><p>Nhìn chung, sầu riêng ri6 với hương vị ngọt đậm, nồng thường được dùng để ăn tráng miệng. Còn sầu riêng Thái với cơm dày, vị ngọt vừa nhiều thường được dùng để làm nguyên liệu cho món bánh, <a href=\"https://www.dienmayxanh.com/vao-bep/mon-kem\">món kem</a>, <a href=\"https://www.dienmayxanh.com/vao-bep/mon-trang-mieng\">món tráng miệng</a>.</p><p><img src=\"https://cdn.tgdd.vn/2021/05/content/thumb2(5)-800x500-1.jpg\" alt=\"So sánh sầu riêng ri6 và sầu riêng Thái\"></p><h3>4. Sầu riêng ri6 giá bao nhiêu, mua ở đâu?</h3><p>Bạn có thể tìm mua sầu riêng ri6 tại các chợ, siêu thị hay cửa hàng nông sản với giá dao động từ 100.000 - 200.000kg/kg (giá được cập nhật vào tháng 5/2021).</p><p>Đối với cây giống sầu riêng ri6, giá cây sẽ dao động từ 100.000 - 150.000đ/cây và được bán tại các nhà vườn, trung tâm cây giống hoặc các trang thương mại điện tử.</p><p><img src=\"https://cdn.tgdd.vn/2021/05/content/thumb2(4)-800x500-1.jpg\" alt=\"Sầu riêng ri6 giá bao nhiêu, mua ở đâu?\"></p>', '/storage/uploads/plant/2022-05-10-02-05-3212312.jpg', '/storage/uploads/plant/2022-05-10-02-05-34download.jpg', '/storage/uploads/plant/2022-05-10-02-05-36Sau-rieng-ri6.jpg', 2, '2022-05-05 23:50:16', '2022-05-09 23:26:01'),
+(7, 'Mít Thái', '<p>Mít Thái là một loại quả giàu chất dinh dưỡng như vitamin A, C, canxi, sắt, kali, ma-giê... rất có lợi cho sức khỏe người dùng. Đặc điểm nổi bật của cây mít Thái là dễ trồng, năng suất cao, đậu trái quanh năm. Từ lúc trồng đến lúc cho thu hoạch lứa đầu chỉ mất khoảng 12-15 tháng. Tuy nhiên, để trồng thành công cây mít Thái mang lại hiệu quả kinh tế cao thì bà con cần lưu ý một số kỹ thuật sau:</p><p><img src=\"https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%206/Ng%C3%A0y%203/Thanh/7556761560827065.jpg\" alt=\"Mít thái là loại cây dễ trồng dễ chăm sóc và múi mọng và giòn ngọt  \"><i>Mít thái là loại cây dễ trồng dễ chăm sóc và múi mọng và giòn ngọt</i></p><p><strong>1. Chọn giống</strong><br>&nbsp;</p><p>Không nên nhân giống mít Thái bằng hạt vì bị lai giống và cây lâu cho trái. Nên sử dụng cây ghép có đường kính gốc ghép từ 1 – 1,5cm, cành ghép cao 20 – 30cm (kể từ vết ghép), cây khỏe mạnh, sạch bệnh nhưng phải là dòng F1 thuần chủng thì mới đảm bảo về năng suất và chất lượng. Nên chọn cây có bộ rễ phát triển mạnh; lá đang giai đoạn già; vết ghép tiếp hợp tốt.</p><p><strong>Thời vụ và cách trồng:</strong></p><p><i>Thời vụ trồng:</i>&nbsp;Để cây sinh trưởng và phát triển có hiệu quả nhất, nên trồng vào đầu mùa mưa, nghĩa là từ tháng 5 đến tháng 7 dương lịch.</p><p><i>Khoảng cách trồng:</i> Trước khi&nbsp;<a href=\"https://baodantoc.vn/ky-thuat-trong-cay-sau-rieng-1616383951713.htm\">trồng mít Thái</a>&nbsp;cần làm đất và đắp mô cao từ 50 – 70cm. Sau đó trồng cây lên mô đất. Do mít Thái có khả năng cho trái sớm nên có thể trồng theo mật độ dày, khoảng 3,5m x 3,5m hoặc 4 m x 4m. Sau khi thu hoạch mít từ 5 – 7 năm, có thể loại bỏ cây ở giữa, đảm bảo mật độ giữa các cây mít luôn thông thoáng, giúp cây phát triển và đậu trái tốt hơn.</p><p><strong>Trồng và chăm sóc:</strong></p><p><i>Cách trồng: </i>Móc lỗ sâu và to hơn bầu cây đôi chút. Dùng dao, kéo cắt đáy bầu và cắt bỏ đuôi chuột (rễ cọc) bị xoắn lại. Đặt bầu vào lỗ đã móc sẵn và rút nhẹ túi đựng bầu ra bỏ và lấp đất lại, không làm vỡ bầu, đứt rễ. Nếu đất khô phải tưới cho cây ngay, dùng rơm, rạ, cỏ rác... đậy xung quanh bầu để giữ ẩm. Nếu cây cao, ốm yếu dùng cọc cắm cố định cho cây khỏi ngã đổ.</p><p>&nbsp;<i>Tưới nước: </i>Tháng đầu sau khi trồng, nếu khô hạn phải tưới thường xuyên 2-3 ngày/lần. Sau đó, có thể tưới 4-5 ngày/lần. Từ năm thứ hai về sau, tưới cho cây vào giai đoạn mới bón phân và những tháng quá khô hạn. Mít Thái rất sợ úng nên vào mùa mưa lũ, phải kiểm tra kênh mương cống rãnh và có kế hoạch chống úng.</p><p><i>Bón phân:</i></p><p>+ Đối với cây 1 năm tuổi: mỗi tháng bón phân một lần bằng nước phân chuồng hoai pha tỷ lệ 1: 3 (tức 1 phần phân : 3 phần nước), tưới 10 – 15 lít/cây hoặc đạm urê 1% để tưới.</p><p>+ Cây 2 – 3 năm tuổi: mỗi cây nên bón 1,5 kg vôi bột, 30 – 50 kg phân chuồng hoai; 0,5 kg urê; 0,5 – 1 kg lân; 0,3 – 0,5 kg kali. Chia làm 4 lần để bón: sau khi thu hoạch, bắt đầu ra hoa, sau khi đậu trái 1 tháng, sau khi đậu trái 2,5 tháng.</p><p>+ Cây từ 4 năm tuổi trở lên: lượng phân tăng so với năm trước 0,5 - 1,0 kg/cây. Trong thời gian trái đạt trọng lượng tối đa sử dụng phân bón gốc Kali sulphate (K2SO4), bón mỗi gốc 400-500 g giúp trái chín tập trung, màu thịt trái vàng hơn, mùi vị thơm ngon hơn.</p><p>+ Cách bón: Xới rãnh xung quanh theo đường kính tán cây, rắc phân rồi lấp đất, tưới ẩm. Bón càng nhiều phân chuồng hoai thì mít Thái càng sai và chất lượng trái càng ngon.</p><p><strong>Tỉa cành, tỉa trái:</strong></p><p><i>Tỉa cành:</i> Tỉa những cành sâu bệnh để cây thông thoáng nhằm tăng năng suất và mang tính thẩm mỹ. Tiến hành tỉa cành khi cây cao khoảng 1 m trở lên, cây còn nhỏ tỉa cành tạo tán 2-3 lần/năm. Cây lớn mỗi năm một lần khi thu hoạch trái xong. Cách tỉa cành mít như sau:</p><p>+ Cắt bỏ các cành gần sát mặt đất (từ 40 cm trở xuống).</p><p>+ Tỉa bỏ bớt các cành cấp 2, cấp 3... cho cây vừa đẹp vừa thoáng.</p><p>+ Giữ lại cành cấp 1 cách gốc khoảng 40 cm trở lên, chọn các cành mọc theo các hướng khác nhau, cành trên cách cành dưới khoảng 40 – 50 cm, tạo thành tầng không quá 5 cành cấp 1.</p><p><i>Tỉa trái:</i> Tỉa bớt trái xấu, trái sâu bệnh, trái nhỏ và cả những trái bình thường cho mật độ trái phù hợp với từng cây.</p><p>+ Khi cây 1 năm tuổi: nên tỉa bỏ chỉ chừa một trái/lứa.</p><p>+ Năm thứ hai: để 2 trái/lứa, thu hoạch được 4 trái/năm.</p><p>+ Năm thứ ba: để 3 trái/lứa, một năm 2 lứa, sẽ được 6 trái và như thế tăng số trái/cây theo từng năm tuổi.</p><p><strong>Thu hoạch:</strong></p><p>Thu trái chín khi đã thơm, từ 90 – 120 ngày sau khi trổ hoa. Trái mít già, các gai nở căng, chuyển từ màu xanh sang màu xanh vàng hoặc nâu nhạt, mủ lỏng và trong, vỗ kêu bồm bộp. Mít Thái tự chín ở nhiệt độ bình thường, trái mít có thể để lâu trong 6 tuần ở nhiệt độ 11 – 130C, nếu điều kiện bình thường thì để được 7 – 10 ngày./.</p>', '/storage/uploads/plant/2022-05-06-06-05-18gia-mit-thai-hien-nay-khoang-15-20-nghìn-kg.jpg', '/storage/uploads/plant/2022-05-06-06-05-20mit-thai-giong.jpg', '/storage/uploads/plant/2022-05-06-06-05-22103167.jpg', 1, '2022-05-05 23:53:34', '2022-05-05 23:53:34'),
+(8, 'Ổi Đài Loan', '<p><strong>Ổi Đài Loan là giống ổi dễ trồng, cho năng suất cao, thời gian thu hoạch ngắn hơn các giống ổi khác. Từ lúc trồng cho đến lúc thu hoạch chỉ khoảng 12 tháng. Cây không kén đất và chống chịu sâu bệnh tốt. Để đạt được năng suất và chất lượng quả ổi Đài Loan tốt, mời bà con tham khảo hướng dẫn trồng và chăm sóc dưới đây.</strong></p><p><img src=\"https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng_10/Ng%C3%A0y_14/Thanh/cay-giong-oi-dai-loan-lai-le-2.jpg\" alt=\"Ổi Đài Loan là giống ổi dễ trồng, cho năng suất cao, thời gian thu hoạch ngắn hơn các giống ổi khác. \"><i>Ổi Đài Loan là giống ổi dễ trồng, cho năng suất cao, thời gian thu hoạch ngắn hơn các giống ổi khác.</i></p><p><strong>Thời vụ</strong><br>&nbsp;</p><p>Cây ổi Đài Lоan có thể trồng quanh năm nhưng tốt nhất nên trồng vào mùa Xuân tháng 2-3 và tháng 7 - 8. Ở miền Nam, thời điểm thích hợp là đầu mùa mưa tháng 4 - 5 để tận dụng nước tưới tiêu.</p><p><strong>Chọn giống</strong></p><p>Ổi Đài Loan được nhân giống bằng phương pháp chiết hоặc ghép. Những cây con đủ tiêu chuẩn cần cao trên 50cm đường kính bầu đất khoảng 10-15cm. Cây ổi giống đã сó lá và không bị ѕâu bệnh.</p><p><strong>Chuẩn bị đất trồng</strong></p><p>Đất trồng ổi Đài Loan không cần quá cầu kì chỉ cần đất tơi xốp, thoáng và giữ nước tốt. Nếu đất trũng thấp thì nên làm luống cao khoảng 50cm. Những nơi trồng có lượng đất phù sa thường cho ổi chất lượng hơn νà cho năng suất cao hơn quả cũng ngon hơn.</p><p><strong>Kỹ thuật trồng và chăm sóc</strong></p><p>Cần tiến hành đào hố trồng trước 1 tháng. Hố trồng сần có đường kính từ 50 x 50 x 50cm và mỗi hố cách nhau từ 3-4m. Khi đào, lớp đất mặt để riêng, lớp đất bên dưới bạn phối trộn với một lượng phân chuồng hоai mục và vôi bột + рhân Lân để khử trùng và cung cấp dinh dưỡng cho cây.</p><p>Khi trồng, đào lỗ giữa mô, đặt bầυ cây con xuống sаo сhо mặt bầu cao hơn mặt mô 3 – 5cm. Sau đо́ dùng đất vun tới mặt bầu rồi dận chặn, tưới nướс. Khi đặt cây phải cắm cọc cố định thân để cây khỏi bị tác hại của gió.</p><p>Khi trồng đặt cây ổi Đài Loan giống sao cho mặt bầu hơi nhô hơn mặt mô 3cm. Dùng đất vun xới đều quanh mặt bầu và nèn chặt đất cố định dáng cây hướng thẳng. Sau khi trồng tiến hành tưới nước ngay để cây mau bén rễ.</p><p>Ổi Đài Loan thích nghi với khí hậu ẩm lượng mưa nhiều dо bộ rễ của ổi thích nghі tốt vớі độ ẩm trong đất. Cần cung сấp độ ẩm đầy đủ lúc mới trồng và vào mùa khô cần tăng lượng nước tưới lên. Thời kì cây đang lớn và lúc qυả sắp chín cần chú ý tưới nước đúng νà đủ.</p><p>Ngoài ra cần phải phòng trừ cỏ dại bằng cách định kì vun xới và nhổ сỏ dại sạch sẽ. Để hạn chế cỏ dại có thể phủ quanh gốc rơm rạ hoặc cây phân xanh. Mỗi năm 2-3 lần vun xớі qυanh gốc để đất được thoáng không bị bí.</p><p>Để quả&nbsp;<a href=\"https://baodantoc.vn/ky-thuat-trong-va-cham-soc-cay-y-di-1633077643340.htm\">ổi Đài Loan</a>&nbsp;được to đẹp không bị cháy nắng và chống đượс ruồi vàng đục quả thì khi quả được khoảng 2 ngày bạn dùng túi xốp thưa bọc bên trong và túi nilon bên ngoài để chùm trái lại sau khі bọc khoảng 2 tháng có thể cho thu hoạch được.</p><p><img src=\"https://images.baodantoc.vn/uploads/2021/11/3/root35/WaterMark_12062019140152151.jpg\" alt=\"Cây ổi Đài Loan từ lúc trồng đến khi ra hoa chỉ khoảng 8 tháng, từ lúc ổi ra hоa đến khi thu hoạch khoảng 2 đến 2,5 tháng. \"><i>Cây ổi Đài Loan từ lúc trồng đến khi ra hoa chỉ khoảng 8 tháng, từ lúc ổi ra hоa đến khi thu hoạch khoảng 2 đến 2,5 tháng.</i></p><p><strong>Sâu bệnh và một số biện pháp phòng trừ</strong></p><p>Sâu róm, sâu cuốn lá: sử dụng thuốc Shearpa, Dipterec, Vitaco, regant phun trực tiếp vào lá khi phát hiện sâu bệnh.</p><p>Bệnh rệp sáp: bệnh này tấn công trên cả thân và lá. Dùng thuốc Bassa, Ricide, Anvado để phun lên lá.</p><p>Bọ xít: dùng thuốc Dipterex để phun khi phát hiện có bọ xít tấn công.</p><p>Bệnh ruồi đục trái: sử dụng thuốc dẫn dụ Viziubon- D hay Protein thủy phân để dẫn dụ và tiêu diệt mầm bệnh. Đồng thời tiến hành bao trái.</p><p><strong>Thu hoạch</strong></p><p>Cây ổi Đài Loan từ lúc trồng đến khi ra hoa chỉ khoảng 8 tháng, từ lúc ổi ra hоa đến khi thu hoạch khoảng 2 đến 2,5 tháng. Ổі thành phần to, tròn đều và da căng sáng bóng. Khi ăn có vị ngọt và giòn. Tiến hành cắt từng chùm một cắt thành nhiều đợt cho đến khi hết. Bảo quản ổi trоng nơі thoáng mát sẽ giữ được chất lượng lâu hơn. Để сhống suy cây thì thường xuyên tỉa bỏ bớt trái đồng thời sau mỗi đợt thυ hoạch сần cắt tỉa bớt các cành đã cho trái để kích thích trái mọc mầm mới./.</p>', '/storage/uploads/plant/2022-05-06-06-05-57oi-dai-loan.jpg', '/storage/uploads/plant/2022-05-06-06-05-59oi.jpg', '/storage/uploads/plant/2022-05-06-06-05-02qua-oi.jpg', 1, '2022-05-05 23:56:08', '2022-05-08 08:13:35');
 
 -- --------------------------------------------------------
 
@@ -1255,6 +1546,32 @@ INSERT INTO `tbl_roles` (`id_roles`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tbl_soa`
+--
+
+CREATE TABLE `tbl_soa` (
+  `soa_id` bigint(20) UNSIGNED NOT NULL,
+  `soa_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `soa_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `soa_img_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `soa_img_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `soa_img_3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_soa`
+--
+
+INSERT INTO `tbl_soa` (`soa_id`, `soa_name`, `soa_description`, `soa_img_1`, `soa_img_2`, `soa_img_3`, `created_at`, `updated_at`) VALUES
+(1, 'Tôm đốm trắng', '<h2><strong>Bệnh Đốm Trắng Ở Tôm: Nguyên Nhân Và Cách Xử Lý</strong></h2><p><a href=\"https://en.wikipedia.org/wiki/White_spot_syndrome\"><strong>Virus hội chứng đốm trắng (WSSV)</strong></a> là một virus lây nhiễm cao là nguyên nhân gây tử vong hàng loạt trên tôm sú nuôi như tôm sú (P. monodon) và tôm thẻ chân trắng (P. vannamei) trên toàn thế giới. Tôm nhiễm thường được xác định bởi các đốm trắng trên vỏ của nó. Tỷ lệ tử vong cao là xảy ra từ 80% đến 100% chỉ vài ngày sau khi nhiễm. Phát hiện WSSV ở tôm là rất quan trọng cho việc quản lý các trang trại nuôi tôm. Như một biện pháp để giảm thiểu thiệt hại kinh tế nghiêm trọng do sự bùng nổ của bệnh đốm trắng gây ra.</p><p><a href=\"https://tincay.com/wp-content/uploads/2015/08/T%C3%B4m-s%C3%BA-nhi%E1%BB%85m-virus-%C4%91%E1%BB%91m-tr%E1%BA%AFng-WSSV.png\"><img src=\"https://tincay.com/wp-content/uploads/2015/08/T%C3%B4m-s%C3%BA-nhi%E1%BB%85m-virus-%C4%91%E1%BB%91m-tr%E1%BA%AFng-WSSV.png\" alt=\"Bệnh đốm trắng ở tôm - Nguyên nhân và cách xử lý\" srcset=\"https://tincay.com/wp-content/uploads/2015/08/Tôm-sú-nhiễm-virus-đốm-trắng-WSSV.png.webp 800w, https://tincay.com/wp-content/uploads/2015/08/Tôm-sú-nhiễm-virus-đốm-trắng-WSSV-300x225.png 300w, https://tincay.com/wp-content/uploads/2015/08/Tôm-sú-nhiễm-virus-đốm-trắng-WSSV-768x576.png 768w, https://tincay.com/wp-content/uploads/2015/08/Tôm-sú-nhiễm-virus-đốm-trắng-WSSV-700x525.png 700w, https://tincay.com/wp-content/uploads/2015/08/Tôm-sú-nhiễm-virus-đốm-trắng-WSSV-105x80.png 105w\" sizes=\"100vw\" width=\"800\"></a></p><p><i>Bệnh đốm trắng ở tôm – Nguyên nhân và cách xử lý</i></p><h3><strong>Nguyên nhân và biểu hiện của bệnh đốm trắng ở tôm:</strong></h3><blockquote><p><i>Do thời tiết bất thường, vùng nuôi ô nhiễm là nguyên nhân chính gây nên bệnh đốm trắng trên tôm. Khi ao nuôi xuất hiện dịch bệnh này. Người nuôi cần có phương án xử lý thích hợp để tiêu diệt mầm bệnh, tránh lây lan.</i></p></blockquote><p>Theo các nhà khoa học, tác nhân gây ra bệnh đốm trắng ở tôm bao gồm virus hoặc vi khuẩn gây ra. Bệnh thường có tốc độ lây lan rất nhanh và mức độ gây hại rất lớn. Thời gian gây bệnh thường từ tháng nuôi thứ hai trở đi. Khi mà lượng chất thải nuôi tôm bắt đầu xuất hiện nhiều. Môi trường nước ao bị ô nhiễm, gây stress cho tôm. Mầm bệnh có thể đã ủ trong tôm hoặc xâm nhập từ bên ngoài vào qua nguồn nước. Hoặc các loại ký chủ trung gian (cua, còng, cáy, chim..). Khi gặp thời thiết thay đổi sẽ tạo điều kiện cho các loại virus, vi khuẩn bùng phát gây ra dịch bệnh cho tôm.</p><h4><strong>Biểu hiện</strong></h4><ul><li>Bệnh đốm trắng ở tôm do virus gây ra (White Spot Syndrome Virus – WSSV): tôm có biểu hiện hoạt động kém. Ăn nhiều đột ngột sau đó bỏ ăn. Bơi lờ đờ ở mặt nước hay dạt vào bờ. Quan sát vỏ tôm có nhiều đốm trắng ở giáp đầu ngực, đốt bụng thứ 5, 6 và lan toàn thân. Đôi khi tôm cũng có dấu hiệu đỏ thân. Khi các đốm trắng xuất hiện, sau 3 – 10 ngày tôm chết hàng loạt với tỉ lệ chết cao và nhanh.</li><li>Bệnh do vi khuẩn gây ra (Bacteria White Spot Syndrome – BWSS): khi mới nhiễm khuẩn tôm vẫn ăn mồi, lột xác và chưa thấy các đốm trắng trên tôm. Tuy nhiên, quá trình lột xác bị chậm lại, tôm chậm lớn. Khi bệnh nặng, tôm không chết hàng loạt mà sẽ chết rải rác, hầu hết tôm bị đóng rong, mang bị bẩn. Lúc này quan sát tôm mới thấy các đốm trắng mờ đục hình tròn nhỏ trên vỏ khắp cơ thể.</li></ul><h3><strong>Phòng ngừa và xử lý bệnh đốm trắng ở tôm:</strong></h3><h4><strong>Đối với ao chưa bị bệnh</strong></h4><p>Ngừa bệnh bằng cách sử dụng chế phẩm EM thứ cấp (hoạt hóa từ EM1):</p><ul><li>Xử lý đáy, ao trước khi thả</li><li>Tạt chế phẩm EM thường xuyên trong suốt quá trình nuôi tôm.</li></ul><p>Một khi các vi sinh vật có lợi phát&nbsp;triển mạnh. Chúng tiêu diệt các vi sinh vật có hại, vi khuẩn có hại =&gt;giúp phòng bệnh tốt hơn.</p><p>Người nuôi cần thường xuyên nắm bắt các thông tin về diễn biến dịch bệnh tại địa phương. Để có biện pháp phòng ngừa thích hợp. Khi vùng nuôi đã xuất hiện dịch bệnh mà ao nuôi nhà mình chưa có biểu hiện dịch bệnh.</p><h4><strong>Các hộ nuôi nên xử lý bằng các biện pháp sau:</strong></h4><ul><li>Không nên đến nơi phát dịch, hạn chế người qua lại các ao tôm. Trường hợp phải vào ao thì cần thay quần áo và lội qua bể nước khử trùng (Chlorine, formol 5%).</li><li>Sử dụng vôi bột (CaO) rải xung quanh bờ ao, đắp chặt cống cấp và thoát nước. Quây lưới quanh bờ ao để ngăn chặn xâm nhập của cua, còng, cá… vào ao. Căng dây và lắp hình nộm để chống chim cò vào ao.</li><li>Hạn chế thay nước ao. Kiểm tra các yếu tố môi trường ao nuôi để điều chỉnh kịp thời như tăng cường quạt khí, xiphông đáy ao, ổn định pH, độ kiềm. Đồng thời tăng cường bổ sung Vitamin C, men vi sinh, khoáng Trường Sinh, thuốc bổ gan (TS 1001 của Trường Sinh), vi lượng vào thức ăn nhằm tăng sức đề kháng cho tôm. Nếu nước ao có màu trà đậm, kiểm tra thấy lượng Vibrio trong nước tăng vượt ngưỡng thì nên khử trùng nước ao bằng TS B52, SDK… Sau đó, phải bón ngay chế phẩm vi sinh để phục hồi lượng vi khuẩn có lợi trong ao. Thường xuyên kiểm tra sức ăn của tôm trong nhá, vó để điều chỉnh thức ăn phù hợp.</li></ul><h4><strong>Đối với ao bị bệnh</strong></h4><p>Cách xử lý khi phát hiện có dấu hiệu nghi ngờ bệnh đốm trắng (một vài con tấp bờ) nhanh chóng vớt ra khỏi ao. Dùng <strong>SDK</strong> diệt khuẩn 1lít/1000m3 nước. <strong>Oxyxanhletomine</strong> 1,5kg/1000m3 nước đánh vào ao. Sau 2 giờ đánh <strong>TS 1001</strong> liều dùng 2 lít/1000m3nước + <strong>Bet-to-gane</strong> 2 lít/1000m3 nước kết hợp cho ăn <strong>TS 1001</strong> liều cao 5 lần/ngày. Liều dùng:&nbsp; 0,5 lít/10kg thức ăn, cho ăn ngày 3 cữ.</p><p>Để chặn đứng virus đốm trắng không cho bùng phát khắp ao, tăng cường sức khỏe cho tôm bằng <a href=\"https://tincay.com/vitamin-c-cho-nuoi-tom-anova-nova-c/\"><strong>Vitamin C</strong></a>.</p><p>Xử lý môi trường bằng cách dùng <strong>TS</strong> <strong>B52</strong> buổi sáng, buổi chiều dùng <a href=\"https://tincay.com/zeolite-xu-ly-nuoc-ao-tom/\"><strong>Zeo bột</strong></a> để lắng lọc nước hôm sau xử lý đáy bằng men vi sinh&nbsp;<strong>Hatico.s</strong> liều cao để giúp vi sinh vật có lợi phát triển, giúp tôm khỏe nhanh hồi phục. Sự kết hợp trên sẽ tăng cường sức đề kháng cơ thể cho tôm đồng thời làm suy yếu giảm sự phát triển virus.</p><p><a href=\"https://tincay.com/wp-content/uploads/2015/11/x%E1%BB%AD-k%C3%BD-ao-t%C3%B4m-b%E1%BB%8B-nhi%E1%BB%85m-b%E1%BB%87nh-%C4%91%E1%BB%91m-tr%E1%BA%AFng.jpg\"><img src=\"https://tincay.com/wp-content/uploads/2015/11/x%E1%BB%AD-k%C3%BD-ao-t%C3%B4m-b%E1%BB%8B-nhi%E1%BB%85m-b%E1%BB%87nh-%C4%91%E1%BB%91m-tr%E1%BA%AFng.jpg\" alt=\"Bệnh đốm trắng ở tôm - Nguyên nhân và cách xử lý\" srcset=\"https://tincay.com/wp-content/uploads/2015/11/xử-ký-ao-tôm-bị-nhiễm-bệnh-đốm-trắng.jpg.webp 450w, https://tincay.com/wp-content/uploads/2015/11/xử-ký-ao-tôm-bị-nhiễm-bệnh-đốm-trắng-300x223.jpg 300w\" sizes=\"100vw\" width=\"450\"></a></p><p><i>Bệnh đốm trắng ở tôm – Nguyên nhân và cách xử lý</i></p><blockquote><p><i>Tham khảo các Chế phẩm sinh học hỗ trợ trong nuôi thủy sản</i></p><ul><li><a href=\"https://tincay.com/che-pham-sinh-hoc-em-aqua-cho-thuy-san/\"><i>Chế phẩm sinh học EM AQUA chuyên xử lý nước</i></a></li><li><a href=\"https://tincay.com/vi-sinh-xu-ly-khi-doc-no2/\"><i>Men vi sinh xử lý khí độc NO2 (Bio-TC8)</i></a></li><li><a href=\"https://tincay.com/che-pham-xu-ly-ao-nuoi-ca-bio-tc3/\"><i>Men vi sinh xử lý khí độc NH4/NH3 (Bio-TC3)</i></a></li><li><a href=\"https://tincay.com/men-vi-sinh-xu-ly-day-ao-nuoi-bio-tc7-db/\"><i>Men vi sinh xử lý đáy ao nuôi (Bio-TC7)</i></a></li><li><a href=\"https://tincay.com/vi-sinh-xu-ly-phen-bio-tcxh/\"><i>Men vi sinh xử lý phèn (Bio-TC5)</i></a></li><li><a href=\"https://tincay.com/che-pham-xu-ly-khi-doc-cho-ao-nuoi-bio-tc4/\"><i>Chế phẩm xử lý khí độc Rhodo Power (Bio-TC4)</i></a></li><li><a href=\"https://tincay.com/che-pham-sinh-hoc-em-goc-em1/\"><i>Chế phẩm sinh học Em Gốc (EM1)</i></a></li><li><a href=\"https://tincay.com/men-tieu-hoa-dang-bot-cho-thuy-san/\"><i>Men tiêu hóa dạng bột dùng cho thủy sản</i></a></li><li><a href=\"https://tincay.com/men-tieu-hoa-dang-nuoc-cho-thuy-san-bio-tcmth/\"><i>Men tiêu hoá dạng nước dùng cho thuỷ sản</i></a></li></ul></blockquote><h3><strong>Chú ý:</strong></h3><p>Khi tôm bị bệnh thì các yếu tố môi trường thay đổi như: Tảo sụp, <a href=\"https://tincay.com/test-kh-sera-kiem-tra-nhanh-kiem-trong-nuoc/\">Kiềm</a>, <a href=\"https://tincay.com/test-ph-sera-kiem-tra-nhanh-ph-trong-nuoc/\">pH</a> giảm thấp… Vì vậy khi điều trị bệnh bà con nên&nbsp; kết hợp cải tạo môi trường. Phương pháp trên đây chỉ mang tính tham khảo. Trên thực tế khi dùng test phát hiện bệnh đốm trắng ở tôm kết quả dương tính. Bà con nên tiến hành thu hoạch ngay để giảm tối đa thiệt hại và tổn thất mà bệnh mang lại sau đó mới tiến hành cải tạo ao nuôi loại trừ bệnh trước khi thả đợt giống mới.</p><blockquote><p><i>Đối với những ao tôm bị bệnh đốm trắng, người nuôi không nên vội vàng cải tạo để thả nuôi ngay. Mà nên cho ao nghỉ 1,5 – 2 tháng để dứt nguồn bệnh và tái tạo lại môi trường nền đáy. Thời gian ao nghỉ nên thả cá rô phi. Để cá tiêu diệt hết những loài ký chủ trung gian mang mầm bệnh còn sót lại.</i></p></blockquote><p><br>&nbsp;</p>', '/storage/uploads/soa/2022-05-10-09-05-58benh-dom-trang-tren-tom.jpg', '/storage/uploads/soa/2022-05-10-09-05-01tac-nhan-gay-benh-dom-trang-tren-tom-nuoi.jpg', '/storage/uploads/soa/2022-05-10-09-05-02b3748d1f0bc4e9c08a4bff591c8d4f4e.jpg', '2022-05-07 03:05:00', '2022-05-10 02:35:05'),
+(4, 'Heo tai xanh', '<figure class=\"table\"><table><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><strong>Bệnh Tai xanh ở lợn hay còn gọi Hội chứng rối loạn sinh sản và hô hấp ở lợn (PRRS).&nbsp;</strong>Là bệnh truyền nhiễm nguy hiểm cấp tính do virut gây ra. Bệnh có tính chất lây lan nhanh và gây chết nhiều lợn khi ghép hoặc kế phát các bệnh truyền nhiễm nguy hiểm khác như: Dịch tả lợn, Phó thương hàn, Tụ huyết trùng...Đặc trưng của bệnh là gây sảy thai, thai chết lưu ở lợn nái chửa; lợn ốm có triệu chứng điển hình sốt cao trên 40°- 41oC, viêm phổi nặng; đặc biệt là ở lợn con cai sữa viêm phổi chết rất nhanh.</p><p><img src=\"https://vinhphuc.gov.vn/ct/IMG_CTV/PublishingImages/2019/6/Hien/201119taixanhjpg.jpg\"></p><p><strong>&nbsp;PHƯƠNG THỨC TRUYỀN LÂY:</strong></p><p>- Trực tiếp&nbsp;: Do lợn khỏe tiếp xúc với lợn mắc bệnh, lợn mang trùng, qua phân, nước tiểu chứa mầm bệnh và qua thụ tinh nhân tạo.</p><p>- Gián tiếp&nbsp;: Qua dụng cụ chăn nuôi, bảo hộ lao động, thức ăn, nước uống chứa mầm bệnh, qua vận chuyển lợn mang trùng và qua người tiếp xúc với lợn ốm.</p><p><strong>VỀ TRIỆU CHỨNG&nbsp;:</strong></p><p>- Đối với lợn nái:</p><p>+ Giai đoạn mang thai: sốt cao 40 - 42°C, biếng ăn, sẩy thai vào giai đoạn chửa kỳ 2 hoặc thai chết lưu chuyển thành thai gỗ; nếu ở thể cấp tính tai chuyển màu xanh, đẻ non vào giai đoạn cuối của thời kỳ mang thai hoặc thai chết yểu.</p><p>+ Lợn nái giai đoạn đẻ và nuôi con: ăn ít, l­ười uống nư­ớc, mất sữa và viêm vú, đẻ sớm, da biến màu, chậm chạp hoặc hôn mê, thai gỗ, hoặc lợn con chết ngay sau khi sinh (khoảng 30%). Lợn con yếu, tai chuyển màu xanh (khoảng 5%). Nếu ở thể cấp tính: Lợn nái thường đẻ non, tăng tỷ lệ thai chết, tăng số thai gỗ, chết lưu trong giai đoạn 3 tuần cuối tr­ước khi sinh (có thể tới 30%). Tỷ lệ chết ở đàn con có thể tới 70% ở tuần thứ 3 - 4 sau khi xuất hiện triệu chứng.</p><p>+ Lợn nái giai đoạn sau cai sữa: lợn nái động dục không bình thường (kéo dài) hoặc phối giống mà không thụ thai, có biểu hiện ho và viêm phổi nặng.</p><p>- Lợn con: Lợn thường sốt cao (40 - 42°C), gầy yếu, khó thở, mắt có dử mầu nâu, phần da mỏng như da bụng, gần mang tai thường có màu hồng, đôi khi da có vết phồng rộp, ỉa chảy nhiều, ủ rũ, run rẩy và thường bị chết.</p><p>- Lợn choai, lợn thịt: sốt cao ở nhiệt độ (40 - 41°C), biếng ăn, ủ rũ, ho, thở khó, những phần da mỏng như phần gần tai, phần da bụng lúc đầu màu hồng nhạt, dần dần chuyển thành màu hồng thẫm và xanh nhạt.</p><p>- Lợn đực giống: Co biểu hiện sốt cao, bỏ ăn, đờ đẫn hoặc hôn mê, giảm hưng phấn hoặc mất tính dục, lượng tinh dịch ít. Các trường hợp cấp tính, lợn đực bị sưng dịch hoàn. Phần lớn lợn đực khi nhiễm vi rút Tai xanh thường không có biểu hiện lâm sàng, nhưng trong tinh dịch có chứa vi rút từ 6 - 8 tháng.</p><p><strong>&nbsp;BỆNH TÍCH:</strong></p><p>Khi mổ khám lợn bệnh thấy phổi bị viêm hoại tử và thâm nhiễm, đặc trưng bởi những đám chắc, đặc (nhục hoá) trên các thuỳ phổi. Mặt cắt ngang của thuỳ phổi bệnh lồi ra, khô. Viêm phế quản phổi hoá mủ ở mặt dưới thuỳ đỉnh, trong phế nang chứa đầy dịch viêm.Thận xuất huyết đinh ghim, não sung huyết, hạch amidan sưng, gan sưng, tụ huyết, lách sưng, nhồi huyết, hạch màng treo ruột xuất huyết, loét van hồi manh tràng.</p><p><strong>Về các biện pháp phòng, chống</strong></p><p><strong>Phòng bệnh:</strong></p><p><strong>*Tiêm phòng vắc xin:</strong>&nbsp;Tiêm đầy đủ các loại vắc xin phòng bệnh truyền nhiễm nguy hiểm ở lợn như; Tai xanh, Dịch tả lợn cổ điển, tụ huyết trùng, phó thương hàn, Ecoli ...theo qui trình chăn nuôi.</p><p><strong>*Ngoài ra người chăn nuôi cần phải thực hiện chăn nuôi theo hướng an toàn sinh học</strong></p><p><strong>- Vệ sinh chuồng trại:&nbsp;</strong>Trước cổng trại, khu vực chăn nuôi phải có hố khử trùng, trước cửa vào chuồng nuôi có khay thuốc sát trùng, vôi bột. Hàng ngày thu gom phân về hố ủ, có hệ thống rãnh thoát nước về hầm &nbsp;biogas, cần giữ khô nền chuồng, đặc biệt chuồng lợn nái nuôi con và lợn con mới cai sữa; định kỳ phun hóa chất tiêu độc khử trùng khu vực chăn nuôi 1 lần/tuần. Sau khi xuất lợn cần vệ sinh chuồng trại, môi trường chăn nuôi và phun thuốc khử trùng tiêu độc; để trống chuồng nuôi 7 - 10 ngày rồi mới nuôi tiếp.</p><p><strong>-Vệ sinh phương tiện, dụng cụ chăn nuôi:&nbsp;</strong>Mỗi dãy chuồng phải có phương tiện, dụng cụ chăn nuôi riêng; trước khi đưa vào sử dụng và sau khi sử dụng phải rửa sạch và sát trùng kỹ. Tất cả các phương tiện vận chuyển khi vào khu vực chuồng nuôi phải được rửa sạch và phun thuốc sát trùng, có khu vực riêng để bảo quản và cất giữ các phương tiện vận chuyển dụng cụ chăn nuôi.</p><p><strong>-Vệ sinh đối với người chăn nuôi và khách thăm quan khu chăn nuôi:&nbsp;</strong>Hạn chế tối đa khách vào thăm quan trang trại, khu chăn nuôi. Đối với các trang trại chăn nuôi qui mô lớn: Người chăn nuôi cần thực hiện tốt quy định phòng bệnh của trại; người trực tiếp tham gia sản xuất phải được trang bị bảo hộ lao động đảm bảo vệ sinh thú y và an toàn lao động; Người chăn nuôi không được vào khu chuồng khác khi không có nhiệm vụ, hạn chế điều chuyển công nhân từ khu chuồng này sang khu chuồng khác; Các phương tiện, dụng cụ bảo hộ được sử dụng riêng cho từng khu chuồng nuôi.</p><p><strong>-Vệ sinh thức ăn, nước uống:&nbsp;</strong>Cho lợn ăn thức ăn đảm bảo nhu cầu dinh dưỡng; không dùng thức ăn bị ôi, mốc, cần vệ sinh máng ăn thường xuyên, không để thức ăn còn thừa trong máng. Cần cung cấp đầy đủ nuớc uống đảm bảo vệ sinh thú y.</p><p><strong>- Có chuồng nuôi cách ly lợn mới mua trước khi nhập đàn:&nbsp;</strong>Mỗi trại, hộ chăn nuôi cần có khu vực nuôi cách ly cho lợn mới nhập, khu vực nuôi cách ly phải cách xa các chuồng nuôi khác. Lợn giống nhập về phải có nguồn gốc rõ ràng, đã được tiêm phòng đầy đủ các loại vắc xin theo quy định và còn thời gian miễn dịch; đối với chăn nuôi lợn thương phẩm cần áp dụng phương thức cùng vào và cùng ra; thực hiện nuôi cách ly 15 ngày trước khi nhập đàn.</p><p><strong>Chống dịch:&nbsp;</strong>Đối với các sơ sở chăn nuôi khi phát hiện lợn ốm, chết có biểu hiện của bệnh Tai xanh phải báo ngay cho trưởng thôn, nhân viên thú y cấp xã và chính quyền địa phương để có biện pháp xử lý kịp thời. Nếu có dịch xảy ra chủ chăn nuôi phải tuân thủ đầy đủ&nbsp;các biện pháp về phòng, chống dịch bệnh theo quy định của Pháp luật về thú y và hướng dẫn của cơ quan chuyên môn.</p>', '/storage/uploads/soa/2022-05-10-09-05-384.jpg', '/storage/uploads/soa/2022-05-10-09-05-40hieu-biet-va-doi-pho-voi-benh-tai-xanh-prrs-1.jpg', '/storage/uploads/soa/2022-05-10-09-05-4220170817_104953-rotated.jpg', '2022-05-10 02:36:47', '2022-05-10 02:36:47'),
+(5, 'Bệnh cầu trùng', '<p><strong>Bệnh cầu trùng là bệnh thường xuyên xảy ra trên đàn gà nuôi, gây ảnh hưởng lớn đến hiệu quả chăn nuôi.</strong></p><p><img src=\"http://khuyennonghanoi.gov.vn/PublishingImages/FR72CHawmUSdGpmabenh-cau-trung-o-ga.jpg\" alt=\"\"><br>&nbsp;</p><p><br>&nbsp;</p><p><strong>Nguyên nhân</strong></p><p>Là bệnh ký sinh trùng truyền nhiễm, do loài ký sinh trùng đơn bào gây ra. Có nhiều loài cầu trùng gây bệnh cho gia cầm, tuy nhiên giống cầu trùng gây bệnh cho gà là Eimeria, chủ yếu ở 2 loài: Eimeria tenella (ký sinh ở manh tràng - ruột già) và Eimeria necatrix (ký sinh trùng ở ruột non).</p><p><strong>Ðường lây truyền</strong></p><p>Bệnh lây lan chủ yếu qua đường tiêu hóa do gà ăn phải nang của cầu trùng có trong thức ăn, nước uống bị nhiễm mầm bệnh. Gây rối loạn tiêu hóa, tổn thương các tế bào thượng bì, làm cho gà không hấp thu được dinh dưỡng, ảnh hưởng đến quá trình trao đổi chất, giảm hiệu quả chuyển hóa thức ăn, giảm tăng trọng, gà mắc bệnh này thường còi cọc, chậm lớn, suy yếu có thể chết (tỷ lệ chết 20 - 30%). Gà mắc bệnh sức đề kháng giảm là điều kiện thuận lợi để phát sinh dịch bệnh, bệnh&nbsp; xảy ra ở mọi lứa tuổi, tuy nhiên gà từ 2 - 8 tuần tuổi hay mắc nhất và ở tất cả các hình thức chăn thả (nuôi công nghiệp, bán công nghiệp có nguy cơ mắc cao nhất).</p><p><strong>Triệu chứng</strong></p><p>Thể cấp tính: Ủ rũ, kém ăn hoặc bỏ ăn, uống nước nhiều, lúc đầu đi phân có bọt màu vàng hoặc hơi trắng, phân có màu nâu đỏ (phân gà sáp), sau phân có lẫn máu, gà đi lại khó khăn, sã cánh, xù lông, niêm mạc miệng, mắt nhợt nhạt, chân gập lại, quỵ xuống và chết sau khi có biểu hiện co giật từng cơn.</p><p>Thể mãn tính: Bệnh tiến triển chậm hơn như gầy ốm, xù lông, kém ăn, chân đi như bị liệt, tiêu chảy thất thường… Ở thể này gà là vật mang mầm bệnh (thường xuyên thải mầm bệnh ra ngoài môi trường), gà mái mắc bệnh thường giảm đẻ…</p><p><strong>Bệnh tích</strong></p><p>Khi mổ khám gà bị bệnh chủ yếu thấy tổn thương ở ruột. Nếu do ký sinh ở manh tràng - ruột già thì thấy 2 manh tràng trương to và xuất huyết. Mổ manh tràng ra bên trong có xuất huyết lấm tấm và đầy máu. Nếu gà bị mắc cầu trùng nặng thì 2 manh tràng xuất huyết, hoại tử từng mảng đen. Trong trường hợp gà bị bệnh cầu trùng ký sinh ở ruột non thấy ruột non phình to từng đoạn khác thường, chỗ vách ruột trương to thường dễ vỡ, trong ruột chứa chất lỏng có lợn cợn bã đậu rất thối. Bề mặt niêm mạc ruột dày lên có nhiều điểm trắng đỏ. Nếu gà bị bệnh nặng thường thấy phân lẫn máu tươi.</p><p><strong>Phòng bệnh</strong></p><p>Là biện pháp hiệu quả và kinh tế nhất. Trước hết, cần thực hiện tốt vệ sinh phòng bệnh. Chuồng trại phải thông thoáng không bị lạnh hoặc quá nóng, nền chuồng phải có lớp độn chuồng hút ẩm, luôn khô ráo, thường xuyên vệ sinh, máng ăn, máng uống sạch sẽ; thức ăn, nước uống đảm bảo vệ sinh thú y tránh nhiễm mầm bệnh từ nền chuồng; Sau mỗi đợt nuôi phải quét dọn vệ sinh, ủ phân gà với vôi bột để diệt mầm bệnh trước khi sử dụng. Nếu nuôi gà thả vườn, cần lưu ý giữ vệ sinh khu vực chăn thả, có thể rải một lớp cát trên sân.</p><p>Ðịnh kỳ phun khử trùng tiêu độc chuồng trại môi trường chăn nuôi bằng một trong các loại hóa chất sau: Han-IODINE, BENKOCID, BIO-IODINE...</p><p>Phòng bệnh bằng vaccine và thuốc: Sử dụng vaccine nhược độc phòng bệnh cầu trùng đa giá ở gà (do Công ty Cổ phần thuốc Thú y Trung ương 1 sản xuất). Sau chủng ngừa 14 ngày, gà bắt đầu sản sinh miễn dịch, khả năng miễn dịch kéo dài đến thời điểm gà xuất chuồng. Ðể sử dụng vaccine, người chăn nuôi có thể hòa vào nước hoặc trộn chung với thức ăn.</p><p>Thường xuyên bổ sung vào thức ăn, nước uống các loại B-Complex, các chất điện giải để tăng sức đề kháng của gà.</p><p><strong>Trị bệnh</strong></p><p>Bệnh cầu trùng do ký sinh trùng gây ra nên có thể sử dụng kháng sinh để điều trị, một số kháng sinh đang cho hiệu quả điều trị cao như: Toltrazuzin, Amprodium, Mono sunfadiazin…</p><p>Cùng đó, cần kết hợp chăm sóc nuôi dưỡng tốt và bổ sung chất điện giải, Vitamin K, ADE B.Complex để tăng cường sức đề kháng, mau phục hồi bệnh./.</p>', '/storage/uploads/soa/2022-05-10-09-05-28Cau trung new.jpg', '/storage/uploads/soa/2022-05-10-09-05-31download.jpg', '/storage/uploads/soa/2022-05-10-09-05-32ga-bi-benh.jpg', '2022-05-10 02:38:35', '2022-05-10 02:38:35');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tbl_sop`
 --
 
@@ -1274,9 +1591,31 @@ CREATE TABLE `tbl_sop` (
 --
 
 INSERT INTO `tbl_sop` (`sop_id`, `sop_name`, `sop_description`, `sop_img_1`, `sop_img_2`, `sop_img_3`, `created_at`, `updated_at`) VALUES
-(1, 'test sop', 'test sop test sop test sop test sop test sop v test sop vtest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest soptest sop', 'https://tinhuygialai.org.vn/Uploads/xa%20hoi/s%C3%A2u-b%E1%BB%87nh-h%E1%BA%A1i-c%C3%A2y.png', 'https://tinhuygialai.org.vn/Uploads/xa%20hoi/s%C3%A2u-b%E1%BB%87nh-h%E1%BA%A1i-c%C3%A2y.png', 'https://tinhuygialai.org.vn/Uploads/xa%20hoi/s%C3%A2u-b%E1%BB%87nh-h%E1%BA%A1i-c%C3%A2y.png', '2022-05-04 04:30:32', '2022-05-04 04:30:32'),
-(2, 'test sop 2', 'test sop 2 test sop 2 test sop 2 test sop 2 test sop 2 test sop 2 test sop 2 ', '', '', '', '2022-05-04 07:29:14', '2022-05-04 07:29:14'),
-(3, 'Đạo ôn', '\r\nBệnh đạo ôn do nấm Pyricularia oryzae gây ra, là một trong vài loại dịch hại nguy hiểm đối với cây lúa ở Việt Nam và nhiều nước khác trong khu vực.\r\nNấm bệnh có thể tấn công trên lá, trên cổ bông (cổ gié) hoặc trên hạt.\r\n\r\nTrên lá: bệnh hại chủ yếu ở giai đoạn mạ - đẻ nhánh, cổ bông và hạt. Lúc đầu vết bệnh chỉ nhỏ như đầu mũi kim, màu xám xanh giống như bị nước sôi, sau chuyển sang màu nâu, rồi lan rộng dần ra thành hình thoi, xung quanh màu nâu đậm, giữa màu xám trắng. Nếu nặng, nhiều vết liên kết lại với nhau tạo thành mảng lớn, có thể làm lá bị khô cháy, cây lúa lụi tàn, gây thất thu năng suất nghiêm trọng.\r\n\r\nTrên cổ bông (cổ gié): nấm bệnh tấn công trên cổ bông (cổ gié) làm cản trở việc vận chuyển chất dinh dưỡng từ cây lúa lên nuôi bông, nuôi hạt, hạt lúa sẽ bị lép lửng. Nếu bệnh tấn công sớm có thể làm cho hạt lúa bị lép hoàn toàn. Vết bị bệnh lúc đầu có màu xám xanh, sau chuyển dần sang màu nâu, nâu đậm. Nếu ẩm độ không khí cao, chỗ vết bệnh sẽ mọc một lớp nấm mốc màu xám xanh, dễ bị gãy, làm ruộng lúa trở nên xơ xác.\r\n\r\nTrên hạt: vết bệnh có hình tròn, viền nâu, tâm màu xám trắng, đường kính khoảng 1 – 2 mm, làm hạt lúa bị lem lép, Nếu bị bệnh sớm, hạt lúa có thể bị lép hoàn toàn', '', '', '', '2022-05-05 02:21:59', '2022-05-05 02:21:59');
+(5, 'Vàng Lá Chín Sớm', '<h3><strong>Bệnh vàng lá chín sớm - Một loại dịch hại tưởng chừng đã bị lãng quên từ lâu trên các ruộng lúa cao sản, nhưng gần đây đột ngột bùng phát trên diện rộng khiến bà con nông dân không kịp trở tay gây suy giảm trên 30% năng suất.</strong></h3><p>&nbsp;</p><p><strong>Bệnh vàng lá chín sớm hại lúa</strong>&nbsp;tuy không nghiêm trọng như các loại sâu bệnh khác, nhưng nếu để bùng phát trên diện rộng sẽ trực tiếp làm ảnh hưởng tới chất lượng và số lượng nông sản.</p><p>Gần đây, qua nhiều lần thử nghiệm nghiêm cứu các nhà khoa học đã tìm ra giải pháp phòng trừ&nbsp;<strong>vàng lá chín sớm</strong>&nbsp;hữu hiệu, bệnh được khắc phục nhanh, không gây lây lan thành dịch và mức độ gây hại đã giảm xuống bình thường như những dịch hại khác.</p><h3>&nbsp;</h3><h3><strong>Tác nhân gây bệnh vàng lá chín sớm trên lúa</strong></h3><p>Bệnh hại do nấm Gonatophragmium sp gây ra.</p><h3>&nbsp;</h3><h3><strong>Triệu chứng bệnh vàng lá chín sớm hại lúa</strong></h3><p><strong>Vàng lá chín sớm</strong>&nbsp;thường xuất hiện ở giai đoạn cây lúa đang ở thời kỳ sinh sản, bắt đầu từ khi trổ bông, trực tiếp gây hại trên lá lúa hoặc trên bất kỳ lá nào trên bụi lúa.</p><p><img src=\"https://symbio.com.vn/vnt_upload/news/05_2021/benh_vang_la_chin_som_tren_lua.jpg\" alt=\"\"></p><p>Ban đầu, trên lá lúa xuất hiện vết bệnh là những đốm nhỏ màu vàng nhạt tới cam nhạt, có bầu dục hoặc hình tròn.</p><p>Vết bệnh phát triển kéo dài dọc từ gân lá ra phía chóp lá tạo thành những vệt sọc màu vàng cam. Sau đó, vết bệnh lan dần ra cả lá, nếu nặng hơn thì vết bệnh trên lá bị cháy khô.</p><p>Qua nghiên cứu, các nhà khoa học nông nghiệp cho biết: “Màu vàng trên lá lúa được tiết ra từ nấm bệnh, tan được trong nước, do đó có thể lây lan qua nhựa nguyên của lá lúa khiến lá lúa bị nhuộm màu vàng cam.” Tuy nhiên, diệp lục tố nơi vết vàng vẫn có thể tiếp tục quang hợp.</p><p>Căn cứ theo kết quả nghiên cứu, thì nếu lúa bị mắc bệnh sớm ngay ở giai đoạn đòng trổ, thì bệnh phát triển nhanh cho tới lúc sắp thu hoạch và làm cháy khô lá lúa. Việc nhiễm bệnh sớm sẽ trực tiếp làm giảm năng suất.</p><p>Còn nếu lúa bị nhiễm bệnh muộn hơn, khoảng từ giai đoạn trổ trở về sau, thì chỉ làm lá lúa bị vàng mà không cháy khô, trong trường hợp này bệnh không làm giảm năng suất.</p><h3>&nbsp;</h3><h3><strong>Điều kiên phát sinh bệnh vàng lá chín sớm</strong></h3><p><strong>Bệnh vàng lá chín sớm trên lúa</strong>&nbsp;ở vụ Đông Xuân phát triển mạnh hơn so với hai vụ Hè Thu và Thu Đông. Khi bị nhiễm bệnh, thì chỗ có bóng râm bệnh thường phát triển nặng hơn.</p><p>Bệnh phát triển nặng hơn trên vùng đất phèn so với vùng đất phù sa ngọt.</p><p>Bón phân đạm cao sẽ tạo điều kiện cho bệnh phát sinh sớm và dễ dàng phát triển nặng.</p><p><img src=\"https://symbio.com.vn/vnt_upload/news/05_2021/thuoc_dac_tri_benh_vang_la_chin_som_hai_lua.jpg\" alt=\"\"></p><h3>&nbsp;</h3><h3><strong>Biện pháp phòng trừ bệnh vàng lá chín sớm</strong></h3><h4><strong>1. Biện pháp canh tác</strong></h4><ul><li>Nên sử dụng giống lúa khỏe mạnh (giống xác nhận).</li></ul><p>Hạt giống nên được xử lý bằng chế phẩm sinh học&nbsp;<a href=\"https://symbio.com.vn/\"><strong>Endophyte Rice</strong></a> + chế phẩm vi sinh<a href=\"https://symbio.com.vn/\"> <strong>Sporin-M (xử lý giống)</strong></a></p><ul><li>Mật độ sạ ở mức vừa phải, nên để lúa mọc thưa, thì sẽ đâm chồi nhiều và chồi khỏe.</li><li>Phải bón phân đạm vừa nhu cầu của cây lúa, tránh tình trạng bón thừa thải.</li><li>Thường xuyên thăm đồng ruộng để kịp thời phát hiện sâu bệnh, từ đó có biện pháp diệt trừ sớm.</li></ul><h4><strong>2. Các hoạt chất hóa học đặc trị vàng lá chín sớm trên lúa</strong></h4><p>Dùng thuốc chứa các hoạt chất hóa học như: Macozeb + Cymoxanil, Propineb hoặc sự kết hợp giữa Propiconazole + Flusilazole giúp quản lý tốt bệnh vàng lá chín sớm.</p><p>Nên phun 2-3 lần, mỗi lần cách nhau 10-12 ngày. Về cách sử dụng bà con có thể đọc hướng dẫn ngay trên bao bì sau khi mua sản phẩm.</p>', '/storage/uploads/sop/2022-05-06-03-05-201.jpg', '/storage/uploads/sop/2022-05-06-03-05-22download.jpg', '/storage/uploads/sop/2022-05-06-03-05-23thuoc_dac_tri_benh_vang_la_chin_som_hai_lua.jpg', '2022-05-05 20:48:54', '2022-05-05 23:37:17'),
+(6, 'Ruồi vàng đục trái', '<p>Ruồi vàng đục trái là niềm trăn trở gây phiền toái lớn đối với nhà vườn, chúng là những sinh vật hết sức lì lợm và khó trị. Chúng tấn công lên nhiều loại cây trồng, trái cây bị chúng đục sẽ bị giảm chất lượng và không thể xuất khẩu được.&nbsp;</p><p><img src=\"https://traceverified.com/wp-content/uploads/2020/05/ruoi-duc-qua.jpg\" alt=\"ruoi-vang-duc-qua\" srcset=\"https://traceverified.com/wp-content/uploads/2020/05/ruoi-duc-qua.jpg 760w, https://traceverified.com/wp-content/uploads/2020/05/ruoi-duc-qua-300x118.jpg 300w, https://traceverified.com/wp-content/uploads/2020/05/ruoi-duc-qua-600x237.jpg 600w\" sizes=\"100vw\" width=\"760\"></p><p><i>Ruồi vàng</i></p><p><strong>Alcohol (cồn) là chất cực kỳ hấp dẫn chúng</strong></p><p>Ruồi đục trái là loại “sâu rượu” điển hình. Trái cây khi chín sẽ chuyển hóa (lên men) một phần lượng đường thành alcohol – vốn là thứ rất thu hút chúng, và đó cũng là lý do cho sự phá hoại ở chúng. Hết thảy thực phẩm được thu hoạch là mục tiêu mà chúng hướng đến. Chúng thích mùi vị lên men của trái cây nên đó là nguyên nhân vì sao những loài sinh vật này luôn bay lượn quanh đống ủ hữu cơ, nhất là những đống ủ có nhiều trái cây. Ở một góc độ khác, có lẽ chúng là những tay thưởng thức rượu chuyên nghiệp. Chúng sinh trưởng cực nhanh, thậm chí bạn phải tính bằng giờ.</p><p><strong>Tập tính sinh sản của ruồi vàng</strong></p><p>Ruồi đục trái có tập tính đẻ trứng vào những khu vực có tiềm năng tiếp cận thực phẩm, nơi mà ấu trùng đẻ ra của chúng có thể dễ dàng tìm đến thức ăn, và nơi lý tưởng nhất không đâu khác chính là khu vườn của bạn, ngoài ra chúng còn tìm đến cống rãnh hay bãi rác, nhưng trái cây và rau củ mới là điều thu hút chúng nhất. Khả năng đẻ trứng của chúng thuộc hàng đẳng cấp vì mỗi lần đẻ là 500 quả trứng, lượng trứng gấp 5 lần mẹ Âu Cơ…&nbsp;&nbsp;</p><p><strong>Giải pháp xử lý ruồi vàng</strong></p><p>&nbsp;</p><p><i><strong>Lập hàng rào sinh học</strong></i></p><p>&nbsp;</p><p>Sự hiện diện của chúng đồng nghĩa với việc khu vườn của bạn đang bốc mùi, xử lý được sự bốc mùi này xem như thành công. Trong tự nhiên có vài cây hương liệu khiến thần kinh của chúng hỗn loạn nên chúng rất ngại đến gần. Dường như giữa ta và côn trùng có khoảng cách rất lớn về mùi hương, những mùi mà chúng thấy thơm thì lại không mấy thân thiện với con người và ngược lại. Dưới đây là những loại mùi xua đuổi chúng.</p><p>Tinh dầu hương thảo: có công dụng xua đuổi ruồi , bọ chét, muỗi và ấu trùng côn trùng như sâu bướm bắp cải.</p><p>Tinh dầu bạc hà: loại bỏ rầy mềm, bọ xít, kiến, nhện , bọ cánh cứng và bọ chét.</p><p>Tinh dầu xạ hương giúp chống lại các loại sâu, côn trùng cắn như con ve,</p><p>Tinh dầu đinh hương giúp làm giảm nhiều côn trùng bay.</p><p>Những loài cây này là hàng rào sinh học vừa xua đuổi côn trùng mà vừa không gây ô nhiễm môi trường.&nbsp;</p><p><img src=\"https://traceverified.com/wp-content/uploads/2020/05/5a1c2f60831b6.image_.jpg\" alt=\"ruoi-vang-duc-qua\" srcset=\"https://traceverified.com/wp-content/uploads/2020/05/5a1c2f60831b6.image_.jpg 760w, https://traceverified.com/wp-content/uploads/2020/05/5a1c2f60831b6.image_-300x118.jpg 300w, https://traceverified.com/wp-content/uploads/2020/05/5a1c2f60831b6.image_-600x237.jpg 600w\" sizes=\"100vw\" width=\"760\"></p><p><i>Trong tự nhiên có vài cây hương liệu khiến thần kinh của ruồi vàng hỗn loạn</i></p><p>&nbsp;</p><p><i><strong>Lập bẫy</strong></i></p><p>&nbsp;</p><p>Mùi hương là 1 ý tưởng để bẫy ruồi vàng, bạn nhất thiết phải có hương nhu (tinh dầu) – thứ này mang hormon kích thích. Loài ruồi bị mùi này hấp dẫn nên cứ thế mà lao vào… Tuy nhiên đây là con đường 1 chiều, vào thì dễ nhưng ra thì hên xui… Ngoài ra, nông dân các nước họ còn có cách bẫy đơn giản mà hiệu quả, họ cắt 1/3 chai nước suối tính từ nắp, sau đó lộn ngược phần nắp lại rồi lấy băng keo dán cho chắc chắn phần tiếp nối, bên trong đổ một ít giấm táo (giấm khác sẽ không hiệu quả vì mùi không thơm), sau đó nhỏ vài giọt nước rửa chén rồi lắc đều lên hoặc đơn giản chỉ cần bỏ vài lát chuối chín rục hoặc trái táo là ổn.&nbsp;</p><p>Thường thì các nước họ chỉ dụ ruồi vàng vào bẫy rồi gom lại tiêu huỷ chúng trực tiếp. Thế nhưng Việt Nam lại có lượng thảo mộc thênh thang, mỗi vùng mỗi miền có một loại đặc trưng. Phía Bắc có củ ấu tẩu, hạt mã tiền… phía Nam có hạt bình bát, hạt mãng cầu có thể thỏa sức chế tác dung dịch diệt trừ ruồi vàng nên không cần phải gom lại diệt mà để luôn các dung dịch này vào bẫy.&nbsp;</p><p><i><strong>Công thức xử lý ruồi vàng</strong></i></p><p><i>Nguyên liệu:</i></p><p>Rượu nếp than 500 ml</p><p>Chuối chín trứng quốc 1 trái</p><p>Lá hương nhu 8 lá</p><p>Nhân hạt bình bát 50 gram</p><p><i>Chế biến: </i>Cho hết thảy nguyên liệu vào máy xay nhuyễn. Nếu thấy dung dịch có vẻ khô quá thì hòa thêm chút nước.</p><p><i><strong>*Ghi chú:</strong></i></p><p>Nhà nào có khả năng thì ngâm sẵn 50 gram bột nhân hạt bình bát, 30 gram bột hạt mã tiền và nửa lít rượu/cồn 45 độ. Khi dùng chỉ việc lấy 100 ml rượu loại này + 1 trái chuối + 1 giọt tinh dầu hương nhu là ok. Thuốc trừ sâu cũng dùng loại rượu ngâm này, chỉ thêm 50 gram bột tỏi khi ngâm là được.</p><p>Thực chất, việc diệt trừ sâu hại chỉ nên ở mức kiểm soát và không nên tận diệt, việc loại bỏ một giống loài ra khỏi chu trình tự nhiên không phải là điều gì đó sáng suốt. Mỗi loài có trong Tạo Hóa này đều mang ý nghĩa cho sự tồn tại của chúng, bất kỳ hệ sinh thái nào muốn phát triển cũng đòi hỏi phải có đủ đầy và đa dạng giống loài.&nbsp;</p>', '/storage/uploads/sop/2022-05-10-02-05-32Cach-phong-tru-ruoi-dục-trai-tren-ho-bau-bi.jpg', '/storage/uploads/sop/2022-05-10-02-05-3023434.jpg', '/storage/uploads/sop/2022-05-10-02-05-28images.jpg', '2022-05-09 19:56:37', '2022-05-09 19:56:37'),
+(7, 'Thối Cuống', '<p>Theo những gì anh mô tả, chúng tôi chẩn đoán&nbsp;mít đã bị bệnh do nấm gây hại.</p><p>Cách&nbsp;khắc phục&nbsp;như sau:</p><p>+ Thu gom bộ phận cây bệnh, trái bệnh nặng tiêu hủy</p><p>+ Rắc VÔI BỘT khử trùng đất.</p><p>+ Phun một trong các loại thuốc sau: FOSETYL ALUMINIUM hoặc PHOSPHOROUS ACID hoặc MANCOZEB + xxxLAXYL… luân phiên và theo hướng dẫn của từng thuốc.</p><p>+Bón phân đầy đủ và cân đối cho cây gồm NPK, PHÂN CHUỒNG ủ trộn với chế phẩm trichoderma, phân vi sinh.</p><p>+Thoát nước tốt cho vườn, tỉa cành tạo tán thường xuyên cho vườn thông thoáng.</p><p>Thông tin đến anh!</p>', '/storage/uploads/sop/2022-05-10-03-05-56213123.jpg', '/storage/uploads/sop/2022-05-10-03-05-58download.jpg', '/storage/uploads/sop/2022-05-10-03-05-00images.jpg', '2022-05-09 20:02:01', '2022-05-10 09:21:03');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_type_of_animal`
+--
+
+CREATE TABLE `tbl_type_of_animal` (
+  `toa_id` bigint(20) UNSIGNED NOT NULL,
+  `toa_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_type_of_animal`
+--
+
+INSERT INTO `tbl_type_of_animal` (`toa_id`, `toa_name`, `created_at`, `updated_at`) VALUES
+(1, 'Gia súc', '2022-05-06 07:25:07', '2022-05-06 07:25:07'),
+(2, 'Gia cầm', '2022-05-06 00:40:55', '2022-05-06 00:40:55'),
+(3, 'Thủy sản', '2022-05-06 00:41:48', '2022-05-06 00:41:48');
 
 -- --------------------------------------------------------
 
@@ -1329,10 +1668,37 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_email`, `password`, `user_phone`, `user_birthday`, `user_address`, `user_avatar`, `user_active`, `user_gender`, `google_id`, `facebook_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'Lê Văn A', 'levana@gmail.com', '$2y$10$pnY88GFt9raEAADgMZz4WeyVkk1aEZWHFNihKolrEtZTRqjmV7vSi', '0333927113', '1993-07-21', '71', '/storage/uploads/user/2022-04-09-05-04-23pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg', 1, 1, NULL, NULL, 'dPYwWKFWOlA06vbneZLvIPc4fLxbNWORnPiuvOjJch72jf3xR30Ol9S01VWM', '2022-04-01 22:54:45', '2022-05-02 21:01:29'),
+(2, 'Lê Văn A', 'levana@gmail.com', '$2y$10$8/DyTHLnem4OIZT/OctO4.KvbrYyFEiq9p1mvCVDB364F/YCKK6iu', '0333927113', '1993-07-21', '71', '/storage/uploads/user/2022-04-09-05-04-23pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg', 1, 1, NULL, NULL, 'OGJxEM0ZbslaZXdv0gXZeyvrnB7bgjOTMWeGjseVzNpnlNjYt00Qyg9QD9Ja', '2022-04-01 22:54:45', '2022-05-07 20:46:10'),
 (3, 'Nguyễn Văn B', 'nguyenvanb@gmail.com', '$2y$10$.Q5XPwpYMNw4g4kp.rve7.dB7Jnw12pH6uwMxH6PVcFfpNn44Syoi', '0363935029', NULL, '2', 'https://sotaydoanhtri.com/wp-content/uploads/2019/11/test-IO.png', 1, 1, NULL, NULL, 'HNWZI6PwGkE1vStxbrC3YfekK8xuVSzgRjF1D5A4VQI3TlmtZ5vtzMnxezd5', '2022-04-03 00:21:06', '2022-04-03 00:21:06'),
 (5, 'Nguyen Thi C', 'nguyenthic@mail.com', '$2y$10$DwsGKLpdzd/8gngD2B5c8eqOiPPQADugAT9mKhNa9C7SIDrpgM7Va', '0961553823', NULL, NULL, '/storage/uploads/user/avatar-new-user.jpg', 1, NULL, NULL, NULL, 'loL1cDEWgQwaOj6MmsDUyoYf0rmmK1pwtNDjxMguiptd70X3cpFCO7BHtXc0', '2022-04-23 01:57:25', '2022-04-23 01:57:25'),
 (6, 'Nguyễn Quốc Hưng', 'nguyenquochung01235@gmail.com', '$2y$10$braEOOZFNaDjYKalqzSYN.S.miHiw988r6sKg2y9tiFFafhdyc0V2', '0967105247', NULL, NULL, '/storage/uploads/user/avatar-new-user.jpg', 1, NULL, NULL, NULL, NULL, '2022-05-01 22:38:40', '2022-05-01 22:38:40');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_vm`
+--
+
+CREATE TABLE `tbl_vm` (
+  `vm_id` bigint(20) UNSIGNED NOT NULL,
+  `vm_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vm_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vm_img_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vm_img_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vm_img_3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_vm_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_vm`
+--
+
+INSERT INTO `tbl_vm` (`vm_id`, `vm_name`, `vm_description`, `vm_img_1`, `vm_img_2`, `vm_img_3`, `category_vm_id`, `created_at`, `updated_at`) VALUES
+(9, 'Bio Anticoc 100g', '<h2><strong>THÀNH PHẦN CÓ TRONG BIO ANTICOC 100G:&nbsp;</strong></h2><ul><li>Sulfadimidine&nbsp;</li><li>Diaveridine</li><li>Vitamin A&nbsp;</li><li>Vitamin K3</li></ul><p><strong>CÔNG DỤNG:&nbsp;</strong></p><ul><li>BIO-ANTICOC là sản phẩm kết hợp của&nbsp;<strong>Sulfadimidine và Diaveridine</strong>, thuốc có tác dụng điều trị hữu hiệu tất cả các loại cầu trùng ở gia cầm, thỏ và heo.</li><li><strong>Vitamin A và K3</strong>&nbsp;trong chế phẩm có tác dụng bảo vệ niêm mạc ruột, chống xuất huyết.</li></ul><h2><strong>ƯU ĐIỂM CỦA BIO ANTICOC 100G:</strong></h2><p>Được phân phối giá tốt tại <a href=\"https://phanphoithuocthuy.com/\">phanphoithuocthuy.com</a></p><h2><strong>LIỀU LƯỢNG VÀ CÁCH DÙNG THUỐC BIO ANTICOC 100G:</strong>&nbsp;</h2><h3><strong>Sử dụng Bio Anticoc để phòng bệnh:</strong>&nbsp;&nbsp;&nbsp;</h3><ul><li>Gà con, thỏ: 1g / lít nước uống hoặc 2 g / kg thức ăn, trong 3 ngày. Lúc 10-12 ngày tuổi và lúc 20-22 ngày tuổi.</li><li>Gà giống: 1 g / lít nước uống hoặc 2 g / kg thức ăn, trong 3 ngày. Cứ mỗi 2 tháng dùng 1 đợt.</li><li>Heo con: 0,5 g / con / ngày, trong 2 ngày. Đợt 1 lúc heo 7 ngày tuổi và đợt 2 lúc 21 ngày tuổi.</li></ul><h3><strong>Sử dụng Bio Anticoc để điều trị:</strong>&nbsp;&nbsp;&nbsp;</h3><ul><li>Gà: 1g / lít nước uống hoặc 2 g / kg thức ăn, trong 5 ngày liên tục.</li><li>Heo con: 0,5 g / con / lần, ngày 2 lần, trong 4 ngày liên tục.</li></ul><h3><strong>Các lưu ý khi sử dụng Bio Anticoc 100g:</strong></h3><ul><li>Sử dụng đúng liều lượng ghi trên vỏ hộp.</li><li>Để xa tầm tay trẻ em.</li></ul><p><strong>BẢO QUẢN:</strong>&nbsp;</p><p>Nơi khô thoáng, nhiệt độ không quá 30oC.</p><p><strong>NHÀ SẢN XUẤT:</strong></p><ul><li>Công ty BIO PHARMACHEMIE</li><li>Địa chỉ: &nbsp;2/3 Tăng Nhơn Phú, Phường Phước Long B, Quận 9, Tp.HCM, Việt Nam.</li></ul>', '/storage/uploads/vm/2022-05-10-16-05-26f33eb57041451abc11e9d88e5d1389fa.jpg', '/storage/uploads/vm/2022-05-10-16-05-2856a840e6c42d410fadb8af916a63c275.jpg', '/storage/uploads/vm/2022-05-10-16-05-3081db9e78f88b5dc84428c7114cdfc0f2.jpg', 4, '2022-05-10 09:08:34', '2022-05-10 09:08:34'),
+(10, 'VIDAN - T Đặc trị tai xanh', '<p><br><strong>THÀNH PHẦN</strong></p><p>Mỗi 100ml dung dịch thuốc chứa:</p><p>Actinospectin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 10,0gam<br>Lincomycin&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:&nbsp; &nbsp;5,0gam<br>Dung môi vừa đủ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; &nbsp; &nbsp;100ml</p><p>&nbsp;<strong>CÔNG DỤNG</strong></p><p>- &nbsp;Hiệp đồng tác dụng giữa 2 loại kháng sinh mạnh với chất long đờm giúp thuốc VidanT có hoạt phổ rất rộng tiêu diệt rất nhiều loại vi khuẩn Gram dương, Gram âm, Mycoplasma và một số virut có kích thước lớn.</p><p>-&nbsp; Đối với lợn: Viêm phổi truyền nhiễm, viêm phế quản phổi, viêm teo mũi, bệnh nghệ, tiêu chảy, viêm ruột, viêm dạ dầy ruột, tụ huyết trùng, phân trắng lợn con, phù thũng lợn con, phó thương hàn, tai xanh, bệnh nghệ....</p><p>-&nbsp; Đối với trâu, bò, ngựa, dê, cừu: Viêm phổi, phế quản phổi, nhiễm trùng huyết, viêm vú, viêm tử cung, dạ con, viêm khớp, viêm thối móng chân, tiêu chảy, chướng hơi, đầy bụng, viêm ruột, dạ dầy ruột, tụ huyết trùng.</p><p>-&nbsp; Đối với gia cầm: Tiêu chảy do E.coli, CRD (hen gà), CCRD – hen ghép coli, sưng phù đầu, thương hàn, bạch lỵ, tụ huyết trùng....<br>-&nbsp; Trị khẹc vịt và bại liệt ngan ngỗng.</p><p>-&nbsp; Khi dùng Vidan T kết hợp với&nbsp; Macavet để điều trị Tai Xanh, Dịch tả, bệnh nghệ, Phó Thương Hàn, Hen, Suyễn, thì kết quả rất tốt.</p><p><strong>CÁCH DÙNG</strong></p><p>Tiêm sâu bắp thịt.</p><p><strong>LIỀU DÙNG</strong></p><p>- Lợn và gia súc non : 1ml/10kgP/ngày</p><p>- Gia súc lớn : 1ml/20kgP/ngày</p><p>- Gia cầm, chó, mèo : 1ml/7.5kgP/ngày</p><p><strong>THỜI GIAN NGỪNG DÙNG THUỐC TRƯỚC KHI GIẾT MỔ:</strong>&nbsp;5-7 ngày.</p><p><strong>BẢO QUẢN: </strong>Nơi thoáng mát, tránh ánh sáng.</p><p><strong>QUY CÁCH&nbsp;ĐÓNG GÓI:</strong> Lọ thủy tinh 10ml, 20ml, 100ml</p><p><strong>SĐK: NT-12</strong></p><p>CÁCH DÙNG</p><p>Tiêm sâu bắp thịt.</p><p>LIỀU DÙNG</p><p>- Lợn và gia súc non : 1ml/10kgP/ngày</p><p>- Gia súc lớn : 1ml/15kgP/ngày</p><p>- Gia cầm, chó, mèo : 1ml/5kgP/ngày</p><p>THỜI GIAN NGỪNG DÙNG THUỐC TRƯỚC KHI GIẾT MỔ: 5-7 ngày.</p><p>BẢO QUẢN: Nơi thoáng mát, tránh ánh sáng.</p><p>QUY CÁCH ĐÓNG GÓI: Lọ thủy tinh 100ml</p>', '/storage/uploads/vm/2022-05-10-16-05-09TVT_1577.jpg', '/storage/uploads/vm/2022-05-10-16-05-12GqsCI5Lm2mqS71omRU2H.jpg', '/storage/uploads/vm/2022-05-10-16-05-149bed8c30d0127f1597b92444c5295cf8.jpg_720x720q80.jpg_.webp', 4, '2022-05-10 09:12:20', '2022-05-10 09:51:39'),
+(11, 'BKC 80%', '<p>Vệ sinh ao hồ chuồng trại là điều kiện rất quan trọng để chăm sóc và bảo vệ sức khỏe cho đàn vật nuôi. Các vấn đề về vi khuẩn phát sinh cũng một phần do điều kiện chăn nuôi không đảm bảo. Bà con sẽ không còn phải lo lắng về vấn đề này vì đã có DUNG DỊCH BKC 80%. Đây là sản phẩm gì, hữu ích ra sao, sử dụng thế nào? Cùng Hóa Chất Nam Bộ tìm hiểu nhé.</p><h2><strong>Giới thiệu về DUNG DỊCH XỬ LÝ AO NUÔI BKC 80%</strong></h2><p><a href=\"https://hoachatnambo.com/bkc-80/\">Dung dịch BKC 80%</a> là chế phẩm được sản xuất nhằm mục tiêu diệt khuẩn, diệt nấm, xử lý ao nuôi nhằm tránh cho tôm cá các vấn đề về vi khuẩn. Dung dịch này có thể cải thiện môi trường ao nuôi với khả năng lọc sạch mùi hôi bởi quá trình phân giải khí, có tính thẩm thấu tốt cải thiện hiệu quả diệt khuẩn trong môi trường chăn nuôi.</p><p>Nhận diện dung dịch BKC 80% cũng khá dễ dàng: &nbsp;Dung dịch hơi sệt, có màu trắng trong hoặc hơi ngả vàng. Với bà con nhà nông áp dụng mô hình chăn nuôi quy mô và chuyên nghiệp thì dung dịch này không thể thiếu được.</p><p><img src=\"https://hoachatnambo.com/wp-content/uploads/2019/10/Cha%CC%82%CC%81t-xu%CC%9B%CC%89-ly%CC%81-nu%CC%9Bo%CC%9B%CC%81c-ao-ho%CC%82%CC%80-BKC-80-Ho%CC%81a-Cha%CC%82%CC%81t-Nam-Bo%CC%A3%CC%82-1.jpg\" alt=\"\"></p><h3><strong>Thành phần của dung dịch BKC 80%</strong></h3><p>BKC là <a href=\"https://hoachatnambo.com/chat-xu-ly-nuoc-ao-nuoi/\">chất khử trùng xử lý ao nuôi tôm</a> hiệu quả trong nuôi trồng thủy sản, bà con nhà nông chúng ta nếu chưa biết đến dung dịch này thì nên tìm hiểu ngay. BKC (viết tắt của Benzalkonium Chloride – C6H5CH2N(CH3)2RCl) với tên hóa học đầy đủ là alkyl dimethyl benzyl ammonium chloride. Thành phần trong một thùng BKC 80% là:</p><ul><li>Trong 1 lít gồm có: Benzalkonium Chloride: 80% Dung môi (nước cất) vừa đủ 1 lít.</li><li>Đặc điểm: Dạng dung dịch (lỏng)</li><li>Quy cách đóng gói: 200 kg/phuy</li><li>Xuất xứ: Nhập từ Anh</li></ul><h4><strong>Cơ chế hoạt động của BKC 80% trong xử lý ao nuôi</strong></h4><p>Dung dịch này có khả năng diệt khuẩn hiệu quả, giúp ngăn chặn mầm bệnh. Dùng để sát trùng chuồng trại, cở sở chăn nuôi,vệ sinh thú y, kho hàng, sát trùng dụng cụ,trang thiết bị chăn nuôi như máng ăn và máng uống, bkc chemical.</p><ul><li><a href=\"https://hoachatnambo.com/bkc-80/\">Hóa chất bkc 80%</a> có chức năng tiêu diệt vi khuẩn, nấm, protozoa và một số loại virut. Nhóm vi khuẩn gram dương (+) thường nhạy cảm đối với bkc hơn là nhóm vi khuẩn gram âm (-).</li><li>Trong&nbsp; BKC 80% các thành phần có khả năng khống chế sự phát triển của tảo. Tuy nhiên, khả năng diệt tảo của bkc 80% cũng còn phụ thuộc vào độ dầy vách tế bào của tảo.</li><li>BKC 80% khống chế hiệu quả các bệnh về vi khuẩn trong ao nuôi gây ra bởi các nhóm vi khuẩn Edwardsiella, Vibrio,Staphylococcus, và Aeromonas. Ngoài ra, ở liều lượng thấp cũng có khả năng kích thích tôm lột xác.</li></ul><h4>&nbsp;</h4><h4><strong>Công dụng của Dung dịch BKC trong chăn nuôi thủy hải sản</strong></h4><p>Bà con chúng ta không phải hộ chăn nuôi nào cũng ý thức được rằng một khi môi trường nước bị suy giảm tạo điều kiện cho sự phát triển của mầm bệnh như là virut, các loại vi khuẩn, nấm, nguyên sinh động vật,… trên đàn vật nuôi của mình.</p><p>Khi dịch bệnh phát sinh, việc cần làm ngay đó chính là khống chế sự phát triển và lây lan của mềm bệnh để không xảy ra dịch bệnh hàng loạt. Và để làm được điều đó thì khử trùng trị bệnh là vô cùng cần thiết.</p><p>Đó cũng chính là công dụng của <a href=\"https://hoachatnambo.com/bkc-80/\">dung dịch xử lý ao nuôi BKC 80%</a>. Tóm lại có những hiệu quả sau:</p><ul><li>Tiêu diệt các loại vi khuẩn, nấm, nguyên sinh động vật trong ao, bể, chuồng</li><li>Sát trùng dụng cụ chăn nuôi</li><li>BKC 80% giúp diệt khuẩn, diệt nấm, giúp loại trừ các nguyên nhân gây bệnh cho tôm cá và thủy sản khác.</li><li>Khử mùi hôi, kích thích tôm lột vỏ tăng năng suất</li><li>Diệt bớt tảo trong ao nuôi khi mật độ của chúng quá dày, giúp ổn định độ trong và hàm lượng oxy hòa tan.</li><li>Giúp bà con phòng và trị các bệnh do vi khuẩn gây ra như: bệnh cụt râu, mòn đuôi, bệnh phát sáng ở tôm, bệnh nấm và Protozoa.</li></ul><p>&nbsp;</p><blockquote><p><i>Các sản phẩm để xử lý ao nuôi đề xuất:</i></p><p><i>=&gt; </i><a href=\"https://hoachatnambo.com/iodine/\"><i>IODINE 98% chất sát trùng ao nuôi tôm</i></a></p><p><i>=&gt; </i><a href=\"https://hoachatnambo.com/yucca/\"><i>YUCCA Dung dịch xử lý khí độc ao nuôi tôm</i></a></p><p><i>=&gt; </i><a href=\"https://hoachatnambo.com/chat-lang-tu-anionic/\"><i>Chất lắng tụ cho ao nuôi thủy sản Anionic AC</i></a></p></blockquote><h3><strong>Liều dùng và cách sử dụng BKC 80% để xử lý sát khuẩn ao nuôi</strong></h3><p><i><strong>Liều dùng</strong></i></p><p>Khi sử dụng dung dịch sát khuẩn BKC 80%, bà con cần biết rằng không phải trường hợp nào cũng sử dụng hàm lượng như nhau. Hãy lưu lại công thức sử dụng trong từng thời điểm như sau:</p><ul><li>Trước thả nuôi: 1 lít/1.000-2.000 m3 nước.</li><li>Khi ao bị nhiễm khuẩn: 1 lít/2.000 – 3.000 m3 nước.</li><li>Định kỳ: 1 lít/4.000-5.000 m3 nước. (Liều dùng cụ thể nên nhờ sự tư vấn của các chuyên gia đến từ Hóa Chất Nam Bộ để biết thêm chi tiết và mang hiệu quả hơn).</li><li>Nếu bà con muốn sử dụng dung dịch BKC 80% để khử trùng bể ương, dụng cụ thì thực hiện theo tỉ lệ sau:&nbsp; pha vào nước theo nồng độ 200ppm (200ml/m3) phun xịt hoặc ngâm dụng cụ, bể ương 6-8 giờ, sau đó rửa lại bằng nước sạch, phơi khô.</li></ul><p><i><strong>Cách sử dụng</strong></i></p><ul><li>Khi sử dụng hãy pha loãng thuốc với lượng nước gấp 50 lần tạt đều xuống ao. Bà con nên hòa tan dung dịch vào nước theo liều lượng cho bên trên, sau đó cho vào hồ nuôi thủy sản.</li><li>Nên dùng BKC 80% vào lúc trời nắng gắt, để đạt hiệu quả tối đa.</li></ul><h4><strong>Cách bảo quản Dung dịch BKC 80%</strong></h4><p>– Để thuốc cách xa tầm tay trẻ em.</p><p>– Bảo quản nơi khô mát, tránh ánh sáng trực tiếp.</p><p><a href=\"https://hoachatnambo.com/\"><i>Hóa Chất Nam Bộ</i></a><i> là nhà phân phối và cung cấp các sản phẩm dành cho ngành chăn nuôi nông sản hàng đầu cả nước. Với phương châm “Chất lượng là Thương hiệu”, bà con có thể tìm mua Dung dịch BKC 80% và rất nhiều loại kháng sinh hỗ trợ thiết yếu cho việc chăn nuôi. Liên hệ ngay nếu bạn muốn tư vấn cặn kẽ và chi tiết hơn.</i></p>', '/storage/uploads/vm/2022-05-10-16-05-46BKC-80-Web.jpg', '/storage/uploads/vm/2022-05-10-16-05-48bkc-80.png', '/storage/uploads/vm/2022-05-10-16-05-49Dung-dich-bkc-80-anh-diet-khuan-nam-moc-can-20lit-scaled.jpg', 4, '2022-05-10 09:14:59', '2022-05-10 09:15:44');
 
 -- --------------------------------------------------------
 
@@ -1364,11 +1730,27 @@ ALTER TABLE `admin_roles`
   ADD KEY `admin_roles_roles_id_roles_index` (`roles_id_roles`);
 
 --
+-- Chỉ mục cho bảng `animal_soa`
+--
+ALTER TABLE `animal_soa`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `animal_soa_animal_animal_id_index` (`animal_animal_id`),
+  ADD KEY `animal_soa_soa_soa_id_index` (`soa_soa_id`);
+
+--
 -- Chỉ mục cho bảng `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Chỉ mục cho bảng `fertilizer_plant`
+--
+ALTER TABLE `fertilizer_plant`
+  ADD PRIMARY KEY (`id_fertilizer_plant`),
+  ADD KEY `fertilizer_plant_plant_plant_id_index` (`plant_plant_id`),
+  ADD KEY `fertilizer_plant_fertilizer_fertilizer_id_index` (`fertilizer_fertilizer_id`);
 
 --
 -- Chỉ mục cho bảng `migrations`
@@ -1391,6 +1773,14 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Chỉ mục cho bảng `pesticides_sop`
+--
+ALTER TABLE `pesticides_sop`
+  ADD PRIMARY KEY (`id_pesticides_sop`),
+  ADD KEY `pesticides_sop_sop_sop_id_index` (`sop_sop_id`),
+  ADD KEY `pesticides_sop_pesticides_pesticides_id_index` (`pesticides_pesticides_id`);
+
+--
 -- Chỉ mục cho bảng `plant_sop`
 --
 ALTER TABLE `plant_sop`
@@ -1399,11 +1789,52 @@ ALTER TABLE `plant_sop`
   ADD KEY `plant_sop_sop_sop_id_index` (`sop_sop_id`);
 
 --
+-- Chỉ mục cho bảng `soa_veterinarymedicine`
+--
+ALTER TABLE `soa_veterinarymedicine`
+  ADD PRIMARY KEY (`id_soa_veterinarymedicine`),
+  ADD KEY `soa_veterinarymedicine_soa_soa_id_index` (`soa_soa_id`),
+  ADD KEY `soa_veterinarymedicine_veterinarymedicine_vm_id_index` (`veterinarymedicine_vm_id`);
+
+--
+-- Chỉ mục cho bảng `soa_veterinary_medicine`
+--
+ALTER TABLE `soa_veterinary_medicine`
+  ADD PRIMARY KEY (`id_soa_veterinarymedicine`),
+  ADD KEY `soa_veterinary_medicine_soa_soa_id_index` (`soa_soa_id`),
+  ADD KEY `soa_veterinary_medicine_veterinarymedicine_vm_id_index` (`veterinary_medicine_vm_id`);
+
+--
 -- Chỉ mục cho bảng `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`admin_id`),
   ADD KEY `tbl_admin_job_id_index` (`job_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_animal`
+--
+ALTER TABLE `tbl_animal`
+  ADD PRIMARY KEY (`animal_id`),
+  ADD KEY `tbl_animal_toa_id_index` (`toa_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_category_fertilizer`
+--
+ALTER TABLE `tbl_category_fertilizer`
+  ADD PRIMARY KEY (`category_fertilizer_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_category_pesticides`
+--
+ALTER TABLE `tbl_category_pesticides`
+  ADD PRIMARY KEY (`category_pesticides_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_category_vm`
+--
+ALTER TABLE `tbl_category_vm`
+  ADD PRIMARY KEY (`category_vm_id`);
 
 --
 -- Chỉ mục cho bảng `tbl_commune`
@@ -1424,6 +1855,13 @@ ALTER TABLE `tbl_department`
 ALTER TABLE `tbl_district`
   ADD PRIMARY KEY (`district_id`),
   ADD KEY `tbl_district_province_id_index` (`province_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_fertilizer`
+--
+ALTER TABLE `tbl_fertilizer`
+  ADD PRIMARY KEY (`fertilizer_id`),
+  ADD KEY `tbl_fertilizer_category_fertilizer_id_index` (`category_fertilizer_id`);
 
 --
 -- Chỉ mục cho bảng `tbl_forum`
@@ -1479,6 +1917,13 @@ ALTER TABLE `tbl_news_comment`
   ADD KEY `tbl_news_comment_user_id_index` (`user_id`);
 
 --
+-- Chỉ mục cho bảng `tbl_pesticides`
+--
+ALTER TABLE `tbl_pesticides`
+  ADD PRIMARY KEY (`pesticides_id`),
+  ADD KEY `tbl_pesticides_category_pesticides_id_index` (`category_pesticides_id`);
+
+--
 -- Chỉ mục cho bảng `tbl_plant`
 --
 ALTER TABLE `tbl_plant`
@@ -1498,10 +1943,22 @@ ALTER TABLE `tbl_roles`
   ADD PRIMARY KEY (`id_roles`);
 
 --
+-- Chỉ mục cho bảng `tbl_soa`
+--
+ALTER TABLE `tbl_soa`
+  ADD PRIMARY KEY (`soa_id`);
+
+--
 -- Chỉ mục cho bảng `tbl_sop`
 --
 ALTER TABLE `tbl_sop`
   ADD PRIMARY KEY (`sop_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_type_of_animal`
+--
+ALTER TABLE `tbl_type_of_animal`
+  ADD PRIMARY KEY (`toa_id`);
 
 --
 -- Chỉ mục cho bảng `tbl_type_of_plant`
@@ -1514,6 +1971,13 @@ ALTER TABLE `tbl_type_of_plant`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`user_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_vm`
+--
+ALTER TABLE `tbl_vm`
+  ADD PRIMARY KEY (`vm_id`),
+  ADD KEY `tbl_vm_category_vm_id_index` (`category_vm_id`);
 
 --
 -- Chỉ mục cho bảng `users`
@@ -1530,7 +1994,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `admin_roles`
 --
 ALTER TABLE `admin_roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+
+--
+-- AUTO_INCREMENT cho bảng `animal_soa`
+--
+ALTER TABLE `animal_soa`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -1539,10 +2009,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `fertilizer_plant`
+--
+ALTER TABLE `fertilizer_plant`
+  MODIFY `id_fertilizer_plant` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT cho bảng `personal_access_tokens`
@@ -1551,16 +2027,58 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `pesticides_sop`
+--
+ALTER TABLE `pesticides_sop`
+  MODIFY `id_pesticides_sop` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT cho bảng `plant_sop`
 --
 ALTER TABLE `plant_sop`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `soa_veterinarymedicine`
+--
+ALTER TABLE `soa_veterinarymedicine`
+  MODIFY `id_soa_veterinarymedicine` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `soa_veterinary_medicine`
+--
+ALTER TABLE `soa_veterinary_medicine`
+  MODIFY `id_soa_veterinarymedicine` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
   MODIFY `admin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_animal`
+--
+ALTER TABLE `tbl_animal`
+  MODIFY `animal_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_category_fertilizer`
+--
+ALTER TABLE `tbl_category_fertilizer`
+  MODIFY `category_fertilizer_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_category_pesticides`
+--
+ALTER TABLE `tbl_category_pesticides`
+  MODIFY `category_pesticides_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_category_vm`
+--
+ALTER TABLE `tbl_category_vm`
+  MODIFY `category_vm_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_commune`
@@ -1581,6 +2099,12 @@ ALTER TABLE `tbl_district`
   MODIFY `district_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
+-- AUTO_INCREMENT cho bảng `tbl_fertilizer`
+--
+ALTER TABLE `tbl_fertilizer`
+  MODIFY `fertilizer_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT cho bảng `tbl_forum`
 --
 ALTER TABLE `tbl_forum`
@@ -1590,7 +2114,7 @@ ALTER TABLE `tbl_forum`
 -- AUTO_INCREMENT cho bảng `tbl_forum_comment`
 --
 ALTER TABLE `tbl_forum_comment`
-  MODIFY `forum_comment_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `forum_comment_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_job`
@@ -1623,10 +2147,16 @@ ALTER TABLE `tbl_news_comment`
   MODIFY `id_news_comment` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT cho bảng `tbl_pesticides`
+--
+ALTER TABLE `tbl_pesticides`
+  MODIFY `pesticides_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT cho bảng `tbl_plant`
 --
 ALTER TABLE `tbl_plant`
-  MODIFY `plant_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `plant_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_roles`
@@ -1635,10 +2165,22 @@ ALTER TABLE `tbl_roles`
   MODIFY `id_roles` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT cho bảng `tbl_soa`
+--
+ALTER TABLE `tbl_soa`
+  MODIFY `soa_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT cho bảng `tbl_sop`
 --
 ALTER TABLE `tbl_sop`
-  MODIFY `sop_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sop_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_type_of_animal`
+--
+ALTER TABLE `tbl_type_of_animal`
+  MODIFY `toa_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_type_of_plant`
@@ -1650,7 +2192,13 @@ ALTER TABLE `tbl_type_of_plant`
 -- AUTO_INCREMENT cho bảng `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_vm`
+--
+ALTER TABLE `tbl_vm`
+  MODIFY `vm_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
@@ -1670,6 +2218,27 @@ ALTER TABLE `admin_roles`
   ADD CONSTRAINT `admin_roles_roles_id_roles_foreign` FOREIGN KEY (`roles_id_roles`) REFERENCES `tbl_roles` (`id_roles`) ON DELETE CASCADE;
 
 --
+-- Các ràng buộc cho bảng `animal_soa`
+--
+ALTER TABLE `animal_soa`
+  ADD CONSTRAINT `animal_soa_animal_animal_id_foreign` FOREIGN KEY (`animal_animal_id`) REFERENCES `tbl_animal` (`animal_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `animal_soa_soa_soa_id_foreign` FOREIGN KEY (`soa_soa_id`) REFERENCES `tbl_soa` (`soa_id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `fertilizer_plant`
+--
+ALTER TABLE `fertilizer_plant`
+  ADD CONSTRAINT `fertilizer_plant_fertilizer_fertilizer_id_foreign` FOREIGN KEY (`fertilizer_fertilizer_id`) REFERENCES `tbl_fertilizer` (`fertilizer_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fertilizer_plant_plant_plant_id_foreign` FOREIGN KEY (`plant_plant_id`) REFERENCES `tbl_plant` (`plant_id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `pesticides_sop`
+--
+ALTER TABLE `pesticides_sop`
+  ADD CONSTRAINT `pesticides_sop_pesticides_pesticides_id_foreign` FOREIGN KEY (`pesticides_pesticides_id`) REFERENCES `tbl_pesticides` (`pesticides_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `pesticides_sop_sop_sop_id_foreign` FOREIGN KEY (`sop_sop_id`) REFERENCES `tbl_sop` (`sop_id`) ON DELETE CASCADE;
+
+--
 -- Các ràng buộc cho bảng `plant_sop`
 --
 ALTER TABLE `plant_sop`
@@ -1677,10 +2246,30 @@ ALTER TABLE `plant_sop`
   ADD CONSTRAINT `plant_sop_sop_sop_id_foreign` FOREIGN KEY (`sop_sop_id`) REFERENCES `tbl_sop` (`sop_id`) ON DELETE CASCADE;
 
 --
+-- Các ràng buộc cho bảng `soa_veterinarymedicine`
+--
+ALTER TABLE `soa_veterinarymedicine`
+  ADD CONSTRAINT `soa_veterinarymedicine_soa_soa_id_foreign` FOREIGN KEY (`soa_soa_id`) REFERENCES `tbl_soa` (`soa_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `soa_veterinarymedicine_veterinarymedicine_vm_id_foreign` FOREIGN KEY (`veterinarymedicine_vm_id`) REFERENCES `tbl_vm` (`vm_id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `soa_veterinary_medicine`
+--
+ALTER TABLE `soa_veterinary_medicine`
+  ADD CONSTRAINT `soa_veterinary_medicine_soa_soa_id_foreign` FOREIGN KEY (`soa_soa_id`) REFERENCES `tbl_soa` (`soa_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `soa_veterinary_medicine_veterinarymedicine_vm_id_foreign` FOREIGN KEY (`veterinary_medicine_vm_id`) REFERENCES `tbl_vm` (`vm_id`) ON DELETE CASCADE;
+
+--
 -- Các ràng buộc cho bảng `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
   ADD CONSTRAINT `tbl_admin_job_id_foreign` FOREIGN KEY (`job_id`) REFERENCES `tbl_job` (`job_id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `tbl_animal`
+--
+ALTER TABLE `tbl_animal`
+  ADD CONSTRAINT `tbl_animal_toa_id_foreign` FOREIGN KEY (`toa_id`) REFERENCES `tbl_type_of_animal` (`toa_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `tbl_commune`
@@ -1693,6 +2282,12 @@ ALTER TABLE `tbl_commune`
 --
 ALTER TABLE `tbl_district`
   ADD CONSTRAINT `tbl_district_province_id_foreign` FOREIGN KEY (`province_id`) REFERENCES `tbl_province` (`province_id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `tbl_fertilizer`
+--
+ALTER TABLE `tbl_fertilizer`
+  ADD CONSTRAINT `tbl_fertilizer_category_fertilizer_id_foreign` FOREIGN KEY (`category_fertilizer_id`) REFERENCES `tbl_category_fertilizer` (`category_fertilizer_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `tbl_forum`
@@ -1735,10 +2330,22 @@ ALTER TABLE `tbl_news_comment`
   ADD CONSTRAINT `tbl_news_comment_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE;
 
 --
+-- Các ràng buộc cho bảng `tbl_pesticides`
+--
+ALTER TABLE `tbl_pesticides`
+  ADD CONSTRAINT `tbl_pesticides_category_pesticides_id_foreign` FOREIGN KEY (`category_pesticides_id`) REFERENCES `tbl_category_pesticides` (`category_pesticides_id`) ON DELETE CASCADE;
+
+--
 -- Các ràng buộc cho bảng `tbl_plant`
 --
 ALTER TABLE `tbl_plant`
   ADD CONSTRAINT `tbl_plant_ibfk_1` FOREIGN KEY (`top_id`) REFERENCES `tbl_type_of_plant` (`top_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `tbl_vm`
+--
+ALTER TABLE `tbl_vm`
+  ADD CONSTRAINT `tbl_vm_category_vm_id_foreign` FOREIGN KEY (`category_vm_id`) REFERENCES `tbl_category_vm` (`category_vm_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
