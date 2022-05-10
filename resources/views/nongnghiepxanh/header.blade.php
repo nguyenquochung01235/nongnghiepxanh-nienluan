@@ -90,13 +90,21 @@
             </div>
 
             <div class="nav__dropdown">
-                <a href="#" class="nav__link nav__link--dropdown link link--regular link--bold" >Vật nuôi & bệnh hại <i class="fas fa-caret-down"></i></a>
+                <a href="#" class="nav__link nav__link--dropdown link link--regular link--bold"  style="margin-right: 12px;" >Vật nuôi & bệnh hại <i class="fas fa-caret-down"></i></a>
                 <ul class="nav__list">
                     <li class="nav__item"><a href="/animal" class="nav__link link link--regular link--bold">Tra cứu vật nuôi</a></li>
                     <li class="nav__item"><a href="/soa" class="nav__link link link--regular link--bold">Tra cứu bệnh hại</a></li>
                 </ul>
             </div>
-            <a href="#" class="nav__link link link--regular link--bold">Thuốc & vật tư nông nghiệp</a>
+           
+            <div class="nav__dropdown">
+                <a href="#" class="nav__link nav__link--dropdown link link--regular link--bold" >Phân Thuốc & Vật Tư <i class="fas fa-caret-down"></i></a>
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="/fertilizer" class="nav__link link link--regular link--bold">Tra cứu phân bón</a></li>
+                    <li class="nav__item"><a href="/pesticides" class="nav__link link link--regular link--bold">Tra cứu thuốc BVTV</a></li>
+                    <li class="nav__item"><a href="/veterinary-medicine" class="nav__link link link--regular link--bold">Tra cứu thuốc thú y</a></li>
+                </ul>
+            </div>
             <a href="/forum" class="nav__link link link--regular link--bold">Diễn đàn</a>
             <a href="#" class="nav__link link link--regular link--bold">Chợ Nông Nghiệp</a>
         </nav>

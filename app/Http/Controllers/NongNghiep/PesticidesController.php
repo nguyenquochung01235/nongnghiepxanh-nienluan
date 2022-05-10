@@ -19,8 +19,9 @@ class PesticidesController extends Controller
 
     public function index(){
         $pesticides = $this->pesticidesService->getAllPesticides();
+        // return dd( $pesticides);
         return view('nongnghiepxanh.pesticides.list',[
-            'title' => 'Danh Sách Cây Trồng',
+            'title' => 'Danh Sách Thuốc BVTV',
             'pesticides' => $pesticides
         ]);
     }
@@ -29,7 +30,7 @@ class PesticidesController extends Controller
         $pesticides = $this->pesticidesService->getPesticidesByID($pesticides->pesticides_id);
         $listpesticides = $this->pesticidesService->getPesticidesRecommend();
         return view('nongnghiepxanh.pesticides.view',[
-            'title' => 'Chi tiết giống cây trồng',
+            'title' => 'Chi tiết thuốc BVTV',
             'pesticides' => $pesticides,
             'listpesticides' => $listpesticides
         ]);
@@ -37,8 +38,9 @@ class PesticidesController extends Controller
 
     public function searchPesticides(Request $request){
         $pesticides = $this->pesticidesService->searchPesticides($request);
+        // return dd($pesticides);
         return view('nongnghiepxanh.pesticides.searchpesticides',[
-            'title' => 'Kết Quá Tìm Kiếm: ' . $request->searchnews,
+            'title' => 'Kết Quả Tìm Kiếm: ' . $request->searchnews,
             'pesticides' => $pesticides
         ]);
     }

@@ -39,8 +39,23 @@ class Helper
         if (strpos($currentURL, "/sop") !== false) {
             return "sop";
         } 
+        if (strpos($currentURL, "/soa") !== false) {
+            return "soa";
+        } 
         if (strpos($currentURL, "/animal") !== false) {
             return "animal";
+        } 
+        if (strpos($currentURL, "/pesticides") !== false) {
+            return "pesticides";
+        } 
+        if (strpos($currentURL, "/veterinary-medicine") !== false) {
+            return "veterinary-medicine";
+        } 
+        if (strpos($currentURL, "/fertilizer") !== false) {
+            return "fertilizer";
+        } 
+        if (strpos($currentURL, "/forum") !== false) {
+            return "forum";
         } 
     }
 

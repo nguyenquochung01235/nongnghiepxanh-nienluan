@@ -29,6 +29,14 @@ class ForumController extends Controller
         ]);
     }
 
+    public function searchForum(Request $request){
+        $forum = $this->forumService->searchForum($request);
+        return view('nongnghiepxanh.forum.list',[
+            'title' => 'Kết Quả Tìm Kiếm: ' . $request->searchnews,
+            'forum' => $forum
+        ]);
+    }
+
     public function detail(Forum $forum){
         $forumDetail = $this->forumService->getForumDetail($forum->forum_id);
         $listComment = $this->forumService->getAllComment($forum->forum_id);

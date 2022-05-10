@@ -19,9 +19,7 @@
                     <a href="/pesticides/detail/{{$pesticides[0]->pesticides_id}}" class="article__link ">{{$pesticides[0]->pesticides_name }}</a>
                 </h2>
                 <div class="article__category">
-                    <a href="#" class="article__link link">Bệnh Hại</a>
-                    <a href="#" class="article__link link">{{$pesticides[0]->top->top_name}}</a>
-
+                    <a href="#" class="article__link link">{{$pesticides[0]->category_pesticides->category_pesticides}}</a>
                 </div>
                 <div class="article__intro mota">
                     {!! $pesticides[0]->pesticides_description !!}
@@ -35,7 +33,7 @@
                     <a href="/pesticides/detail/{{$pesticides[1]->pesticides_id}}" class="article__link ">{{$pesticides[1]->pesticides_name }}</a>
                 </h2>
                 <div class="article__category">
-                    <a href="#" class="article__link link">Bệnh Hại</a>
+                <a href="#" class="article__link link">{{$pesticides[1]->category_pesticides->category_pesticides}}</a>
                 </div>
                 <div class="article__intro mota">
                     {!! $pesticides[1]->pesticides_description !!}
@@ -49,7 +47,7 @@
                     <a href="/pesticides/detail/{{$pesticides[2]->pesticides_id}}" class="article__link ">{{$pesticides[2]->pesticides_name }}</a>
                 </h2>
                 <div class="article__category">
-                    <a href="#" class="article__link link">Bệnh Hại</a>
+                <a href="#" class="article__link link">{{$pesticides[2]->category_pesticides->category_pesticides}}</a>
                 </div>
                 <div class="article__intro mota">
                     {!! $pesticides[2]->pesticides_description !!}
@@ -67,7 +65,7 @@
                     <a href="/pesticides/detail/{{$data->pesticides_id}}" class="article__link ">{{$data->pesticides_name }}</a>
                 </h2>
                 <div class="article__category">
-                    <a href="#" class="article__link link">Bệnh Hại</a>
+                    <a href="#" class="article__link link">{{$data->category_pesticides->category_pesticides}}</a>
                 </div>
                 <div class="article__intro mota">
                     {!! $data->pesticides_description !!}

@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\VeterinaryMedicineController;
 use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\NongNghiep\AnimalController as NongNghiepAnimalController;
+use App\Http\Controllers\NongNghiep\FertilizerController as NongNghiepFertilizerController;
 use App\Http\Controllers\NongNghiep\ForumController as NongNghiepForumController;
 use App\Http\Controllers\NongNghiep\LandsController as NongNghiepLandsController;
 use App\Http\Controllers\NongNghiep\MainController as NongNghiepMainController;
@@ -39,6 +40,7 @@ use App\Http\Controllers\NongNghiep\SignUpController;
 use App\Http\Controllers\NongNghiep\SoaController as NongNghiepSoaController;
 use App\Http\Controllers\NongNghiep\SopController as NongNghiepSopController;
 use App\Http\Controllers\NongNghiep\UserController;
+use App\Http\Controllers\NongNghiep\VeterinaryMedicineController as NongNghiepVeterinaryMedicineController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
@@ -96,7 +98,6 @@ Route::get('/sop/detail/{sop}', [NongNghiepSopController::class, 'view']);
 // --------------------------------------------------------------------
 
 
-
 // Animal Controller
 Route::get('/animal', [NongNghiepAnimalController::class, 'index']);
 Route::get('/animal/detail/{animal}', [NongNghiepAnimalController::class, 'view']);
@@ -109,6 +110,24 @@ Route::get('/soa/detail/{soa}', [NongNghiepSoaController::class, 'view']);
 
 // --------------------------------------------------------------------
 
+
+// Pesticides Controller
+Route::get('/pesticides', [NongNghiepPesticidesController::class, 'index']);
+Route::get('/pesticides/detail/{pesticides}', [NongNghiepPesticidesController::class, 'view']);
+
+// --------------------------------------------------------------------
+
+// Veterinary-Medicine Controller
+Route::get('/veterinary-medicine', [NongNghiepVeterinaryMedicineController::class, 'index']);
+Route::get('/veterinary-medicine/detail/{veterinarymedicine}', [NongNghiepVeterinaryMedicineController::class, 'view']);
+
+// --------------------------------------------------------------------
+
+// Fertilizer Controller
+Route::get('/fertilizer', [NongNghiepFertilizerController::class, 'index']);
+Route::get('/fertilizer/detail/{fertilizer}', [NongNghiepFertilizerController::class, 'view']);
+
+// --------------------------------------------------------------------
 
 // Forum Controller
 Route::get('/forum',[NongNghiepForumController::class, 'index']);
@@ -128,7 +147,12 @@ Route::get('/searchnews',[SearchController::class, 'searchNews']);
 Route::get('/searchnews/land',[NongNghiepLandsController::class, 'searchLands']);
 Route::get('/searchnews/plant',[NongNghiepPlantController::class, 'searchPlant']);
 Route::get('/searchnews/sop',[NongNghiepSopController::class, 'searchSop']);
+Route::get('/searchnews/soa',[NongNghiepSoaController::class, 'searchSoa']);
 Route::get('/searchnews/animal',[NongNghiepAnimalController::class, 'searchAnimal']);
+Route::get('/searchnews/pesticides',[NongNghiepPesticidesController::class, 'searchPesticides']);
+Route::get('/searchnews/veterinary-medicine',[NongNghiepVeterinaryMedicineController::class, 'searchVeterinaryMedicine']);
+Route::get('/searchnews/fertilizer',[NongNghiepFertilizerController::class, 'searchFertilizer']);
+Route::get('/searchnews/forum',[NongNghiepForumController::class, 'searchForum']);
 // --------------------------------------------------------------------
 
 

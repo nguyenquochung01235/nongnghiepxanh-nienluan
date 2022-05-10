@@ -17,6 +17,14 @@ class ForumService{
     public function getAllContent(){
         return Forum::with('user')->orderBy('created_at', 'desc')->where('active', 1)->paginate();
     }
+
+    public function searchForum($request){
+        return Forum::with('user')
+        ->orderBy('created_at', 'desc')
+        ->where('active', 1)
+        ->where('forum_title', 'like', '%'.$request->searchnews.'%')
+        ->paginate();
+    }
       
 
     public function getForumDetail($forum_id){
