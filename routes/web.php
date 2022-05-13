@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AnimalController;
 use App\Http\Controllers\Admin\CategoryAnimalController;
+use App\Http\Controllers\Admin\CategoryECommerceController;
 use App\Http\Controllers\Admin\CategoryFertilizerController;
 use App\Http\Controllers\Admin\CategoryNewsController;
 use App\Http\Controllers\Admin\CategoryPesticidesController;
@@ -28,6 +29,7 @@ use App\Http\Controllers\Admin\VeterinaryMedicineController;
 use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\NongNghiep\AnimalController as NongNghiepAnimalController;
+use App\Http\Controllers\NongNghiep\ECommerceController;
 use App\Http\Controllers\NongNghiep\FertilizerController as NongNghiepFertilizerController;
 use App\Http\Controllers\NongNghiep\ForumController as NongNghiepForumController;
 use App\Http\Controllers\NongNghiep\LandsController as NongNghiepLandsController;
@@ -140,6 +142,11 @@ Route::post('/forum/upload/img', [NongNghiepForumController::class, 'uploadImg']
 Route::post('/forum/detail/{forum}/{user}/comment',[NongNghiepForumController::class, 'commentForumDetail'])->middleware(['user']);
 Route::post('/forum/detail/{forum}/{user}/comment/{comment}',[NongNghiepForumController::class, 'replyCommentForumDetail'])->middleware(['user']);
 // --------------------------------------------------------------------
+
+
+Route::get('/e-commerce',[ECommerceController::class, 'index']);
+
+
 
 
 // Search Controller
@@ -441,6 +448,19 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', [VeterinaryMedicineController::class, 'delete']);
             Route::post('/upload/img', [VeterinaryMedicineController::class, 'uploadImg']);
             Route::get('filter', [VeterinaryMedicineController::class, 'filter']);
+        });
+
+
+         //Category - News
+         Route::prefix('category-ecommerce')->group(function () {
+            Route::get('/', [CategoryECommerceController::class, 'index']);
+            Route::get('/add', [CategoryECommerceController::class, 'add']);
+            Route::post('/add/create', [CategoryECommerceController::class, 'create']);
+            // Route::get('/view/{categoryecommerce}', [CategoryECommerceController::class, 'view']);
+            Route::get('edit/{categoryecommerce}', [CategoryECommerceController::class, 'show']);
+            Route::post('update/{categoryecommerce}', [CategoryECommerceController::class, 'update']);
+            Route::delete('delete', [CategoryECommerceController::class, 'delete']);
+            Route::post('/upload/img', [CategoryECommerceController::class, 'uploadImg']);
         });
 
         // User Management

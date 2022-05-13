@@ -1,0 +1,111 @@
+.container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  .container--small {
+    max-width: 800px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+  }
+  .grid--no-gap {
+    grid-gap: 0;
+  }
+  .grid--small-gap {
+    grid-gap: 15px;
+  }
+  .grid--6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .grid--10 {
+    grid-template-columns: repeat(10, 1fr);
+  }
+  .grid--12 {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .grid--span-1 {
+    grid-column: span 1;
+  }
+  .grid--span-2 {
+    grid-column: span 2;
+  }
+  .grid--span-3 {
+    grid-column: span 3;
+  }
+  .grid--span-4 {
+    grid-column: span 4;
+  }
+  .grid--span-5 {
+    grid-column: span 5;
+  }
+  .grid--span-7 {
+    grid-column: span 7;
+  }
+  
+
+  .section__list{
+    border: 1px solid white;
+    background-color: #eee;
+    border-radius: 3px;
+    padding: 5px 35px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    list-style-type: none;
+  }
+  
+  .section__item{
+    background-color: white;
+    text-align: center;
+    margin-right: 20px;
+    display: flex;
+    flex: 0 0 110px;
+    flex-direction: column;
+    column-width: 200px;
+    padding: 4px 8px;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .section__list > .section__item:last-child{
+    
+    margin-right: 0px;
+    
+  }
+
+  .footer {
+    padding-block: 30px;
+    background-color: #eee;
+  }
+  .footer__nav {
+    margin-top: 30px;
+    color: #007bff;
+  }
+  .footer__contact {
+    padding-block: 30px;
+    margin-block: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  }
+  .footer__item {
+    text-align: center;
+  }
+  .footer__item ~ .footer__item {
+    margin-top: 15px;
+  }
+  .footer__item > a {
+    color: #40aa41;
+  }
+  .footer__copyright {
+    text-align: center;
+  }
+  
+  /* main {
+    padding-block: 24px 110px;
+    background-color: #eee;
+    border-bottom: 4px solid #40aa41;
+  } */

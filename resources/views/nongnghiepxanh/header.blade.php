@@ -106,7 +106,7 @@
                 </ul>
             </div>
             <a href="/forum" class="nav__link link link--regular link--bold">Diễn đàn</a>
-            <a href="#" class="nav__link link link--regular link--bold">Chợ Nông Nghiệp</a>
+            <a href="/e-commerce" class="nav__link link link--regular link--bold">Chợ Nông Nghiệp</a>
         </nav>
     </div>
 </header>
