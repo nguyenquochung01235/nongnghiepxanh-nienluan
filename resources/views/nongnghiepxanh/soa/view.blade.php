@@ -50,7 +50,7 @@
         <br>
         <div class="detail-content__top"><strong>Danh sách các loại thuốc hay sử dụng: </strong>
             @foreach($soa->veterinary_medicine as $key => $data)
-              <a style="color: #007bff;" class=" link" href="/veterinary_medicine/detail/{{$data->vm_id}}">{{$data->vm_name}}. </a>
+              <a style="color: #007bff;" class=" link" href="/veterinary-medicine/detail/{{$data->vm_id}}">{{$data->vm_name}}. </a>
             @endforeach
         </div>
       </div>
