@@ -23,6 +23,7 @@ class ForumController extends Controller
 
     public function index(){
         $forum = $this->forumService->getAllContent();
+       
         return view('nongnghiepxanh.forum.list',[
             'title' => 'Diễn Đàn Hỏi Đáp Nông Nghiệp',
             'forum' => $forum

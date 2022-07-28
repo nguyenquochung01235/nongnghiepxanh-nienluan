@@ -197,8 +197,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{job}', [JobController::class, 'show']);
             Route::post('update/{job}', [JobController::class, 'update']);
             Route::delete('delete', [JobController::class, 'delete']);
-            Route::post('getjobbydepartment', [JobController::class, 'getJobByDepartmentAjax']);
+            
             Route::post('getsalaryofjob', [JobController::class, 'getSalaryOfJobAjax']);
+
+            ///Ajax caller
+            Route::post('getjobbydepartment', [JobController::class, 'getJobByDepartmentAjax']);
 
         });
 

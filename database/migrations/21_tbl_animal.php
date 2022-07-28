@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('animal_img_1');
             $table->string('animal_img_2');
             $table->string('animal_img_3');
-            $table->bigInteger('toa_id')->unsigned()->index();;
+            $table->bigInteger('toa_id')->unsigned()->index();
             $table->foreign('toa_id')->references('toa_id')->on('tbl_type_of_animal')->onDelete('cascade');
             $table->timestamps();
         });

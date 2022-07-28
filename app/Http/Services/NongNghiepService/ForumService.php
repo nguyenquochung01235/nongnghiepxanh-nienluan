@@ -14,6 +14,9 @@ class ForumService{
     }
 
 
+    // public function getAllContent(){
+    //     return Forum::with('user')->orderBy('created_at', 'desc')->where('active', '123')->get();
+    // }
     public function getAllContent(){
         return Forum::with('user')->orderBy('created_at', 'desc')->where('active', 1)->paginate();
     }
